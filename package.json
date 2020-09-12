@@ -9,6 +9,9 @@
     "lint:prettier-check": "prettier --check \"**/*.{js,jsx,ts,tsx,json}\"",
     "lint:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\""
   },
+  "engines": {
+    "node": ">=12.18.0"
+  },
   "dependencies": {
     "next": "9.3.5",
     "react": "16.13.1",
