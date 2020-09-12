@@ -31,41 +31,52 @@ module.exports = {
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
 
     // Do not require default exports
-    "import/extensions": 0,
+    'import/extensions': 0,
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
       },
     ],
 
     // Prevent accidental console logs
-    "no-console": 2,
+    'no-console': 2,
 
     // Allow implicit return of value undefined in functions where values can also be returned
-    "consistent-return": 0,
+    'consistent-return': 0,
 
     // Disallow depending on libraries not inside package.json
-    "import/no-extraneous-dependencies": [
+    'import/no-extraneous-dependencies': [
       2,
       // For test files, allow libraries only to be specified in devDependencies
-      { "devDependencies": ["**/*.test.ts", "**/*.spec.ts"] }
+      { devDependencies: ['**/*.test.ts', '**/*.spec.ts'] },
     ],
 
     // The readability varies depending on the case. No need to enforce a rule.
-    "prefer-template": 0,
-    "prefer-destructuring": 0,
+    'prefer-template': 0,
+    'prefer-destructuring': 0,
     'import/prefer-default-export': 0,
 
     // We use short-circuit and ternary function calls, though they can be less
     //   readable. Could be considered removed at a later stage.
-    "no-unused-expressions": [
+    'no-unused-expressions': [
       2,
-      { "allowShortCircuit": true, "allowTernary": true, "allowTaggedTemplates": true }
+      {
+        allowShortCircuit: true,
+        allowTernary: true,
+        allowTaggedTemplates: true,
+      },
     ],
 
     // Allow second parameter to be optional in parseInt
-    "radix": 0,
+    radix: 0,
 
     // Prettier errors are expected to be fixed automatically. No need to also hint in IDE.
     'prettier/prettier': 0,
