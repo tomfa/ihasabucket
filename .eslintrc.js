@@ -64,6 +64,15 @@ module.exports = {
     'prefer-destructuring': 0,
     'import/prefer-default-export': 0,
 
+    // I can use spreading carefully, thank you :)
+    'react/jsx-props-no-spreading': 0,
+
+    // I am using jsx in more files than .jsx
+    'react/jsx-filename-extension': [
+      2,
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+
     // We use short-circuit and ternary function calls, though they can be less
     //   readable. Could be considered removed at a later stage.
     'no-unused-expressions': [
