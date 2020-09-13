@@ -4,6 +4,7 @@ export const SectionBackground = styled.div`
   width: 100%;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
+  margin-top: ${(props) => props.marginTop};
 `;
 
 export const Section = styled.section`

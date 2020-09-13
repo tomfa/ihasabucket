@@ -13,6 +13,7 @@ import {
 } from '../utils/questions';
 import Infrastructure from '../components/Infrastructure';
 import { BOOL_VALUE, QUESTION_ID } from '../enums';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const [selectedRadioOptions, setSelectedRadioOptions] = useState<
@@ -54,9 +55,10 @@ export default function Home() {
             or need to store uploads? Put them in S3 buckets. It&apos;s
             <Colored> cheap </Colored>
             and
-            <Colored> reliable</Colored>. Let me show how
+            <Colored> reliable</Colored>. With CloudFront cache, it&apos;ll be
+            blazingly <Colored>fast</Colored>. Let&apos;s see how
             <Colored> easy </Colored>
-            it is.
+            it can be.
           </>
         </BlockQuote>
       </Main>
@@ -107,6 +109,7 @@ export default function Home() {
           staticPage={hasSeleted(QUESTION_ID.webappIsStatic, BOOL_VALUE.TRUE)}
         />
       </Section>
+      <Footer />
     </PageWrapper>
   );
 }

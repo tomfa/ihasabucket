@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Header = styled.h4`
-  color: ${(p) => p.theme.colors.textPrimary};
+  color: ${(p) => p.color || p.theme.colors.textPrimary};
   font-size: 2rem;
   margin-bottom: 0.6em;
   margin-top: 0;
