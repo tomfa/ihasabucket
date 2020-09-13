@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 
 import { Option } from '../../types';
+import Header from '../Header.style';
 import Checkbox from './Checkbox';
-import Title from './Title.style';
 import Description from './Description.style';
 import Choices from './Choices.style';
 import Question from './Question.style';
@@ -32,7 +32,7 @@ const CheckboxGroup = ({
         return;
       }
       const selectedExceptThisOption = selectedOptions.filter(
-        (o) => o.value !== value,
+        (o) => o.value !== value
       );
       if (!checked) {
         return onChange(selectedExceptThisOption);
@@ -40,11 +40,11 @@ const CheckboxGroup = ({
       const checkedOption = options.find((o) => o.value === value);
       checkedOption && onChange([...selectedExceptThisOption, checkedOption]);
     },
-    [disabled, options, onChange, selectedOptions],
+    [disabled, options, onChange, selectedOptions]
   );
   return (
     <Question>
-      {title && <Title>{title}</Title>}
+      {title && <Header>{title}</Header>}
       <Choices>
         {options.map((o) => (
           <Checkbox

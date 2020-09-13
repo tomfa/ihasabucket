@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TitleStyle = styled.h4`
+const Header = styled.h4`
   color: ${(p) => p.theme.colors.textPrimary};
   font-size: 2rem;
   margin-bottom: 0.6em;
@@ -11,4 +11,4 @@ const TitleStyle = styled.h4`
   }
 `;
 
-export default TitleStyle;
+export default Header;

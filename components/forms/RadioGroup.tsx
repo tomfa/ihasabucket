@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Option } from '../../types';
+import Header from '../Header.style';
 import Radio from './Radio';
-import Title from './Title.style';
 import Description from './Description.style';
 import Choices from './Choices.style';
 import Question from './Question.style';
@@ -36,11 +36,11 @@ const RadioGroup = ({
       const checkedOption = options.find((o) => o.value === value);
       checkedOption && onChange(checkedOption);
     },
-    [disabled, options, onChange],
+    [disabled, options, onChange]
   );
   return (
     <Question>
-      {title && <Title>{title}</Title>}
+      {title && <Header>{title}</Header>}
       <Choices>
         {options.map((o) => (
           <Radio

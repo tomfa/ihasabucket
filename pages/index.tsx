@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { Colored, Main, PageWrapper, Section } from '../components/utils';
-import Header from '../components/Header';
+import Header from '../components/HeaderSection';
 import BlockQuote from '../components/BlockQuote';
 import RadioGroup from '../components/forms/RadioGroup';
 import CheckboxGroup from '../components/forms/CheckboxGroup';
 import {
-  CheckboxSelectionMap, generateDefaultCheckboxSelectedOptions,
-  generateDefaultRadioSelectedOptions, questions,
-  RadioSelectionMap
-} from "../utils/questions";
-
+  CheckboxSelectionMap,
+  generateDefaultCheckboxSelectedOptions,
+  generateDefaultRadioSelectedOptions,
+  questions,
+  RadioSelectionMap,
+} from '../utils/questions';
 
 export default function Home() {
   const [selectedRadioOptions, setSelectedRadioOptions] = useState<
