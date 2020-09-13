@@ -9,7 +9,8 @@ const Label = styled.label`
   padding-right: 1.2rem;
   margin-bottom: 3px;
   background-color: ${(p) => (p.checked ? p.theme.colors.primary : '')};
-  color: ${(p) => (p.checked ? p.theme.colors.textSecondary : p.theme.colors.textPrimary)};
+  color: ${(p) =>
+    p.checked ? p.theme.colors.textSecondary : p.theme.colors.textPrimary};
   border: 2px solid transparent;
 
   &:before {
@@ -17,10 +18,10 @@ const Label = styled.label`
     display: block;
     width: ${(p) => (p.checked ? '10px' : '20px')};
     height: 20px;
-    border: 1px solid ${(p) => (p.checked ? 'white' : 'black')};
+    border: 3px solid ${(p) => (p.checked ? 'white' : 'black')};
     position: absolute;
-    left: ${(p) => (p.checked ? '20px' : '15px')};
-    top: ${(p) => (p.checked ? '5px' : '10px')};
+    left: ${(p) => (p.checked ? '18px' : '13px')};
+    top: ${(p) => (p.checked ? '3px' : '8px')};
     opacity: ${(p) => (p.checked ? 1 : 0.6)};
     -webkit-transition: all 0.12s, border-color 0.08s;
     transition: all 0.12s, border-color 0.08s;
