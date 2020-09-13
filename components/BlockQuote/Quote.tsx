@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Quote = styled.h2`
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: ${(p) => p.theme.fonts.secondary};
   position: relative; /* for pseudos */
   font-size: 2rem;
   font-weight: normal;
@@ -30,7 +30,7 @@ const Quote = styled.h2`
     content: '';
     position: absolute;
     width: 80px;
-    border: 6px solid ${(props) => props.backgroundColor || 'white'};
+    border: 6px solid ${(props) => props.theme.colors.bgPrimary};
     bottom: -3px;
     left: 50px;
     z-index: 2;

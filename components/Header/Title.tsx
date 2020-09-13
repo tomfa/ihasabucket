@@ -6,7 +6,7 @@ const Title = styled.h1`
   font-size: 4rem;
 
   a {
-    color: #0070f3;
+    color: ${(p) => p.theme.colors.links};
     text-decoration: none;
 
     &:hover,

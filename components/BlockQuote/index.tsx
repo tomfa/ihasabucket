@@ -15,12 +15,12 @@ const BlockQuote = ({ children, author, source }: Props) => (
     <Quote>{children}</Quote>
     {(author || source) && (
       <Source>
-        {author ? (
+        {author && (
           <>
-            &mdash;
+            &mdash;&nbsp;
             {author}
           </>
-        ) : ''}
+        )}
         {author && source && <br />}
         {source && <em>{source}</em>}
       </Source>
@@ -29,7 +29,7 @@ const BlockQuote = ({ children, author, source }: Props) => (
 );
 
 const Block = styled.blockquote`
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: ${(p) => p.theme.fonts.secondary}
   max-width: 620px;
   margin-left: 0;
   margin-right: 0;

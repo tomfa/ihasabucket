@@ -1,4 +1,4 @@
-import { Main, PageWrapper } from '../components/utils';
+import { Colored, Main, PageWrapper } from '../components/utils';
 import Header from '../components/Header';
 import BlockQuote from '../components/BlockQuote';
 
@@ -13,21 +13,13 @@ export default function Home() {
         >
           <>
             Hosting a
-            {' '}
-            <span style={{ color: 'red' }}>webapp</span>
-            {' '}
-            or need a
-            place to store files? Put them in S3 buckets. It&apos;s
-            {' '}
-            <span style={{ color: 'red' }}>cheap</span>
-            {' '}
+            <Colored> webapp </Colored>
+            or need to store uploads? Put them in S3 buckets. It&apos;s
+            <Colored> cheap </Colored>
             and
-            {' '}
-            <span style={{ color: 'red' }}>reliable</span>
+            <Colored> reliable</Colored>
             . Let me show how
-            {' '}
-            <span style={{ color: 'red' }}>easy</span>
-            {' '}
+            <Colored> easy </Colored>
             it is.
           </>
         </BlockQuote>
