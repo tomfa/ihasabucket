@@ -5,6 +5,7 @@ import Checkbox from './Checkbox';
 import Title from './Title.style';
 import Description from './Description.style';
 import Choices from './Choices.style';
+import Question from './Question.style';
 
 interface Props {
   options: Option[];
@@ -40,7 +41,7 @@ const CheckboxGroup = ({
     [disabled, options, onChange, selectedOptions],
   );
   return (
-    <>
+    <Question>
       {title && <Title>{title}</Title>}
       <Choices>
         {options.map((o) => (
@@ -54,7 +55,7 @@ const CheckboxGroup = ({
         ))}
       </Choices>
       {description && <Description>{description}</Description>}
-    </>
+    </Question>
   );
 };
 

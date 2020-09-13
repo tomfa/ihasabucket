@@ -4,6 +4,7 @@ import Radio from './Radio';
 import Title from './Title.style';
 import Description from './Description.style';
 import Choices from './Choices.style';
+import Question from './Question.style';
 
 interface Props {
   options: Option[];
@@ -36,7 +37,7 @@ const RadioGroup = ({
     [disabled, options, onChange],
   );
   return (
-    <>
+    <Question>
       {title && <Title>{title}</Title>}
       <Choices>
         {options.map((o) => (
@@ -50,7 +51,7 @@ const RadioGroup = ({
         ))}
       </Choices>
       {description && <Description>{description}</Description>}
-    </>
+    </Question>
   );
 };
 

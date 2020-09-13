@@ -18,7 +18,7 @@ const Checkbox = ({
 }: Props) => {
   const name = String(value);
   return (
-    <Label htmlFor={name}>
+    <Label htmlFor={name} checked={checked}>
       <Input
         id={name}
         value={value}

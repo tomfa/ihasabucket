@@ -131,6 +131,7 @@ module.exports = {
     // Prettier errors are expected to be fixed automatically. No need to also hint in IDE.
     'prettier/prettier': 0,
     'operator-linebreak': 0,
+    'max-len': 0,
 
     // Next handles React in scope for us
     'react/react-in-jsx-scope': 0,
