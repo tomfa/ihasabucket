@@ -5165,9 +5165,9 @@ var theme = {
     secondary: "'Barlow Condensed', sans-serif"
   },
   colors: {
-    primary: '#fd9228',
+    primary: '#e15342',
     secondary: '',
-    bgPrimary: '#ffffff',
+    bgPrimary: '#fdf6e6',
     bgSecondary: '#111111',
     textPrimary: '#000000',
     textSecondary: '#fafafa',
@@ -5175,7 +5175,7 @@ var theme = {
     links: '#0070f3'
   },
   layout: {
-    maxWidth: '800'
+    maxWidth: 640
   }
 };
 var useTheme = function useTheme() {
