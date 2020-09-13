@@ -1,10 +1,13 @@
+import { useEffect, useState } from 'react';
 import Description from '../forms/Description.style';
 import Header from '../Header.style';
+import { Section } from '../utils';
 import { getTerraFormPackage } from './utils';
 import Pre from './Pre.style';
 import List from './List.style';
 import ListItem from './ListItem.style';
 import Mute from './Mute.style';
+import LoadingIcon from './LoadingIcon';
 
 type Props = {
   webApp: boolean;
@@ -15,8 +18,21 @@ type Props = {
 
 const Infrastructure = (props: Props) => {
   const { url, description } = getTerraFormPackage(props);
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 800);
+  }, [url]);
+  if (loading) {
+    return (
+      <Section>
+        <Header as={'h1'}>Create infrastructure</Header>
+        <LoadingIcon />
+      </Section>
+    );
+  }
   return (
-    <>
+    <Section>
       <Header as={'h1'}>Create infrastructure</Header>
       If you can has a bucket? Of course you can, my chubby friend ❤️ Just run
       the script below!
@@ -60,7 +76,7 @@ const Infrastructure = (props: Props) => {
           </Description>
         </ListItem>
       </List>
-    </>
+    </Section>
   );
 };
 
