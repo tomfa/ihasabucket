@@ -1,4 +1,5 @@
-import { Question, QUESTION_ID, BOOL_VALUE } from '../types';
+import { Question } from '../types';
+import { QUESTION_ID, BOOL_VALUE } from '../enums';
 
 const questionData: Question[] = [
   {
@@ -13,7 +14,7 @@ const questionData: Question[] = [
     ],
   },
   {
-    id: QUESTION_ID.webappType,
+    id: QUESTION_ID.webappIsStatic,
     title: 'Is the webapp statically generated?',
     type: 'radio',
     defaultValue: 'no',
@@ -26,7 +27,7 @@ const questionData: Question[] = [
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'webapp' }],
   },
   {
-    id: QUESTION_ID.acl,
+    id: QUESTION_ID.aclPublic,
     title: 'Should content be publicly available?',
     type: 'radio',
     description:

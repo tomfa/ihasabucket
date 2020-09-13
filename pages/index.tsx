@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Colored, Main, PageWrapper, Section } from '../components/utils';
 import Header from '../components/HeaderSection';
 import BlockQuote from '../components/BlockQuote';
@@ -11,6 +11,8 @@ import {
   questions,
   RadioSelectionMap,
 } from '../utils/questions';
+import Infrastructure from '../components/Infrastructure';
+import { BOOL_VALUE, QUESTION_ID } from '../enums';
 
 export default function Home() {
   const [selectedRadioOptions, setSelectedRadioOptions] = useState<
@@ -19,6 +21,26 @@ export default function Home() {
   const [selectedCheckboxOptions, setSelectedCheckboxOptions] = useState<
     CheckboxSelectionMap
   >(generateDefaultCheckboxSelectedOptions(questions));
+  const hasSeleted = useCallback(
+    (questionId: QUESTION_ID, value: string): boolean => {
+      const question = questions.find((q) => q.id === questionId);
+      if (!question) {
+        throw Error(`Missing question for ${questionId}`);
+      }
+      if (!question.options.filter((o) => o.value === value)) {
+        throw Error(`Question ${questionId} does not have option ${value}`);
+      }
+      if (question.type === 'radio') {
+        return selectedRadioOptions[question.id]?.value === value;
+      }
+      if (question.type === 'checkbox') {
+        return !!selectedCheckboxOptions[question.id].find(
+          (o) => o.value === value
+        );
+      }
+    },
+    [selectedRadioOptions, selectedCheckboxOptions, questions]
+  );
 
   return (
     <PageWrapper>
@@ -78,6 +100,12 @@ export default function Home() {
           }
           throw new Error(`Unexpected question type ${question.type}`);
         })}
+        <Infrastructure
+          webApp={hasSeleted(QUESTION_ID.storageType, 'webapp')}
+          shared={hasSeleted(QUESTION_ID.aclPublic, BOOL_VALUE.TRUE)}
+          staging={hasSeleted(QUESTION_ID.stagingEnv, BOOL_VALUE.TRUE)}
+          staticPage={hasSeleted(QUESTION_ID.webappIsStatic, BOOL_VALUE.TRUE)}
+        />
       </Section>
     </PageWrapper>
   );

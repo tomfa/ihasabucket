@@ -1,5 +1,6 @@
 import { Option, Question } from '../types';
-import questionData from './questionData'
+import { QUESTION_ID } from '../enums';
+import questionData from './questionData';
 
 export const generateDefaultRadioSelectedOptions = (
   radioQuestions: Question[]
@@ -45,11 +46,15 @@ export const getDefaultCheckboxOption = (question: Question): Option[] => {
   return [];
 };
 
-export type RadioSelectionMap = {
-  [questionId: string]: Option | null;
-};
-export type CheckboxSelectionMap = {
-  [questionId: string]: Option[];
-};
+export type RadioSelectionMap = Partial<
+  {
+    [questionId in QUESTION_ID]: Option | null;
+  }
+>;
+export type CheckboxSelectionMap = Partial<
+  {
+    [questionId in QUESTION_ID]: Option[];
+  }
+>;
 
 export const questions = questionData;
