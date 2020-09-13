@@ -7,6 +7,7 @@ interface Props {
   value: string | number;
   label: string;
   disabled?: boolean;
+  group: string;
 }
 
 const Checkbox = ({
@@ -14,9 +15,11 @@ const Checkbox = ({
   onChange,
   value,
   label,
+  group,
   disabled = false,
 }: Props) => {
-  const name = String(value);
+  const name = `${group}-${value}`;
+
   return (
     <Label htmlFor={name} checked={checked}>
       <Input

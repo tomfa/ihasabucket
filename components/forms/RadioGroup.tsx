@@ -7,6 +7,7 @@ import Choices from './Choices.style';
 import Question from './Question.style';
 
 interface Props {
+  id: string;
   options: Option[];
   selectedOption: Option | null;
   onChange: (selected: Option | null) => void;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const RadioGroup = ({
+  id,
   options,
   selectedOption,
   onChange,
@@ -42,7 +44,8 @@ const RadioGroup = ({
       <Choices>
         {options.map((o) => (
           <Radio
-            key={o.value}
+            key={`${id}-${o.value}`}
+            group={id}
             checked={o === selectedOption}
             onChange={onOptionChange}
             value={o.value}

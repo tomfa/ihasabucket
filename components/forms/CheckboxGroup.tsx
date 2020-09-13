@@ -8,6 +8,7 @@ import Choices from './Choices.style';
 import Question from './Question.style';
 
 interface Props {
+  id: string;
   options: Option[];
   selectedOptions: Option[];
   onChange: (selected: Option[]) => void;
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const CheckboxGroup = ({
+  id,
   options,
   selectedOptions,
   onChange,
@@ -46,6 +48,7 @@ const CheckboxGroup = ({
       <Choices>
         {options.map((o) => (
           <Checkbox
+            group={id}
             key={o.value}
             checked={selectedOptions.includes(o)}
             onChange={onOptionChange}

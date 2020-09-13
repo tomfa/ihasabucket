@@ -115,6 +115,7 @@ export default function Home() {
           if (question.type === 'radio') {
             return (
               <RadioGroup
+                id={question.id}
                 key={question.id}
                 options={question.options}
                 selectedOption={selectedRadioOptions[question.id] || null}
@@ -130,6 +131,7 @@ export default function Home() {
           if (question.type === 'checkbox') {
             return (
               <CheckboxGroup
+                id={question.id}
                 key={question.id}
                 options={question.options}
                 selectedOptions={selectedCheckboxOptions[question.id] || []}
