@@ -6,11 +6,12 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    // Uses eslint-config-prettier to disable ESLint rules that would conflict with prettier
-    'prettier/react',
-    'prettier/@typescript-eslint',
-
     'airbnb',
+    'plugin:prettier/recommended',
+
+    // Uses eslint-config-prettier to disable ESLint rules that would conflict with prettier
+    'prettier/@typescript-eslint',
+    'prettier/react',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -130,8 +131,7 @@ module.exports = {
 
     // Prettier errors are expected to be fixed automatically. No need to also hint in IDE.
     'prettier/prettier': 0,
-    'operator-linebreak': 0,
-    'max-len': 0,
+    '@typescript-eslint/indent': 0,
 
     // Next handles React in scope for us
     'react/react-in-jsx-scope': 0,
@@ -140,7 +140,6 @@ module.exports = {
     'no-unused-vars': 0,
     '@typescript-eslint/no-unused-vars': 2,
 
-    '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/no-inferrable-types': 0,
     '@typescript-eslint/explicit-function-return-type': 0,

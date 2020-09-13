@@ -6,6 +6,7 @@ const Label = styled.label`
   padding-bottom: 0.7rem;
   padding-top: 0.7rem;
   padding-left: 3rem;
+  padding-right: 1.2rem;
   margin-bottom: 3px;
   background-color: ${(p) => (p.checked ? p.theme.colors.primary : '')};
   color: ${(p) => (p.checked ? p.theme.colors.textSecondary : p.theme.colors.textPrimary)};

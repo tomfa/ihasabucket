@@ -19,7 +19,7 @@ export const theme = {
     links: '#0070f3',
   },
   layout: {
-    maxWidth: '800',
+    maxWidth: 640,
   },
 };
 

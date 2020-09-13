@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Option } from './types';
+import { Option } from '../../types';
 import Radio from './Radio';
 import Title from './Title.style';
 import Description from './Description.style';

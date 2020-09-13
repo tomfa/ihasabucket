@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { Option } from './types';
+import { Option } from '../../types';
 import Checkbox from './Checkbox';
 import Title from './Title.style';
 import Description from './Description.style';
