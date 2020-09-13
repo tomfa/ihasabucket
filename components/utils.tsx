@@ -11,6 +11,10 @@ export const Section = styled.section`
   width: 100vw;
   margin: 0 auto;
   padding: 2rem;
+
+  @media (max-width: 350px) {
+    padding: 1rem;
+  }
 `;
 
 export const Main = styled(Section)``;

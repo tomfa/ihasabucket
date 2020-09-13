@@ -9,6 +9,7 @@ const Label = styled.label`
   margin-bottom: 3px;
   background-color: ${(p) => (p.checked ? p.theme.colors.primary : '')};
   color: ${(p) => (p.checked ? p.theme.colors.textSecondary : p.theme.colors.textPrimary)};
+  border: 2px solid transparent;
 
   &:before {
     content: '';

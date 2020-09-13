@@ -21,7 +21,7 @@ const Checkbox = ({
   const name = `${group}-${value}`;
 
   return (
-    <Label htmlFor={name} checked={checked}>
+    <>
       <Input
         id={name}
         value={value}
@@ -31,8 +31,10 @@ const Checkbox = ({
         onChange={() => !disabled && onChange(value, !checked)}
         disabled={disabled}
       />
-      <span>{label}</span>
-    </Label>
+      <Label htmlFor={name} checked={checked}>
+        {label}
+      </Label>
+    </>
   );
 };
 
