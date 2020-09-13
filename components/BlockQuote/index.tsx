@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Quote from './Quote';
-import Source from './Source';
+import Quote from './Quote.style';
+import Source from './Source.style';
 
 type Props = {
   children: ReactNode;

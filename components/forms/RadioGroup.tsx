@@ -1,6 +1,9 @@
 import { useCallback } from 'react';
 import { Option } from './types';
 import Radio from './Radio';
+import Title from './Title.style';
+import Description from './Description.style';
+import Choices from './Choices.style';
 
 interface Props {
   options: Option[];
@@ -34,17 +37,19 @@ const RadioGroup = ({
   );
   return (
     <>
-      {title && <h2>{title}</h2>}
-      {options.map((o) => (
-        <Radio
-          key={o.value}
-          checked={o === selectedOption}
-          onChange={onOptionChange}
-          value={o.value}
-          label={o.label}
-        />
-      ))}
-      {description && <p>{description}</p>}
+      {title && <Title>{title}</Title>}
+      <Choices>
+        {options.map((o) => (
+          <Radio
+            key={o.value}
+            checked={o === selectedOption}
+            onChange={onOptionChange}
+            value={o.value}
+            label={o.label}
+          />
+        ))}
+      </Choices>
+      {description && <Description>{description}</Description>}
     </>
   );
 };

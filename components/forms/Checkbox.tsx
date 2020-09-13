@@ -1,3 +1,6 @@
+import Label from './Label.style';
+import Input from './Input.style';
+
 interface Props {
   checked: boolean;
   onChange: (value: string | number, isChecked: boolean) => void;
@@ -15,8 +18,8 @@ const Checkbox = ({
 }: Props) => {
   const name = String(value);
   return (
-    <label htmlFor={name}>
-      <input
+    <Label htmlFor={name}>
+      <Input
         id={name}
         value={value}
         name={name}
@@ -26,7 +29,7 @@ const Checkbox = ({
         disabled={disabled}
       />
       <span>{label}</span>
-    </label>
+    </Label>
   );
 };
 

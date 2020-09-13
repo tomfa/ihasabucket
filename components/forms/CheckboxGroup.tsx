@@ -1,6 +1,10 @@
 import { useCallback } from 'react';
+
 import { Option } from './types';
 import Checkbox from './Checkbox';
+import Title from './Title.style';
+import Description from './Description.style';
+import Choices from './Choices.style';
 
 interface Props {
   options: Option[];
@@ -37,17 +41,19 @@ const CheckboxGroup = ({
   );
   return (
     <>
-      {title && <h2>{title}</h2>}
-      {options.map((o) => (
-        <Checkbox
-          key={o.value}
-          checked={selectedOptions.includes(o)}
-          onChange={onOptionChange}
-          value={o.value}
-          label={o.label}
-        />
-      ))}
-      {description && <p>{description}</p>}
+      {title && <Title>{title}</Title>}
+      <Choices>
+        {options.map((o) => (
+          <Checkbox
+            key={o.value}
+            checked={selectedOptions.includes(o)}
+            onChange={onOptionChange}
+            value={o.value}
+            label={o.label}
+          />
+        ))}
+      </Choices>
+      {description && <Description>{description}</Description>}
     </>
   );
 };

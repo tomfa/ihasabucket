@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Quote = styled.h2`
+const QuoteStyle = styled.h2`
   font-family: ${(p) => p.theme.fonts.secondary};
   position: relative; /* for pseudos */
   font-size: 2rem;
@@ -37,4 +37,4 @@ const Quote = styled.h2`
   }
 `;
 
-export default Quote;
+export default QuoteStyle;

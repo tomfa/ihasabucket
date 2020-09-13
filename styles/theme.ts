@@ -15,6 +15,7 @@ export const theme = {
     bgSecondary: '#111111',
     textPrimary: '#000000',
     textSecondary: '#fafafa',
+    textMuted: '#888888',
     links: '#0070f3',
   },
   layout: {
