@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Description from '../forms/Description.style';
 import Header from '../Header.style';
-import { Section } from '../utils';
 import { getTerraFormPackage } from './utils';
 import Pre from './Pre.style';
 import List from './List.style';
@@ -24,18 +23,12 @@ const Infrastructure = (props: Props) => {
     setTimeout(() => setLoading(false), 800);
   }, [url]);
   if (loading) {
-    return (
-      <Section>
-        <Header as={'h1'}>Create infrastructure</Header>
-        <LoadingIcon />
-      </Section>
-    );
+    return <LoadingIcon />;
   }
   return (
-    <Section>
-      <Header as={'h1'}>Create infrastructure</Header>
-      If you can has a bucket? Of course you can, my chubby friend ❤️ Just run
-      the script below!
+    <>
+      <Header as={'h1'}>Bucket is served!</Header>
+      Just run the script below!
       <Pre>
         terraform apply \{'\n    '}
         {url}
@@ -76,7 +69,7 @@ const Infrastructure = (props: Props) => {
           </Description>
         </ListItem>
       </List>
-    </Section>
+    </>
   );
 };
 

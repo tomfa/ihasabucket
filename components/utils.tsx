@@ -18,8 +18,6 @@ export const Section = styled.section`
   }
 `;
 
-export const Main = styled(Section)``;
-
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
