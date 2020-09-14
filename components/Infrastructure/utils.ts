@@ -1,3 +1,5 @@
+import { INPUT, getInputDescription } from '../../enums';
+
 type Props = {
   webApp: boolean;
   staging: boolean;
@@ -20,28 +22,28 @@ const getMainTfContent = ({
     ? 'git::https://github.com/tomfa/terraform-sandbox.git//s3-webfiles-with-cloudfront'
     : "'git::https://github.com/tomfa/terraform-sandbox.git//s3-privatefiles-with-cloudfront";
   // TODO: Remove aws_secret_key and access_key
-  const defaultVariables = {
-    'var.bucket_name': 'var.bucket_name',
-    'var.aws_region': 'var.aws_region',
-    'var.aws_access_key': 'var.aws_access_key',
-    'var.aws_secret_key': 'var.aws_secret_key',
+  const defaultParameters = {
+    bucket_name: `var.${INPUT.BUCKET_NAME}`,
+    aws_region: `var.${INPUT.AWS_REGION}`,
+    aws_access_key: `var.${INPUT.AWS_ACCESS_KEY}`,
+    aws_secret_key: `var.${INPUT.AWS_SECRET_KEY}`,
   };
   const genericBucketName = webApp ? 'web-app' : 'file-storage';
   const modules = staging
     ? [
         {
           name: `${genericBucketName}-production`,
-          variables: defaultVariables,
+          parameters: defaultParameters,
         },
         {
           name: `${genericBucketName}-staging`,
-          variables: {
-            ...defaultVariables,
-            'var.bucket_name': `"$\{var.bucket-name}.staging"`,
+          parameters: {
+            ...defaultParameters,
+            bucket_name: `"\\$\{var.bucket-name}.staging"`,
           },
         },
       ]
-    : [{ name: genericBucketName, variables: defaultVariables }];
+    : [{ name: genericBucketName, parameters: defaultParameters }];
 
   // TODO: Add options for differentiating between static and shared
   if (shared && !webApp) {
@@ -54,11 +56,30 @@ const getMainTfContent = ({
   }
 
   const lines: string[] = [];
+  const isUsed = (inputVariable: string): boolean =>
+    !!modules.find(
+      (m) =>
+        !!Object.values(m.parameters).find((p) =>
+          p.includes(`var.${inputVariable}`)
+        )
+    );
+  Object.values(INPUT)
+    .filter(isUsed)
+    .forEach((input: INPUT) => {
+      const description = getInputDescription(input);
+      if (!description) {
+        lines.push(`variable "${input}" {}`);
+      } else {
+        lines.push(`variable "${input}" {`);
+        lines.push(`  description = "${description}"`);
+        lines.push(`}`);
+      }
+    });
   modules.forEach((module) => {
     lines.push('');
     lines.push(`module "${module.name}" {`);
     lines.push(`  source = "${source}"`);
-    Object.entries(module.variables).forEach(([key, value]) => {
+    Object.entries(module.parameters).forEach(([key, value]) => {
       lines.push(`  ${key} = ${value}`);
     });
     lines.push(`}`);

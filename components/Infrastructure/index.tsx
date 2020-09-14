@@ -31,8 +31,13 @@ const Infrastructure = (props: Props) => {
       <Header as={'h1'}>Bucket is served!</Header>
       Just run the script below!
       <Pre>
+        <Mute># Create a folder to store infrastructure code</Mute>
+        {'\n'}
         mkdir infrastructure{'\n'}
         cd infrastructure{'\n'}
+        {'\n'}
+        <Mute># Create config file</Mute>
+        {'\n'}
         cat &lt;&lt;EOT &gt;&gt; main.tf{'\n'}
         {mainTfContent.map((line, i) => (
           <span key={i}>
@@ -41,6 +46,9 @@ const Infrastructure = (props: Props) => {
           </span>
         ))}
         EOT{'\n'}
+        {'\n'}
+        <Mute># Deploy</Mute>
+        {'\n'}
         terraform init{'\n'}
         terraform apply{'\n'}
       </Pre>
