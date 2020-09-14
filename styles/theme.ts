@@ -10,7 +10,7 @@ export const theme = {
   },
   colors: {
     primary: '#fd9228',
-    secondary: '',
+    secondary: '#e15342',
     bgPrimary: '#fdf6e6',
     bgSecondary: '#111111',
     textPrimary: '#000000',

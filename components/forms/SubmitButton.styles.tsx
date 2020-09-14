@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 const SubmitButton = styled.button`
   color: ${(p) => p.theme.colors.textSecondary};
-  background-color: ${(p) =>
-    p.complete ? p.theme.colors.primary : p.theme.colors.secondary};
+  background-color: ${(p) => (p.complete ? p.theme.colors.primary : '')};
   border: none;
   flex: 0.5;
   position: relative;

@@ -10,7 +10,7 @@ const Footer = () => {
   const theme = useTheme();
   return (
     <SectionBackground
-      backgroundColor={theme.colors.primary}
+      backgroundColor={theme.colors.secondary}
       color={theme.colors.textSecondary}
       marginTop={'3rem'}>
       <FooterSection>
@@ -22,7 +22,7 @@ const Footer = () => {
           </p>
           <p>
             But when it comes to simply hosting a Webapp or static files, AWS S3
-            is usually faster, cheaper, more realible and easier – as long as
+            is usually faster, cheaper, more reliable and easier – as long as
             you stay clear of the AWS console.
           </p>
           <p>Let me help you with that.</p>

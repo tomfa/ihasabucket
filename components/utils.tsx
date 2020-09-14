@@ -25,7 +25,8 @@ export const PageWrapper = styled.div`
 `;
 
 export const Colored = styled.span`
-  color: ${(p) => p.color || p.theme.colors.primary};
+  color: ${(p) =>
+    p.secondary ? p.theme.colors.secondary : p.color || p.theme.colors.primary};
 `;
 
 export const sleep = (ms: number) =>

@@ -42,13 +42,14 @@ const Intro = () => (
       author={'Lolrus, the bucket walrus'}
       source={'At the launch of AWS S3 in 2006'}>
       <>
-        Hosting a<Colored> webapp </Colored>
+        Hosting a <Colored secondary> webapp </Colored>
         or need to store uploads? Put them in S3 buckets. It&apos;s
-        <Colored> cheap </Colored>
+        <Colored secondary> cheap </Colored>
         and
-        <Colored> reliable</Colored>. With CloudFront cache, it&apos;ll be
-        blazingly <Colored>fast</Colored>. Let&apos;s see how
-        <Colored> easy </Colored>
+        <Colored secondary> reliable</Colored>. With CloudFront cache,
+        it&apos;ll be blazingly <Colored secondary>fast</Colored>. Let&apos;s
+        see how
+        <Colored secondary> easy </Colored>
         it can be.
       </>
     </BlockQuote>
