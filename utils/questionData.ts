@@ -3,6 +3,13 @@ import { QUESTION_ID, BOOL_VALUE, VALUES, AWS_REGIONS } from '../enums';
 
 const questionData: Question[] = [
   {
+    id: QUESTION_ID.domainName,
+    title: `What's our domain?`,
+    type: 'text',
+    placeholder: 'mydomain.store',
+    description: `We will use this as the S3 bucket name. The bucket name is permanent, but it doesn't have to match an actual domain. It does however have to be unique on S3, so "example" or "my-bucket" will not work.`,
+  },
+  {
     id: QUESTION_ID.storageType,
     title: 'What are we storing?',
     type: 'radio',
@@ -40,24 +47,18 @@ const questionData: Question[] = [
     ],
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'files' }],
   },
-  {
-    id: QUESTION_ID.domainName,
-    title: 'On what domain should this be served?',
-    type: 'text',
-    placeholder: 'mydomain.store',
-    description: `We will use this as the S3 bucket name. If you don't want a URL now, just leave it blank.`,
-  },
+
   {
     id: QUESTION_ID.configureDns,
-    title: 'Should AWS handle DNS pointers?',
+    title: 'Should AWS set up DNS pointers?',
     type: 'radio',
     description:
-      'We can map DNS pointers from AWS to the buckets automatically. Recommended for new domains, or if you are already using AWS Route 53 for your domain.',
+      'Should we setup DNS pointers for your domain? (Recommended). Route 53 costs 1.5$ / month',
     options: [
       { value: BOOL_VALUE.TRUE, label: 'Yes, please do' },
       {
         value: BOOL_VALUE.FALSE,
-        label: 'No, I want to set up DNS myself',
+        label: `No, I'll '`,
       },
     ],
     showIf: [{ questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY }],
@@ -66,7 +67,8 @@ const questionData: Question[] = [
     id: QUESTION_ID.createCertificates,
     title: 'Should AWS create certificates to support the domain?',
     type: 'radio',
-    description: 'AWS Certificates are free.',
+    description:
+      'AWS can create HTTPS certificates for us. This is recommended and free of charge.',
     options: [
       { value: BOOL_VALUE.TRUE, label: 'Please do' },
       {
@@ -78,6 +80,18 @@ const questionData: Question[] = [
       { questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY },
       { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
     ],
+  },
+  {
+    id: QUESTION_ID.region,
+    title: 'In what region do you want to host the buckets?',
+    type: 'dropdown',
+    defaultValue: AWS_REGIONS.EU_NORTH_1,
+    description:
+      'A region closer to your users can give an extra performance boost.',
+    options: Object.entries(AWS_REGIONS).map(([value, label]) => ({
+      value,
+      label,
+    })),
   },
   {
     id: QUESTION_ID.stagingEnv,
@@ -92,18 +106,6 @@ const questionData: Question[] = [
       },
       { value: BOOL_VALUE.FALSE, label: "No, I won't need that" },
     ],
-  },
-  {
-    id: QUESTION_ID.region,
-    title: 'In what region do you want to host the buckets?',
-    type: 'dropdown',
-    defaultValue: AWS_REGIONS.EU_NORTH_1,
-    description:
-      "A staging (or test) environment would mean a duplicate set of buckets. If you're uncertain, select No. You can always create a staging environment later.",
-    options: Object.entries(AWS_REGIONS).map(([value, label]) => ({
-      value,
-      label,
-    })),
   },
 ];
 

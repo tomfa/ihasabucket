@@ -10,11 +10,13 @@ import {
   generateDefaultRadioSelectedOptions,
   questions,
   RadioSelectionMap,
+  TextAnswerMap,
 } from '../utils/questions';
 import Infrastructure from '../components/Infrastructure';
-import { BOOL_VALUE, QUESTION_ID } from '../enums';
+import { BOOL_VALUE, QUESTION_ID, VALUES } from '../enums';
 import Footer from '../components/Footer';
 import { Question } from '../types';
+import TextInput from '../components/forms/TextInput';
 
 export default function Home() {
   return (
@@ -53,17 +55,24 @@ const Questionare = () => {
   const [selectedCheckboxOptions, setSelectedCheckboxOptions] = useState<
     CheckboxSelectionMap
   >(generateDefaultCheckboxSelectedOptions(questions));
+  const [textAnswers, setTextAnswers] = useState<TextAnswerMap>({});
   const [questionRenderCount, setQuestionRenderCount] = useState<number>(0);
   const hasSelected = useCallback(
-    (questionId: QUESTION_ID, value: string): boolean => {
+    (questionId: QUESTION_ID, value: string | VALUES): boolean => {
+      if (value === VALUES.NOT_EMPTY) {
+        return hasAnswered(questionId);
+      }
       const question = questions.find((q) => q.id === questionId);
       if (!question) {
         throw Error(`Missing question for ${questionId}`);
       }
+      if (question.type === 'text') {
+        return textAnswers[questionId] && textAnswers[questionId] === value;
+      }
       if (!question.options.filter((o) => o.value === value)) {
         throw Error(`Question ${questionId} does not have option ${value}`);
       }
-      if (question.type === 'radio') {
+      if (question.type === 'radio' || question.type === 'dropdown') {
         return selectedRadioOptions[question.id]?.value === value;
       }
       if (question.type === 'checkbox') {
@@ -80,11 +89,14 @@ const Questionare = () => {
       if (!question) {
         throw Error(`Missing question for ${questionId}`);
       }
-      if (question.type === 'radio') {
+      if (question.type === 'radio' || question.type === 'dropdown') {
         return selectedRadioOptions[question.id]?.value != null;
       }
       if (question.type === 'checkbox') {
         return selectedCheckboxOptions[question.id].length > 0;
+      }
+      if (question.type === 'text') {
+        return Object.keys(textAnswers).includes(questionId);
       }
     },
     [selectedRadioOptions, selectedCheckboxOptions, questions]
@@ -146,6 +158,48 @@ const Questionare = () => {
                   ...prev,
                   [question.id]: value,
                 }));
+              }}
+              title={question.title}
+              description={question.description}
+            />
+          );
+        }
+        if (question.type === 'text') {
+          return (
+            <TextInput
+              id={question.id}
+              key={question.id}
+              placeholder={question.placeholder}
+              onSubmit={(value) => {
+                setTextAnswers((prev) => ({
+                  ...prev,
+                  [question.id]: value,
+                }));
+                setQuestionRenderCount((c) =>
+                  Math.max(c, indexOfAllQuestions + 1)
+                );
+              }}
+              title={question.title}
+              description={question.description}
+            />
+          );
+        }
+        if (question.type === 'dropdown') {
+          const answerValue = selectedRadioOptions[question.id] || null;
+          return (
+            <RadioGroup
+              id={question.id}
+              key={question.id}
+              options={question.options}
+              selectedOption={answerValue}
+              onChange={(value) => {
+                setSelectedRadioOptions((prev) => ({
+                  ...prev,
+                  [question.id]: value,
+                }));
+                setQuestionRenderCount((c) =>
+                  Math.max(c, indexOfAllQuestions + 1)
+                );
               }}
               title={question.title}
               description={question.description}

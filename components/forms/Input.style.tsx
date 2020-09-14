@@ -17,8 +17,18 @@ const Input = styled.input`
     opacity: 0;
   }
 
+  &[type='text'] {
+    padding: 1rem;
+    flex: 1;
+    border: none;
+    font-size: 1.2rem;
+    &:focus {
+      outline: 2px dashed ${(p) => p.theme.colors.primary};
+    }
+  }
+
   &:focus + ${Label} {
-    border: 2px solid ${(p) => p.theme.colors.primary};
+    outline: 2px dashed ${(p) => p.theme.colors.primary};
   }
 `;
 

@@ -56,5 +56,10 @@ export type CheckboxSelectionMap = Partial<
     [questionId in QUESTION_ID]: Option[];
   }
 >;
+export type TextAnswerMap = Partial<
+  {
+    [questionId in QUESTION_ID]: string | null;
+  }
+>;
 
 export const questions = questionData;
