@@ -5,12 +5,16 @@ const QuoteStyle = styled.h2`
   position: relative; /* for pseudos */
   font-size: 2rem;
   font-weight: normal;
-  line-height: 1;
+  line-height: 1.1;
   margin: 0;
   border: 2px solid #fff;
   border: solid 2px;
   border-radius: 20px;
   padding: 25px;
+
+  & > * {
+    line-height: 1.1;
+  }
 
   &:after {
     content: '';
