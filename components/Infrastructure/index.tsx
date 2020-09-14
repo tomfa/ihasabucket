@@ -38,7 +38,7 @@ const Infrastructure = (props: Props) => {
         {'\n'}
         <Mute># Create config file</Mute>
         {'\n'}
-        cat &lt;&lt;EOT &gt;&gt; main.tf{'\n'}
+        cat &lt;&lt;EOT &gt;&gt; ${props.bucketName || 'main.tf'}.tf{'\n'}
         {mainTfContent.map((line, i) => (
           <span key={i}>
             {line}
