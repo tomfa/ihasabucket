@@ -5165,8 +5165,8 @@ var theme = {
     secondary: "'Barlow Condensed', sans-serif"
   },
   colors: {
-    primary: '#e15342',
-    secondary: '',
+    primary: '#fd9228',
+    secondary: '#e15342',
     bgPrimary: '#fdf6e6',
     bgSecondary: '#111111',
     textPrimary: '#000000',
