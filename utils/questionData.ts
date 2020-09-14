@@ -1,4 +1,4 @@
-import { QUESTION_ID, BOOL_VALUE, VALUES, AWS_REGIONS } from '../enums';
+import { QUESTION_ID, BOOL_VALUE, AWS_REGIONS } from '../enums';
 import {
   DropdownQuestion,
   InputQuestion,
@@ -60,39 +60,39 @@ const questionData = {
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'files' }],
   } as RadioQuestion,
 
-  [QUESTION_ID.configureDns]: {
-    id: QUESTION_ID.configureDns,
-    title: 'Should AWS set up DNS pointers?',
-    type: QuestionType.RADIO,
-    description:
-      'Should we setup DNS pointers for your domain? (Recommended). Route 53 costs 1.5$ / month',
-    options: [
-      { value: BOOL_VALUE.TRUE, label: 'Yes, please do' },
-      {
-        value: BOOL_VALUE.FALSE,
-        label: `No, I'll set up DNS afterwards`,
-      },
-    ],
-    showIf: [{ questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY }],
-  } as RadioQuestion,
-  [QUESTION_ID.createCertificates]: {
-    id: QUESTION_ID.createCertificates,
-    title: 'Should AWS create certificates to support the domain?',
-    type: QuestionType.RADIO,
-    description:
-      'AWS can create HTTPS certificates for us. This is recommended and free of charge.',
-    options: [
-      { value: BOOL_VALUE.TRUE, label: 'Please do' },
-      {
-        value: BOOL_VALUE.FALSE,
-        label: 'No, I`ll configure certificates myself',
-      },
-    ],
-    showIf: [
-      { questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY },
-      { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
-    ],
-  } as RadioQuestion,
+  // [QUESTION_ID.configureDns]: {
+  //   id: QUESTION_ID.configureDns,
+  //   title: 'Should AWS set up DNS pointers?',
+  //   type: QuestionType.RADIO,
+  //   description:
+  //     'Should we setup DNS pointers for your domain? (Recommended). Route 53 costs 1.5$ / month',
+  //   options: [
+  //     { value: BOOL_VALUE.TRUE, label: 'Yes, please do' },
+  //     {
+  //       value: BOOL_VALUE.FALSE,
+  //       label: `No, I'll set up DNS afterwards`,
+  //     },
+  //   ],
+  //   showIf: [{ questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY }],
+  // } as RadioQuestion,
+  // [QUESTION_ID.createCertificates]: {
+  //   id: QUESTION_ID.createCertificates,
+  //   title: 'Should AWS create certificates to support the domain?',
+  //   type: QuestionType.RADIO,
+  //   description:
+  //     'AWS can create HTTPS certificates for us. This is recommended and free of charge.',
+  //   options: [
+  //     { value: BOOL_VALUE.TRUE, label: 'Please do' },
+  //     {
+  //       value: BOOL_VALUE.FALSE,
+  //       label: 'No, I`ll configure certificates myself',
+  //     },
+  //   ],
+  //   showIf: [
+  //     { questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY },
+  //     { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
+  //   ],
+  // } as RadioQuestion,
   [QUESTION_ID.region]: {
     id: QUESTION_ID.region,
     title: 'In what region do you want the buckets?',
