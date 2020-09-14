@@ -38,9 +38,7 @@ export default function Home() {
 
 const Intro = () => (
   <Section>
-    <BlockQuote
-      author={'Lolrus, the bucket walrus'}
-      source={'At the launch of AWS S3 in 2006'}>
+    <BlockQuote author={'Lolrus, the bucket walrus'}>
       <>
         Hosting a <Colored secondary> webapp </Colored>
         or need to store uploads? Put them in S3 buckets. It&apos;s
