@@ -7,6 +7,7 @@ import { getTerraFormPackage } from './utils';
 import Pre from './Pre.style';
 import Mute from './Mute.style';
 import LoadingIcon from './LoadingIcon';
+import Code from './Code';
 
 type Props = {
   webApp: boolean;
@@ -30,28 +31,7 @@ const Infrastructure = (props: Props) => {
     <>
       <Header as={'h1'}>Bucket is served!</Header>
       Just run the script below!
-      <Pre>
-        <Mute># Create a folder to store infrastructure code</Mute>
-        {'\n'}
-        mkdir infrastructure{'\n'}
-        cd infrastructure{'\n'}
-        {'\n'}
-        <Mute># Create config file</Mute>
-        {'\n'}
-        cat &lt;&lt;EOT &gt;&gt; ${props.bucketName || 'main.tf'}.tf{'\n'}
-        {mainTfContent.map((line, i) => (
-          <span key={i}>
-            {line}
-            {'\n'}
-          </span>
-        ))}
-        EOT{'\n'}
-        {'\n'}
-        <Mute># Deploy</Mute>
-        {'\n'}
-        terraform init{'\n'}
-        terraform apply{'\n'}
-      </Pre>
+      <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
       <Description>
         The script above ask you for desired bucket name and AWS region.
       </Description>
