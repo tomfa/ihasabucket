@@ -19,7 +19,7 @@ const getTerraPackageUrl = ({
   const bucketType = webApp ? 'webapp' : 'files';
   const count = staging ? 'double' : 'single';
   const category = getBucketSubCategory({ webApp, shared, staticPage });
-  return `github.com/tomfa/ihasabucket/terraform/${bucketType}/${category}/${count}`;
+  return `git::https://github.com/tomfa/terraform.git//${bucketType}/${category}/${count}`;
 };
 
 const getTerraPackageDescription = ({

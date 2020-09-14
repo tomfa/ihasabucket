@@ -30,11 +30,17 @@ const Infrastructure = (props: Props) => {
       <Header as={'h1'}>Bucket is served!</Header>
       Just run the script below!
       <Pre>
-        terraform apply \{'\n    '}
-        {url}
+        mkdir infrastructure{'\n'}
+        cd infrastructure{'\n'}
+        cat &lt;&lt;EOT &gt;&gt; main.tf{'\n'}
+        module &quot;main&quot; &#123;{'\n'} source = &quot;{url}&quot;{'\n'}
+        &#125;{'\n'}
+        EOT{'\n'}
+        terraform init{'\n'}
+        terraform apply{'\n'}
       </Pre>
       <Description>
-        The script above will ask you for your AWS keys and desired AWS region.
+        The script above ask you for desired bucket name and AWS region.
       </Description>
       <Description>{description}</Description>
       <h4>Prerequisites</h4>
@@ -48,7 +54,13 @@ const Infrastructure = (props: Props) => {
         <ListItem>
           If you don&apos;t have your <strong>AWS_SECRET_ACCESS_KEY</strong> and{' '}
           <strong>AWS_ACCESS_KEY_ID</strong> handy, find those in the top right
-          corner under your name &gt; Security credentials.
+          corner under your name &gt; Security credentials. They should be
+          exported to your environment:
+          <Pre>
+            <Mute># Export AWS keys{'\n'}</Mute>
+            export AWS_SECRET_ACCESS_KEY=yaAS$1...{'\n'}
+            export AWS_ACCESS_KEY_ID=AKIA...
+          </Pre>
         </ListItem>
         <ListItem>
           If you haven&apos;t already,{' '}
