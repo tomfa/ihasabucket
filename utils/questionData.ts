@@ -9,7 +9,7 @@ import {
 const questionData = {
   [QUESTION_ID.domainName]: {
     id: QUESTION_ID.domainName,
-    title: `Your domain`,
+    title: '',
     type: QuestionType.TEXT,
     placeholders: [
       'mydomain.com',
