@@ -1,5 +1,4 @@
 import {
-  AWS_REGIONS,
   BUCKET_TYPE,
   getInputDescription,
   getOutput,
@@ -34,7 +33,7 @@ const getMainTfContent = ({
 
   const parameters: { [param: string]: string } = {
     bucket_name: bucketName ? `"${bucketName}"` : `var.${INPUT.BUCKET_NAME}`,
-    aws_region: region ? `"${AWS_REGIONS[region]}"` : `var.${INPUT.AWS_REGION}`,
+    aws_region: region ? `"${region}"` : `var.${INPUT.AWS_REGION}`,
   };
   if (webApp) {
     parameters.error_path = '"/index.html"';
