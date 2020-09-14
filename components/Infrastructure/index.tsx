@@ -33,8 +33,10 @@ const Infrastructure = (props: Props) => {
         mkdir infrastructure{'\n'}
         cd infrastructure{'\n'}
         cat &lt;&lt;EOT &gt;&gt; main.tf{'\n'}
-        module &quot;main&quot; &#123;{'\n'} source = &quot;{url}&quot;{'\n'}
-        &#125;{'\n'}
+        module &quot;main&quot; &#123;{'\n'}
+        &nbsp;&nbsp;source = &quot;{url}&quot;{'\n'}
+        &nbsp;&nbsp;bucket_name = var.bucket_name &nbsp;&nbsp;aws_region =
+        var.aws_region &#125;{'\n'}
         EOT{'\n'}
         terraform init{'\n'}
         terraform apply{'\n'}
