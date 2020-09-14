@@ -771,49 +771,70 @@ var Infrastructure = function Infrastructure(props) {
       lineNumber: 33,
       columnNumber: 7
     }
-  }, "mkdir infrastructure", '\n', "cd infrastructure", '\n', "cat <<EOT >> main.tf", '\n', mainTfContent.map(function (line, i) {
+  }, __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 9
+    }
+  }, "# Create a folder to store infrastructure code"), '\n', "mkdir infrastructure", '\n', "cd infrastructure", '\n', '\n', __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 9
+    }
+  }, "# Create config file"), '\n', "cat <<EOT >> main.tf", '\n', mainTfContent.map(function (line, i) {
     return __jsx("span", {
       key: i,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38,
+        lineNumber: 43,
         columnNumber: 11
       }
     }, line, '\n');
-  }), "EOT", '\n', "terraform init", '\n', "terraform apply", '\n'), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), "EOT", '\n', '\n', __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 50,
+      columnNumber: 9
+    }
+  }, "# Deploy"), '\n', "terraform init", '\n', "terraform apply", '\n'), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
       columnNumber: 7
     }
   }, "The script above ask you for desired bucket name and AWS region."), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 58,
       columnNumber: 7
     }
   }, description), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 59,
       columnNumber: 7
     }
   }, "Prerequisites"), __jsx(_List_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 60,
       columnNumber: 7
     }
   }, __jsx(_ListItem_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 61,
       columnNumber: 9
     }
   }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
@@ -821,49 +842,49 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 63,
       columnNumber: 11
     }
   }, "aws.amazon.com")), __jsx(_ListItem_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, "If you don't have your ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 68,
       columnNumber: 39
     }
   }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 69,
       columnNumber: 11
     }
   }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:", __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 72,
       columnNumber: 11
     }
   }, __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 73,
       columnNumber: 13
     }
   }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA...")), __jsx(_ListItem_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 78,
       columnNumber: 9
     }
   }, "If you haven't already,", ' ', __jsx("a", {
@@ -871,28 +892,28 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 80,
       columnNumber: 11
     }
   }, "install Terraform"), "\n", __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 84,
       columnNumber: 11
     }
   }, __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 85,
       columnNumber: 13
     }
   }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80,
+      lineNumber: 88,
       columnNumber: 11
     }
   }, "See", ' ', __jsx("a", {
@@ -900,7 +921,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 90,
       columnNumber: 13
     }
   }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."))));
@@ -922,6 +943,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTerraFormPackage", function() { return getTerraFormPackage; });
 /* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
 
 
 
@@ -929,49 +951,65 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+
+
 var getMainTfContent = function getMainTfContent(_ref) {
   var webApp = _ref.webApp,
       staging = _ref.staging,
       shared = _ref.shared,
       staticPage = _ref.staticPage;
-  var source = webApp ? 'git::https://github.com/tomfa/terraform-sandbox.git//s3-webfiles-with-cloudfront' : "'git::https://github.com/tomfa/terraform-sandbox.git//s3-privatefiles-with-cloudfront"; // TODO: Remove aws_secret_key and access_key
-
-  var defaultVariables = {
-    'var.bucket_name': 'var.bucket_name',
-    'var.aws_region': 'var.aws_region',
-    'var.aws_access_key': 'var.aws_access_key',
-    'var.aws_secret_key': 'var.aws_secret_key'
+  var source = webApp ? 'git::https://github.com/tomfa/terraform.git//webapp' : 'git::https://github.com/tomfa/terraform.git//files';
+  var parameters = {
+    bucket_name: "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].BUCKET_NAME),
+    aws_region: "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].AWS_REGION)
   };
+
+  if (webApp) {
+    parameters.error_path = '"/index.html"';
+    parameters.error_code = staticPage ? '404' : '200';
+  } else {
+    parameters.acl = shared ? '"public-read"' : '"private"';
+  }
+
   var genericBucketName = webApp ? 'web-app' : 'file-storage';
   var modules = staging ? [{
     name: "".concat(genericBucketName, "-production"),
-    variables: defaultVariables
+    parameters: parameters
   }, {
     name: "".concat(genericBucketName, "-staging"),
-    variables: _objectSpread({}, defaultVariables, {
-      'var.bucket_name': "\"${var.bucket-name}.staging\""
+    parameters: _objectSpread({}, parameters, {
+      bucket_name: "\"\\${var.bucket_name}.staging\""
     })
   }] : [{
     name: genericBucketName,
-    variables: defaultVariables
-  }]; // TODO: Add options for differentiating between static and shared
-
-  if (shared && !webApp) {
-    // eslint-disable-next-line no-console
-    console.log('Missing support');
-  }
-
-  if (webApp && staticPage) {
-    // eslint-disable-next-line no-console
-    console.log('Missing support');
-  }
-
+    parameters: parameters
+  }];
   var lines = [];
+
+  var isUsed = function isUsed(inputVariable) {
+    return !!modules.find(function (m) {
+      return !!Object.values(m.parameters).find(function (p) {
+        return p.includes("var.".concat(inputVariable));
+      });
+    });
+  };
+
+  Object.values(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"]).filter(isUsed).forEach(function (input) {
+    var description = Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getInputDescription"])(input);
+
+    if (!description) {
+      lines.push("variable \"".concat(input, "\" {}"));
+    } else {
+      lines.push("variable \"".concat(input, "\" {"));
+      lines.push("  description = \"".concat(description, "\""));
+      lines.push("}");
+    }
+  });
   modules.forEach(function (module) {
     lines.push('');
     lines.push("module \"".concat(module.name, "\" {"));
     lines.push("  source = \"".concat(source, "\""));
-    Object.entries(module.variables).forEach(function (_ref2) {
+    Object.entries(module.parameters).forEach(function (_ref2) {
       var _ref3 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref2, 2),
           key = _ref3[0],
           value = _ref3[1];
@@ -979,6 +1017,15 @@ var getMainTfContent = function getMainTfContent(_ref) {
       lines.push("  ".concat(key, " = ").concat(value));
     });
     lines.push("}");
+  });
+  lines.push('');
+  Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getOutput"])({
+    bucketType: webApp ? _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP : _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].FILE_STORAGE,
+    hasStaging: staging
+  }).forEach(function (output) {
+    lines.push("output \"".concat(output.label, "\" {"));
+    lines.push("  value = ".concat(output.value));
+    lines.push('}');
   });
   return lines;
 };
@@ -995,7 +1042,7 @@ var getTerraPackageDescription = function getTerraPackageDescription(_ref4) {
     shared: shared
   });
   var iamUserInfo = staging ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment' : 'A set of AWS keys will be created that is able to upload to the bucket';
-  return "Once run, it will create ".concat(count, " S3 bucket + Cloudfront, configured ").concat(usecase, ". ").concat(iamUserInfo, ".");
+  return "Once run, it will create ".concat(count, " S3 bucket").concat(webApp ? ' + Cloudfront' : '', ", configured ").concat(usecase, ". ").concat(iamUserInfo, ". Generated keys will be shown as output in the terminal.");
 };
 
 var getUseCaseDescription = function getUseCaseDescription(_ref5) {
@@ -1626,13 +1673,20 @@ var Colored = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span.wit
 /*!******************!*\
   !*** ./enums.ts ***!
   \******************/
-/*! exports provided: QUESTION_ID, BOOL_VALUE */
+/*! exports provided: QUESTION_ID, BOOL_VALUE, INPUT, getInputDescription, BUCKET_TYPE, getOutput */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QUESTION_ID", function() { return QUESTION_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BOOL_VALUE", function() { return BOOL_VALUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INPUT", function() { return INPUT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getInputDescription", function() { return getInputDescription; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUCKET_TYPE", function() { return BUCKET_TYPE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOutput", function() { return getOutput; });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+
+
 /* eslint-disable no-shadow */
 var QUESTION_ID;
 
@@ -1649,6 +1703,61 @@ var BOOL_VALUE;
   BOOL_VALUE["FALSE"] = "false";
   BOOL_VALUE["TRUE"] = "true";
 })(BOOL_VALUE || (BOOL_VALUE = {}));
+
+var INPUT;
+
+(function (INPUT) {
+  INPUT["BUCKET_NAME"] = "bucket_name";
+  INPUT["AWS_REGION"] = "aws_region";
+  INPUT["AWS_ACCESS_KEY"] = "aws_access_key";
+  INPUT["AWS_SECRET_KEY"] = "aws_secret_key";
+  INPUT["ACL"] = "acl";
+  INPUT["ERROR_RESPONSE_CODE"] = "error_response_code";
+  INPUT["ERROR_RESPONSE_PATH"] = "error_response_path";
+})(INPUT || (INPUT = {}));
+
+var getInputDescription = function getInputDescription(input) {
+  var _INPUT$BUCKET_NAME$IN;
+
+  return (_INPUT$BUCKET_NAME$IN = {}, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.BUCKET_NAME, 'Name of S3 bucket'), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.AWS_REGION, 'Region to deploy to, e.g. eu-north-1, us-east-1'), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.AWS_ACCESS_KEY, 'e.g. AKIA... found in your AWS console > Security credentials'), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.AWS_SECRET_KEY, 'e.g. yaAS$1... found in your AWS console > Security credentials'), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.ACL, 'e.g. AKIA... found in your AWS console > Security credentials'), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.ERROR_RESPONSE_CODE, 'e.g. HTTP status code response when no file matching path is found'), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_INPUT$BUCKET_NAME$IN, INPUT.ERROR_RESPONSE_PATH, 'e.g. Which file Cloudfront serves when encountering a missing file'), _INPUT$BUCKET_NAME$IN)[input];
+};
+var BUCKET_TYPE;
+
+(function (BUCKET_TYPE) {
+  BUCKET_TYPE["WEBAPP"] = "web-app";
+  BUCKET_TYPE["FILE_STORAGE"] = "file-storage";
+})(BUCKET_TYPE || (BUCKET_TYPE = {}));
+
+var getOutput = function getOutput(_ref) {
+  var bucketType = _ref.bucketType,
+      hasStaging = _ref.hasStaging;
+  var outputs = [];
+  var bucketNames = hasStaging ? ["".concat(bucketType, "-production"), "".concat(bucketType, "-staging")] : [bucketType];
+  bucketNames.forEach(function (name) {
+    var stageName = hasStaging && name.split('-')[name.split('-').length - 1];
+    var prefix = stageName ? "".concat(stageName, ".") : '';
+    outputs.push({
+      value: "module.".concat(name, ".AWS_SECRET_ACCESS_KEY"),
+      label: "".concat(prefix, "AWS_SECRET_ACCESS_KEY")
+    });
+    outputs.push({
+      value: "module.".concat(name, ".AWS_ACCESS_KEY_ID"),
+      label: "".concat(prefix, "AWS_ACCESS_KEY_ID")
+    });
+    outputs.push({
+      value: "module.".concat(name, ".BUCKET_NAME"),
+      label: "".concat(prefix, "BUCKET_NAME")
+    });
+
+    if (bucketType === BUCKET_TYPE.WEBAPP) {
+      outputs.push({
+        value: "module.".concat(name, ".CLOUDFRONT_URL"),
+        label: "".concat(prefix, "CLOUDFRONT_URL")
+      });
+    }
+  });
+  return outputs;
+};
 
 /***/ }),
 
@@ -3989,35 +4098,35 @@ function Home() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 21,
       columnNumber: 5
     }
   }, __jsx(_components_HeaderSection__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 22,
       columnNumber: 7
     }
   }), __jsx(Intro, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 23,
       columnNumber: 7
     }
   }), __jsx(Questionare, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 24,
       columnNumber: 7
     }
   }), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_10__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 25,
       columnNumber: 7
     }
   }));
@@ -4028,7 +4137,7 @@ var Intro = function Intro() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 31,
       columnNumber: 3
     }
   }, __jsx(_components_BlockQuote__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -4037,42 +4146,42 @@ var Intro = function Intro() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 32,
       columnNumber: 5
     }
   }, __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, "Hosting a", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 18
     }
   }, " webapp "), "or need to store uploads? Put them in S3 buckets. It's", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 38,
       columnNumber: 9
     }
   }, " cheap "), "and", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 9
     }
   }, " reliable"), ". With CloudFront cache, it'll be blazingly ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 41,
       columnNumber: 19
     }
   }, "fast"), ". Let's see how", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
+      lineNumber: 42,
       columnNumber: 9
     }
   }, " easy "), "it can be.")));
@@ -4118,22 +4227,45 @@ var Questionare = function Questionare() {
       });
     }
   }, [selectedRadioOptions, selectedCheckboxOptions, _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"]]);
-  var hasAnsweredAll = questionRenderCount === _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].length;
+  var hasAnswered = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (questionId) {
+    var question = _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].find(function (q) {
+      return q.id === questionId;
+    });
+
+    if (!question) {
+      throw Error("Missing question for ".concat(questionId));
+    }
+
+    if (question.type === 'radio') {
+      var _selectedRadioOptions2;
+
+      return ((_selectedRadioOptions2 = selectedRadioOptions[question.id]) === null || _selectedRadioOptions2 === void 0 ? void 0 : _selectedRadioOptions2.value) != null;
+    }
+
+    if (question.type === 'checkbox') {
+      return selectedCheckboxOptions[question.id].length > 0;
+    }
+  }, [selectedRadioOptions, selectedCheckboxOptions, _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"]]);
+  var shouldSkip = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (question) {
+    return question.showIf && !!question.showIf.find(function (c) {
+      return !hasSelected(c.questionId, c.value);
+    });
+  }, [hasSelected]);
+  var hasAnsweredAll = !_utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].find(function (q) {
+    return !hasAnswered(q.id) && !shouldSkip(q);
+  });
   return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Section"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 102,
       columnNumber: 5
     }
   }, _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].slice(0, questionRenderCount + 1).map(function (question) {
     var indexOfAllQuestions = _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].indexOf(question);
     var isLast = indexOfAllQuestions === questionRenderCount;
-    var shouldSkip = question.showIf && question.showIf.find(function (c) {
-      return !hasSelected(c.questionId, c.value);
-    });
 
-    if (shouldSkip) {
+    if (shouldSkip(question)) {
       if (isLast) {
         setQuestionRenderCount(function (q) {
           return q + 1;
@@ -4163,7 +4295,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94,
+          lineNumber: 115,
           columnNumber: 13
         }
       });
@@ -4188,7 +4320,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115,
+          lineNumber: 136,
           columnNumber: 13
         }
       });
@@ -4203,7 +4335,7 @@ var Questionare = function Questionare() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 137,
+      lineNumber: 158,
       columnNumber: 9
     }
   }));
@@ -4288,7 +4420,7 @@ var questionData = [{
     label: 'Yes (e.g. Next, Gatsby, Nuxt)'
   }, {
     value: _enums__WEBPACK_IMPORTED_MODULE_0__["BOOL_VALUE"].FALSE,
-    label: 'No (e.g. Vue or React)'
+    label: 'No (e.g. plain Vue or React)'
   }],
   showIf: [{
     questionId: _enums__WEBPACK_IMPORTED_MODULE_0__["QUESTION_ID"].storageType,
