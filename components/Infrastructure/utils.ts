@@ -77,7 +77,7 @@ const getTerraPackageDescription = ({
   const iamUserInfo = staging
     ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment'
     : 'A set of AWS keys will be created that is able to upload to the bucket';
-  return `Once run, it will create ${count} S3 bucket + Cloudfront, configured ${usecase}. ${iamUserInfo}.`;
+  return `Once run, it will create ${count} S3 bucket + Cloudfront, configured ${usecase}. ${iamUserInfo}. Generated keys will be shown as output in the terminal.`;
 };
 
 const getUseCaseDescription = ({

@@ -14,6 +14,7 @@ import {
 import Infrastructure from '../components/Infrastructure';
 import { BOOL_VALUE, QUESTION_ID } from '../enums';
 import Footer from '../components/Footer';
+import { Question } from '../types';
 
 export default function Home() {
   return (
@@ -73,16 +74,36 @@ const Questionare = () => {
     },
     [selectedRadioOptions, selectedCheckboxOptions, questions]
   );
-  const hasAnsweredAll = questionRenderCount === questions.length;
+  const hasAnswered = useCallback(
+    (questionId: QUESTION_ID): boolean => {
+      const question = questions.find((q) => q.id === questionId);
+      if (!question) {
+        throw Error(`Missing question for ${questionId}`);
+      }
+      if (question.type === 'radio') {
+        return selectedRadioOptions[question.id]?.value != null;
+      }
+      if (question.type === 'checkbox') {
+        return selectedCheckboxOptions[question.id].length > 0;
+      }
+    },
+    [selectedRadioOptions, selectedCheckboxOptions, questions]
+  );
+  const shouldSkip = useCallback(
+    (question: Question): boolean =>
+      question.showIf &&
+      !!question.showIf.find((c) => !hasSelected(c.questionId, c.value)),
+    [hasSelected]
+  );
+  const hasAnsweredAll = !questions.find(
+    (q) => !hasAnswered(q.id) && !shouldSkip(q)
+  );
   return (
     <Section>
       {questions.slice(0, questionRenderCount + 1).map((question) => {
         const indexOfAllQuestions = questions.indexOf(question);
         const isLast = indexOfAllQuestions === questionRenderCount;
-        const shouldSkip =
-          question.showIf &&
-          question.showIf.find((c) => !hasSelected(c.questionId, c.value));
-        if (shouldSkip) {
+        if (shouldSkip(question)) {
           if (isLast) {
             setQuestionRenderCount((q) => q + 1);
           }

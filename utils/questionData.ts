@@ -22,7 +22,7 @@ const questionData: Question[] = [
       'Statically generated sites can be optimized for search engines by returning correct HTTP status codes. If you are uncertain, select No.',
     options: [
       { value: BOOL_VALUE.TRUE, label: 'Yes (e.g. Next, Gatsby, Nuxt)' },
-      { value: BOOL_VALUE.FALSE, label: 'No (e.g. Vue or React)' },
+      { value: BOOL_VALUE.FALSE, label: 'No (e.g. plain Vue or React)' },
     ],
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'webapp' }],
   },
