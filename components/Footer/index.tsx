@@ -39,6 +39,12 @@ const Footer = () => {
             <Link href={'https://github.com/tomfa/s3-uploader'}>
               Allowing user upload to S3
             </Link>
+            <Link
+              href={
+                'https://learn.hashicorp.com/tutorials/terraform/github-actions'
+              }>
+              Terraform CI deploy
+            </Link>
           </FooterLinks>
 
           <FooterHeader>Links</FooterHeader>
