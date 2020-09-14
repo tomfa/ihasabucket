@@ -27,3 +27,6 @@ export const PageWrapper = styled.div`
 export const Colored = styled.span`
   color: ${(p) => p.color || p.theme.colors.primary};
 `;
+
+export const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));

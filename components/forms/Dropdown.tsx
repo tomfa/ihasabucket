@@ -30,6 +30,7 @@ const Select = styled.select`
     outline-style: dashed;
     outline-width: 2px;
     outline-color: ${(p) => p.theme.colors.primary};
+    margin-right: 3px;
   }
 `;
 const Choice = styled.option``;

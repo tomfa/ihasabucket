@@ -31,6 +31,9 @@ const Input = styled.input`
   &:focus + ${Label} {
     outline: 2px dashed ${(p) => p.theme.colors.primary};
   }
+  &:focus::placeholder {
+    color: transparent;
+  }
 `;
 
 export default Input;

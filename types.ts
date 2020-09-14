@@ -38,6 +38,7 @@ export type InputQuestion = {
   title: string;
   type: QuestionType.TEXT;
   defaultValue?: string;
+  placeholders?: string[];
   placeholder?: string;
   description?: string;
   showIf?: QuestionDisplayCondition[];

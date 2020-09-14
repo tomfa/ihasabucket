@@ -11,7 +11,14 @@ const questionData = {
     id: QUESTION_ID.domainName,
     title: `Your domain`,
     type: QuestionType.TEXT,
-    placeholder: 'mydomain.store',
+    placeholders: [
+      'mydomain.com',
+      'uploads.mydomain.com',
+      'staging.mydomain.com',
+      'www.mydomain.com',
+      'test.mydomain.com',
+      'uploads.mydomain.com',
+    ],
     description: `We will use this as the S3 bucket name. The bucket name is permanent, but it doesn't have to match an actual domain. It does however have to be unique on S3, so "example" or "my-bucket" will not work. If you leave it empty, you'll be prompted for a bucket name at deploy time.`,
   } as InputQuestion,
   [QUESTION_ID.storageType]: {
@@ -88,7 +95,7 @@ const questionData = {
   } as RadioQuestion,
   [QUESTION_ID.region]: {
     id: QUESTION_ID.region,
-    title: 'In what region do you want to host the buckets?',
+    title: 'In what region do you want the buckets?',
     type: QuestionType.DROPDOWN,
     defaultValue: AWS_REGIONS.EU_NORTH_1,
     description:

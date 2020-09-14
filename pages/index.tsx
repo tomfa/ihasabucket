@@ -184,6 +184,7 @@ const Questionare = () => {
               id={question.id}
               key={question.id}
               placeholder={question.placeholder}
+              placeholders={question.placeholders}
               onSubmit={(value) => {
                 setTextAnswers((prev) => ({
                   ...prev,
