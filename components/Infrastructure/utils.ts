@@ -1,4 +1,9 @@
-import { INPUT, getInputDescription } from '../../enums';
+import {
+  BUCKET_TYPE,
+  getInputDescription,
+  getOutput,
+  INPUT,
+} from '../../enums';
 
 type Props = {
   webApp: boolean;
@@ -20,7 +25,7 @@ const getMainTfContent = ({
 }: Props): string[] => {
   const source = webApp
     ? 'git::https://github.com/tomfa/terraform.git//webapp'
-    : "'git::https://github.com/tomfa/terraform.git//files";
+    : 'git::https://github.com/tomfa/terraform.git//files';
 
   const parameters: { [param: string]: string } = {
     bucket_name: `var.${INPUT.BUCKET_NAME}`,
@@ -79,6 +84,15 @@ const getMainTfContent = ({
     });
     lines.push(`}`);
   });
+  lines.push('');
+  getOutput({
+    bucketType: webApp ? BUCKET_TYPE.WEBAPP : BUCKET_TYPE.FILE_STORAGE,
+    hasStaging: staging,
+  }).forEach((output) => {
+    lines.push(`output "${output.label}" {`);
+    lines.push(`  value = ${output.value}`);
+    lines.push('}');
+  });
   return lines;
 };
 
@@ -93,7 +107,9 @@ const getTerraPackageDescription = ({
   const iamUserInfo = staging
     ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment'
     : 'A set of AWS keys will be created that is able to upload to the bucket';
-  return `Once run, it will create ${count} S3 bucket + Cloudfront, configured ${usecase}. ${iamUserInfo}. Generated keys will be shown as output in the terminal.`;
+  return `Once run, it will create ${count} S3 bucket${
+    webApp ? ' + Cloudfront' : ''
+  }, configured ${usecase}. ${iamUserInfo}. Generated keys will be shown as output in the terminal.`;
 };
 
 const getUseCaseDescription = ({
