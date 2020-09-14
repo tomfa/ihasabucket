@@ -5,8 +5,6 @@ import Description from '../forms/Description.style';
 import Header from '../Header.style';
 import { getTerraFormPackage } from './utils';
 import Pre from './Pre.style';
-import List from './List.style';
-import ListItem from './ListItem.style';
 import Mute from './Mute.style';
 import LoadingIcon from './LoadingIcon';
 
@@ -58,44 +56,44 @@ const Infrastructure = (props: Props) => {
         The script above ask you for desired bucket name and AWS region.
       </Description>
       <Description>{description}</Description>
-      <h4>Prerequisites</h4>
-      <List>
-        <ListItem>
-          If you don&apos;t have an AWS account already, sign up at{' '}
-          <a href="https://portal.aws.amazon.com/billing/signup#/start">
-            aws.amazon.com
-          </a>
-        </ListItem>
-        <ListItem>
-          If you don&apos;t have your <strong>AWS_SECRET_ACCESS_KEY</strong> and{' '}
-          <strong>AWS_ACCESS_KEY_ID</strong> handy, find those in the top right
-          corner under your name &gt; Security credentials. They should be
-          exported to your environment:
-          <Pre>
-            <Mute># Export AWS keys{'\n'}</Mute>
-            export AWS_SECRET_ACCESS_KEY=yaAS$1...{'\n'}
-            export AWS_ACCESS_KEY_ID=AKIA...
-          </Pre>
-        </ListItem>
-        <ListItem>
-          If you haven&apos;t already,{' '}
+      <Header>Prerequisites</Header>
+      <h4>AWS Account</h4>
+      <p>
+        If you don&apos;t have an AWS account already, sign up at{' '}
+        <a href="https://portal.aws.amazon.com/billing/signup#/start">
+          aws.amazon.com
+        </a>
+      </p>
+      <p>
+        If you don&apos;t have your <strong>AWS_SECRET_ACCESS_KEY</strong> and{' '}
+        <strong>AWS_ACCESS_KEY_ID</strong> handy, find those in the top right
+        corner under your name &gt; Security credentials. They should be
+        exported to your environment:
+        <Pre>
+          <Mute># Export AWS keys{'\n'}</Mute>
+          export AWS_SECRET_ACCESS_KEY=yaAS$1...{'\n'}
+          export AWS_ACCESS_KEY_ID=AKIA...
+        </Pre>
+      </p>
+      <h4>Terraform installed</h4>
+      <p>
+        If you haven&apos;t already,{' '}
+        <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
+          install Terraform
+        </a>
+        {`\n`}
+        <Pre>
+          <Mute># For Macs with homebrew{'\n'}</Mute>
+          brew install hashicorp/tap/terraform
+        </Pre>
+        <Description>
+          See{' '}
           <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
-            install Terraform
-          </a>
-          {`\n`}
-          <Pre>
-            <Mute># For Macs with homebrew{'\n'}</Mute>
-            brew install hashicorp/tap/terraform
-          </Pre>
-          <Description>
-            See{' '}
-            <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
-              learn.hashicorp.com/tutorials/terraform/install-cli
-            </a>{' '}
-            for other platforms.
-          </Description>
-        </ListItem>
-      </List>
+            learn.hashicorp.com/tutorials/terraform/install-cli
+          </a>{' '}
+          for other platforms.
+        </Description>
+      </p>
     </>
   );
 };
