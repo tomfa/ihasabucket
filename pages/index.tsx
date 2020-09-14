@@ -17,6 +17,7 @@ import { BOOL_VALUE, QUESTION_ID, VALUES } from '../enums';
 import Footer from '../components/Footer';
 import { Question } from '../types';
 import TextInput from '../components/forms/TextInput';
+import DropDown from '../components/forms/Dropdown';
 
 export default function Home() {
   return (
@@ -187,7 +188,7 @@ const Questionare = () => {
         if (question.type === 'dropdown') {
           const answerValue = selectedRadioOptions[question.id] || null;
           return (
-            <RadioGroup
+            <DropDown
               id={question.id}
               key={question.id}
               options={question.options}

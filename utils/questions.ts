@@ -6,7 +6,7 @@ export const generateDefaultRadioSelectedOptions = (
   radioQuestions: Question[]
 ): RadioSelectionMap =>
   radioQuestions
-    .filter((q) => q.type === 'radio')
+    .filter((q) => q.type === 'radio' || q.type === 'dropdown')
     .reduce(
       (map, question) => ({
         ...map,
