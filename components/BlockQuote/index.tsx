@@ -33,6 +33,7 @@ const Block = styled.blockquote`
   max-width: 620px;
   margin-left: 0;
   margin-right: 0;
+  margin-bottom: 1rem;
   align-self: center;
 `;
 
