@@ -1,8 +1,12 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
+import styled from 'styled-components';
+
 import { Option } from '../../types';
 import Header from '../Header.style';
 import Description from './Description.style';
 import Question from './Question.style';
+import InputContainer from './InputContainer.styles';
+import SubmitButton from './SubmitButton.styles';
 
 interface Props {
   id: string;
@@ -14,6 +18,22 @@ interface Props {
   disabled?: boolean;
 }
 
+const Select = styled.select`
+  font-size: 1.2rem;
+  padding: 1rem;
+  flex: 1;
+  border: none;
+  appearance: none;
+
+  &:focus,
+  &:active {
+    outline-style: dashed;
+    outline-width: 2px;
+    outline-color: ${(p) => p.theme.colors.primary};
+  }
+`;
+const Choice = styled.option``;
+
 const DropDown = ({
   id,
   options,
@@ -24,29 +44,32 @@ const DropDown = ({
   disabled = false,
 }: Props) => {
   const onOptionChange = useCallback(
-    (value: Option) => {
+    (value: string) => {
       if (disabled) {
         return;
       }
-      onChange(value);
+      const checkedOption = options.find((o) => o.value === value);
+      checkedOption && onChange(checkedOption);
     },
     [disabled, options, onChange]
   );
   return (
     <Question>
       {title && <Header>{title}</Header>}
-      <select
-        value={selectedOption?.value}
-        onChange={(e) =>
-          onOptionChange(
-            options.find((o) => o.value === e.target.value),
-            true
-          )
-        }>
-        {options.map((o) => (
-          <option key={`${id}-${o.value}`} value={o.value} label={o.label} />
-        ))}
-      </select>
+      <InputContainer>
+        <Select
+          value={selectedOption?.value}
+          onChange={(e) => onOptionChange(e.target.value)}>
+          {options.map((o) => (
+            <Choice key={`${id}-${o.value}`} value={o.value} label={o.label} />
+          ))}
+        </Select>
+        <SubmitButton
+          type="submit"
+          complete={!!selectedOption}
+          onClick={() => onOptionChange(selectedOption.value)}
+        />
+      </InputContainer>
 
       {description && <Description>{description}</Description>}
     </Question>

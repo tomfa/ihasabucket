@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 
 import Header from '../Header.style';
 import Description from './Description.style';
 import Question from './Question.style';
 import Input from './Input.style';
+import InputContainer from './InputContainer.styles';
+import SubmitButton from './SubmitButton.styles';
 
 interface Props {
   id: string;
@@ -15,24 +16,6 @@ interface Props {
   description?: string;
   disabled?: boolean;
 }
-
-const SubmitButton = styled.button`
-  color: ${(p) => p.theme.colors.textSecondary};
-  background-color: ${(p) => p.theme.colors.primary};
-  border: none;
-  flex: 0.15;
-
-  outline-style: dashed;
-  outline-width: 2px;
-  &:focus,
-  &:active {
-    outline-color: ${(p) => p.theme.colors.primary};
-  }
-`;
-
-const InputSubmitContainer = styled.div`
-  display: flex;
-`;
 
 const TextInput = ({
   onSubmit,
@@ -45,7 +28,7 @@ const TextInput = ({
   return (
     <Question>
       {title && <Header>{title}</Header>}
-      <InputSubmitContainer>
+      <InputContainer>
         <Input
           type="text"
           value={inputValue}
@@ -53,8 +36,12 @@ const TextInput = ({
           onChange={(e) => setInputValue(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && onSubmit(inputValue)}
         />
-        <SubmitButton onClick={() => onSubmit(inputValue)}>OK</SubmitButton>
-      </InputSubmitContainer>
+        <SubmitButton
+          type="submit"
+          complete={inputValue.trim().length > 0}
+          onClick={() => onSubmit(inputValue)}
+        />
+      </InputContainer>
       {description && <Description>{description}</Description>}
     </Question>
   );

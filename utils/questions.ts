@@ -28,11 +28,17 @@ export const generateDefaultCheckboxSelectedOptions = (
       {}
     );
 
-export const getDefaultRadioOption = (question: Question): Option | null =>
-  question.options.find((o) => o.value === question.defaultValue) || null;
+export const getDefaultRadioOption = (question: Question): Option | null => {
+  if (question.type === 'text') {
+    return null;
+  }
+  return (
+    question.options.find((o) => o?.value === question.defaultValue) || null
+  );
+};
 
 export const getDefaultCheckboxOption = (question: Question): Option[] => {
-  if (!question.defaultValue) {
+  if (question.type === 'text' || !question.defaultValue) {
     return [];
   }
   if (typeof question.defaultValue === 'string') {
