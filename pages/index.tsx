@@ -15,9 +15,15 @@ import {
 import Infrastructure from '../components/Infrastructure';
 import { BOOL_VALUE, QUESTION_ID, VALUES } from '../enums';
 import Footer from '../components/Footer';
-import { Question } from '../types';
+import {
+  DropdownQuestion,
+  InputQuestion,
+  Question,
+  RadioQuestion,
+} from '../types';
 import TextInput from '../components/forms/TextInput';
 import DropDown from '../components/forms/Dropdown';
+import questionData from '../utils/questionData';
 
 export default function Home() {
   return (
@@ -84,6 +90,13 @@ const Questionare = () => {
     },
     [selectedRadioOptions, selectedCheckboxOptions, questions]
   );
+  const getTextAnswer = (question: InputQuestion) => {
+    return textAnswers[question.id];
+  };
+  const getRadioAnswer = (question: DropdownQuestion | RadioQuestion) => {
+    return selectedRadioOptions[question.id];
+  };
+
   const hasAnswered = useCallback(
     (questionId: QUESTION_ID): boolean => {
       const question = questions.find((q) => q.id === questionId);
@@ -215,6 +228,8 @@ const Questionare = () => {
           shared={hasSelected(QUESTION_ID.aclPublic, BOOL_VALUE.TRUE)}
           staging={hasSelected(QUESTION_ID.stagingEnv, BOOL_VALUE.TRUE)}
           staticPage={hasSelected(QUESTION_ID.webappIsStatic, BOOL_VALUE.TRUE)}
+          bucketName={getTextAnswer(questionData['domain-name'])}
+          region={getRadioAnswer(questionData[QUESTION_ID.region]).value}
         />
       )}
     </Section>

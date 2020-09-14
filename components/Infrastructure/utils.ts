@@ -1,4 +1,5 @@
 import {
+  AWS_REGIONS,
   BUCKET_TYPE,
   getInputDescription,
   getOutput,
@@ -10,6 +11,8 @@ type Props = {
   staging: boolean;
   shared: boolean;
   staticPage: boolean;
+  region: string;
+  bucketName: string;
 };
 
 type TerraformPackage = {
@@ -22,14 +25,16 @@ const getMainTfContent = ({
   staging,
   shared,
   staticPage,
+  region,
+  bucketName,
 }: Props): string[] => {
   const source = webApp
     ? 'git::https://github.com/tomfa/terraform.git//webapp'
     : 'git::https://github.com/tomfa/terraform.git//files';
 
   const parameters: { [param: string]: string } = {
-    bucket_name: `var.${INPUT.BUCKET_NAME}`,
-    aws_region: `var.${INPUT.AWS_REGION}`,
+    bucket_name: bucketName ? `"${bucketName}"` : `var.${INPUT.BUCKET_NAME}`,
+    aws_region: region ? `"${AWS_REGIONS[region]}"` : `var.${INPUT.AWS_REGION}`,
   };
   if (webApp) {
     parameters.error_path = '"/index.html"';
@@ -49,7 +54,9 @@ const getMainTfContent = ({
           name: `${genericBucketName}-staging`,
           parameters: {
             ...parameters,
-            bucket_name: `"\\$\{var.bucket_name}.staging"`,
+            bucket_name: bucketName
+              ? `"${bucketName}.staging"`
+              : `"\\$\{var.bucket_name}.staging"`,
           },
         },
       ]
@@ -101,6 +108,7 @@ const getTerraPackageDescription = ({
   staging,
   shared,
   staticPage,
+  region,
 }: Props): string => {
   const count = staging ? 'two sets of' : 'a';
   const usecase = getUseCaseDescription({ webApp, staticPage, shared });
@@ -109,7 +117,7 @@ const getTerraPackageDescription = ({
     : 'A set of AWS keys will be created that is able to upload to the bucket';
   return `Once run, it will create ${count} S3 bucket${
     webApp ? ' + Cloudfront' : ''
-  }, configured ${usecase}. ${iamUserInfo}. Generated keys will be shown as output in the terminal.`;
+  } in ${region}, configured ${usecase}. ${iamUserInfo}. Generated keys will be shown as output in the terminal.`;
 };
 
 const getUseCaseDescription = ({

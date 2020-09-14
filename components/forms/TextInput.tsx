@@ -25,6 +25,11 @@ const TextInput = ({
   description,
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>(value);
+  const [hasSubmitted, setSubmitted] = useState<boolean>(false);
+  const submit = (submitValue) => {
+    setSubmitted(true);
+    onSubmit(submitValue);
+  };
   return (
     <Question>
       {title && <Header>{title}</Header>}
@@ -33,13 +38,19 @@ const TextInput = ({
           type="text"
           value={inputValue}
           placeholder={placeholder}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && onSubmit(inputValue)}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            if (hasSubmitted) {
+              onSubmit(e.target.value);
+            }
+          }}
+          onKeyPress={(e) => e.key === 'Enter' && submit(inputValue)}
+          onBlur={() => submit(inputValue)}
         />
         <SubmitButton
           type="submit"
           complete={inputValue.trim().length > 0}
-          onClick={() => onSubmit(inputValue)}
+          onClick={() => submit(inputValue)}
         />
       </InputContainer>
       {description && <Description>{description}</Description>}

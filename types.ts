@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+
 import { QUESTION_ID, VALUES } from './enums';
 
 export type Option = {
@@ -10,22 +12,31 @@ export type QuestionDisplayCondition = {
   value: string | VALUES;
 };
 
+export enum QuestionType {
+  RADIO = 'radio',
+  CHECKBOX = 'checkbox',
+  TEXT = 'text',
+  DROPDOWN = 'dropdown',
+}
+
 export type Question = CheckboxQuestion | InputQuestion | DropdownQuestion;
 
 export type CheckboxQuestion = {
   id: QUESTION_ID;
   title: string;
-  type: 'radio' | 'checkbox';
+  type: QuestionType.RADIO | QuestionType.CHECKBOX;
   defaultValue?: string | number | string[] | number[];
   description?: string;
   showIf?: QuestionDisplayCondition[];
   options: Option[];
 };
 
+export type RadioQuestion = CheckboxQuestion;
+
 export type InputQuestion = {
   id: QUESTION_ID;
   title: string;
-  type: 'text';
+  type: QuestionType.TEXT;
   defaultValue?: string;
   placeholder?: string;
   description?: string;
@@ -35,7 +46,7 @@ export type InputQuestion = {
 export type DropdownQuestion = {
   id: QUESTION_ID;
   title: string;
-  type: 'dropdown';
+  type: QuestionType.DROPDOWN;
   defaultValue?: string;
   placeholder?: string;
   description?: string;

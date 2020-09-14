@@ -15,6 +15,8 @@ type Props = {
   staging: boolean;
   shared: boolean;
   staticPage: boolean;
+  bucketName: string;
+  region: string;
 };
 
 const Infrastructure = (props: Props) => {

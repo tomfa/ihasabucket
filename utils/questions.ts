@@ -68,4 +68,5 @@ export type TextAnswerMap = Partial<
   }
 >;
 
-export const questions = questionData;
+export const questions = Object.values(questionData);
+export const questionsMap = questionData;
