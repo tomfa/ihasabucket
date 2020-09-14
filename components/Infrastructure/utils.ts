@@ -19,41 +19,36 @@ const getMainTfContent = ({
   staticPage,
 }: Props): string[] => {
   const source = webApp
-    ? 'git::https://github.com/tomfa/terraform-sandbox.git//s3-webfiles-with-cloudfront'
-    : "'git::https://github.com/tomfa/terraform-sandbox.git//s3-privatefiles-with-cloudfront";
-  // TODO: Remove aws_secret_key and access_key
-  const defaultParameters = {
+    ? 'git::https://github.com/tomfa/terraform.git//webapp'
+    : "'git::https://github.com/tomfa/terraform.git//files";
+
+  const parameters: { [param: string]: string } = {
     bucket_name: `var.${INPUT.BUCKET_NAME}`,
     aws_region: `var.${INPUT.AWS_REGION}`,
-    aws_access_key: `var.${INPUT.AWS_ACCESS_KEY}`,
-    aws_secret_key: `var.${INPUT.AWS_SECRET_KEY}`,
   };
+  if (webApp) {
+    parameters.error_path = '"/index.html"';
+    parameters.error_code = staticPage ? '404' : '200';
+  } else {
+    parameters.acl = shared ? '"public-read"' : '"private"';
+  }
+
   const genericBucketName = webApp ? 'web-app' : 'file-storage';
   const modules = staging
     ? [
         {
           name: `${genericBucketName}-production`,
-          parameters: defaultParameters,
+          parameters,
         },
         {
           name: `${genericBucketName}-staging`,
           parameters: {
-            ...defaultParameters,
-            bucket_name: `"\\$\{var.bucket-name}.staging"`,
+            ...parameters,
+            bucket_name: `"\\$\{var.bucket_name}.staging"`,
           },
         },
       ]
-    : [{ name: genericBucketName, parameters: defaultParameters }];
-
-  // TODO: Add options for differentiating between static and shared
-  if (shared && !webApp) {
-    // eslint-disable-next-line no-console
-    console.log('Missing support');
-  }
-  if (webApp && staticPage) {
-    // eslint-disable-next-line no-console
-    console.log('Missing support');
-  }
+    : [{ name: genericBucketName, parameters }];
 
   const lines: string[] = [];
   const isUsed = (inputVariable: string): boolean =>
