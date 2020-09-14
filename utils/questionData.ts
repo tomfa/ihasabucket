@@ -93,9 +93,9 @@ const questionData = {
     defaultValue: AWS_REGIONS.EU_NORTH_1,
     description:
       'A region closer to your users can give an extra performance boost.',
-    options: Object.entries(AWS_REGIONS).map(([value, label]) => ({
+    options: Object.values(AWS_REGIONS).map((value) => ({
       value,
-      label,
+      label: value,
     })),
   } as DropdownQuestion,
   [QUESTION_ID.stagingEnv]: {

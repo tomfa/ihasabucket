@@ -23,6 +23,7 @@ const Input = styled.input`
     border: none;
     font-size: 1.2rem;
     &:focus {
+      margin-right: 4px;
       outline: 2px dashed ${(p) => p.theme.colors.primary};
     }
   }
