@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 import { useEffect, useState } from 'react';
 import Description from '../forms/Description.style';
 import Header from '../Header.style';
@@ -16,12 +18,11 @@ type Props = {
 };
 
 const Infrastructure = (props: Props) => {
-  const { url, description } = getTerraFormPackage(props);
+  const { description, mainTfContent } = getTerraFormPackage(props);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => setLoading(false), 800);
-  }, [url]);
+  }, [mainTfContent]);
   if (loading) {
     return <LoadingIcon />;
   }
@@ -33,10 +34,12 @@ const Infrastructure = (props: Props) => {
         mkdir infrastructure{'\n'}
         cd infrastructure{'\n'}
         cat &lt;&lt;EOT &gt;&gt; main.tf{'\n'}
-        module &quot;main&quot; &#123;{'\n'}
-        &nbsp;&nbsp;source = &quot;{url}&quot;{'\n'}
-        &nbsp;&nbsp;bucket_name = var.bucket_name &nbsp;&nbsp;aws_region =
-        var.aws_region &#125;{'\n'}
+        {mainTfContent.map((line, i) => (
+          <span key={i}>
+            {line}
+            {'\n'}
+          </span>
+        ))}
         EOT{'\n'}
         terraform init{'\n'}
         terraform apply{'\n'}
