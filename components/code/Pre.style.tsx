@@ -7,7 +7,7 @@ const Pre = styled.pre`
   padding: 1rem;
   margin-top: 1.7rem;
   margin-bottom: 1.7rem;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 export default Pre;
