@@ -426,7 +426,7 @@ var Footer = function Footer() {
       lineNumber: 23,
       columnNumber: 11
     }
-  }, "But when it comes to simply hosting a Webapp or static files, AWS S3 is usually faster, cheaper, more reliable and easier \u2013 as long as you stay clear of the AWS console."), __jsx("p", {
+  }, "But when it comes to simply hosting a web app or static files, AWS S3 is usually faster, cheaper, more reliable and easier \u2013 as long as you stay clear of the AWS console."), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -463,7 +463,7 @@ var Footer = function Footer() {
       lineNumber: 33,
       columnNumber: 13
     }
-  }, "Deploying Webapps to S3"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Deploying Web apps to S3"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
     href: 'https://github.com/tomfa/s3-uploader',
     __self: _this,
     __source: {
@@ -559,7 +559,9 @@ __webpack_require__.r(__webpack_exports__);
 var Title = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h1.withConfig({
   displayName: "Titlestyle__Title",
   componentId: "mdvwo2-0"
-})(["margin:0;line-height:1.15;font-size:4rem;@media (max-width:450px){font-size:2.5rem;}"]);
+})(["margin:0;line-height:1.15;font-size:2rem;@media (min-width:375px){font-size:2.5rem;}@media (min-width:550px){font-size:4rem;}& > a{color:", ";text-decoration:none;}"], function (p) {
+  return p.theme.colors.textSecondary;
+});
 /* harmony default export */ __webpack_exports__["default"] = (Title);
 
 /***/ }),
@@ -575,10 +577,12 @@ var Title = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h1.withCon
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MetaTags_Meta__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MetaTags/Meta */ "./components/MetaTags/Meta.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
-/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
-/* harmony import */ var _Title_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Title.style */ "./components/HeaderSection/Title.style.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _MetaTags_Meta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MetaTags/Meta */ "./components/MetaTags/Meta.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
+/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
+/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Link */ "./components/Link.tsx");
+/* harmony import */ var _Title_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Title.style */ "./components/HeaderSection/Title.style.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/HeaderSection/index.tsx";
 
@@ -589,41 +593,64 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
+var Lolrus = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].img.withConfig({
+  displayName: "HeaderSection__Lolrus",
+  componentId: "sc-185uy67-0"
+})(["width:150px;position:absolute;right:-30px;top:0;@media (min-width:560px){display:block;right:30px;}"]);
+
 var HeaderSection = function HeaderSection(_ref) {
   var _ref$title = _ref.title,
       title = _ref$title === void 0 ? 'I has a bucket.' : _ref$title;
-  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_3__["useTheme"])();
-  return __jsx(_utils__WEBPACK_IMPORTED_MODULE_2__["SectionBackground"], {
+  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_4__["useTheme"])();
+  return __jsx(_utils__WEBPACK_IMPORTED_MODULE_3__["SectionBackground"], {
     backgroundColor: theme.colors.primary,
     color: theme.colors.textSecondary,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 23,
       columnNumber: 5
     }
-  }, __jsx(_utils__WEBPACK_IMPORTED_MODULE_2__["Section"], {
+  }, __jsx(_utils__WEBPACK_IMPORTED_MODULE_3__["Section"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
+      lineNumber: 26,
       columnNumber: 7
     }
-  }, __jsx(_MetaTags_Meta__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, __jsx(_MetaTags_Meta__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
+      lineNumber: 27,
       columnNumber: 9
     }
-  }), __jsx(_Title_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), __jsx(_Title_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 28,
       columnNumber: 9
     }
-  }, title)));
+  }, __jsx(_Link__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    href: '/',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 11
+    }
+  }, title)), __jsx(Lolrus, {
+    src: '/bucket.png',
+    alt: 'Lolrus, the bucket walrus',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 9
+    }
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (HeaderSection);
@@ -652,20 +679,22 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var Link = function Link(_ref) {
   var children = _ref.children,
-      href = _ref.href;
+      href = _ref.href,
+      styles = _ref.styles;
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: href,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 13,
       columnNumber: 3
     }
   }, __jsx("a", {
+    style: styles,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 15,
       columnNumber: 5
     }
   }, children));
@@ -790,8 +819,8 @@ __webpack_require__.r(__webpack_exports__);
 var SectionBackground = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "utils__SectionBackground",
   componentId: "sc-1vrdcy-0"
-})(["width:100%;background-color:", ";color:", ";margin-top:", ";"], function (props) {
-  return props.backgroundColor;
+})(["width:100%;background-color:", ";color:", ";margin-top:", ";position:relative;overflow:hidden;"], function (props) {
+  return props.backgroundColor !== undefined && props.backgroundColor || props.theme.colors.bgPrimary;
 }, function (props) {
   return props.color;
 }, function (props) {
@@ -800,7 +829,7 @@ var SectionBackground = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 var Section = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section.withConfig({
   displayName: "utils__Section",
   componentId: "sc-1vrdcy-1"
-})(["max-width:", "px;width:100vw;margin:0 auto;padding:2rem;@media (max-width:350px){padding:1rem;}"], function (p) {
+})(["max-width:", "px;width:100vw;margin:0 auto;padding-top:2rem;padding-bottom:2rem;padding-left:1rem;padding-right:1rem;position:relative;@media (min-width:375px){padding-left:2rem;padding-right:2rem;}"], function (p) {
   return p.theme.layout.maxWidth;
 });
 var PageWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
@@ -7183,6 +7212,7 @@ var theme = {
     secondary: '#e15342',
     bgPrimary: '#fdf6e6',
     bgSecondary: '#111111',
+    bgMuted: '#efefef',
     textPrimary: '#000000',
     textSecondary: '#fafafa',
     textMuted: '#888888',
@@ -7200,7 +7230,7 @@ var useTheme = function useTheme() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 3:
 /*!****************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F404&absolutePagePath=%2FUsers%2Ftomfa%2Frepos%2Fs3launchpad%2Fpages%2F404.tsx ***!
   \****************************************************************************************************************************/
@@ -7223,5 +7253,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=404.js.map
