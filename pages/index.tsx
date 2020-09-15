@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
-import { Colored, PageWrapper, Section } from '../components/utils';
+import { PageWrapper, Section } from '../components/utils';
 import Header from '../components/HeaderSection';
-import BlockQuote from '../components/BlockQuote';
 import RadioGroup from '../components/forms/RadioGroup';
 import CheckboxGroup from '../components/forms/CheckboxGroup';
 import {
@@ -24,6 +23,7 @@ import {
 import TextInput from '../components/forms/TextInput';
 import DropDown from '../components/forms/Dropdown';
 import questionData from '../utils/questionData';
+import Intro from '../sections/Intro';
 
 export default function Home() {
   return (
@@ -35,24 +35,6 @@ export default function Home() {
     </PageWrapper>
   );
 }
-
-const Intro = () => (
-  <Section>
-    <BlockQuote author={'Lolrus, the bucket walrus'}>
-      <>
-        Hosting a <Colored secondary> web app </Colored>
-        or need to store uploads? Put them in S3 buckets. It&apos;s
-        <Colored secondary> cheap </Colored>
-        and
-        <Colored secondary> reliable</Colored>. With CloudFront cache,
-        it&apos;ll be blazingly <Colored secondary>fast</Colored>. Let&apos;s
-        see how
-        <Colored secondary> easy </Colored>
-        it can be.
-      </>
-    </BlockQuote>
-  </Section>
-);
 
 const Questionare = () => {
   const [selectedRadioOptions, setSelectedRadioOptions] = useState<
