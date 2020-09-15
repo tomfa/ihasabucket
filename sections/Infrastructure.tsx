@@ -1,13 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 
 import { useEffect, useState } from 'react';
-import Description from '../forms/Description.style';
-import Header from '../Header.style';
-import { getTerraFormPackage } from './utils';
-import Pre from './Pre.style';
-import Mute from './Mute.style';
-import LoadingIcon from './LoadingIcon';
-import Code from './Code';
+import Description from '../components/forms/Description.style';
+import Header from '../components/Header.style';
+import { getTerraFormPackage } from '../utils/terraform';
+import Pre from '../components/code/Pre.style';
+import Mute from '../components/Mute.style';
+import LoadingIcon from '../components/icons/LoadingIcon';
+import Code from '../components/code/Code';
 
 type Props = {
   webApp: boolean;

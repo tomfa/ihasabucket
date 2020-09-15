@@ -1,7 +1,7 @@
 import { PageWrapper, Section } from '../components/utils';
 import BlockQuote from '../components/BlockQuote';
-import Footer from '../components/Footer';
-import Header from '../components/HeaderSection';
+import Footer from '../sections/Footer';
+import Header from '../sections/HeaderSection';
 import Button from '../components/Button';
 
 export default function NotFound() {

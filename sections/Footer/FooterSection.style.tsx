@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Section } from '../utils';
+import { Section } from '../../components/utils';
 
 const FooterSection = styled(Section)`
   display: flex;

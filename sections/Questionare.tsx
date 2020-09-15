@@ -10,7 +10,6 @@ import {
   RadioSelectionMap,
   TextAnswerMap,
 } from '../utils/questions';
-import Infrastructure from '../components/Infrastructure';
 import { BOOL_VALUE, QUESTION_ID, VALUES } from '../enums';
 import {
   DropdownQuestion,
@@ -21,6 +20,7 @@ import {
 import TextInput from '../components/forms/TextInput';
 import DropDown from '../components/forms/Dropdown';
 import questionData from '../utils/questionData';
+import Infrastructure from './Infrastructure';
 
 const Questionare = () => {
   const [selectedRadioOptions, setSelectedRadioOptions] = useState<

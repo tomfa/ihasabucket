@@ -1,6 +1,6 @@
 import { PageWrapper } from '../components/utils';
-import Header from '../components/HeaderSection';
-import Footer from '../components/Footer';
+import Header from '../sections/HeaderSection';
+import Footer from '../sections/Footer';
 import Intro from '../sections/Intro';
 import Questionare from '../sections/Questionare';
 

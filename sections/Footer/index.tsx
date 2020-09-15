@@ -1,4 +1,4 @@
-import { SectionBackground } from '../utils';
+import { SectionBackground } from '../../components/utils';
 import { useTheme } from '../../styles/theme';
 import FooterLinks from './FooterLinks.style';
 import Link from './Link';

@@ -1,9 +1,4 @@
-import {
-  BUCKET_TYPE,
-  getInputDescription,
-  getOutput,
-  INPUT,
-} from '../../enums';
+import { BUCKET_TYPE, getInputDescription, getOutput, INPUT } from '../enums';
 
 type Props = {
   webApp: boolean;

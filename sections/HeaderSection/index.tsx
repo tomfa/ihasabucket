@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import Meta from '../MetaTags/Meta';
-import { Section, SectionBackground } from '../utils';
+import { Section, SectionBackground } from '../../components/utils';
 import { useTheme } from '../../styles/theme';
-import Link from '../Link';
-import Title from './Title.style';
+import Link from '../../components/Link';
+import Title from '../../components/Title.style';
 
 const Lolrus = styled.img`
   width: 150px;
