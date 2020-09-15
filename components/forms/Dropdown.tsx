@@ -24,6 +24,7 @@ const Select = styled.select`
   flex: 1;
   border: none;
   appearance: none;
+  background-color: white;
 
   &:focus,
   &:active {
@@ -33,7 +34,9 @@ const Select = styled.select`
     margin-right: 3px;
   }
 `;
-const Choice = styled.option``;
+const Choice = styled.option`
+  color: ${(p) => p.theme.colors.textPrimary};
+`;
 
 const DropDown = ({
   id,
@@ -62,7 +65,9 @@ const DropDown = ({
           value={selectedOption?.value}
           onChange={(e) => onOptionChange(e.target.value)}>
           {options.map((o) => (
-            <Choice key={`${id}-${o.value}`} value={o.value} label={o.label} />
+            <Choice key={`${id}-${o.value}`} value={o.value} label={o.label}>
+              {o.label}
+            </Choice>
           ))}
         </Select>
         <SubmitButton

@@ -13,6 +13,7 @@ export const theme = {
     secondary: '#e15342',
     bgPrimary: '#fdf6e6',
     bgSecondary: '#111111',
+    bgMuted: '#efefef',
     textPrimary: '#000000',
     textSecondary: '#fafafa',
     textMuted: '#888888',
