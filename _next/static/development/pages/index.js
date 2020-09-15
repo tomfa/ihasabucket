@@ -117,318 +117,6 @@ var Block = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].blockquote
 
 /***/ }),
 
-/***/ "./components/Footer/FooterAside.style.tsx":
-/*!*************************************************!*\
-  !*** ./components/Footer/FooterAside.style.tsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-
-var FooterAside = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].aside.withConfig({
-  displayName: "FooterAsidestyle__FooterAside",
-  componentId: "pb7jnq-0"
-})(["flex:1;@media (min-width:600px){text-align:", ";}"], function (props) {
-  return props.right && 'right';
-});
-/* harmony default export */ __webpack_exports__["default"] = (FooterAside);
-
-/***/ }),
-
-/***/ "./components/Footer/FooterHeader.style.tsx":
-/*!**************************************************!*\
-  !*** ./components/Footer/FooterHeader.style.tsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _Header_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Header.style */ "./components/Header.style.tsx");
-
-
-var FooterHeader = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_Header_style__WEBPACK_IMPORTED_MODULE_1__["default"]).withConfig({
-  displayName: "FooterHeaderstyle__FooterHeader",
-  componentId: "l4q85z-0"
-})(["color:", ";flex:1;font-size:1.3rem;"], function (p) {
-  return p.theme.colors.textSecondary;
-});
-/* harmony default export */ __webpack_exports__["default"] = (FooterHeader);
-
-/***/ }),
-
-/***/ "./components/Footer/FooterLinks.style.tsx":
-/*!*************************************************!*\
-  !*** ./components/Footer/FooterLinks.style.tsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-
-var FooterLinks = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].ul.withConfig({
-  displayName: "FooterLinksstyle__FooterLinks",
-  componentId: "nwljl2-0"
-})(["list-style:none;line-height:1.4;padding-left:0;"]);
-/* harmony default export */ __webpack_exports__["default"] = (FooterLinks);
-
-/***/ }),
-
-/***/ "./components/Footer/FooterSection.style.tsx":
-/*!***************************************************!*\
-  !*** ./components/Footer/FooterSection.style.tsx ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
-
-
-var FooterSection = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_utils__WEBPACK_IMPORTED_MODULE_1__["Section"]).withConfig({
-  displayName: "FooterSectionstyle__FooterSection",
-  componentId: "sc-11fp392-0"
-})(["display:flex;flex-direction:column;padding-top:6rem;padding-bottom:3rem;@media (min-width:600px){flex-direction:row;}"]);
-/* harmony default export */ __webpack_exports__["default"] = (FooterSection);
-
-/***/ }),
-
-/***/ "./components/Footer/Link.tsx":
-/*!************************************!*\
-  !*** ./components/Footer/Link.tsx ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/Footer/Link.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var ListItem = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].li.withConfig({
-  displayName: "Link__ListItem",
-  componentId: "sc-1pdj3dm-0"
-})([""]);
-var ListItemLink = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].a.withConfig({
-  displayName: "Link__ListItemLink",
-  componentId: "sc-1pdj3dm-1"
-})(["color:white;&:focus{outline:none;color:black;}"]);
-
-var Link = function Link(_ref) {
-  var href = _ref.href,
-      children = _ref.children;
-  return __jsx(ListItem, {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 3
-    }
-  }, __jsx(ListItemLink, {
-    href: href,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 5
-    }
-  }, children));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Link);
-
-/***/ }),
-
-/***/ "./components/Footer/index.tsx":
-/*!*************************************!*\
-  !*** ./components/Footer/index.tsx ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
-/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
-/* harmony import */ var _FooterLinks_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FooterLinks.style */ "./components/Footer/FooterLinks.style.tsx");
-/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Link */ "./components/Footer/Link.tsx");
-/* harmony import */ var _FooterAside_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FooterAside.style */ "./components/Footer/FooterAside.style.tsx");
-/* harmony import */ var _FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FooterHeader.style */ "./components/Footer/FooterHeader.style.tsx");
-/* harmony import */ var _FooterSection_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FooterSection.style */ "./components/Footer/FooterSection.style.tsx");
-var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/Footer/index.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-
-
-
-
-var Footer = function Footer() {
-  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_2__["useTheme"])();
-  return __jsx(_utils__WEBPACK_IMPORTED_MODULE_1__["SectionBackground"], {
-    backgroundColor: theme.colors.secondary,
-    color: theme.colors.textSecondary,
-    marginTop: '3rem',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 5
-    }
-  }, __jsx(_FooterSection_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 7
-    }
-  }, __jsx(_FooterAside_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 9
-    }
-  }, __jsx(_FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 11
-    }
-  }, "Wat"), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 11
-    }
-  }, "I love Heroku, Vercel seems awesome, Squarespace is a great product. All respect to those who maintain their own servers at DigitalOcean."), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 11
-    }
-  }, "But when it comes to simply hosting a web app or static files, AWS S3 is usually faster, cheaper, more reliable and easier \u2013 as long as you stay clear of the AWS console."), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 11
-    }
-  }, "Let me help you with that.")), __jsx(_FooterAside_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    right: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 9
-    }
-  }, __jsx(_FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 11
-    }
-  }, "Articles"), __jsx(_FooterLinks_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 11
-    }
-  }, __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: 'https://medium.com/trackstack/deploying-a-react-app-to-aws-s3-with-github-actions-b1cb9ba75c95',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 13
-    }
-  }, "Deploying Web apps to S3"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: 'https://github.com/tomfa/s3-uploader',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 13
-    }
-  }, "Allowing user upload to S3"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: 'https://learn.hashicorp.com/tutorials/terraform/github-actions',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 13
-    }
-  }, "Terraform CI deploy")), __jsx(_FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 11
-    }
-  }, "Links"), __jsx(_FooterLinks_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51,
-      columnNumber: 11
-    }
-  }, __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: 'https://github.com/tomfa/ihasabucket',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52,
-      columnNumber: 13
-    }
-  }, "Github"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: 'https://linkedin.com/in/fagerbekk',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 13
-    }
-  }, "LinkedIn"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: 'https://tomfa.github.io',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 13
-    }
-  }, "Homepage")))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Footer);
-
-/***/ }),
-
 /***/ "./components/Header.style.tsx":
 /*!*************************************!*\
   !*** ./components/Header.style.tsx ***!
@@ -447,729 +135,6 @@ var Header = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h4.withCo
   return p.color || p.theme.colors.textPrimary;
 });
 /* harmony default export */ __webpack_exports__["default"] = (Header);
-
-/***/ }),
-
-/***/ "./components/HeaderSection/Title.style.tsx":
-/*!**************************************************!*\
-  !*** ./components/HeaderSection/Title.style.tsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-
-var Title = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h1.withConfig({
-  displayName: "Titlestyle__Title",
-  componentId: "mdvwo2-0"
-})(["margin:0;line-height:1.15;font-size:2rem;@media (min-width:375px){font-size:2.5rem;}@media (min-width:550px){font-size:4rem;}& > a{color:", ";text-decoration:none;}"], function (p) {
-  return p.theme.colors.textSecondary;
-});
-/* harmony default export */ __webpack_exports__["default"] = (Title);
-
-/***/ }),
-
-/***/ "./components/HeaderSection/index.tsx":
-/*!********************************************!*\
-  !*** ./components/HeaderSection/index.tsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _MetaTags_Meta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MetaTags/Meta */ "./components/MetaTags/Meta.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
-/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
-/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Link */ "./components/Link.tsx");
-/* harmony import */ var _Title_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Title.style */ "./components/HeaderSection/Title.style.tsx");
-var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/HeaderSection/index.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-
-
-var Lolrus = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].img.withConfig({
-  displayName: "HeaderSection__Lolrus",
-  componentId: "sc-185uy67-0"
-})(["width:150px;position:absolute;right:-30px;top:0;@media (min-width:560px){display:block;right:30px;}"]);
-
-var HeaderSection = function HeaderSection(_ref) {
-  var _ref$title = _ref.title,
-      title = _ref$title === void 0 ? 'I has a bucket.' : _ref$title;
-  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_4__["useTheme"])();
-  return __jsx(_utils__WEBPACK_IMPORTED_MODULE_3__["SectionBackground"], {
-    backgroundColor: theme.colors.primary,
-    color: theme.colors.textSecondary,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 5
-    }
-  }, __jsx(_utils__WEBPACK_IMPORTED_MODULE_3__["Section"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26,
-      columnNumber: 7
-    }
-  }, __jsx(_MetaTags_Meta__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 9
-    }
-  }), __jsx(_Title_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 9
-    }
-  }, __jsx(_Link__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    href: '/',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29,
-      columnNumber: 11
-    }
-  }, title)), __jsx(Lolrus, {
-    src: '/bucket.png',
-    alt: 'Lolrus, the bucket walrus',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 9
-    }
-  })));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (HeaderSection);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/Code.tsx":
-/*!********************************************!*\
-  !*** ./components/Infrastructure/Code.tsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Mute_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mute.style */ "./components/Infrastructure/Mute.style.tsx");
-/* harmony import */ var _Pre_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pre.style */ "./components/Infrastructure/Pre.style.tsx");
-/* harmony import */ var _PreButton_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PreButton.style */ "./components/Infrastructure/PreButton.style.tsx");
-
-
-var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/Infrastructure/Code.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
-/* eslint-disable react/no-array-index-key */
-
-
-
-
-
-var copyToClipBoard = function copyToClipBoard(texts) {
-  var textField = window.document.createElement('textarea');
-  textField.setAttribute('style', 'position: absolute; bottom: 0; top: 0; width: 1; height: 1; opacity: 0.01;');
-  texts.forEach(function (text) {
-    textField.append(text);
-    textField.append('\n');
-  });
-  document.body.appendChild(textField);
-  textField.select();
-  document.execCommand('copy');
-  document.body.removeChild(textField);
-};
-
-var Code = function Code(_ref) {
-  var mainTfContent = _ref.mainTfContent,
-      bucketName = _ref.bucketName;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      hasCopied = _useState[0],
-      setHasCopied = _useState[1];
-
-  var lines = Object(react__WEBPACK_IMPORTED_MODULE_1__["useMemo"])(function () {
-    return ['# Create a folder to store infrastructure code', 'mkdir infrastructure', 'cd infrastructure', '', '# Create config file', "cat <<EOT >> ".concat(bucketName || 'main', ".tf")].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(mainTfContent), ['EOT', '', '# Deploy', 'terraform init', 'terraform apply']);
-  }, [mainTfContent, bucketName]);
-  var copy = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function () {
-    copyToClipBoard(lines);
-    setHasCopied(true);
-  }, [lines]);
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    return setHasCopied(false);
-  }, [mainTfContent, bucketName]);
-  return __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 5
-    }
-  }, lines.map(function (line, i) {
-    if (line.trim().startsWith('#')) {
-      return __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        key: i,
-        __self: _this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 57,
-          columnNumber: 13
-        }
-      }, line, '\n');
-    }
-
-    return __jsx("span", {
-      key: i,
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 64,
-        columnNumber: 11
-      }
-    }, line, '\n');
-  }), __jsx(_PreButton_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    onClick: copy,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 7
-    }
-  }, hasCopied && 'Copied!' || 'Copy to clipboard'));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Code);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/LoadingIcon.tsx":
-/*!***************************************************!*\
-  !*** ./components/Infrastructure/LoadingIcon.tsx ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/Infrastructure/LoadingIcon.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var Svg = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg.withConfig({
-  displayName: "LoadingIcon__Svg",
-  componentId: "sc-39keo9-0"
-})(["margin:5rem auto;display:block;shape-rendering:auto;& path{fill:", ";}"], function (p) {
-  return p.theme.colors.primary;
-});
-
-var LoadingIcon = function LoadingIcon(_ref) {
-  var _ref$size = _ref.size,
-      size = _ref$size === void 0 ? 300 : _ref$size;
-  return __jsx(Svg, {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "".concat(size, "px"),
-    height: "".concat(size, "px"),
-    viewBox: "0 0 100 100",
-    preserveAspectRatio: "xMidYMid",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 3
-    }
-  }, __jsx("g", {
-    transform: "translate(50 50)",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 5
-    }
-  }, __jsx("g", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 7
-    }
-  }, __jsx("animateTransform", {
-    attributeName: "transform",
-    type: "rotate",
-    values: "0;45",
-    keyTimes: "0;1",
-    dur: "0.2s",
-    repeatCount: "indefinite",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 9
-    }
-  }), __jsx("path", {
-    d: "M29.491524206117255 -5.5 L37.491524206117255 -5.5 L37.491524206117255 5.5 L29.491524206117255 5.5 A30 30 0 0 1 24.742744050198738 16.964569457146712 L24.742744050198738 16.964569457146712 L30.399598299691117 22.621423706639092 L22.621423706639096 30.399598299691114 L16.964569457146716 24.742744050198734 A30 30 0 0 1 5.5 29.491524206117255 L5.5 29.491524206117255 L5.5 37.491524206117255 L-5.499999999999997 37.491524206117255 L-5.499999999999997 29.491524206117255 A30 30 0 0 1 -16.964569457146705 24.742744050198738 L-16.964569457146705 24.742744050198738 L-22.621423706639085 30.399598299691117 L-30.399598299691117 22.621423706639092 L-24.742744050198738 16.964569457146712 A30 30 0 0 1 -29.491524206117255 5.500000000000009 L-29.491524206117255 5.500000000000009 L-37.491524206117255 5.50000000000001 L-37.491524206117255 -5.500000000000001 L-29.491524206117255 -5.500000000000002 A30 30 0 0 1 -24.742744050198738 -16.964569457146705 L-24.742744050198738 -16.964569457146705 L-30.399598299691117 -22.621423706639085 L-22.621423706639092 -30.399598299691117 L-16.964569457146712 -24.742744050198738 A30 30 0 0 1 -5.500000000000011 -29.491524206117255 L-5.500000000000011 -29.491524206117255 L-5.500000000000012 -37.491524206117255 L5.499999999999998 -37.491524206117255 L5.5 -29.491524206117255 A30 30 0 0 1 16.964569457146702 -24.74274405019874 L16.964569457146702 -24.74274405019874 L22.62142370663908 -30.39959829969112 L30.399598299691117 -22.6214237066391 L24.742744050198738 -16.964569457146716 A30 30 0 0 1 29.491524206117255 -5.500000000000013 M0 -20A20 20 0 1 0 0 20 A20 20 0 1 0 0 -20",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 9
-    }
-  }))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (LoadingIcon);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/Mute.style.tsx":
-/*!**************************************************!*\
-  !*** ./components/Infrastructure/Mute.style.tsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-
-var Mute = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span.withConfig({
-  displayName: "Mutestyle__Mute",
-  componentId: "sc-13y9s14-0"
-})(["color:", ";"], function (p) {
-  return p.theme.colors.textMuted;
-});
-/* harmony default export */ __webpack_exports__["default"] = (Mute);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/Pre.style.tsx":
-/*!*************************************************!*\
-  !*** ./components/Infrastructure/Pre.style.tsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-
-var Pre = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].pre.withConfig({
-  displayName: "Prestyle__Pre",
-  componentId: "sc-1nnst8t-0"
-})(["position:relative;background-color:#3a3a3a;color:white;padding:1rem;margin-top:1.7rem;margin-bottom:1.7rem;overflow:scroll;"]);
-/* harmony default export */ __webpack_exports__["default"] = (Pre);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/PreButton.style.tsx":
-/*!*******************************************************!*\
-  !*** ./components/Infrastructure/PreButton.style.tsx ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-
-var PreButton = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button.withConfig({
-  displayName: "PreButtonstyle__PreButton",
-  componentId: "acmi2m-0"
-})(["background-color:", ";color:", ";position:absolute;font-family:monospace;top:20px;right:20px;border:none;padding:0.3rem 0.6rem;cursor:pointer;outline-color:", ";"], function (p) {
-  return p.theme.colors.bgPrimary;
-}, function (p) {
-  return p.theme.colors.textPrimary;
-}, function (p) {
-  return p.theme.colors.secondary;
-});
-/* harmony default export */ __webpack_exports__["default"] = (PreButton);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/index.tsx":
-/*!*********************************************!*\
-  !*** ./components/Infrastructure/index.tsx ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _forms_Description_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../forms/Description.style */ "./components/forms/Description.style.tsx");
-/* harmony import */ var _Header_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header.style */ "./components/Header.style.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./components/Infrastructure/utils.ts");
-/* harmony import */ var _Pre_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pre.style */ "./components/Infrastructure/Pre.style.tsx");
-/* harmony import */ var _Mute_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Mute.style */ "./components/Infrastructure/Mute.style.tsx");
-/* harmony import */ var _LoadingIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingIcon */ "./components/Infrastructure/LoadingIcon.tsx");
-/* harmony import */ var _Code__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Code */ "./components/Infrastructure/Code.tsx");
-var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/Infrastructure/index.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-/* eslint-disable react/no-array-index-key */
-
-
-
-
-
-
-
-
-
-var Infrastructure = function Infrastructure(props) {
-  var _getTerraFormPackage = Object(_utils__WEBPACK_IMPORTED_MODULE_3__["getTerraFormPackage"])(props),
-      description = _getTerraFormPackage.description,
-      mainTfContent = _getTerraFormPackage.mainTfContent;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
-      loading = _useState[0],
-      setLoading = _useState[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    setTimeout(function () {
-      return setLoading(false);
-    }, 800);
-  }, [mainTfContent]);
-
-  if (loading) {
-    return __jsx(_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 28,
-        columnNumber: 12
-      }
-    });
-  }
-
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    as: 'h1',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 7
-    }
-  }, "Bucket is served!"), "Just run the script below!", __jsx(_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    bucketName: props.bucketName,
-    mainTfContent: mainTfContent,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 7
-    }
-  }), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35,
-      columnNumber: 7
-    }
-  }, "The script above will plan the infrastructure and prompt you for confirmation."), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 7
-    }
-  }, description), __jsx(_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 7
-    }
-  }, "Prerequisites"), __jsx("h4", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 7
-    }
-  }, "AWS Account"), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 7
-    }
-  }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
-    href: "https://portal.aws.amazon.com/billing/signup#/start",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 9
-    }
-  }, "aws.amazon.com")), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 7
-    }
-  }, "If you don't have your ", __jsx("strong", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49,
-      columnNumber: 37
-    }
-  }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 9
-    }
-  }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:", __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53,
-      columnNumber: 9
-    }
-  }, __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 11
-    }
-  }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA...")), __jsx("h4", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 7
-    }
-  }, "Terraform installed"), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 7
-    }
-  }, "If you haven't already,", ' ', __jsx("a", {
-    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 9
-    }
-  }, "install Terraform"), "\n", __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 9
-    }
-  }, __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 11
-    }
-  }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 9
-    }
-  }, "See", ' ', __jsx("a", {
-    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 11
-    }
-  }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms.")));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Infrastructure);
-
-/***/ }),
-
-/***/ "./components/Infrastructure/utils.ts":
-/*!********************************************!*\
-  !*** ./components/Infrastructure/utils.ts ***!
-  \********************************************/
-/*! exports provided: getTerraFormPackage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTerraFormPackage", function() { return getTerraFormPackage; });
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-
-var getMainTfContent = function getMainTfContent(_ref) {
-  var webApp = _ref.webApp,
-      staging = _ref.staging,
-      shared = _ref.shared,
-      staticPage = _ref.staticPage,
-      region = _ref.region,
-      bucketName = _ref.bucketName;
-  var source = webApp ? 'git::https://github.com/tomfa/terraform.git//webapp' : 'git::https://github.com/tomfa/terraform.git//files';
-  var parameters = {
-    bucket_name: bucketName ? "\"".concat(bucketName, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].BUCKET_NAME),
-    aws_region: region ? "\"".concat(region, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].AWS_REGION)
-  };
-
-  if (webApp) {
-    parameters.error_path = '"/index.html"';
-    parameters.error_code = staticPage ? '404' : '200';
-  } else {
-    parameters.acl = shared ? '"public-read"' : '"private"';
-  }
-
-  var genericBucketName = webApp ? 'web-app' : 'file-storage';
-  var modules = staging ? [{
-    name: "".concat(genericBucketName, "-production"),
-    parameters: parameters
-  }, {
-    name: "".concat(genericBucketName, "-staging"),
-    parameters: _objectSpread({}, parameters, {
-      bucket_name: bucketName ? "\"".concat(bucketName, ".staging\"") : "\"\\${var.bucket_name}.staging\""
-    })
-  }] : [{
-    name: genericBucketName,
-    parameters: parameters
-  }];
-  var lines = [];
-
-  var isUsed = function isUsed(inputVariable) {
-    return !!modules.find(function (m) {
-      return !!Object.values(m.parameters).find(function (p) {
-        return p.includes("var.".concat(inputVariable));
-      });
-    });
-  };
-
-  Object.values(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"]).filter(isUsed).forEach(function (input) {
-    var description = Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getInputDescription"])(input);
-
-    if (!description) {
-      lines.push("variable \"".concat(input, "\" {}"));
-    } else {
-      lines.push("variable \"".concat(input, "\" {"));
-      lines.push("  description = \"".concat(description, "\""));
-      lines.push("}");
-    }
-  });
-  modules.forEach(function (module) {
-    lines.push('');
-    lines.push("module \"".concat(module.name, "\" {"));
-    lines.push("  source = \"".concat(source, "\""));
-    Object.entries(module.parameters).forEach(function (_ref2) {
-      var _ref3 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref2, 2),
-          key = _ref3[0],
-          value = _ref3[1];
-
-      lines.push("  ".concat(key, " = ").concat(value));
-    });
-    lines.push("}");
-  });
-  lines.push('');
-  Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getOutput"])({
-    bucketType: webApp ? _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP : _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].FILE_STORAGE,
-    hasStaging: staging
-  }).forEach(function (output) {
-    lines.push("output \"".concat(output.label, "\" {"));
-    lines.push("  value = ".concat(output.value));
-    lines.push('}');
-  });
-  return lines;
-};
-
-var getTerraPackageDescription = function getTerraPackageDescription(_ref4) {
-  var webApp = _ref4.webApp,
-      staging = _ref4.staging,
-      shared = _ref4.shared,
-      staticPage = _ref4.staticPage,
-      region = _ref4.region;
-  var count = staging ? 'two sets of' : 'a';
-  var usecase = getUseCaseDescription({
-    webApp: webApp,
-    staticPage: staticPage,
-    shared: shared
-  });
-  var iamUserInfo = staging ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment' : 'A set of AWS keys will be created that is able to upload to the bucket';
-  return "Once run, it will create ".concat(count, " S3 bucket").concat(webApp ? ' + Cloudfront' : '', " in ").concat(region, ", configured ").concat(usecase, ". ").concat(iamUserInfo, ". Generated keys will be shown as output in the terminal.");
-};
-
-var getUseCaseDescription = function getUseCaseDescription(_ref5) {
-  var webApp = _ref5.webApp,
-      staticPage = _ref5.staticPage,
-      shared = _ref5.shared;
-
-  if (webApp) {
-    if (staticPage) {
-      return 'to serve a solid statically generated web app';
-    }
-
-    return 'to serve a blazingly fast single-page web app';
-  }
-
-  if (shared) {
-    return 'for hosting publicly available files';
-  }
-
-  return 'for storing and serving files for authorized requests';
-};
-
-var getTerraFormPackage = function getTerraFormPackage(props) {
-  return {
-    mainTfContent: getMainTfContent(props),
-    description: getTerraPackageDescription(props)
-  };
-};
 
 /***/ }),
 
@@ -1220,99 +185,202 @@ var Link = function Link(_ref) {
 
 /***/ }),
 
-/***/ "./components/MetaTags/Meta.tsx":
-/*!**************************************!*\
-  !*** ./components/MetaTags/Meta.tsx ***!
-  \**************************************/
+/***/ "./components/Mute.style.tsx":
+/*!***********************************!*\
+  !*** ./components/Mute.style.tsx ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var Mute = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span.withConfig({
+  displayName: "Mutestyle__Mute",
+  componentId: "sc-12r7eop-0"
+})(["color:", ";"], function (p) {
+  return p.theme.colors.textMuted;
+});
+/* harmony default export */ __webpack_exports__["default"] = (Mute);
+
+/***/ }),
+
+/***/ "./components/Title.style.tsx":
+/*!************************************!*\
+  !*** ./components/Title.style.tsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var Title = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h1.withConfig({
+  displayName: "Titlestyle__Title",
+  componentId: "sc-13rzyyl-0"
+})(["margin:0;line-height:1.15;font-size:2rem;@media (min-width:375px){font-size:2.5rem;}@media (min-width:550px){font-size:4rem;}& > a{color:", ";text-decoration:none;}"], function (p) {
+  return p.theme.colors.textSecondary;
+});
+/* harmony default export */ __webpack_exports__["default"] = (Title);
+
+/***/ }),
+
+/***/ "./components/code/Code.tsx":
+/*!**********************************!*\
+  !*** ./components/code/Code.tsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_clipboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/clipboard */ "./utils/clipboard.ts");
+/* harmony import */ var _Mute_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Mute.style */ "./components/Mute.style.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
+/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
+/* harmony import */ var _Pre_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pre.style */ "./components/code/Pre.style.tsx");
+/* harmony import */ var _PreButton_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PreButton.style */ "./components/code/PreButton.style.tsx");
+
+
 var _this = undefined,
-    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/MetaTags/Meta.tsx";
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/code/Code.tsx";
 
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+/* eslint-disable react/no-array-index-key */
 
 
-var Meta = function Meta() {
-  return __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+
+
+
+
+
+
+var Code = function Code(_ref) {
+  var mainTfContent = _ref.mainTfContent,
+      bucketName = _ref.bucketName;
+  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_5__["useTheme"])();
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      hasCopied = _useState[0],
+      setHasCopied = _useState[1];
+
+  var lines = Object(react__WEBPACK_IMPORTED_MODULE_1__["useMemo"])(function () {
+    return ['# Create a folder to store infrastructure code', 'mkdir infrastructure', 'cd infrastructure', '', '# Create config file', "cat <<EOT >> ".concat(bucketName || 'main', ".tf")].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(mainTfContent), ['EOT', '', '# Deploy', 'terraform init', 'terraform apply']);
+  }, [mainTfContent, bucketName]);
+  var copy = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function () {
+    Object(_utils_clipboard__WEBPACK_IMPORTED_MODULE_2__["copyToClipBoard"])(lines);
+    setHasCopied(true);
+  }, [lines]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    return setHasCopied(false);
+  }, [mainTfContent, bucketName]);
+  return __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4,
-      columnNumber: 3
-    }
-  }, __jsx("title", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5,
+      lineNumber: 41,
       columnNumber: 5
     }
-  }, "ihasabucket - instant web app hosting"), __jsx("meta", {
-    property: "og:image",
-    content: "https://user-images.githubusercontent.com/1502702/92998877-e9e1cc00-f51c-11ea-98e6-331460921cde.jpg",
+  }, lines.map(function (line, i) {
+    if (line.trim().startsWith('#')) {
+      return __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        key: i,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45,
+          columnNumber: 13
+        }
+      }, line, '\n');
+    }
+
+    return __jsx("span", {
+      key: i,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 52,
+        columnNumber: 11
+      }
+    }, line, '\n');
+  }), __jsx(_PreButton_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    onClick: copy,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6,
-      columnNumber: 5
+      lineNumber: 58,
+      columnNumber: 7
     }
-  }), __jsx("meta", {
-    property: "og:url",
-    content: "https://ihasabucket.it",
+  }, hasCopied && __jsx("span", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 5
+      lineNumber: 60,
+      columnNumber: 11
     }
-  }), __jsx("meta", {
-    property: "og:title",
-    content: "I has a bucket - instant web app hosting",
+  }, "Copied! ", __jsx(_utils__WEBPACK_IMPORTED_MODULE_4__["Colored"], {
+    color: theme.colors.success,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 5
+      lineNumber: 61,
+      columnNumber: 21
     }
-  }), __jsx("meta", {
-    property: "og:description",
-    content: "Guide for hosting React, Vue, Gatsby or user uploads on AWS S3 buckets",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 5
-    }
-  }), __jsx("link", {
-    rel: "icon",
-    href: "/favicon.ico",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 5
-    }
-  }), __jsx("link", {
-    href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap",
-    rel: "stylesheet",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 5
-    }
-  }));
+  }, "\u2713")) || 'Copy to clipboard'));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Meta);
+/* harmony default export */ __webpack_exports__["default"] = (Code);
+
+/***/ }),
+
+/***/ "./components/code/Pre.style.tsx":
+/*!***************************************!*\
+  !*** ./components/code/Pre.style.tsx ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var Pre = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].pre.withConfig({
+  displayName: "Prestyle__Pre",
+  componentId: "sc-1cjlqsr-0"
+})(["position:relative;background-color:#3a3a3a;color:white;padding:1rem;margin-top:1.7rem;margin-bottom:1.7rem;overflow:scroll;"]);
+/* harmony default export */ __webpack_exports__["default"] = (Pre);
+
+/***/ }),
+
+/***/ "./components/code/PreButton.style.tsx":
+/*!*********************************************!*\
+  !*** ./components/code/PreButton.style.tsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var PreButton = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button.withConfig({
+  displayName: "PreButtonstyle__PreButton",
+  componentId: "sc-1i8d5dz-0"
+})(["background-color:", ";color:", ";position:absolute;font-family:monospace;top:20px;right:20px;border:none;padding:0.3rem 0.6rem;cursor:pointer;outline-color:", ";"], function (p) {
+  return p.theme.colors.bgPrimary;
+}, function (p) {
+  return p.theme.colors.textPrimary;
+}, function (p) {
+  return p.theme.colors.secondary;
+});
+/* harmony default export */ __webpack_exports__["default"] = (PreButton);
 
 /***/ }),
 
@@ -2145,6 +1213,89 @@ var TextInput = function TextInput(_ref) {
 
 /***/ }),
 
+/***/ "./components/icons/LoadingIcon.tsx":
+/*!******************************************!*\
+  !*** ./components/icons/LoadingIcon.tsx ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/icons/LoadingIcon.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var Svg = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg.withConfig({
+  displayName: "LoadingIcon__Svg",
+  componentId: "sc-1nn4cpf-0"
+})(["margin:5rem auto;display:block;shape-rendering:auto;& path{fill:", ";}"], function (p) {
+  return p.theme.colors.primary;
+});
+
+var LoadingIcon = function LoadingIcon(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 300 : _ref$size;
+  return __jsx(Svg, {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "".concat(size, "px"),
+    height: "".concat(size, "px"),
+    viewBox: "0 0 100 100",
+    preserveAspectRatio: "xMidYMid",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 3
+    }
+  }, __jsx("g", {
+    transform: "translate(50 50)",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 5
+    }
+  }, __jsx("g", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 7
+    }
+  }, __jsx("animateTransform", {
+    attributeName: "transform",
+    type: "rotate",
+    values: "0;45",
+    keyTimes: "0;1",
+    dur: "0.2s",
+    repeatCount: "indefinite",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 9
+    }
+  }), __jsx("path", {
+    d: "M29.491524206117255 -5.5 L37.491524206117255 -5.5 L37.491524206117255 5.5 L29.491524206117255 5.5 A30 30 0 0 1 24.742744050198738 16.964569457146712 L24.742744050198738 16.964569457146712 L30.399598299691117 22.621423706639092 L22.621423706639096 30.399598299691114 L16.964569457146716 24.742744050198734 A30 30 0 0 1 5.5 29.491524206117255 L5.5 29.491524206117255 L5.5 37.491524206117255 L-5.499999999999997 37.491524206117255 L-5.499999999999997 29.491524206117255 A30 30 0 0 1 -16.964569457146705 24.742744050198738 L-16.964569457146705 24.742744050198738 L-22.621423706639085 30.399598299691117 L-30.399598299691117 22.621423706639092 L-24.742744050198738 16.964569457146712 A30 30 0 0 1 -29.491524206117255 5.500000000000009 L-29.491524206117255 5.500000000000009 L-37.491524206117255 5.50000000000001 L-37.491524206117255 -5.500000000000001 L-29.491524206117255 -5.500000000000002 A30 30 0 0 1 -24.742744050198738 -16.964569457146705 L-24.742744050198738 -16.964569457146705 L-30.399598299691117 -22.621423706639085 L-22.621423706639092 -30.399598299691117 L-16.964569457146712 -24.742744050198738 A30 30 0 0 1 -5.500000000000011 -29.491524206117255 L-5.500000000000011 -29.491524206117255 L-5.500000000000012 -37.491524206117255 L5.499999999999998 -37.491524206117255 L5.5 -29.491524206117255 A30 30 0 0 1 16.964569457146702 -24.74274405019874 L16.964569457146702 -24.74274405019874 L22.62142370663908 -30.39959829969112 L30.399598299691117 -22.6214237066391 L24.742744050198738 -16.964569457146716 A30 30 0 0 1 29.491524206117255 -5.500000000000013 M0 -20A20 20 0 1 0 0 20 A20 20 0 1 0 0 -20",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (LoadingIcon);
+
+/***/ }),
+
 /***/ "./components/utils.tsx":
 /*!******************************!*\
   !*** ./components/utils.tsx ***!
@@ -2174,13 +1325,13 @@ var SectionBackground = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 var Section = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section.withConfig({
   displayName: "utils__Section",
   componentId: "sc-1vrdcy-1"
-})(["max-width:", "px;width:100vw;margin:0 auto;padding-top:2rem;padding-bottom:2rem;padding-left:1rem;padding-right:1rem;position:relative;@media (min-width:375px){padding-left:2rem;padding-right:2rem;}"], function (p) {
+})(["max-width:", "px;width:100%;margin:0 auto;padding:2rem 1rem;position:relative;@media (min-width:375px){padding-left:2rem;padding-right:2rem;}"], function (p) {
   return p.theme.layout.maxWidth;
 });
 var PageWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "utils__PageWrapper",
   componentId: "sc-1vrdcy-2"
-})(["display:flex;flex-direction:column;width:100vw;"]);
+})(["display:flex;flex-direction:column;width:100%;"]);
 var Colored = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span.withConfig({
   displayName: "utils__Colored",
   componentId: "sc-1vrdcy-3"
@@ -8740,25 +7891,883 @@ function v(){return(v=Object.assign||function(e){for(var t=1;t<arguments.length;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Home; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/utils */ "./components/utils.tsx");
+/* harmony import */ var _sections_HeaderSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sections/HeaderSection */ "./sections/HeaderSection/index.tsx");
+/* harmony import */ var _sections_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../sections/Footer */ "./sections/Footer/index.tsx");
+/* harmony import */ var _sections_Intro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../sections/Intro */ "./sections/Intro.tsx");
+/* harmony import */ var _sections_Questionare__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../sections/Questionare */ "./sections/Questionare.tsx");
+var _jsxFileName = "/Users/tomfa/repos/s3launchpad/pages/index.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+function Home() {
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["PageWrapper"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9,
+      columnNumber: 5
+    }
+  }, __jsx(_sections_HeaderSection__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 7
+    }
+  }), __jsx(_sections_Intro__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 7
+    }
+  }), __jsx(_sections_Questionare__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 7
+    }
+  }), __jsx(_sections_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 7
+    }
+  }));
+}
+
+/***/ }),
+
+/***/ "./sections/Footer/FooterAside.style.tsx":
+/*!***********************************************!*\
+  !*** ./sections/Footer/FooterAside.style.tsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var FooterAside = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].aside.withConfig({
+  displayName: "FooterAsidestyle__FooterAside",
+  componentId: "sc-1039921-0"
+})(["flex:1;@media (min-width:600px){text-align:", ";}"], function (props) {
+  return props.right && 'right';
+});
+/* harmony default export */ __webpack_exports__["default"] = (FooterAside);
+
+/***/ }),
+
+/***/ "./sections/Footer/FooterHeader.style.tsx":
+/*!************************************************!*\
+  !*** ./sections/Footer/FooterHeader.style.tsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_Header_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Header.style */ "./components/Header.style.tsx");
+
+
+var FooterHeader = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_components_Header_style__WEBPACK_IMPORTED_MODULE_1__["default"]).withConfig({
+  displayName: "FooterHeaderstyle__FooterHeader",
+  componentId: "ww6z9j-0"
+})(["color:", ";flex:1;font-size:1.3rem;"], function (p) {
+  return p.theme.colors.textSecondary;
+});
+/* harmony default export */ __webpack_exports__["default"] = (FooterHeader);
+
+/***/ }),
+
+/***/ "./sections/Footer/FooterLinks.style.tsx":
+/*!***********************************************!*\
+  !*** ./sections/Footer/FooterLinks.style.tsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var FooterLinks = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].ul.withConfig({
+  displayName: "FooterLinksstyle__FooterLinks",
+  componentId: "sc-141byei-0"
+})(["list-style:none;line-height:1.4;padding-left:0;"]);
+/* harmony default export */ __webpack_exports__["default"] = (FooterLinks);
+
+/***/ }),
+
+/***/ "./sections/Footer/FooterSection.style.tsx":
+/*!*************************************************!*\
+  !*** ./sections/Footer/FooterSection.style.tsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/utils */ "./components/utils.tsx");
+
+
+var FooterSection = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["default"])(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Section"]).withConfig({
+  displayName: "FooterSectionstyle__FooterSection",
+  componentId: "y68dsd-0"
+})(["display:flex;flex-direction:column;padding-top:6rem;padding-bottom:3rem;@media (min-width:600px){flex-direction:row;}"]);
+/* harmony default export */ __webpack_exports__["default"] = (FooterSection);
+
+/***/ }),
+
+/***/ "./sections/Footer/Link.tsx":
+/*!**********************************!*\
+  !*** ./sections/Footer/Link.tsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Footer/Link.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var ListItem = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].li.withConfig({
+  displayName: "Link__ListItem",
+  componentId: "tf6nt5-0"
+})([""]);
+var ListItemLink = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].a.withConfig({
+  displayName: "Link__ListItemLink",
+  componentId: "tf6nt5-1"
+})(["color:white;&:focus{outline:none;color:black;}"]);
+
+var Link = function Link(_ref) {
+  var href = _ref.href,
+      children = _ref.children;
+  return __jsx(ListItem, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 3
+    }
+  }, __jsx(ListItemLink, {
+    href: href,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 5
+    }
+  }, children));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Link);
+
+/***/ }),
+
+/***/ "./sections/Footer/index.tsx":
+/*!***********************************!*\
+  !*** ./sections/Footer/index.tsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/utils */ "./components/utils.tsx");
+/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
+/* harmony import */ var _FooterLinks_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FooterLinks.style */ "./sections/Footer/FooterLinks.style.tsx");
+/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Link */ "./sections/Footer/Link.tsx");
+/* harmony import */ var _FooterAside_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FooterAside.style */ "./sections/Footer/FooterAside.style.tsx");
+/* harmony import */ var _FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FooterHeader.style */ "./sections/Footer/FooterHeader.style.tsx");
+/* harmony import */ var _FooterSection_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./FooterSection.style */ "./sections/Footer/FooterSection.style.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Footer/index.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+
+var Footer = function Footer() {
+  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_2__["useTheme"])();
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["SectionBackground"], {
+    backgroundColor: theme.colors.secondary,
+    color: theme.colors.textSecondary,
+    marginTop: '3rem',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 5
+    }
+  }, __jsx(_FooterSection_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 7
+    }
+  }, __jsx(_FooterAside_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 9
+    }
+  }, __jsx(_FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 11
+    }
+  }, "Wat"), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 11
+    }
+  }, "I love Heroku, Vercel seems awesome, Squarespace is a great product. All respect to those who maintain their own servers at DigitalOcean."), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 11
+    }
+  }, "But when it comes to simply hosting a web app or static files, AWS S3 is usually faster, cheaper, more reliable and easier \u2013 as long as you stay clear of the AWS console."), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 11
+    }
+  }, "Let me help you with that.")), __jsx(_FooterAside_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    right: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }, __jsx(_FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 11
+    }
+  }, "Articles"), __jsx(_FooterLinks_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 11
+    }
+  }, __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    href: 'https://medium.com/trackstack/deploying-a-react-app-to-aws-s3-with-github-actions-b1cb9ba75c95',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 13
+    }
+  }, "Deploying Web apps to S3"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    href: 'https://github.com/tomfa/s3-uploader',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 13
+    }
+  }, "Allowing user upload to S3"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    href: 'https://learn.hashicorp.com/tutorials/terraform/github-actions',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 13
+    }
+  }, "Terraform CI deploy")), __jsx(_FooterHeader_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 11
+    }
+  }, "Links"), __jsx(_FooterLinks_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 11
+    }
+  }, __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    href: 'https://github.com/tomfa/ihasabucket',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 13
+    }
+  }, "Github"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    href: 'https://linkedin.com/in/fagerbekk',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 13
+    }
+  }, "LinkedIn"), __jsx(_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    href: 'https://tomfa.github.io',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 13
+    }
+  }, "Homepage")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
+
+/***/ }),
+
+/***/ "./sections/HeaderSection/index.tsx":
+/*!******************************************!*\
+  !*** ./sections/HeaderSection/index.tsx ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _MetaTags_Meta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MetaTags/Meta */ "./sections/MetaTags/Meta.tsx");
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/utils */ "./components/utils.tsx");
+/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
+/* harmony import */ var _components_Link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Link */ "./components/Link.tsx");
+/* harmony import */ var _components_Title_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Title.style */ "./components/Title.style.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/HeaderSection/index.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+var Lolrus = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].img.withConfig({
+  displayName: "HeaderSection__Lolrus",
+  componentId: "a1mdh2-0"
+})(["width:150px;position:absolute;right:-30px;top:0;@media (min-width:560px){display:block;right:30px;}"]);
+
+var HeaderSection = function HeaderSection(_ref) {
+  var _ref$title = _ref.title,
+      title = _ref$title === void 0 ? 'I has a bucket.' : _ref$title;
+  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_4__["useTheme"])();
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_3__["SectionBackground"], {
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.textSecondary,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 5
+    }
+  }, __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_3__["Section"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 7
+    }
+  }, __jsx(_MetaTags_Meta__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
+      columnNumber: 9
+    }
+  }), __jsx(_components_Title_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 9
+    }
+  }, __jsx(_components_Link__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    href: '/',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 11
+    }
+  }, title)), __jsx(Lolrus, {
+    src: '/bucket.png',
+    alt: 'Lolrus, the bucket walrus',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 9
+    }
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (HeaderSection);
+
+/***/ }),
+
+/***/ "./sections/Infrastructure.tsx":
+/*!*************************************!*\
+  !*** ./sections/Infrastructure.tsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/forms/Description.style */ "./components/forms/Description.style.tsx");
+/* harmony import */ var _components_Header_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header.style */ "./components/Header.style.tsx");
+/* harmony import */ var _utils_terraform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/terraform */ "./utils/terraform.ts");
+/* harmony import */ var _components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/code/Pre.style */ "./components/code/Pre.style.tsx");
+/* harmony import */ var _components_Mute_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Mute.style */ "./components/Mute.style.tsx");
+/* harmony import */ var _components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/icons/LoadingIcon */ "./components/icons/LoadingIcon.tsx");
+/* harmony import */ var _components_code_Code__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/code/Code */ "./components/code/Code.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Infrastructure.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+/* eslint-disable react/no-array-index-key */
+
+
+
+
+
+
+
+
+
+var Infrastructure = function Infrastructure(props) {
+  var _getTerraFormPackage = Object(_utils_terraform__WEBPACK_IMPORTED_MODULE_3__["getTerraFormPackage"])(props),
+      description = _getTerraFormPackage.description,
+      mainTfContent = _getTerraFormPackage.mainTfContent;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      loading = _useState[0],
+      setLoading = _useState[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    setTimeout(function () {
+      return setLoading(false);
+    }, 800);
+  }, [mainTfContent]);
+
+  if (loading) {
+    return __jsx(_components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28,
+        columnNumber: 12
+      }
+    });
+  }
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    as: 'h1',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 7
+    }
+  }, "Bucket is served!"), "Just run the script below!", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    bucketName: props.bucketName,
+    mainTfContent: mainTfContent,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 7
+    }
+  }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 7
+    }
+  }, "The script above will plan the infrastructure and prompt you for confirmation."), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 7
+    }
+  }, description), __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 7
+    }
+  }, "Prerequisites"), __jsx("h4", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 7
+    }
+  }, "AWS Account"), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 7
+    }
+  }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
+    href: "https://portal.aws.amazon.com/billing/signup#/start",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 9
+    }
+  }, "aws.amazon.com")), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48,
+      columnNumber: 7
+    }
+  }, "If you don't have your ", __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 37
+    }
+  }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50,
+      columnNumber: 9
+    }
+  }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:", __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 9
+    }
+  }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 11
+    }
+  }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA...")), __jsx("h4", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 7
+    }
+  }, "Terraform installed"), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60,
+      columnNumber: 7
+    }
+  }, "If you haven't already,", ' ', __jsx("a", {
+    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62,
+      columnNumber: 9
+    }
+  }, "install Terraform"), "\n", __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 9
+    }
+  }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67,
+      columnNumber: 11
+    }
+  }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 9
+    }
+  }, "See", ' ', __jsx("a", {
+    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 11
+    }
+  }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms.")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Infrastructure);
+
+/***/ }),
+
+/***/ "./sections/Intro.tsx":
+/*!****************************!*\
+  !*** ./sections/Intro.tsx ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/utils */ "./components/utils.tsx");
+/* harmony import */ var _components_BlockQuote__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/BlockQuote */ "./components/BlockQuote/index.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Intro.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+var Intro = function Intro() {
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Section"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 3
+    }
+  }, __jsx(_components_BlockQuote__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    author: 'Lolrus, the bucket walrus',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 5
+    }
+  }, __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Hosting a ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
+    secondary: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8,
+      columnNumber: 19
+    }
+  }, " web app "), "or need to store uploads? Put them in S3 buckets. It's", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
+    secondary: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 9
+    }
+  }, " cheap "), "and", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
+    secondary: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 9
+    }
+  }, " reliable"), ". With CloudFront cache, it'll be blazingly ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
+    secondary: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 33
+    }
+  }, "fast"), ". Let's see how", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
+    secondary: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 9
+    }
+  }, " easy "), "it can be.")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Intro);
+
+/***/ }),
+
+/***/ "./sections/MetaTags/Meta.tsx":
+/*!************************************!*\
+  !*** ./sections/MetaTags/Meta.tsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/head */ "./node_modules/next/dist/next-server/lib/head.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/MetaTags/Meta.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+var Meta = function Meta() {
+  return __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4,
+      columnNumber: 3
+    }
+  }, __jsx("title", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 5
+    }
+  }, "ihasabucket - instant web app hosting"), __jsx("meta", {
+    property: "og:image",
+    content: "https://user-images.githubusercontent.com/1502702/92998877-e9e1cc00-f51c-11ea-98e6-331460921cde.jpg",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6,
+      columnNumber: 5
+    }
+  }), __jsx("meta", {
+    property: "og:url",
+    content: "https://ihasabucket.it",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 5
+    }
+  }), __jsx("meta", {
+    property: "og:title",
+    content: "I has a bucket - instant web app hosting",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 5
+    }
+  }), __jsx("meta", {
+    property: "og:description",
+    content: "Guide for hosting React, Vue, Gatsby or user uploads on AWS S3 buckets",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 5
+    }
+  }), __jsx("link", {
+    rel: "icon",
+    href: "/favicon.ico",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 5
+    }
+  }), __jsx("link", {
+    href: "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap",
+    rel: "stylesheet",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21,
+      columnNumber: 5
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Meta);
+
+/***/ }),
+
+/***/ "./sections/Questionare.tsx":
+/*!**********************************!*\
+  !*** ./sections/Questionare.tsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/utils */ "./components/utils.tsx");
-/* harmony import */ var _components_HeaderSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/HeaderSection */ "./components/HeaderSection/index.tsx");
-/* harmony import */ var _components_BlockQuote__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/BlockQuote */ "./components/BlockQuote/index.tsx");
-/* harmony import */ var _components_forms_RadioGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/forms/RadioGroup */ "./components/forms/RadioGroup.tsx");
-/* harmony import */ var _components_forms_CheckboxGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/forms/CheckboxGroup */ "./components/forms/CheckboxGroup.tsx");
-/* harmony import */ var _utils_questions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/questions */ "./utils/questions.ts");
-/* harmony import */ var _components_Infrastructure__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Infrastructure */ "./components/Infrastructure/index.tsx");
-/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../enums */ "./enums.ts");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer/index.tsx");
-/* harmony import */ var _components_forms_TextInput__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/forms/TextInput */ "./components/forms/TextInput.tsx");
-/* harmony import */ var _components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/forms/Dropdown */ "./components/forms/Dropdown.tsx");
-/* harmony import */ var _utils_questionData__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../utils/questionData */ "./utils/questionData.ts");
+/* harmony import */ var _components_forms_RadioGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/forms/RadioGroup */ "./components/forms/RadioGroup.tsx");
+/* harmony import */ var _components_forms_CheckboxGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/forms/CheckboxGroup */ "./components/forms/CheckboxGroup.tsx");
+/* harmony import */ var _utils_questions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/questions */ "./utils/questions.ts");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../enums */ "./enums.ts");
+/* harmony import */ var _components_forms_TextInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/forms/TextInput */ "./components/forms/TextInput.tsx");
+/* harmony import */ var _components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/forms/Dropdown */ "./components/forms/Dropdown.tsx");
+/* harmony import */ var _utils_questionData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/questionData */ "./utils/questionData.ts");
+/* harmony import */ var _Infrastructure__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Infrastructure */ "./sections/Infrastructure.tsx");
 
 
-var _jsxFileName = "/Users/tomfa/repos/s3launchpad/pages/index.tsx",
-    _this = undefined;
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Questionare.tsx";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -8778,112 +8787,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-
-
-function Home() {
-  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["PageWrapper"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30,
-      columnNumber: 5
-    }
-  }, __jsx(_components_HeaderSection__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31,
-      columnNumber: 7
-    }
-  }), __jsx(Intro, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32,
-      columnNumber: 7
-    }
-  }), __jsx(Questionare, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 7
-    }
-  }), __jsx(_components_Footer__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34,
-      columnNumber: 7
-    }
-  }));
-}
-
-var Intro = function Intro() {
-  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Section"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 3
-    }
-  }, __jsx(_components_BlockQuote__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    author: 'Lolrus, the bucket walrus',
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 5
-    }
-  }, __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, "Hosting a ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
-    secondary: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 19
-    }
-  }, " web app "), "or need to store uploads? Put them in S3 buckets. It's", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
-    secondary: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 45,
-      columnNumber: 9
-    }
-  }, " cheap "), "and", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
-    secondary: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47,
-      columnNumber: 9
-    }
-  }, " reliable"), ". With CloudFront cache, it'll be blazingly ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
-    secondary: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 33
-    }
-  }, "fast"), ". Let's see how", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Colored"], {
-    secondary: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 9
-    }
-  }, " easy "), "it can be.")));
-};
-
 var Questionare = function Questionare() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(Object(_utils_questions__WEBPACK_IMPORTED_MODULE_7__["generateDefaultRadioSelectedOptions"])(_utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"])),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(Object(_utils_questions__WEBPACK_IMPORTED_MODULE_5__["generateDefaultRadioSelectedOptions"])(_utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"])),
       selectedRadioOptions = _useState[0],
       setSelectedRadioOptions = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(Object(_utils_questions__WEBPACK_IMPORTED_MODULE_7__["generateDefaultCheckboxSelectedOptions"])(_utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"])),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(Object(_utils_questions__WEBPACK_IMPORTED_MODULE_5__["generateDefaultCheckboxSelectedOptions"])(_utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"])),
       selectedCheckboxOptions = _useState2[0],
       setSelectedCheckboxOptions = _useState2[1];
 
@@ -8896,11 +8805,11 @@ var Questionare = function Questionare() {
       setQuestionRenderCount = _useState4[1];
 
   var hasSelected = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (questionId, value) {
-    if (value === _enums__WEBPACK_IMPORTED_MODULE_9__["VALUES"].NOT_EMPTY) {
+    if (value === _enums__WEBPACK_IMPORTED_MODULE_6__["VALUES"].NOT_EMPTY) {
       return hasAnswered(questionId);
     }
 
-    var question = _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].find(function (q) {
+    var question = _utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"].find(function (q) {
       return q.id === questionId;
     });
 
@@ -8929,7 +8838,7 @@ var Questionare = function Questionare() {
         return o.value === value;
       });
     }
-  }, [selectedRadioOptions, selectedCheckboxOptions, _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"]]);
+  }, [selectedRadioOptions, selectedCheckboxOptions, _utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"]]);
 
   var getTextAnswer = function getTextAnswer(question) {
     return textAnswers[question.id];
@@ -8940,7 +8849,7 @@ var Questionare = function Questionare() {
   };
 
   var hasAnswered = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (questionId) {
-    var question = _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].find(function (q) {
+    var question = _utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"].find(function (q) {
       return q.id === questionId;
     });
 
@@ -8961,24 +8870,24 @@ var Questionare = function Questionare() {
     if (question.type === 'text') {
       return Object.keys(textAnswers).includes(questionId);
     }
-  }, [selectedRadioOptions, selectedCheckboxOptions, _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"]]);
+  }, [selectedRadioOptions, selectedCheckboxOptions, _utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"]]);
   var shouldSkip = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (question) {
     return question.showIf && !!question.showIf.find(function (c) {
       return !hasSelected(c.questionId, c.value);
     });
   }, [hasSelected]);
-  var hasAnsweredAll = !_utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].find(function (q) {
+  var hasAnsweredAll = !_utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"].find(function (q) {
     return !hasAnswered(q.id) && !shouldSkip(q);
   });
   return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_2__["Section"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127,
+      lineNumber: 95,
       columnNumber: 5
     }
-  }, _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].slice(0, questionRenderCount + 1).map(function (question) {
-    var indexOfAllQuestions = _utils_questions__WEBPACK_IMPORTED_MODULE_7__["questions"].indexOf(question);
+  }, _utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"].slice(0, questionRenderCount + 1).map(function (question) {
+    var indexOfAllQuestions = _utils_questions__WEBPACK_IMPORTED_MODULE_5__["questions"].indexOf(question);
     var isLast = indexOfAllQuestions === questionRenderCount;
 
     if (shouldSkip(question)) {
@@ -8993,7 +8902,7 @@ var Questionare = function Questionare() {
 
     if (question.type === 'radio') {
       var answerValue = selectedRadioOptions[question.id] || null;
-      return __jsx(_components_forms_RadioGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      return __jsx(_components_forms_RadioGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
         id: question.id,
         key: question.id,
         options: question.options,
@@ -9011,14 +8920,14 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140,
+          lineNumber: 108,
           columnNumber: 13
         }
       });
     }
 
     if (question.type === 'checkbox') {
-      return __jsx(_components_forms_CheckboxGroup__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      return __jsx(_components_forms_CheckboxGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
         id: question.id,
         key: question.id,
         options: question.options,
@@ -9036,14 +8945,14 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 161,
+          lineNumber: 129,
           columnNumber: 13
         }
       });
     }
 
     if (question.type === 'text') {
-      return __jsx(_components_forms_TextInput__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      return __jsx(_components_forms_TextInput__WEBPACK_IMPORTED_MODULE_7__["default"], {
         id: question.id,
         key: question.id,
         placeholder: question.placeholder,
@@ -9061,7 +8970,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 182,
+          lineNumber: 150,
           columnNumber: 13
         }
       });
@@ -9070,7 +8979,7 @@ var Questionare = function Questionare() {
     if (question.type === 'dropdown') {
       var _answerValue = selectedRadioOptions[question.id] || null;
 
-      return __jsx(_components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      return __jsx(_components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_8__["default"], {
         id: question.id,
         key: question.id,
         options: question.options,
@@ -9088,28 +8997,30 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 204,
+          lineNumber: 172,
           columnNumber: 13
         }
       });
     }
 
     throw new Error("Unexpected question type ".concat(question.type));
-  }), hasAnsweredAll && __jsx(_components_Infrastructure__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    webApp: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_9__["QUESTION_ID"].storageType, 'webapp'),
-    shared: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_9__["QUESTION_ID"].aclPublic, _enums__WEBPACK_IMPORTED_MODULE_9__["BOOL_VALUE"].TRUE),
-    staging: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_9__["QUESTION_ID"].stagingEnv, _enums__WEBPACK_IMPORTED_MODULE_9__["BOOL_VALUE"].TRUE),
-    staticPage: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_9__["QUESTION_ID"].webappIsStatic, _enums__WEBPACK_IMPORTED_MODULE_9__["BOOL_VALUE"].TRUE),
-    bucketName: getTextAnswer(_utils_questionData__WEBPACK_IMPORTED_MODULE_13__["default"]['domain-name']),
-    region: getRadioAnswer(_utils_questionData__WEBPACK_IMPORTED_MODULE_13__["default"][_enums__WEBPACK_IMPORTED_MODULE_9__["QUESTION_ID"].region]).value,
+  }), hasAnsweredAll && __jsx(_Infrastructure__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    webApp: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].storageType, 'webapp'),
+    shared: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].aclPublic, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
+    staging: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].stagingEnv, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
+    staticPage: hasSelected(_enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].webappIsStatic, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
+    bucketName: getTextAnswer(_utils_questionData__WEBPACK_IMPORTED_MODULE_9__["default"]['domain-name']),
+    region: getRadioAnswer(_utils_questionData__WEBPACK_IMPORTED_MODULE_9__["default"][_enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].region]).value,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 226,
+      lineNumber: 194,
       columnNumber: 9
     }
   }));
 };
+
+/* harmony default export */ __webpack_exports__["default"] = (Questionare);
 
 /***/ }),
 
@@ -9143,7 +9054,8 @@ var theme = {
     textPrimary: '#000000',
     textSecondary: '#fafafa',
     textMuted: '#888888',
-    links: '#0070f3'
+    links: '#0070f3',
+    success: '#19c419'
   },
   layout: {
     maxWidth: 640
@@ -9176,6 +9088,31 @@ var QuestionType;
   QuestionType["TEXT"] = "text";
   QuestionType["DROPDOWN"] = "dropdown";
 })(QuestionType || (QuestionType = {}));
+
+/***/ }),
+
+/***/ "./utils/clipboard.ts":
+/*!****************************!*\
+  !*** ./utils/clipboard.ts ***!
+  \****************************/
+/*! exports provided: copyToClipBoard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "copyToClipBoard", function() { return copyToClipBoard; });
+var copyToClipBoard = function copyToClipBoard(texts) {
+  var textField = window.document.createElement('textarea');
+  textField.setAttribute('style', 'position: absolute; bottom: 0; top: 0; width: 1; height: 1; opacity: 0.01;');
+  texts.forEach(function (text) {
+    textField.append(text);
+    textField.append('\n');
+  });
+  document.body.appendChild(textField);
+  textField.select();
+  document.execCommand('copy');
+  document.body.removeChild(textField);
+};
 
 /***/ }),
 
@@ -9347,7 +9284,153 @@ var questionsMap = _questionData__WEBPACK_IMPORTED_MODULE_1__["default"];
 
 /***/ }),
 
-/***/ 2:
+/***/ "./utils/terraform.ts":
+/*!****************************!*\
+  !*** ./utils/terraform.ts ***!
+  \****************************/
+/*! exports provided: getTerraFormPackage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTerraFormPackage", function() { return getTerraFormPackage; });
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../enums */ "./enums.ts");
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+var getMainTfContent = function getMainTfContent(_ref) {
+  var webApp = _ref.webApp,
+      staging = _ref.staging,
+      shared = _ref.shared,
+      staticPage = _ref.staticPage,
+      region = _ref.region,
+      bucketName = _ref.bucketName;
+  var source = webApp ? 'git::https://github.com/tomfa/terraform.git//webapp' : 'git::https://github.com/tomfa/terraform.git//files';
+  var parameters = {
+    bucket_name: bucketName ? "\"".concat(bucketName, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].BUCKET_NAME),
+    aws_region: region ? "\"".concat(region, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].AWS_REGION)
+  };
+
+  if (webApp) {
+    parameters.error_path = '"/index.html"';
+    parameters.error_code = staticPage ? '404' : '200';
+  } else {
+    parameters.acl = shared ? '"public-read"' : '"private"';
+  }
+
+  var genericBucketName = webApp ? 'web-app' : 'file-storage';
+  var modules = staging ? [{
+    name: "".concat(genericBucketName, "-production"),
+    parameters: parameters
+  }, {
+    name: "".concat(genericBucketName, "-staging"),
+    parameters: _objectSpread({}, parameters, {
+      bucket_name: bucketName ? "\"".concat(bucketName, ".staging\"") : "\"\\${var.bucket_name}.staging\""
+    })
+  }] : [{
+    name: genericBucketName,
+    parameters: parameters
+  }];
+  var lines = [];
+
+  var isUsed = function isUsed(inputVariable) {
+    return !!modules.find(function (m) {
+      return !!Object.values(m.parameters).find(function (p) {
+        return p.includes("var.".concat(inputVariable));
+      });
+    });
+  };
+
+  Object.values(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"]).filter(isUsed).forEach(function (input) {
+    var description = Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getInputDescription"])(input);
+
+    if (!description) {
+      lines.push("variable \"".concat(input, "\" {}"));
+    } else {
+      lines.push("variable \"".concat(input, "\" {"));
+      lines.push("  description = \"".concat(description, "\""));
+      lines.push("}");
+    }
+  });
+  modules.forEach(function (module) {
+    lines.push('');
+    lines.push("module \"".concat(module.name, "\" {"));
+    lines.push("  source = \"".concat(source, "\""));
+    Object.entries(module.parameters).forEach(function (_ref2) {
+      var _ref3 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref2, 2),
+          key = _ref3[0],
+          value = _ref3[1];
+
+      lines.push("  ".concat(key, " = ").concat(value));
+    });
+    lines.push("}");
+  });
+  lines.push('');
+  Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getOutput"])({
+    bucketType: webApp ? _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP : _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].FILE_STORAGE,
+    hasStaging: staging
+  }).forEach(function (output) {
+    lines.push("output \"".concat(output.label, "\" {"));
+    lines.push("  value = ".concat(output.value));
+    lines.push('}');
+  });
+  return lines;
+};
+
+var getTerraPackageDescription = function getTerraPackageDescription(_ref4) {
+  var webApp = _ref4.webApp,
+      staging = _ref4.staging,
+      shared = _ref4.shared,
+      staticPage = _ref4.staticPage,
+      region = _ref4.region;
+  var count = staging ? 'two sets of' : 'a';
+  var usecase = getUseCaseDescription({
+    webApp: webApp,
+    staticPage: staticPage,
+    shared: shared
+  });
+  var iamUserInfo = staging ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment' : 'A set of AWS keys will be created that is able to upload to the bucket';
+  return "Once run, it will create ".concat(count, " S3 bucket").concat(webApp ? ' + Cloudfront' : '', " in ").concat(region, ", configured ").concat(usecase, ". ").concat(iamUserInfo, ". Generated keys will be shown as output in the terminal.");
+};
+
+var getUseCaseDescription = function getUseCaseDescription(_ref5) {
+  var webApp = _ref5.webApp,
+      staticPage = _ref5.staticPage,
+      shared = _ref5.shared;
+
+  if (webApp) {
+    if (staticPage) {
+      return 'to serve a solid statically generated web app';
+    }
+
+    return 'to serve a blazingly fast single-page web app';
+  }
+
+  if (shared) {
+    return 'for hosting publicly available files';
+  }
+
+  return 'for storing and serving files for authorized requests';
+};
+
+var getTerraFormPackage = function getTerraFormPackage(props) {
+  return {
+    mainTfContent: getMainTfContent(props),
+    description: getTerraPackageDescription(props)
+  };
+};
+
+/***/ }),
+
+/***/ 1:
 /*!***************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftomfa%2Frepos%2Fs3launchpad%2Fpages%2Findex.tsx ***!
   \***************************************************************************************************************************/
@@ -9370,5 +9453,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
