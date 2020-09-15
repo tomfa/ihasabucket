@@ -187,7 +187,7 @@ const Questionare = () => {
               onSubmit={(value) => {
                 setTextAnswers((prev) => ({
                   ...prev,
-                  [question.id]: value,
+                  [question.id]: value.trim().toLowerCase(),
                 }));
                 setQuestionRenderCount((c) =>
                   Math.max(c, indexOfAllQuestions + 1)
