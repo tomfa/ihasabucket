@@ -3,12 +3,15 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { copyToClipBoard } from '../../utils/clipboard';
 import Mute from '../Mute.style';
+import { Colored } from '../utils';
+import { useTheme } from '../../styles/theme';
 import Pre from './Pre.style';
 import PreButton from './PreButton.style';
 
 type Props = { mainTfContent: string[]; bucketName: string };
 
 const Code = ({ mainTfContent, bucketName }: Props) => {
+  const theme = useTheme();
   const [hasCopied, setHasCopied] = useState<boolean>(false);
   const lines = useMemo(
     () => [
@@ -53,7 +56,12 @@ const Code = ({ mainTfContent, bucketName }: Props) => {
         );
       })}
       <PreButton onClick={copy}>
-        {(hasCopied && 'Copied!') || 'Copy to clipboard'}
+        {(hasCopied && (
+          <span>
+            Copied! <Colored color={theme.colors.success}>✓</Colored>
+          </span>
+        )) ||
+          'Copy to clipboard'}
       </PreButton>
     </Pre>
   );

@@ -18,6 +18,7 @@ export const theme = {
     textSecondary: '#fafafa',
     textMuted: '#888888',
     links: '#0070f3',
+    success: '#19c419',
   },
   layout: {
     maxWidth: 640,
