@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Mute from './Mute.style';
 import Pre from './Pre.style';
 import PreButton from './PreButton.style';
@@ -46,6 +46,9 @@ const Code = ({ mainTfContent, bucketName }: Props) => {
     copyToClipBoard(lines);
     setHasCopied(true);
   }, [lines]);
+
+  useEffect(() => setHasCopied(false), [mainTfContent, bucketName]);
+
   return (
     <Pre>
       {lines.map((line, i) => {
