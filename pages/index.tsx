@@ -40,7 +40,7 @@ const Intro = () => (
   <Section>
     <BlockQuote author={'Lolrus, the bucket walrus'}>
       <>
-        Hosting a <Colored secondary> webapp </Colored>
+        Hosting a <Colored secondary> web app </Colored>
         or need to store uploads? Put them in S3 buckets. It&apos;s
         <Colored secondary> cheap </Colored>
         and

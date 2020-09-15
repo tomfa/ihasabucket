@@ -1,6 +1,6 @@
 # ihasabucket
 
-> Webapplication or file hosting on AWS in 60 seconds. 
+> Web app or file hosting on AWS in 60 seconds. 
 
 NextJS app for [ihasabucket.it](https://ihasabucket.it)
 

@@ -33,7 +33,8 @@ const Infrastructure = (props: Props) => {
       Just run the script below!
       <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
       <Description>
-        The script above ask you for desired bucket name and AWS region.
+        The script above will plan the infrastructure and prompt you for
+        confirmation.
       </Description>
       <Description>{description}</Description>
       <Header>Prerequisites</Header>

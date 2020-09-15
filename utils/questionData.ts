@@ -26,9 +26,9 @@ const questionData = {
     title: 'What are we storing?',
     type: QuestionType.RADIO,
     description:
-      'Unlike normal file storage, webapps like React and Vue have a default path, and error pages.',
+      'Unlike normal file storage, web apps like React and Vue have a default path, and error pages.',
     options: [
-      { value: 'webapp', label: 'A webapp' },
+      { value: 'webapp', label: 'A web app' },
       { value: 'files', label: 'Static files or media uploads' },
     ],
   } as RadioQuestion,
