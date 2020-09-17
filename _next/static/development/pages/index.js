@@ -354,7 +354,7 @@ __webpack_require__.r(__webpack_exports__);
 var Pre = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].pre.withConfig({
   displayName: "Prestyle__Pre",
   componentId: "sc-1cjlqsr-0"
-})(["position:relative;background-color:#3a3a3a;color:white;padding:1rem;margin-top:1.7rem;margin-bottom:1.7rem;overflow:scroll;"]);
+})(["position:relative;background-color:#3a3a3a;color:white;padding:1rem;margin-top:1.7rem;margin-bottom:1.7rem;overflow:auto;"]);
 /* harmony default export */ __webpack_exports__["default"] = (Pre);
 
 /***/ }),
