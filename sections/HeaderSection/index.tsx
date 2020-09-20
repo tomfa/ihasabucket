@@ -10,10 +10,15 @@ const Lolrus = styled.img`
   position: absolute;
   right: -30px;
   top: 0;
+  transition: transform 300ms;
 
   @media (min-width: 560px) {
     display: block;
     right: 30px;
+  }
+
+  &:hover {
+    transform: translateY(30px);
   }
 `;
 
