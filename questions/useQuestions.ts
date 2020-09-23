@@ -23,7 +23,9 @@ const useQuestions = () => {
         ...map,
         [question.id]: getDefaultAnswer(
           question,
-          urlData[question.id] ? String(urlData[question.id]) : undefined
+          urlData[question.id] !== undefined
+            ? String(urlData[question.id])
+            : undefined
         ),
       }),
       {} as AnswerMap
