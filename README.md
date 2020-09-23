@@ -1,10 +1,9 @@
-# ihasabucket
+![Photo by Jay Ruzesky on Unsplash](./public/lolrus.png)
 
 > Web app or file hosting on AWS in 60 seconds. 
 
 NextJS app for [ihasabucket.it](https://ihasabucket.it)
 
-![Photo by Jay Ruzesky on Unsplash](https://user-images.githubusercontent.com/1502702/92998877-e9e1cc00-f51c-11ea-98e6-331460921cde.jpg)
 
 ### Setup
 
