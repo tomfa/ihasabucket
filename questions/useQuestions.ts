@@ -33,7 +33,16 @@ const useQuestions = () => {
     const isFirstRender = !Object.keys(answers).length;
     const isInitialLoadFromUrl = Object.keys(urlData).length;
     if (isInitialLoadFromUrl) {
-      setAnsweredQuestions(Object.keys(urlData) as QUESTION_ID[]);
+      const urlQuestions = Object.keys(urlData) as QUESTION_ID[];
+
+      // TODO: dirty hack to assume that first answer is answered if there are others
+      if (
+        urlQuestions.length &&
+        !urlQuestions.includes(QUESTION_ID.bucketName)
+      ) {
+        urlQuestions.push(QUESTION_ID.bucketName);
+      }
+      setAnsweredQuestions(urlQuestions);
       setAnswers(defaultAnswers);
     } else if (isFirstRender) {
       setAnswers(defaultAnswers);
