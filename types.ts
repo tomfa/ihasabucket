@@ -19,19 +19,37 @@ export enum QuestionType {
   DROPDOWN = 'dropdown',
 }
 
-export type Question = CheckboxQuestion | InputQuestion | DropdownQuestion;
+export type Question =
+  | CheckboxQuestion
+  | RadioQuestion
+  | InputQuestion
+  | DropdownQuestion;
+export type Answer = RadioAnswer | CheckboxAnswer | TextAnswer | DropdownAnswer;
+
+export type RadioAnswer = Option | null;
+export type CheckboxAnswer = Option[] | null;
+export type TextAnswer = string | null;
+export type DropdownAnswer = Option | null;
 
 export type CheckboxQuestion = {
   id: QUESTION_ID;
   title: string;
-  type: QuestionType.RADIO | QuestionType.CHECKBOX;
+  type: QuestionType.CHECKBOX;
   defaultValue?: string | number | string[] | number[];
   description?: string;
   showIf?: QuestionDisplayCondition[];
   options: Option[];
 };
 
-export type RadioQuestion = CheckboxQuestion;
+export type RadioQuestion = {
+  id: QUESTION_ID;
+  title: string;
+  type: QuestionType.RADIO;
+  defaultValue?: string | number | string[] | number[];
+  description?: string;
+  showIf?: QuestionDisplayCondition[];
+  options: Option[];
+};
 
 export type InputQuestion = {
   id: QUESTION_ID;
@@ -44,6 +62,7 @@ export type InputQuestion = {
   showIf?: QuestionDisplayCondition[];
   options?: string[];
 };
+
 export type DropdownQuestion = {
   id: QUESTION_ID;
   title: string;
@@ -54,3 +73,5 @@ export type DropdownQuestion = {
   showIf?: QuestionDisplayCondition[];
   options: Option[];
 };
+
+export type AnswerMap = { [question in QUESTION_ID]: Answer };
