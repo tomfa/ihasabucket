@@ -6,12 +6,12 @@ export enum VALUES {
 
 export enum QUESTION_ID {
   createCertificates = 'create-certificates',
-  domainName = 'domain-name',
-  storageType = 'storage-type',
-  webappIsStatic = 'webapp-type',
-  aclPublic = 'acl-public',
+  bucketName = 'bucket',
+  storageType = 'storage',
+  webappIsStatic = 'static',
+  aclPublic = 'public',
   configureDns = 'configure-dns',
-  stagingEnv = 'staging-env',
+  stagingEnv = 'staging',
   region = 'region',
 }
 

@@ -97,7 +97,7 @@ const Questionare = () => {
             QUESTION_ID.webappIsStatic,
             BOOL_VALUE.TRUE
           )}
-          bucketName={getNormalizedAnswer(answers, QUESTION_ID.domainName)}
+          bucketName={getNormalizedAnswer(answers, QUESTION_ID.bucketName)}
           region={getNormalizedAnswer(answers, QUESTION_ID.region)}
         />
       )}

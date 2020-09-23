@@ -9,7 +9,7 @@ import {
 
 export const questions: Question[] = [
   {
-    id: QUESTION_ID.domainName,
+    id: QUESTION_ID.bucketName,
     title: '',
     type: QuestionType.TEXT,
     placeholders: [
@@ -74,7 +74,7 @@ export const questions: Question[] = [
         label: `No, I'll set up DNS afterwards`,
       },
     ],
-    showIf: [{ questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY }],
+    showIf: [{ questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY }],
   } as RadioQuestion,
   {
     id: QUESTION_ID.createCertificates,
@@ -90,7 +90,7 @@ export const questions: Question[] = [
       },
     ],
     showIf: [
-      { questionId: QUESTION_ID.domainName, value: VALUES.NOT_EMPTY },
+      { questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY },
       { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
     ],
   } as RadioQuestion,
