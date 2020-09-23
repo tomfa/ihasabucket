@@ -4,6 +4,7 @@ import {
   AnswerMap,
   CheckboxAnswer,
   DropdownAnswer,
+  Option,
   Question,
   QuestionDisplayCondition,
   QuestionType,
@@ -12,20 +13,22 @@ import {
 } from '../types';
 import { questions, questionMap } from './data';
 
-export const getDefaultAnswer = (question: Question): Answer => {
+export const getDefaultAnswer = (
+  question: Question,
+  answer?: string
+): Answer => {
   if (question.type === QuestionType.TEXT) {
-    return question.defaultValue || null;
+    return answer || question.defaultValue || null;
   }
   if (
     question.type === QuestionType.RADIO ||
     question.type === QuestionType.DROPDOWN
   ) {
-    return (
-      question.options.find((o) => o?.value === question.defaultValue) || null
-    );
+    const defaultValue = answer || question.defaultValue;
+    return question.options.find((o) => o?.value === defaultValue) || null;
   }
   if (question.type === QuestionType.CHECKBOX) {
-    const defaultValue = question.defaultValue;
+    const defaultValue = answer || question.defaultValue;
     if (!defaultValue) {
       return [];
     }
@@ -41,27 +44,31 @@ export const getDefaultAnswer = (question: Question): Answer => {
   }
 };
 
+export const normalizeAnswer = (answer: Answer): string => {
+  if (answer === null) {
+    return '';
+  }
+  if (
+    typeof answer === 'string' ||
+    typeof answer === 'number' ||
+    typeof answer === 'boolean'
+  ) {
+    return String(answer);
+  }
+  if (answer instanceof Array) {
+    return (answer as Option[]).map((o) => o.value).join(',');
+  }
+  if (answer.value !== null) {
+    return answer.value;
+  }
+  return '';
+};
+
 export const getNormalizedAnswer = (
   answers: AnswerMap,
   questionId: QUESTION_ID
 ): string => {
-  const question = questionMap[questionId];
-  if (question.type === QuestionType.RADIO) {
-    const answer = answers[questionId] as RadioAnswer;
-    return answer.value;
-  }
-  if (question.type === QuestionType.CHECKBOX) {
-    const answer = answers[questionId] as CheckboxAnswer;
-    return answer.map((o) => o.value).join(', ');
-  }
-  if (question.type === QuestionType.DROPDOWN) {
-    const answer = answers[questionId] as DropdownAnswer;
-    return answer.value;
-  }
-  if (question.type === QuestionType.TEXT) {
-    const answer = answers[questionId] as TextAnswer;
-    return answer;
-  }
+  return normalizeAnswer(answers[questionId]);
 };
 
 export const hasAnswered = (

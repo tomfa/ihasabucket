@@ -27,7 +27,7 @@ const TextInput = ({
   placeholders,
   description,
 }: Props) => {
-  const [inputValue, setInputValue] = useState<string>(value);
+  const [inputValue, setInputValue] = useState<string>(value || '');
   const [hasSubmitted, setSubmitted] = useState<boolean>(false);
   const [placeholderIndex, setPlaceholderIndex] = useState<number>(
     placeholders?.length ? 0 : -1
@@ -35,6 +35,12 @@ const TextInput = ({
   const [currentPlaceHolder, setCurrentPlaceHolder] = useState<string>(
     placeholderIndex === -1 ? placeholder : placeholders[placeholderIndex]
   );
+  useEffect(() => {
+    if (value !== null && value !== undefined) {
+      setInputValue(value);
+      setSubmitted(true);
+    }
+  }, [value]);
   useEffect(() => {
     if (!placeholders && placeholders.length < 2) {
       return;
@@ -82,9 +88,10 @@ const TextInput = ({
           value={inputValue}
           placeholder={currentPlaceHolder}
           onChange={(e) => {
-            setInputValue(e.target.value);
             if (hasSubmitted) {
               onSubmit(e.target.value);
+            } else {
+              setInputValue(e.target.value);
             }
           }}
           onKeyPress={(e) => e.key === 'Enter' && submit(inputValue)}

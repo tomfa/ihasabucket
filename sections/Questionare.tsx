@@ -3,7 +3,12 @@ import { Section } from '../components/utils';
 import RadioGroup from '../components/forms/RadioGroup';
 import CheckboxGroup from '../components/forms/CheckboxGroup';
 import { BOOL_VALUE, QUESTION_ID } from '../enums';
-import { CheckboxAnswer, DropdownAnswer, RadioAnswer } from '../types';
+import {
+  CheckboxAnswer,
+  DropdownAnswer,
+  RadioAnswer,
+  TextAnswer,
+} from '../types';
 import TextInput from '../components/forms/TextInput';
 import DropDown from '../components/forms/Dropdown';
 import { getNormalizedAnswer, hasAnswered } from '../questions/utils';
@@ -62,10 +67,12 @@ const Questionare = () => {
           );
         }
         if (question.type === 'text') {
+          const answer = answers[question.id] as TextAnswer;
           return (
             <TextInput
               id={question.id}
               key={question.id}
+              value={answer}
               placeholder={question.placeholder}
               placeholders={question.placeholders}
               onSubmit={(value) => answerQuestion(question.id, value)}
