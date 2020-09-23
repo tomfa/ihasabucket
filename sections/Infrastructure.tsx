@@ -8,6 +8,7 @@ import Pre from '../components/code/Pre.style';
 import Mute from '../components/Mute.style';
 import LoadingIcon from '../components/icons/LoadingIcon';
 import Code from '../components/code/Code';
+import { useCurrentUrl } from '../utils/useCurrentUrl';
 
 type Props = {
   webApp: boolean;
@@ -20,6 +21,7 @@ type Props = {
 
 const Infrastructure = (props: Props) => {
   const { description, mainTfContent } = getTerraFormPackage(props);
+  const currentUrl = useCurrentUrl();
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 800);
@@ -30,7 +32,8 @@ const Infrastructure = (props: Props) => {
   return (
     <>
       <Header as={'h1'}>Bucket is served!</Header>
-      Just run the script below!
+      Just run the script below, or{' '}
+      <a href={currentUrl}>save a link to this configuration</a> for later.
       <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
       <Description>
         The script above will plan the infrastructure and prompt you for
