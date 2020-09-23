@@ -8171,9 +8171,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_useUrlState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/useUrlState */ "./utils/useUrlState.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./questions/utils.ts");
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../enums */ "./enums.ts");
+/* harmony import */ var _utils_useUrlState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/useUrlState */ "./utils/useUrlState.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils */ "./questions/utils.ts");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
 
 
 
@@ -8186,12 +8187,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 var useQuestions = function useQuestions() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([]),
       answeredQuestions = _useState[0],
       setAnsweredQuestions = _useState[1];
 
-  var _useUrlState = Object(_utils_useUrlState__WEBPACK_IMPORTED_MODULE_3__["useUrlState"])(),
+  var _useUrlState = Object(_utils_useUrlState__WEBPACK_IMPORTED_MODULE_4__["useUrlState"])(),
       urlData = _useUrlState.urlData,
       updateUrlData = _useUrlState.updateUrlData;
 
@@ -8204,27 +8206,33 @@ var useQuestions = function useQuestions() {
       return;
     }
 
-    var defaultAnswers = _data__WEBPACK_IMPORTED_MODULE_5__["questions"].reduce(function (map, question) {
-      return _objectSpread({}, map, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, question.id, Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getDefaultAnswer"])(question, urlData[question.id] ? String(urlData[question.id]) : undefined)));
+    var defaultAnswers = _data__WEBPACK_IMPORTED_MODULE_6__["questions"].reduce(function (map, question) {
+      return _objectSpread({}, map, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, question.id, Object(_utils__WEBPACK_IMPORTED_MODULE_5__["getDefaultAnswer"])(question, urlData[question.id] !== undefined ? String(urlData[question.id]) : undefined)));
     }, {});
     var isFirstRender = !Object.keys(answers).length;
     var isInitialLoadFromUrl = Object.keys(urlData).length;
 
     if (isInitialLoadFromUrl) {
-      setAnsweredQuestions(Object.keys(urlData));
+      var urlQuestions = Object.keys(urlData); // TODO: dirty hack to assume that first answer is answered if there are others
+
+      if (urlQuestions.length && !urlQuestions.includes(_enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].bucketName)) {
+        urlQuestions.push(_enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].bucketName);
+      }
+
+      setAnsweredQuestions(urlQuestions);
       setAnswers(defaultAnswers);
     } else if (isFirstRender) {
       setAnswers(defaultAnswers);
     }
   }, [urlData, answeredQuestions]);
   var renderQuestions = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(function () {
-    return Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getQuestionsToRender"])(answers, answeredQuestions);
+    return Object(_utils__WEBPACK_IMPORTED_MODULE_5__["getQuestionsToRender"])(answers, answeredQuestions);
   }, [answeredQuestions, answers]);
   var hasAnsweredAll = !renderQuestions.find(function (q) {
     return !answeredQuestions.includes(q.id);
   });
   var answerQuestion = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
-    updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_4__["normalizeAnswer"])(answer)));
+    updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_5__["normalizeAnswer"])(answer)));
     setAnswers(function (prevAnswers) {
       return _objectSpread({}, prevAnswers, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, questionId, answer));
     });
@@ -9154,7 +9162,7 @@ var Meta = function Meta() {
     }
   }, "ihasabucket - instant web app hosting"), __jsx("meta", {
     property: "og:image",
-    content: "https://user-images.githubusercontent.com/1502702/92998877-e9e1cc00-f51c-11ea-98e6-331460921cde.jpg",
+    content: "https://ihasabucket.it/lolrus.png",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -9167,7 +9175,7 @@ var Meta = function Meta() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
+      lineNumber: 7,
       columnNumber: 5
     }
   }), __jsx("meta", {
@@ -9176,7 +9184,7 @@ var Meta = function Meta() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
+      lineNumber: 8,
       columnNumber: 5
     }
   }), __jsx("meta", {
@@ -9185,7 +9193,7 @@ var Meta = function Meta() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 12,
       columnNumber: 5
     }
   }), __jsx("link", {
@@ -9194,7 +9202,7 @@ var Meta = function Meta() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 17,
       columnNumber: 5
     }
   }), __jsx("link", {
@@ -9203,7 +9211,7 @@ var Meta = function Meta() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 18,
       columnNumber: 5
     }
   }));
