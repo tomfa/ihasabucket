@@ -50,31 +50,30 @@ const Infrastructure = (props: Props) => {
         <strong>AWS_ACCESS_KEY_ID</strong> handy, find those in the top right
         corner under your name &gt; Security credentials. They should be
         exported to your environment:
-        <Pre>
-          <Mute># Export AWS keys{'\n'}</Mute>
-          export AWS_SECRET_ACCESS_KEY=yaAS$1...{'\n'}
-          export AWS_ACCESS_KEY_ID=AKIA...
-        </Pre>
       </p>
+      <Pre>
+        <Mute># Export AWS keys{'\n'}</Mute>
+        export AWS_SECRET_ACCESS_KEY=yaAS$1...{'\n'}
+        export AWS_ACCESS_KEY_ID=AKIA...
+      </Pre>
       <h4>Terraform installed</h4>
       <p>
         If you haven&apos;t already,{' '}
         <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
           install Terraform
         </a>
-        {`\n`}
-        <Pre>
-          <Mute># For Macs with homebrew{'\n'}</Mute>
-          brew install hashicorp/tap/terraform
-        </Pre>
-        <Description>
-          See{' '}
-          <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
-            learn.hashicorp.com/tutorials/terraform/install-cli
-          </a>{' '}
-          for other platforms.
-        </Description>
       </p>
+      <Pre>
+        <Mute># For Macs with homebrew{'\n'}</Mute>
+        brew install hashicorp/tap/terraform
+      </Pre>
+      <Description>
+        See{' '}
+        <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
+          learn.hashicorp.com/tutorials/terraform/install-cli
+        </a>{' '}
+        for other platforms.
+      </Description>
     </>
   );
 };
