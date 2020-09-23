@@ -206,6 +206,73 @@ var Mute = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].span.withCo
 
 /***/ }),
 
+/***/ "./components/ShareLink.tsx":
+/*!**********************************!*\
+  !*** ./components/ShareLink.tsx ***!
+  \**********************************/
+/*! exports provided: ShareLink */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShareLink", function() { return ShareLink; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/useCurrentUrl */ "./utils/useCurrentUrl.ts");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/ShareLink.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
+
+var ShareLink = function ShareLink(_ref) {
+  var children = _ref.children,
+      _ref$title = _ref.title,
+      title = _ref$title === void 0 ? 'ihasabuvket.it' : _ref$title,
+      _ref$text = _ref.text,
+      text = _ref$text === void 0 ? 'Setup frontend or file hosting in 3 minutes' : _ref$text,
+      url = _ref.url;
+  var currentUrl = Object(_utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_1__["useCurrentUrl"])(true);
+  var supportsNavigatorShare = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () {
+    return navigator && navigator.share;
+  }, [navigator]);
+
+  if (supportsNavigatorShare) {
+    return __jsx("a", {
+      href: "#",
+      role: "button",
+      onClick: function onClick() {
+        return navigator.share({
+          title: title,
+          text: text,
+          url: url || currentUrl
+        });
+      },
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25,
+        columnNumber: 7
+      }
+    }, children || 'Share this page');
+  }
+
+  return __jsx("a", {
+    href: url || currentUrl,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 10
+    }
+  }, children || 'Share this page');
+};
+
+/***/ }),
+
 /***/ "./components/Title.style.tsx":
 /*!************************************!*\
   !*** ./components/Title.style.tsx ***!
@@ -8760,7 +8827,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Mute_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Mute.style */ "./components/Mute.style.tsx");
 /* harmony import */ var _components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/icons/LoadingIcon */ "./components/icons/LoadingIcon.tsx");
 /* harmony import */ var _components_code_Code__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/code/Code */ "./components/code/Code.tsx");
-/* harmony import */ var _utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/useCurrentUrl */ "./utils/useCurrentUrl.ts");
+/* harmony import */ var _components_ShareLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ShareLink */ "./components/ShareLink.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Infrastructure.tsx";
 
@@ -8783,8 +8850,6 @@ var Infrastructure = function Infrastructure(props) {
       description = _getTerraFormPackage.description,
       mainTfContent = _getTerraFormPackage.mainTfContent;
 
-  var currentUrl = Object(_utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_8__["useCurrentUrl"])();
-
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       loading = _useState[0],
       setLoading = _useState[1];
@@ -8800,7 +8865,7 @@ var Infrastructure = function Infrastructure(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30,
+        lineNumber: 29,
         columnNumber: 12
       }
     });
@@ -8814,56 +8879,57 @@ var Infrastructure = function Infrastructure(props) {
       lineNumber: 34,
       columnNumber: 7
     }
-  }, "Bucket is served!"), "Just run the script below, or", ' ', __jsx("a", {
-    href: currentUrl,
+  }, "Bucket is served!"), "Just run the script below, or", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
+    title: 'ihasabuvket.it',
+    text: props.bucketName ? "Use 3 minutes to launch ".concat(props.bucketName, " in ").concat(props.region) : undefined,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36,
       columnNumber: 7
     }
-  }, "save a link to this configuration"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "share this configuration"), ' ', "for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
     bucketName: props.bucketName,
     mainTfContent: mainTfContent,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 46,
       columnNumber: 7
     }
   }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 47,
       columnNumber: 7
     }
   }, "The script above will plan the infrastructure and prompt you for confirmation."), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 51,
       columnNumber: 7
     }
   }, description), __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
+      lineNumber: 52,
       columnNumber: 7
     }
   }, "Prerequisites"), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 53,
       columnNumber: 7
     }
   }, "AWS Account"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
@@ -8871,56 +8937,56 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 56,
       columnNumber: 9
     }
   }, "aws.amazon.com")), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 60,
       columnNumber: 7
     }
   }, "If you don't have your ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 61,
       columnNumber: 37
     }
   }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 62,
       columnNumber: 9
     }
   }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 66,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA..."), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 71,
       columnNumber: 7
     }
   }, "Terraform installed"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 72,
       columnNumber: 7
     }
   }, "If you haven't already,", ' ', __jsx("a", {
@@ -8928,28 +8994,28 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 74,
       columnNumber: 9
     }
   }, "install Terraform")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69,
+      lineNumber: 78,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 79,
       columnNumber: 9
     }
   }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73,
+      lineNumber: 82,
       columnNumber: 7
     }
   }, "See", ' ', __jsx("a", {
@@ -8957,7 +9023,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 84,
       columnNumber: 9
     }
   }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."));
@@ -9545,11 +9611,12 @@ var getTerraFormPackage = function getTerraFormPackage(props) {
 /*!********************************!*\
   !*** ./utils/useCurrentUrl.ts ***!
   \********************************/
-/*! exports provided: useCurrentUrl */
+/*! exports provided: getDomain, useCurrentUrl */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDomain", function() { return getDomain; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useCurrentUrl", function() { return useCurrentUrl; });
 /* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
 /* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_0__);
@@ -9560,14 +9627,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var getDomain = function getDomain() {
+  if (window && window.location) {
+    return window.location.origin || "".concat(window.location.protocol, "//").concat(window.location.hostname);
+  } // TODO: Config this part
+
+
+  return 'https://ihasabucket.it';
+};
 var useCurrentUrl = function useCurrentUrl() {
+  var includeDomain = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])();
   var currentUrl = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(function () {
-    if (router.query) {
-      return "".concat(router.pathname, "?").concat(querystring__WEBPACK_IMPORTED_MODULE_0___default.a.stringify(router.query));
+    var relativeUrl = router.query ? "".concat(router.pathname, "?").concat(querystring__WEBPACK_IMPORTED_MODULE_0___default.a.stringify(router.query)) : router.pathname;
+
+    if (!includeDomain) {
+      return relativeUrl;
     }
 
-    return "".concat(router.pathname);
+    return "".concat(getDomain()).concat(relativeUrl);
   }, [router.query, router.pathname, router.route]);
   return currentUrl;
 };
