@@ -8403,17 +8403,17 @@ var normalizeAnswer = function normalizeAnswer(answer) {
   }
 
   if (typeof answer === 'string' || typeof answer === 'number' || typeof answer === 'boolean') {
-    return String(answer);
+    return String(answer).toLowerCase().trim();
   }
 
   if (answer instanceof Array) {
     return answer.map(function (o) {
-      return o.value;
+      return o.value.toLowerCase().trim();
     }).join(',');
   }
 
   if (answer.value !== null) {
-    return answer.value;
+    return answer.value.toLowerCase().trim();
   }
 
   return '';
