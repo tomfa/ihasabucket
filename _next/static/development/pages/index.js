@@ -263,8 +263,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var ShareLink = function ShareLink(_ref) {
   var children = _ref.children,
-      _ref$title = _ref.title,
-      title = _ref$title === void 0 ? 'ihasabucket.it' : _ref$title,
+      _ref$text = _ref.text,
+      text = _ref$text === void 0 ? 'ihasabucket.it' : _ref$text,
       url = _ref.url;
   var currentUrl = Object(_utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_1__["useCurrentUrl"])(true);
   var supportsNavigatorShare = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () {
@@ -276,14 +276,14 @@ var ShareLink = function ShareLink(_ref) {
       thin: true,
       onClick: function onClick() {
         return navigator.share({
-          title: title,
+          text: text,
           url: url || currentUrl
         });
       },
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26,
+        lineNumber: 25,
         columnNumber: 7
       }
     }, children || 'Share this page', __jsx(_icons_Share__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -291,7 +291,7 @@ var ShareLink = function ShareLink(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30,
+        lineNumber: 29,
         columnNumber: 9
       }
     }));
@@ -302,7 +302,7 @@ var ShareLink = function ShareLink(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 33,
       columnNumber: 10
     }
   }, children || 'Share this page');
@@ -8981,7 +8981,7 @@ var Infrastructure = function Infrastructure(props) {
       columnNumber: 7
     }
   }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
-    title: getShareTitle(props),
+    text: getShareTitle(props),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
