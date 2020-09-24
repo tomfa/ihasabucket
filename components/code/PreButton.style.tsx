@@ -5,12 +5,17 @@ const PreButton = styled.button`
   color: ${(p) => p.theme.colors.textPrimary};
   position: absolute;
   font-family: monospace;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   border: none;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
   outline-color: ${(p) => p.theme.colors.secondary};
+
+  @media (min-width: 769px) {
+    top: 20px;
+    bottom: unset;
+  }
 `;
 
 export default PreButton;
