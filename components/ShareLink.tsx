@@ -7,28 +7,24 @@ import ShareIcon from './icons/Share';
 
 type Props = {
   children?: ReactNode;
-  title?: string;
   text?: string;
   url?: string;
 };
 
 export const ShareLink = ({
   children,
-  title = 'ihasabuvket.it',
-  text = 'Setup frontend or file hosting in 3 minutes',
+  text = 'ihasabucket.it', // TODO: Get from config
   url,
 }: Props) => {
   const currentUrl = useCurrentUrl(true);
   const supportsNavigatorShare = useMemo(() => navigator && navigator.share, [
-    navigator,
+    navigator.share,
   ]);
   if (supportsNavigatorShare) {
     return (
       <ButtonStyle
         thin
-        onClick={() =>
-          navigator.share({ title, text, url: url || currentUrl })
-        }>
+        onClick={() => navigator.share({ text, url: url || currentUrl })}>
         {children || 'Share this page'}
         <ShareIcon color={'white'} />
       </ButtonStyle>

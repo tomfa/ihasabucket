@@ -33,16 +33,8 @@ const Infrastructure = (props: Props) => {
     <>
       <Header as={'h1'}>Bucket is served!</Header>
       Just run the script below, or share this{' '}
-      <ShareLink
-        title={'ihasabuvket.it'}
-        text={
-          props.bucketName
-            ? `Use 3 minutes to launch ${props.bucketName} in ${props.region}`
-            : undefined
-        }>
-        configuration url
-      </ShareLink>{' '}
-      for later.
+      <ShareLink text={getShareTitle(props)}>configuration url</ShareLink> for
+      later.
       <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
       <Description>
         The script above will plan the infrastructure and prompt you for
@@ -88,6 +80,26 @@ const Infrastructure = (props: Props) => {
       </Description>
     </>
   );
+};
+
+const getShareTitle = ({
+  bucketName,
+  webApp,
+  region,
+  shared,
+}: Props): string | undefined => {
+  const regionPostfix = region ? ` in ${region}` : '';
+  if (bucketName && region) {
+    return `Launch ${bucketName}${regionPostfix}`;
+  }
+  if (webApp && region) {
+    return `Launch a web app ${regionPostfix}`;
+  }
+  if (!webApp && region) {
+    const aclText = shared ? 'public' : 'private';
+    return `Host ${aclText} files in ${regionPostfix}`;
+  }
+  return undefined;
 };
 
 export default Infrastructure;
