@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const ButtonStyle = styled.button`
   color: ${(p) => p.theme.colors.textSecondary};
-  background-color: ${(p) => p.theme.colors.primary};
+  background-color: ${(p) => p.theme.colors.secondary};
   border: none;
-  padding: ${(p) => !p.link && '1rem'};
+  padding: ${(p) => (p.thin && '0.3rem 0.5rem') || '1rem'};
   font-size: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;

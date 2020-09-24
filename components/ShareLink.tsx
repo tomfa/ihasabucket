@@ -2,6 +2,8 @@
 
 import { ReactNode, useMemo } from 'react';
 import { useCurrentUrl } from '../utils/useCurrentUrl';
+import ButtonStyle from './Button.styles';
+import ShareIcon from './icons/Share';
 
 type Props = {
   children?: ReactNode;
@@ -22,14 +24,14 @@ export const ShareLink = ({
   ]);
   if (supportsNavigatorShare) {
     return (
-      <a
-        href="#"
-        role="button"
+      <ButtonStyle
+        thin
         onClick={() =>
           navigator.share({ title, text, url: url || currentUrl })
         }>
         {children || 'Share this page'}
-      </a>
+        <ShareIcon color={'white'} />
+      </ButtonStyle>
     );
   }
   return <a href={url || currentUrl}>{children || 'Share this page'}</a>;

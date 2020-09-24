@@ -10,11 +10,9 @@ type Props = {
 const Button = ({ url = null, children, ...props }: Props) => {
   if (url) {
     return (
-      <ButtonStyle link>
-        <Link {...props} href={url}>
-          {children}
-        </Link>
-      </ButtonStyle>
+      <Link {...props} href={url}>
+        <ButtonStyle link>{children}</ButtonStyle>
+      </Link>
     );
   }
   return <ButtonStyle {...props}>{children}</ButtonStyle>;

@@ -3,6 +3,7 @@ import BlockQuote from '../components/BlockQuote';
 import Footer from '../sections/Footer';
 import Header from '../sections/HeaderSection';
 import Button from '../components/Button';
+import ArrowLeftIcon from '../components/icons/ArrowLeft';
 
 export default function NotFound() {
   return (
@@ -17,9 +18,10 @@ export default function NotFound() {
 const Intro = () => (
   <Section>
     <BlockQuote author={'Lolrus, the bucket walrus'}>
-      Can I has bucket!?
+      404: Can I has bucket!?
     </BlockQuote>
-    <p>404: This page does not exist.</p>
-    <Button url={'/'}>Go home</Button>
+    <Button url={'/'}>
+      <ArrowLeftIcon color="white" /> Go home
+    </Button>
   </Section>
 );

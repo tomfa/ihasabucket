@@ -32,7 +32,7 @@ const Infrastructure = (props: Props) => {
   return (
     <>
       <Header as={'h1'}>Bucket is served!</Header>
-      Just run the script below, or{' '}
+      Just run the script below, or share this{' '}
       <ShareLink
         title={'ihasabuvket.it'}
         text={
@@ -40,7 +40,7 @@ const Infrastructure = (props: Props) => {
             ? `Use 3 minutes to launch ${props.bucketName} in ${props.region}`
             : undefined
         }>
-        share this configuration
+        configuration url
       </ShareLink>{' '}
       for later.
       <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
