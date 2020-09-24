@@ -117,6 +117,35 @@ var Block = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].blockquote
 
 /***/ }),
 
+/***/ "./components/Button.styles.tsx":
+/*!**************************************!*\
+  !*** ./components/Button.styles.tsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var ButtonStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button.withConfig({
+  displayName: "Buttonstyles__ButtonStyle",
+  componentId: "sc-1y62u2l-0"
+})(["color:", ";background-color:", ";border:none;padding:", ";font-size:1rem;margin-top:1rem;margin-bottom:1rem;outline-style:dashed;outline-width:2px;cursor:pointer;&:focus,&:active{outline-color:", ";}& > a{color:", ";padding:1rem;display:block;}"], function (p) {
+  return p.theme.colors.textSecondary;
+}, function (p) {
+  return p.theme.colors.secondary;
+}, function (p) {
+  return p.thin && '0.3rem 0.5rem' || '1rem';
+}, function (p) {
+  return p.theme.colors.primary;
+}, function (p) {
+  return p.theme.colors.textSecondary;
+});
+/* harmony default export */ __webpack_exports__["default"] = (ButtonStyle);
+
+/***/ }),
+
 /***/ "./components/Header.style.tsx":
 /*!*************************************!*\
   !*** ./components/Header.style.tsx ***!
@@ -219,6 +248,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/useCurrentUrl */ "./utils/useCurrentUrl.ts");
+/* harmony import */ var _Button_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Button.styles */ "./components/Button.styles.tsx");
+/* harmony import */ var _icons_Share__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icons/Share */ "./components/icons/Share.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/ShareLink.tsx";
 
@@ -228,36 +259,42 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 
+
+
 var ShareLink = function ShareLink(_ref) {
   var children = _ref.children,
       _ref$title = _ref.title,
-      title = _ref$title === void 0 ? 'ihasabuvket.it' : _ref$title,
-      _ref$text = _ref.text,
-      text = _ref$text === void 0 ? 'Setup frontend or file hosting in 3 minutes' : _ref$text,
+      title = _ref$title === void 0 ? 'ihasabucket.it' : _ref$title,
       url = _ref.url;
   var currentUrl = Object(_utils_useCurrentUrl__WEBPACK_IMPORTED_MODULE_1__["useCurrentUrl"])(true);
   var supportsNavigatorShare = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () {
     return navigator && navigator.share;
-  }, [navigator]);
+  }, [navigator.share]);
 
   if (supportsNavigatorShare) {
-    return __jsx("a", {
-      href: "#",
-      role: "button",
+    return __jsx(_Button_styles__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      thin: true,
       onClick: function onClick() {
         return navigator.share({
           title: title,
-          text: text,
           url: url || currentUrl
         });
       },
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 26,
         columnNumber: 7
       }
-    }, children || 'Share this page');
+    }, children || 'Share this page', __jsx(_icons_Share__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      color: 'white',
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30,
+        columnNumber: 9
+      }
+    }));
   }
 
   return __jsx("a", {
@@ -265,7 +302,7 @@ var ShareLink = function ShareLink(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 34,
       columnNumber: 10
     }
   }, children || 'Share this page');
@@ -1366,6 +1403,62 @@ var LoadingIcon = function LoadingIcon(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoadingIcon);
+
+/***/ }),
+
+/***/ "./components/icons/Share.tsx":
+/*!************************************!*\
+  !*** ./components/icons/Share.tsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/icons/Share.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var Svg = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg.withConfig({
+  displayName: "Share__Svg",
+  componentId: "sc-177gq3a-0"
+})(["display:inline;margin-left:0.5rem;margin-right:0.3rem;& path{fill:", ";}"], function (p) {
+  return p.color || p.theme.colors.secondary;
+});
+
+var ShareIcon = function ShareIcon(_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 12 : _ref$size,
+      color = _ref.color;
+  return __jsx(Svg, {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "".concat(size, "px"),
+    height: "".concat(size, "px"),
+    viewBox: "0 0 59 59",
+    color: color,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 3
+    }
+  }, __jsx("path", {
+    d: "M47,39c-2.671,0-5.182,1.04-7.071,2.929c-0.524,0.524-0.975,1.1-1.365,1.709l-17.28-10.489 C21.741,32.005,22,30.761,22,29.456c0-1.305-0.259-2.549-0.715-3.693l17.284-10.409C40.345,18.142,43.456,20,47,20 c5.514,0,10-4.486,10-10S52.514,0,47,0S37,4.486,37,10c0,1.256,0.243,2.454,0.667,3.562L20.361,23.985 c-1.788-2.724-4.866-4.529-8.361-4.529c-5.514,0-10,4.486-10,10s4.486,10,10,10c3.495,0,6.572-1.805,8.36-4.529L37.664,45.43 C37.234,46.556,37,47.759,37,49c0,2.671,1.04,5.183,2.929,7.071C41.818,57.96,44.329,59,47,59s5.182-1.04,7.071-2.929 C55.96,54.183,57,51.671,57,49s-1.04-5.183-2.929-7.071C52.182,40.04,49.671,39,47,39z",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 5
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ShareIcon);
 
 /***/ }),
 
@@ -8887,57 +8980,56 @@ var Infrastructure = function Infrastructure(props) {
       lineNumber: 34,
       columnNumber: 7
     }
-  }, "Bucket is served!"), "Just run the script below, or", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
-    title: 'ihasabuvket.it',
-    text: props.bucketName ? "Use 3 minutes to launch ".concat(props.bucketName, " in ").concat(props.region) : undefined,
+  }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
+    title: getShareTitle(props),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36,
       columnNumber: 7
     }
-  }, "share this configuration"), ' ', "for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "configuration url"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
     bucketName: props.bucketName,
     mainTfContent: mainTfContent,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 38,
       columnNumber: 7
     }
   }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 39,
       columnNumber: 7
     }
   }, "The script above will plan the infrastructure and prompt you for confirmation."), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51,
+      lineNumber: 43,
       columnNumber: 7
     }
   }, description), __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 44,
       columnNumber: 7
     }
   }, "Prerequisites"), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 45,
       columnNumber: 7
     }
   }, "AWS Account"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 46,
       columnNumber: 7
     }
   }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
@@ -8945,56 +9037,56 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 48,
       columnNumber: 9
     }
   }, "aws.amazon.com")), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 52,
       columnNumber: 7
     }
   }, "If you don't have your ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
+      lineNumber: 53,
       columnNumber: 37
     }
   }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 54,
       columnNumber: 9
     }
   }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 58,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 59,
       columnNumber: 9
     }
   }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA..."), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 63,
       columnNumber: 7
     }
   }, "Terraform installed"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 64,
       columnNumber: 7
     }
   }, "If you haven't already,", ' ', __jsx("a", {
@@ -9002,28 +9094,28 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 66,
       columnNumber: 9
     }
   }, "install Terraform")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78,
+      lineNumber: 70,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79,
+      lineNumber: 71,
       columnNumber: 9
     }
   }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 74,
       columnNumber: 7
     }
   }, "See", ' ', __jsx("a", {
@@ -9031,10 +9123,33 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 76,
       columnNumber: 9
     }
   }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."));
+};
+
+var getShareTitle = function getShareTitle(_ref) {
+  var bucketName = _ref.bucketName,
+      webApp = _ref.webApp,
+      region = _ref.region,
+      shared = _ref.shared;
+  var regionPostfix = region ? " in ".concat(region) : '';
+
+  if (bucketName && region) {
+    return "Launch ".concat(bucketName).concat(regionPostfix);
+  }
+
+  if (webApp && region) {
+    return "Launch a web app ".concat(regionPostfix);
+  }
+
+  if (!webApp && region) {
+    var aclText = shared ? 'public' : 'private';
+    return "Host ".concat(aclText, " files in ").concat(regionPostfix);
+  }
+
+  return undefined;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Infrastructure);
@@ -9160,7 +9275,7 @@ var Meta = function Meta() {
       lineNumber: 5,
       columnNumber: 5
     }
-  }, "ihasabucket - instant web app hosting"), __jsx("meta", {
+  }, "Instant file or web app hosting on AWS"), __jsx("meta", {
     property: "og:image",
     content: "https://ihasabucket.it/lolrus.png",
     __self: _this,
@@ -9180,7 +9295,7 @@ var Meta = function Meta() {
     }
   }), __jsx("meta", {
     property: "og:title",
-    content: "I has a bucket - instant web app hosting",
+    content: "Instant file or web app hosting on AWS",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
