@@ -2,12 +2,12 @@ import Head from 'next/head';
 
 const Meta = () => (
   <Head>
-    <title>ihasabucket - instant web app hosting</title>
+    <title>Instant file or web app hosting on AWS</title>
     <meta property="og:image" content="https://ihasabucket.it/lolrus.png" />
     <meta property="og:url" content="https://ihasabucket.it" />
     <meta
       property="og:title"
-      content="I has a bucket - instant web app hosting"
+      content="Instant file or web app hosting on AWS"
     />
     <meta
       property="og:description"
