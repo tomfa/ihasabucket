@@ -44,7 +44,7 @@ const TextInput = ({
     }
   }, [value]);
   useEffect(() => {
-    if (!placeholders && placeholders.length < 2) {
+    if (!placeholders || placeholders.length < 2) {
       return;
     }
 

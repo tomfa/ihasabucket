@@ -10,6 +10,7 @@ export type TerraformProps = {
   configureDns: boolean;
   createCertificates: boolean;
   forwardingBucket: string | null;
+  errorPath: string | null;
 };
 
 type TerraformPackage = {
@@ -24,6 +25,7 @@ const getMainTfContent = ({
   staticPage,
   region,
   bucketName,
+  errorPath,
 }: TerraformProps): string[] => {
   const source = webApp
     ? 'git::https://github.com/tomfa/terraform.git//webapp'
@@ -34,7 +36,8 @@ const getMainTfContent = ({
     aws_region: region ? `"${region}"` : `var.${INPUT.AWS_REGION}`,
   };
   if (webApp) {
-    parameters.error_path = '"/index.html"';
+    parameters.error_path =
+      staticPage && errorPath ? `"/${errorPath}"` : '"/index.html"';
     parameters.error_code = staticPage ? '404' : '200';
   } else {
     parameters.acl = shared ? '"public-read"' : '"private"';

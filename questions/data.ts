@@ -128,6 +128,18 @@ export const questions: Question[] = [
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'webapp' }],
   } as RadioQuestion,
   {
+    id: QUESTION_ID.errorPath,
+    title: `What's the "Not found" path?`,
+    type: QuestionType.TEXT,
+    defaultValue: '404',
+    placeholder: '404',
+    description:
+      '"404" would work with a /404.html or /404/index.html file. This path will be rendered in cases when the file is not found.',
+    showIf: [
+      { questionId: QUESTION_ID.webappIsStatic, value: BOOL_VALUE.TRUE },
+    ],
+  } as InputQuestion,
+  {
     id: QUESTION_ID.aclPublic,
     title: 'Should content be publicly available?',
     type: QuestionType.RADIO,

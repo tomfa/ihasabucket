@@ -111,6 +111,7 @@ const Questionare = () => {
             QUESTION_ID.configureDns,
             BOOL_VALUE.TRUE
           )}
+          errorPath={getNormalizedAnswer(answers, QUESTION_ID.errorPath)}
           forwardingBucket={getForwardingBucketValue(answers)}
           bucketName={getNormalizedAnswer(answers, QUESTION_ID.bucketName)}
           region={getNormalizedAnswer(answers, QUESTION_ID.region)}

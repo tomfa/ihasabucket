@@ -2,6 +2,7 @@
 
 export enum QUESTION_ID {
   apexForwarding = 'apex-forwarding',
+  errorPath = 'error-path',
   wwwForwarding = 'www-forwarding',
   createCertificates = 'certificates',
   bucketName = 'bucket',
