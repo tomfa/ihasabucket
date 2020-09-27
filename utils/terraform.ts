@@ -1,12 +1,15 @@
 import { BUCKET_TYPE, getInputDescription, getOutput, INPUT } from '../enums';
 
-type Props = {
+export type TerraformProps = {
   webApp: boolean;
   staging: boolean;
   shared: boolean;
   staticPage: boolean;
-  region: string;
   bucketName: string;
+  region: string;
+  configureDns: boolean;
+  createCertificates: boolean;
+  forwardingBucket: string | null;
 };
 
 type TerraformPackage = {
@@ -21,7 +24,7 @@ const getMainTfContent = ({
   staticPage,
   region,
   bucketName,
-}: Props): string[] => {
+}: TerraformProps): string[] => {
   const source = webApp
     ? 'git::https://github.com/tomfa/terraform.git//webapp'
     : 'git::https://github.com/tomfa/terraform.git//files';
@@ -103,7 +106,7 @@ const getTerraPackageDescription = ({
   shared,
   staticPage,
   region,
-}: Props): string => {
+}: TerraformProps): string => {
   const count = staging ? 'two sets of' : 'a';
   const usecase = getUseCaseDescription({ webApp, staticPage, shared });
   const iamUserInfo = staging
@@ -135,7 +138,9 @@ const getUseCaseDescription = ({
   return 'for storing and serving files for authorized requests';
 };
 
-export const getTerraFormPackage = (props: Props): TerraformPackage => {
+export const getTerraFormPackage = (
+  props: TerraformProps
+): TerraformPackage => {
   return {
     mainTfContent: getMainTfContent(props),
     description: getTerraPackageDescription(props),

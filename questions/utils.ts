@@ -1,4 +1,4 @@
-import { BOOL_VALUE, QUESTION_ID, VALUES } from '../enums';
+import { BOOL_VALUE, QUESTION_ID } from '../enums';
 import {
   Answer,
   AnswerMap,
@@ -11,7 +11,9 @@ import {
   RadioAnswer,
   TextAnswer,
 } from '../types';
+import { getApexDomain } from '../utils/domain';
 import { questionMap, questions } from './data';
+import { answerIsApexDomain, answerIsWWWDomain } from './conditions';
 
 export const getDefaultAnswer = (
   question: Question,
@@ -76,9 +78,12 @@ export const getNormalizedAnswer = (
 export const hasAnswered = (
   answers: AnswerMap,
   questionId: QUESTION_ID,
-  value: string | BOOL_VALUE | VALUES | null
+  value: string | BOOL_VALUE | null
 ): boolean => {
   const question = questionMap[questionId];
+  if (!question) {
+    throw new Error(`Unknown questionId ${questionId}`);
+  }
   if (question.type === QuestionType.RADIO) {
     const answer = answers[questionId] as RadioAnswer;
     if (answer === null) {
@@ -105,9 +110,6 @@ export const hasAnswered = (
     if (answer === null) {
       return value === null;
     }
-    if (value === VALUES.NOT_EMPTY) {
-      return answer.length > 0;
-    }
     return answer === value;
   }
 };
@@ -115,12 +117,18 @@ export const hasAnswered = (
 const isFulfilled = (
   condition: QuestionDisplayCondition,
   answers: AnswerMap
-): boolean => hasAnswered(answers, condition.questionId, condition.value);
+): boolean => {
+  if (typeof condition.value === 'function') {
+    return condition.value(answers[condition.questionId]);
+  }
+  return hasAnswered(answers, condition.questionId, condition.value);
+};
 
 const shouldSkip = (question: Question, answers: AnswerMap): boolean => {
-  return (
-    question.showIf && !!question.showIf.find((c) => !isFulfilled(c, answers))
-  );
+  if (!question.showIf) {
+    return false;
+  }
+  return !!question.showIf.find((c) => !isFulfilled(c, answers));
 };
 
 const getLastRenderIndex = (
@@ -153,4 +161,17 @@ export const getQuestionsToRender = (
   });
 
   return questionsToRender;
+};
+
+export const getForwardingBucketValue = (answers: AnswerMap): string | null => {
+  const bucketName = answers[QUESTION_ID.bucketName] as TextAnswer;
+  const forwardToApex = answers[QUESTION_ID.apexForwarding];
+  const forwardToWWW = answers[QUESTION_ID.wwwForwarding];
+  if (answerIsApexDomain(bucketName) && forwardToWWW) {
+    return `www.${bucketName}`;
+  }
+  if (answerIsWWWDomain(bucketName) && forwardToApex) {
+    return getApexDomain(bucketName);
+  }
+  return null;
 };

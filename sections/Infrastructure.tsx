@@ -3,25 +3,14 @@
 import { useEffect, useState } from 'react';
 import Description from '../components/forms/Description.style';
 import Header from '../components/Header.style';
-import { getTerraFormPackage } from '../utils/terraform';
+import { getTerraFormPackage, TerraformProps } from '../utils/terraform';
 import Pre from '../components/code/Pre.style';
 import Mute from '../components/Mute.style';
 import LoadingIcon from '../components/icons/LoadingIcon';
 import Code from '../components/code/Code';
 import { ShareLink } from '../components/ShareLink';
 
-type Props = {
-  webApp: boolean;
-  staging: boolean;
-  shared: boolean;
-  staticPage: boolean;
-  bucketName: string;
-  region: string;
-  configureDns: boolean;
-  createCertificates: boolean;
-};
-
-const Infrastructure = (props: Props) => {
+const Infrastructure = (props: TerraformProps) => {
   const { description, mainTfContent } = getTerraFormPackage(props);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -89,7 +78,7 @@ const getShareTitle = ({
   webApp,
   region,
   shared,
-}: Props): string | undefined => {
+}: TerraformProps): string | undefined => {
   const regionPostfix = region ? ` in ${region}` : '';
   if (bucketName && region) {
     return `Launch ${bucketName}${regionPostfix}`;

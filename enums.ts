@@ -1,10 +1,8 @@
 /* eslint-disable no-shadow */
 
-export enum VALUES {
-  NOT_EMPTY,
-}
-
 export enum QUESTION_ID {
+  apexForwarding = 'apex-forwarding',
+  wwwForwarding = 'www-forwarding',
   createCertificates = 'certificates',
   bucketName = 'bucket',
   storageType = 'storage',

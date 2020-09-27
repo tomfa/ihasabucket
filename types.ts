@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 
-import { QUESTION_ID, VALUES } from './enums';
+import { QUESTION_ID } from './enums';
 
 export type Option = {
   value: string;
@@ -9,7 +9,7 @@ export type Option = {
 
 export type QuestionDisplayCondition = {
   questionId: QUESTION_ID;
-  value: string | VALUES;
+  value: string | ((answer: Answer) => boolean);
 };
 
 export enum QuestionType {
