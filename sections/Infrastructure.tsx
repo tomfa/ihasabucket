@@ -17,6 +17,8 @@ type Props = {
   staticPage: boolean;
   bucketName: string;
   region: string;
+  configureDns: boolean;
+  createCertificates: boolean;
 };
 
 const Infrastructure = (props: Props) => {

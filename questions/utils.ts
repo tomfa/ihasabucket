@@ -11,7 +11,7 @@ import {
   RadioAnswer,
   TextAnswer,
 } from '../types';
-import { questions, questionMap } from './data';
+import { questionMap, questions } from './data';
 
 export const getDefaultAnswer = (
   question: Question,
@@ -104,6 +104,9 @@ export const hasAnswered = (
     const answer = answers[questionId] as TextAnswer;
     if (answer === null) {
       return value === null;
+    }
+    if (value === VALUES.NOT_EMPTY) {
+      return answer.length > 0;
     }
     return answer === value;
   }

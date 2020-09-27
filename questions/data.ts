@@ -23,6 +23,38 @@ export const questions: Question[] = [
     description: `We will use this as the S3 bucket name. The bucket name is permanent, but it doesn't have to match an actual domain. It does however have to be unique on S3, so "example" or "my-bucket" will not work. If you leave it empty, you'll be prompted for a bucket name at deploy time.`,
   } as InputQuestion,
   {
+    id: QUESTION_ID.configureDns,
+    title: 'Should we set up DNS pointers?',
+    type: QuestionType.RADIO,
+    description:
+      'Should we setup DNS pointers and certificates for your domain? (Recommended). AWS Route 53 costs 0.5$ / month. If you select Yes, we will output the AWS DNS server urls after setting up the infrastructure. You must point to these servers from your registrar to enable. If you select No, we will output AWS domain urls for the S3 bucket / Cloudfront, so you can set DNS up yourself.',
+    options: [
+      { value: BOOL_VALUE.TRUE, label: 'Yes, please do.' },
+      {
+        value: BOOL_VALUE.FALSE,
+        label: `No, I'll handle DNS manually.`,
+      },
+    ],
+    showIf: [{ questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY }],
+  } as RadioQuestion,
+  {
+    id: QUESTION_ID.createCertificates,
+    title: 'What about certificates only?',
+    type: QuestionType.RADIO,
+    description: `AWS can create HTTPS certificates for the domain you specified as bucket name, and set up the bucket to use it. This is free of charge. You will have to manually set up DNS pointers to the certificate urls outputted after the infrastructure is built.`,
+    options: [
+      { value: BOOL_VALUE.TRUE, label: 'Yes, please.' },
+      {
+        value: BOOL_VALUE.FALSE,
+        label: 'No, I`ll add certificates manually.',
+      },
+    ],
+    showIf: [
+      { questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY },
+      { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
+    ],
+  } as RadioQuestion,
+  {
     id: QUESTION_ID.storageType,
     title: 'What are we storing?',
     type: QuestionType.RADIO,
@@ -59,40 +91,6 @@ export const questions: Question[] = [
       },
     ],
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'files' }],
-  } as RadioQuestion,
-
-  {
-    id: QUESTION_ID.configureDns,
-    title: 'Should AWS set up DNS pointers?',
-    type: QuestionType.RADIO,
-    description:
-      'Should we setup DNS pointers for your domain? (Recommended). Route 53 costs 1.5$ / month',
-    options: [
-      { value: BOOL_VALUE.TRUE, label: 'Yes, please do' },
-      {
-        value: BOOL_VALUE.FALSE,
-        label: `No, I'll set up DNS afterwards`,
-      },
-    ],
-    showIf: [{ questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY }],
-  } as RadioQuestion,
-  {
-    id: QUESTION_ID.createCertificates,
-    title: 'Should AWS create certificates to support the domain?',
-    type: QuestionType.RADIO,
-    description:
-      'AWS can create HTTPS certificates for us. This is recommended and free of charge.',
-    options: [
-      { value: BOOL_VALUE.TRUE, label: 'Please do' },
-      {
-        value: BOOL_VALUE.FALSE,
-        label: 'No, I`ll configure certificates myself',
-      },
-    ],
-    showIf: [
-      { questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY },
-      { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
-    ],
   } as RadioQuestion,
   {
     id: QUESTION_ID.region,

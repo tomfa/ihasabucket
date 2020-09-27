@@ -97,6 +97,16 @@ const Questionare = () => {
             QUESTION_ID.webappIsStatic,
             BOOL_VALUE.TRUE
           )}
+          createCertificates={hasAnswered(
+            answers,
+            QUESTION_ID.createCertificates,
+            BOOL_VALUE.TRUE
+          )}
+          configureDns={hasAnswered(
+            answers,
+            QUESTION_ID.configureDns,
+            BOOL_VALUE.TRUE
+          )}
           bucketName={getNormalizedAnswer(answers, QUESTION_ID.bucketName)}
           region={getNormalizedAnswer(answers, QUESTION_ID.region)}
         />

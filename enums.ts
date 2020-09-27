@@ -5,12 +5,12 @@ export enum VALUES {
 }
 
 export enum QUESTION_ID {
-  createCertificates = 'create-certificates',
+  createCertificates = 'certificates',
   bucketName = 'bucket',
   storageType = 'storage',
   webappIsStatic = 'static',
   aclPublic = 'public',
-  configureDns = 'configure-dns',
+  configureDns = 'dns',
   stagingEnv = 'staging',
   region = 'region',
 }
