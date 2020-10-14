@@ -38,3 +38,9 @@ export type BucketTargets = {
   main: Target;
   staging: Target | null;
 };
+
+export type TerraformOutput = {
+  value: string;
+  label: string;
+  description?: string;
+};

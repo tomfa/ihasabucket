@@ -15,13 +15,12 @@ import {
 
 const getMainTfContent = (props: TerraformProps): string[] => {
   const modules: ModuleSpec[] = [];
+  modules.push(...getWebAppBucketTfContent(props));
+  modules.push(...getFileStorageBucketTfContent(props));
   modules.push(...getDomainTfContent(props));
   modules.push(...getDomainRecordTfContent(props));
   modules.push(...getCertificateTfContent(props));
-  modules.push(...getWebAppBucketTfContent(props));
-  modules.push(...getFileStorageBucketTfContent(props));
   modules.push(...getRedirectBucketTfContent(props));
-  modules.push(...getCertificateTfContent(props));
 
   const lines: string[] = [];
   lines.push(...toVariablesText(modules));

@@ -1,5 +1,6 @@
 import { BUCKET_TYPE, getInputDescription, INPUT } from '../../enums';
-import { TerraformProps, ModuleSpec } from './types';
+import { ModuleSpec, TerraformOutput, TerraformProps } from './types';
+import { getBucketModuleNames } from './names';
 
 export const toVariablesText = (modules: ModuleSpec[]) => {
   const lines = [];
@@ -42,50 +43,69 @@ export const toModulesText = (modules: ModuleSpec[]) => {
 
 export const getOutputLines = (props: TerraformProps) => {
   const lines = [];
-  getOutput({
-    bucketType: props.webApp ? BUCKET_TYPE.WEBAPP : BUCKET_TYPE.FILE_STORAGE,
-    hasStaging: props.staging,
-  }).forEach((output) => {
-    lines.push(`output "${output.label}" {`);
-    lines.push(`  value = ${output.value}`);
-    lines.push('}');
+  const bucketModuleNames = getBucketModuleNames(props);
+  const bucketType = props.webApp
+    ? BUCKET_TYPE.WEBAPP
+    : BUCKET_TYPE.FILE_STORAGE;
+
+  const outputs = getOutput({
+    moduleName: bucketModuleNames.main,
+    bucketType,
+    prefix: props.staging ? 'production-' : '',
   });
+  if (props.staging) {
+    outputs.push(
+      ...getOutput({
+        moduleName: bucketModuleNames.staging,
+        bucketType,
+        prefix: 'staging-',
+      })
+    );
+  }
+  outputs.forEach((output) => lines.push(...outputAsText(output)));
+
   return lines;
 };
 
 const getOutput = ({
   bucketType,
-  hasStaging,
+  moduleName,
+  prefix = '',
 }: {
   bucketType: BUCKET_TYPE;
-  hasStaging: boolean;
-}): { value: string; label: string }[] => {
+  moduleName: string;
+  prefix?: string;
+}): TerraformOutput[] => {
   const outputs = [];
-  const bucketNames = hasStaging
-    ? [`${bucketType}-production`, `${bucketType}-staging`]
-    : [bucketType];
-  bucketNames.forEach((name) => {
-    const stageName = hasStaging && name.split('-')[name.split('-').length - 1];
-    const prefix = stageName ? `${stageName}-` : '';
-    outputs.push({
-      value: `module.${name}.AWS_SECRET_ACCESS_KEY`,
-      label: `${prefix}AWS_SECRET_ACCESS_KEY`,
-    });
-    outputs.push({
-      value: `module.${name}.AWS_ACCESS_KEY_ID`,
-      label: `${prefix}AWS_ACCESS_KEY_ID`,
-    });
-    outputs.push({
-      value: `module.${name}.BUCKET_NAME`,
-      label: `${prefix}BUCKET_NAME`,
-    });
-
-    if (bucketType === BUCKET_TYPE.WEBAPP) {
-      outputs.push({
-        value: `module.${name}.CLOUDFRONT_URL`,
-        label: `${prefix}CLOUDFRONT_URL`,
-      });
-    }
+  outputs.push({
+    value: `module.${moduleName}.AWS_SECRET_ACCESS_KEY`,
+    label: `${prefix}AWS_SECRET_ACCESS_KEY`,
   });
+  outputs.push({
+    value: `module.${moduleName}.AWS_ACCESS_KEY_ID`,
+    label: `${prefix}AWS_ACCESS_KEY_ID`,
+  });
+  outputs.push({
+    value: `module.${moduleName}.BUCKET_NAME`,
+    label: `${prefix}BUCKET_NAME`,
+  });
+
+  if (bucketType === BUCKET_TYPE.WEBAPP) {
+    outputs.push({
+      value: `module.${moduleName}.CLOUDFRONT_URL`,
+      label: `${prefix}CLOUDFRONT_URL`,
+    });
+  }
   return outputs;
+};
+
+const outputAsText = (output: TerraformOutput): string[] => {
+  const lines = [];
+  lines.push(`output "${output.label}" {`);
+  lines.push(`  value = ${output.value}`);
+  if (output.description) {
+    lines.push(`  description = ${output.description}`);
+  }
+  lines.push('}');
+  return lines;
 };
