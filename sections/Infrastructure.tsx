@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react';
 import Description from '../components/forms/Description.style';
 import Header from '../components/Header.style';
-import { getTerraFormPackage, TerraformProps } from '../utils/terraform';
+import { getTerraFormPackage } from '../utils/terraform';
 import Pre from '../components/code/Pre.style';
 import Mute from '../components/Mute.style';
 import LoadingIcon from '../components/icons/LoadingIcon';
 import Code from '../components/code/Code';
 import { ShareLink } from '../components/ShareLink';
+import { TerraformProps } from '../utils/terraform/types';
 
 const Infrastructure = (props: TerraformProps) => {
   const { description, mainTfContent } = getTerraFormPackage(props);

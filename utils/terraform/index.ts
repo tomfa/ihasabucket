@@ -7,38 +7,14 @@ import {
   INPUT,
 } from '../../enums';
 import { domainIsApex, domainIsWWW, getApexDomain } from '../domain';
-
-export type TerraformProps = {
-  webApp: boolean;
-  staging: boolean;
-  shared: boolean;
-  staticPage: boolean;
-  bucketName: string;
-  region: string;
-  configureDns: boolean;
-  createCertificates: boolean;
-  forwardingBucket: string | null;
-  errorPath: string | null;
-};
-
-type TerraformPackage = {
-  mainTfContent: string[];
-  description?: string;
-};
-
-type ModuleSpec = {
-  name: string;
-  source: string;
-  parameters: {
-    [key: string]: string;
-  };
-};
-
-type BucketProp = {
-  redirect: string | null;
-  main: string;
-  staging: string | null;
-};
+import {
+  TerraformProps,
+  BucketProp,
+  ModuleSpec,
+  TerraformPackage,
+  BucketTargets,
+  Target,
+} from './types';
 
 const getBucketModuleNames = ({
   webApp,
@@ -70,12 +46,6 @@ const getBucketDomains = ({
   };
 };
 
-type Target = { target_name: string; target_zone_id: string };
-type BucketTargets = {
-  redirect: Target | null;
-  main: Target;
-  staging: Target | null;
-};
 const getBucketTargetRefs = (props: TerraformProps): BucketTargets => {
   const moduleNames = getBucketModuleNames(props);
   const s3TargetNameAttr = 'BUCKET_WEBSITE_DOMAIN';
