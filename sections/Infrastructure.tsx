@@ -9,17 +9,9 @@ import Mute from '../components/Mute.style';
 import LoadingIcon from '../components/icons/LoadingIcon';
 import Code from '../components/code/Code';
 import { ShareLink } from '../components/ShareLink';
+import { TerraformProps } from '../utils/terraform/types';
 
-type Props = {
-  webApp: boolean;
-  staging: boolean;
-  shared: boolean;
-  staticPage: boolean;
-  bucketName: string;
-  region: string;
-};
-
-const Infrastructure = (props: Props) => {
+const Infrastructure = (props: TerraformProps) => {
   const { description, mainTfContent } = getTerraFormPackage(props);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -36,11 +28,13 @@ const Infrastructure = (props: Props) => {
       <ShareLink text={getShareTitle(props)}>configuration url</ShareLink> for
       later.
       <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
-      <Description>
+      <Description style={{ fontWeight: 'bold' }}>
         The script above will plan the infrastructure and prompt you for
         confirmation.
       </Description>
-      <Description>{description}</Description>
+      {description.map((text) => (
+        <Description>{text}</Description>
+      ))}
       <Header>Prerequisites</Header>
       <h4>AWS Account</h4>
       <p>
@@ -87,7 +81,7 @@ const getShareTitle = ({
   webApp,
   region,
   shared,
-}: Props): string | undefined => {
+}: TerraformProps): string | undefined => {
   const regionPostfix = region ? ` in ${region}` : '';
   if (bucketName && region) {
     return `Launch ${bucketName}${regionPostfix}`;

@@ -11,7 +11,11 @@ import {
 } from '../types';
 import TextInput from '../components/forms/TextInput';
 import DropDown from '../components/forms/Dropdown';
-import { getNormalizedAnswer, hasAnswered } from '../questions/utils';
+import {
+  getForwardingBucketValue,
+  getNormalizedAnswer,
+  hasAnswered,
+} from '../questions/utils';
 import Infrastructure from './Infrastructure';
 
 const Questionare = () => {
@@ -97,6 +101,21 @@ const Questionare = () => {
             QUESTION_ID.webappIsStatic,
             BOOL_VALUE.TRUE
           )}
+          createCertificates={
+            hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE) ||
+            hasAnswered(
+              answers,
+              QUESTION_ID.createCertificates,
+              BOOL_VALUE.TRUE
+            )
+          }
+          configureDns={hasAnswered(
+            answers,
+            QUESTION_ID.configureDns,
+            BOOL_VALUE.TRUE
+          )}
+          errorPath={getNormalizedAnswer(answers, QUESTION_ID.errorPath)}
+          forwardingBucket={getForwardingBucketValue(answers)}
           bucketName={getNormalizedAnswer(answers, QUESTION_ID.bucketName)}
           region={getNormalizedAnswer(answers, QUESTION_ID.region)}
         />

@@ -1,4 +1,4 @@
-import { AWS_REGIONS, BOOL_VALUE, QUESTION_ID, VALUES } from '../enums';
+import { AWS_REGIONS, BOOL_VALUE, QUESTION_ID } from '../enums';
 import {
   DropdownQuestion,
   InputQuestion,
@@ -6,6 +6,11 @@ import {
   QuestionType,
   RadioQuestion,
 } from '../types';
+import {
+  answerIsApexDomain,
+  answerIsWWWDomain,
+  answerIsDomain,
+} from './conditions';
 
 export const questions: Question[] = [
   {
@@ -22,6 +27,83 @@ export const questions: Question[] = [
     ],
     description: `We will use this as the S3 bucket name. The bucket name is permanent, but it doesn't have to match an actual domain. It does however have to be unique on S3, so "example" or "my-bucket" will not work. If you leave it empty, you'll be prompted for a bucket name at deploy time.`,
   } as InputQuestion,
+  {
+    id: QUESTION_ID.configureDns,
+    title: 'Should we set up DNS pointers?',
+    type: QuestionType.RADIO,
+    description:
+      'Should we setup DNS pointers and certificates for your domain? (Recommended). AWS Route 53 costs 0.5$ / month. If you select Yes, we will output the AWS DNS server urls after setting up the infrastructure. You must point to these servers from your registrar to enable them. If you select No, we will output AWS domain urls for the S3 bucket / Cloudfront, so you can set DNS up yourself.',
+    options: [
+      { value: BOOL_VALUE.TRUE, label: 'Yes, please do.' },
+      {
+        value: BOOL_VALUE.FALSE,
+        label: `No, I'll handle DNS manually.`,
+      },
+    ],
+    showIf: [{ questionId: QUESTION_ID.bucketName, value: answerIsDomain }],
+  } as RadioQuestion,
+  {
+    id: QUESTION_ID.createCertificates,
+    title: 'What about certificates (HTTPS)?',
+    type: QuestionType.RADIO,
+    description: `Even though we don't set up DNS in AWS, we can create certificates for the domain. This is free, but will require you to set up a DNS record manually to verify the domain ownership..`,
+    options: [
+      { value: BOOL_VALUE.TRUE, label: 'Yes, please create one.' },
+      {
+        value: BOOL_VALUE.FALSE,
+        label: `No thanks.`,
+      },
+    ],
+    showIf: [{ questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE }],
+  } as RadioQuestion,
+  {
+    id: QUESTION_ID.apexForwarding,
+    title: 'Forward apex to www?',
+    type: QuestionType.RADIO,
+    description:
+      'It looks like your domain name is a www domain. (e.g. www.mydomain.com). Click Yes if you want to forward the apex domain (e.g. mydomain.com) to www (e.g. www.mydomain.com)',
+    options: [
+      { value: BOOL_VALUE.TRUE, label: 'Yes, forward my apex domain to www.' },
+      {
+        value: BOOL_VALUE.FALSE,
+        label: `No thanks.`,
+      },
+    ],
+    showIf: [
+      {
+        questionId: QUESTION_ID.bucketName,
+        value: answerIsWWWDomain,
+      },
+      {
+        questionId: QUESTION_ID.configureDns,
+        value: BOOL_VALUE.TRUE,
+      },
+    ],
+  } as RadioQuestion,
+  {
+    id: QUESTION_ID.wwwForwarding,
+    title: 'Forward www to apex?',
+    type: QuestionType.RADIO,
+    description:
+      'It looks like your domain name is an apex domain (e.g. mydomain.com). Click Yes if you want to forward the www domain (e.g. www.mydomain.com) to the apex domain.',
+    options: [
+      { value: BOOL_VALUE.TRUE, label: 'Yes, forward www to apex domain.' },
+      {
+        value: BOOL_VALUE.FALSE,
+        label: `No thanks.`,
+      },
+    ],
+    showIf: [
+      {
+        questionId: QUESTION_ID.bucketName,
+        value: answerIsApexDomain,
+      },
+      {
+        questionId: QUESTION_ID.configureDns,
+        value: BOOL_VALUE.TRUE,
+      },
+    ],
+  } as RadioQuestion,
   {
     id: QUESTION_ID.storageType,
     title: 'What are we storing?',
@@ -46,6 +128,18 @@ export const questions: Question[] = [
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'webapp' }],
   } as RadioQuestion,
   {
+    id: QUESTION_ID.errorPath,
+    title: `What's the "Not found" path?`,
+    type: QuestionType.TEXT,
+    defaultValue: '404',
+    placeholder: '404',
+    description:
+      '"404" would work with a /404.html or /404/index.html file. This path will be rendered in cases when the file is not found.',
+    showIf: [
+      { questionId: QUESTION_ID.webappIsStatic, value: BOOL_VALUE.TRUE },
+    ],
+  } as InputQuestion,
+  {
     id: QUESTION_ID.aclPublic,
     title: 'Should content be publicly available?',
     type: QuestionType.RADIO,
@@ -59,40 +153,6 @@ export const questions: Question[] = [
       },
     ],
     showIf: [{ questionId: QUESTION_ID.storageType, value: 'files' }],
-  } as RadioQuestion,
-
-  {
-    id: QUESTION_ID.configureDns,
-    title: 'Should AWS set up DNS pointers?',
-    type: QuestionType.RADIO,
-    description:
-      'Should we setup DNS pointers for your domain? (Recommended). Route 53 costs 1.5$ / month',
-    options: [
-      { value: BOOL_VALUE.TRUE, label: 'Yes, please do' },
-      {
-        value: BOOL_VALUE.FALSE,
-        label: `No, I'll set up DNS afterwards`,
-      },
-    ],
-    showIf: [{ questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY }],
-  } as RadioQuestion,
-  {
-    id: QUESTION_ID.createCertificates,
-    title: 'Should AWS create certificates to support the domain?',
-    type: QuestionType.RADIO,
-    description:
-      'AWS can create HTTPS certificates for us. This is recommended and free of charge.',
-    options: [
-      { value: BOOL_VALUE.TRUE, label: 'Please do' },
-      {
-        value: BOOL_VALUE.FALSE,
-        label: 'No, I`ll configure certificates myself',
-      },
-    ],
-    showIf: [
-      { questionId: QUESTION_ID.bucketName, value: VALUES.NOT_EMPTY },
-      { questionId: QUESTION_ID.configureDns, value: BOOL_VALUE.FALSE },
-    ],
   } as RadioQuestion,
   {
     id: QUESTION_ID.region,
