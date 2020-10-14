@@ -1,7 +1,12 @@
 /* eslint-disable camelcase */
 
-import { BUCKET_TYPE, getInputDescription, getOutput, INPUT } from '../enums';
-import { domainIsApex, domainIsWWW, getApexDomain } from './domain';
+import {
+  BUCKET_TYPE,
+  getInputDescription,
+  getOutput,
+  INPUT,
+} from '../../enums';
+import { domainIsApex, domainIsWWW, getApexDomain } from '../domain';
 
 export type TerraformProps = {
   webApp: boolean;
