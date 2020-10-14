@@ -10,10 +10,12 @@ import LoadingIcon from '../components/icons/LoadingIcon';
 import Code from '../components/code/Code';
 import { ShareLink } from '../components/ShareLink';
 import { TerraformProps } from '../utils/terraform/types';
+import { trail } from '../utils/splitbee';
 
 const Infrastructure = (props: TerraformProps) => {
   const { description, mainTfContent } = getTerraFormPackage(props);
   const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => trail('completed', props), []);
   useEffect(() => {
     setTimeout(() => setLoading(false), 800);
   }, [mainTfContent]);

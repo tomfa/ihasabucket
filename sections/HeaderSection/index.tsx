@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 import Meta from '../MetaTags/Meta';
 import { Section, SectionBackground } from '../../components/utils';
 import { useTheme } from '../../styles/theme';
 import Title from '../../components/Title.style';
+import { trail } from '../../utils/splitbee';
 
 const Lolrus = styled.img`
   width: 150px;
@@ -25,6 +27,14 @@ const Lolrus = styled.img`
 const HeaderSection = ({ title = 'I has a bucket.' }: { title?: string }) => {
   const theme = useTheme();
   const router = useRouter();
+  useEffect(
+    () =>
+      trail('hi-there', {
+        referrer: document?.referrer,
+        isPrefilled: !!window?.location?.search,
+      }),
+    []
+  );
   const refreshEverything = async () => {
     await router.push('/');
 

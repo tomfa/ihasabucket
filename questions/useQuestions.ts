@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { QUESTION_ID } from '../enums';
 import { Answer, AnswerMap } from '../types';
 import { useUrlState } from '../utils/useUrlState';
+import { trail } from '../utils/splitbee';
 import {
   getDefaultAnswer,
   getQuestionsToRender,
@@ -68,7 +69,13 @@ const useQuestions = () => {
   const answerQuestion = useCallback(
     (questionId: QUESTION_ID, answer: Answer) => {
       updateAnswer(questionId, answer);
-      setAnsweredQuestions((qs) => [...qs, questionId]);
+      setAnsweredQuestions((qs) => {
+        if (qs.includes(questionId)) {
+          return qs;
+        }
+        trail(questionId, { answer });
+        return [...qs, questionId];
+      });
     },
     [updateAnswer]
   );
