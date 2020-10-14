@@ -1156,7 +1156,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 var TextInput = function TextInput(_ref) {
-  var onSubmit = _ref.onSubmit,
+  var _onChange = _ref.onChange,
+      onSubmit = _ref.onSubmit,
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? '' : _ref$value,
       title = _ref.title,
@@ -1164,159 +1165,154 @@ var TextInput = function TextInput(_ref) {
       placeholders = _ref.placeholders,
       description = _ref.description;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(value || ''),
-      inputValue = _useState[0],
-      setInputValue = _useState[1];
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])((placeholders === null || placeholders === void 0 ? void 0 : placeholders.length) ? 0 : -1),
+      placeholderIndex = _useState[0],
+      setPlaceholderIndex = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      hasSubmitted = _useState2[0],
-      setSubmitted = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])((placeholders === null || placeholders === void 0 ? void 0 : placeholders.length) ? 0 : -1),
-      placeholderIndex = _useState3[0],
-      setPlaceholderIndex = _useState3[1];
-
-  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(placeholderIndex === -1 ? placeholder : placeholders[placeholderIndex]),
-      currentPlaceHolder = _useState4[0],
-      setCurrentPlaceHolder = _useState4[1];
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(placeholderIndex === -1 ? placeholder : placeholders[placeholderIndex]),
+      currentPlaceHolder = _useState2[0],
+      setCurrentPlaceHolder = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (value !== null && value !== undefined) {
-      setInputValue(value);
-      setSubmitted(true);
-    }
-  }, [value]);
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (!placeholders && placeholders.length < 2) {
+    if (!placeholders || placeholders.length < 2) {
       return;
     }
 
-    var go = function go() {
-      var oldPlaceHolder, newPlaceHolder, steps, stepSizeMs, i, shouldRemove, shouldAdd;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function go$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["sleep"])(7000));
-
-            case 2:
-              oldPlaceHolder = placeholders[placeholderIndex % placeholders.length];
-              newPlaceHolder = placeholders[(placeholderIndex + 1) % placeholders.length];
-              steps = oldPlaceHolder.length + newPlaceHolder.length + 4;
-              stepSizeMs = 25;
-              i = 0;
-
-            case 7:
-              if (!(i <= steps)) {
-                _context.next = 16;
-                break;
-              }
-
-              shouldRemove = i <= oldPlaceHolder.length;
-              shouldAdd = steps - i <= newPlaceHolder.length;
-
-              if (shouldRemove) {
-                setCurrentPlaceHolder(oldPlaceHolder.substr(0, oldPlaceHolder.length - i));
-              } else if (shouldAdd) {
-                setCurrentPlaceHolder(newPlaceHolder.substr(0, newPlaceHolder.length - (steps - i)));
-              } //  – it's ok in a for loop
-              // eslint-disable-next-line no-await-in-loop
-
-
-              _context.next = 13;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["sleep"])(stepSizeMs));
-
-            case 13:
-              i++;
-              _context.next = 7;
-              break;
-
-            case 16:
-              setPlaceholderIndex(function (index) {
-                return index + 1 % placeholders.length;
-              });
-
-            case 17:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, null, null, null, Promise);
-    };
-
-    go();
+    updatePlaceHolderDelayed(placeholders, placeholderIndex, setPlaceholderIndex, setCurrentPlaceHolder);
   }, [placeholderIndex]);
+  var cleanInput = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (val) {
+    if (!val) {
+      return '';
+    }
 
-  var submit = function submit(submitValue) {
-    setSubmitted(true);
-    onSubmit(submitValue);
-  };
-
+    return val.toLowerCase().replace(' ', '-');
+  }, []);
+  var submit = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function (submitValue) {
+    onSubmit(cleanInput(submitValue));
+  }, [onSubmit, cleanInput]);
   return __jsx(_Question_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 64,
       columnNumber: 5
     }
   }, title && __jsx(_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84,
+      lineNumber: 65,
       columnNumber: 17
     }
   }, title), __jsx(_InputContainer_styles__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 66,
       columnNumber: 7
     }
   }, __jsx(_Input_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
     type: "text",
-    value: inputValue,
+    value: value || '',
     placeholder: currentPlaceHolder,
     onChange: function onChange(e) {
-      if (hasSubmitted) {
-        onSubmit(e.target.value);
-      } else {
-        setInputValue(e.target.value);
-      }
+      return _onChange(e.target.value);
     },
     onKeyPress: function onKeyPress(e) {
-      return e.key === 'Enter' && submit(inputValue);
+      return e.key === 'Enter' && submit(value);
     },
     onBlur: function onBlur() {
-      return submit(inputValue);
+      return submit(value);
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86,
+      lineNumber: 67,
       columnNumber: 9
     }
   }), __jsx(_SubmitButton_styles__WEBPACK_IMPORTED_MODULE_8__["default"], {
     type: "submit",
-    complete: inputValue.trim().length > 0,
+    complete: value && value.trim().length > 0,
     onClick: function onClick() {
-      return submit(inputValue);
+      return submit(value);
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100,
+      lineNumber: 75,
       columnNumber: 9
     }
   })), description && __jsx(_Description_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106,
+      lineNumber: 81,
       columnNumber: 23
     }
   }, description));
+};
+
+var updatePlaceHolderDelayed = function updatePlaceHolderDelayed(placeholders, placeholderIndex, setPlaceholderIndex, setCurrentPlaceHolder) {
+  var delayMs,
+      oldPlaceHolder,
+      newPlaceHolder,
+      steps,
+      stepSizeMs,
+      i,
+      shouldRemove,
+      shouldAdd,
+      _args = arguments;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function updatePlaceHolderDelayed$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          delayMs = _args.length > 4 && _args[4] !== undefined ? _args[4] : 7000;
+          _context.next = 3;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["sleep"])(delayMs));
+
+        case 3:
+          oldPlaceHolder = placeholders[placeholderIndex % placeholders.length];
+          newPlaceHolder = placeholders[(placeholderIndex + 1) % placeholders.length];
+          steps = oldPlaceHolder.length + newPlaceHolder.length + 4;
+          stepSizeMs = 25;
+          i = 0;
+
+        case 8:
+          if (!(i <= steps)) {
+            _context.next = 17;
+            break;
+          }
+
+          shouldRemove = i <= oldPlaceHolder.length;
+          shouldAdd = steps - i <= newPlaceHolder.length;
+
+          if (shouldRemove) {
+            setCurrentPlaceHolder(oldPlaceHolder.substr(0, oldPlaceHolder.length - i));
+          } else if (shouldAdd) {
+            setCurrentPlaceHolder(newPlaceHolder.substr(0, newPlaceHolder.length - (steps - i)));
+          } //  – it's ok in a for loop
+          // eslint-disable-next-line no-await-in-loop
+
+
+          _context.next = 14;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Object(_utils__WEBPACK_IMPORTED_MODULE_3__["sleep"])(stepSizeMs));
+
+        case 14:
+          i++;
+          _context.next = 8;
+          break;
+
+        case 17:
+          setPlaceholderIndex(function (index) {
+            return index + 1 % placeholders.length;
+          });
+
+        case 18:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, null, null, null, Promise);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TextInput);
@@ -1516,38 +1512,33 @@ var sleep = function sleep(ms) {
 /*!******************!*\
   !*** ./enums.ts ***!
   \******************/
-/*! exports provided: VALUES, QUESTION_ID, BOOL_VALUE, INPUT, getInputDescription, BUCKET_TYPE, getOutput, AWS_REGIONS */
+/*! exports provided: QUESTION_ID, BOOL_VALUE, INPUT, getInputDescription, BUCKET_TYPE, AWS_REGIONS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VALUES", function() { return VALUES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QUESTION_ID", function() { return QUESTION_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BOOL_VALUE", function() { return BOOL_VALUE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INPUT", function() { return INPUT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getInputDescription", function() { return getInputDescription; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BUCKET_TYPE", function() { return BUCKET_TYPE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOutput", function() { return getOutput; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AWS_REGIONS", function() { return AWS_REGIONS; });
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
 
 /* eslint-disable no-shadow */
-var VALUES;
-
-(function (VALUES) {
-  VALUES[VALUES["NOT_EMPTY"] = 0] = "NOT_EMPTY";
-})(VALUES || (VALUES = {}));
-
 var QUESTION_ID;
 
 (function (QUESTION_ID) {
-  QUESTION_ID["createCertificates"] = "create-certificates";
+  QUESTION_ID["apexForwarding"] = "apex-forwarding";
+  QUESTION_ID["errorPath"] = "error-path";
+  QUESTION_ID["wwwForwarding"] = "www-forwarding";
+  QUESTION_ID["createCertificates"] = "certificates";
   QUESTION_ID["bucketName"] = "bucket";
   QUESTION_ID["storageType"] = "storage";
   QUESTION_ID["webappIsStatic"] = "static";
   QUESTION_ID["aclPublic"] = "public";
-  QUESTION_ID["configureDns"] = "configure-dns";
+  QUESTION_ID["configureDns"] = "dns";
   QUESTION_ID["stagingEnv"] = "staging";
   QUESTION_ID["region"] = "region";
 })(QUESTION_ID || (QUESTION_ID = {}));
@@ -1583,36 +1574,6 @@ var BUCKET_TYPE;
   BUCKET_TYPE["FILE_STORAGE"] = "file-storage";
 })(BUCKET_TYPE || (BUCKET_TYPE = {}));
 
-var getOutput = function getOutput(_ref) {
-  var bucketType = _ref.bucketType,
-      hasStaging = _ref.hasStaging;
-  var outputs = [];
-  var bucketNames = hasStaging ? ["".concat(bucketType, "-production"), "".concat(bucketType, "-staging")] : [bucketType];
-  bucketNames.forEach(function (name) {
-    var stageName = hasStaging && name.split('-')[name.split('-').length - 1];
-    var prefix = stageName ? "".concat(stageName, ".") : '';
-    outputs.push({
-      value: "module.".concat(name, ".AWS_SECRET_ACCESS_KEY"),
-      label: "".concat(prefix, "AWS_SECRET_ACCESS_KEY")
-    });
-    outputs.push({
-      value: "module.".concat(name, ".AWS_ACCESS_KEY_ID"),
-      label: "".concat(prefix, "AWS_ACCESS_KEY_ID")
-    });
-    outputs.push({
-      value: "module.".concat(name, ".BUCKET_NAME"),
-      label: "".concat(prefix, "BUCKET_NAME")
-    });
-
-    if (bucketType === BUCKET_TYPE.WEBAPP) {
-      outputs.push({
-        value: "module.".concat(name, ".CLOUDFRONT_URL"),
-        label: "".concat(prefix, "CLOUDFRONT_URL")
-      });
-    }
-  });
-  return outputs;
-};
 var AWS_REGIONS;
 
 (function (AWS_REGIONS) {
@@ -8113,6 +8074,32 @@ function Home() {
 
 /***/ }),
 
+/***/ "./questions/conditions.ts":
+/*!*********************************!*\
+  !*** ./questions/conditions.ts ***!
+  \*********************************/
+/*! exports provided: answerIsApexDomain, answerIsWWWDomain, answerIsDomain */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "answerIsApexDomain", function() { return answerIsApexDomain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "answerIsWWWDomain", function() { return answerIsWWWDomain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "answerIsDomain", function() { return answerIsDomain; });
+/* harmony import */ var _utils_domain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/domain */ "./utils/domain.ts");
+
+var answerIsApexDomain = function answerIsApexDomain(answer) {
+  return typeof answer === 'string' && Object(_utils_domain__WEBPACK_IMPORTED_MODULE_0__["domainIsApex"])(answer);
+};
+var answerIsWWWDomain = function answerIsWWWDomain(answer) {
+  return typeof answer === 'string' && Object(_utils_domain__WEBPACK_IMPORTED_MODULE_0__["domainIsWWW"])(answer);
+};
+var answerIsDomain = function answerIsDomain(answer) {
+  return typeof answer === 'string' && Object(_utils_domain__WEBPACK_IMPORTED_MODULE_0__["isDomain"])(answer);
+};
+
+/***/ }),
+
 /***/ "./questions/data.ts":
 /*!***************************!*\
   !*** ./questions/data.ts ***!
@@ -8127,11 +8114,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../enums */ "./enums.ts");
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../types */ "./types.ts");
+/* harmony import */ var _conditions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./conditions */ "./questions/conditions.ts");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -8141,6 +8130,76 @@ var questions = [{
   type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].TEXT,
   placeholders: ['mydomain.com', 'uploads.mydomain.com', 'staging.mydomain.com', 'www.mydomain.com', 'test.mydomain.com', 'uploads.mydomain.com'],
   description: "We will use this as the S3 bucket name. The bucket name is permanent, but it doesn't have to match an actual domain. It does however have to be unique on S3, so \"example\" or \"my-bucket\" will not work. If you leave it empty, you'll be prompted for a bucket name at deploy time."
+}, {
+  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].configureDns,
+  title: 'Should we set up DNS pointers?',
+  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
+  description: 'Should we setup DNS pointers and certificates for your domain? (Recommended). AWS Route 53 costs 0.5$ / month. If you select Yes, we will output the AWS DNS server urls after setting up the infrastructure. You must point to these servers from your registrar to enable them. If you select No, we will output AWS domain urls for the S3 bucket / Cloudfront, so you can set DNS up yourself.',
+  options: [{
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE,
+    label: 'Yes, please do.'
+  }, {
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE,
+    label: "No, I'll handle DNS manually."
+  }],
+  showIf: [{
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].bucketName,
+    value: _conditions__WEBPACK_IMPORTED_MODULE_3__["answerIsDomain"]
+  }]
+}, {
+  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].createCertificates,
+  title: 'What about certificates (HTTPS)?',
+  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
+  description: "Even though we don't set up DNS in AWS, we can create certificates for the domain. This is free, but will require you to set up a DNS record manually to verify the domain ownership..",
+  options: [{
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE,
+    label: 'Yes, please create one.'
+  }, {
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE,
+    label: "No thanks."
+  }],
+  showIf: [{
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].configureDns,
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE
+  }]
+}, {
+  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].apexForwarding,
+  title: 'Forward apex to www?',
+  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
+  description: 'It looks like your domain name is a www domain. (e.g. www.mydomain.com). Click Yes if you want to forward the apex domain (e.g. mydomain.com) to www (e.g. www.mydomain.com)',
+  options: [{
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE,
+    label: 'Yes, forward my apex domain to www.'
+  }, {
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE,
+    label: "No thanks."
+  }],
+  showIf: [{
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].bucketName,
+    value: _conditions__WEBPACK_IMPORTED_MODULE_3__["answerIsWWWDomain"]
+  }, {
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].configureDns,
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE
+  }]
+}, {
+  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].wwwForwarding,
+  title: 'Forward www to apex?',
+  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
+  description: 'It looks like your domain name is an apex domain (e.g. mydomain.com). Click Yes if you want to forward the www domain (e.g. www.mydomain.com) to the apex domain.',
+  options: [{
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE,
+    label: 'Yes, forward www to apex domain.'
+  }, {
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE,
+    label: "No thanks."
+  }],
+  showIf: [{
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].bucketName,
+    value: _conditions__WEBPACK_IMPORTED_MODULE_3__["answerIsApexDomain"]
+  }, {
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].configureDns,
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE
+  }]
 }, {
   id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].storageType,
   title: 'What are we storing?',
@@ -8170,6 +8229,17 @@ var questions = [{
     value: 'webapp'
   }]
 }, {
+  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].errorPath,
+  title: "What's the \"Not found\" path?",
+  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].TEXT,
+  defaultValue: '404',
+  placeholder: '404',
+  description: '"404" would work with a /404.html or /404/index.html file. This path will be rendered in cases when the file is not found.',
+  showIf: [{
+    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].webappIsStatic,
+    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE
+  }]
+}, {
   id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].aclPublic,
   title: 'Should content be publicly available?',
   type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
@@ -8184,41 +8254,6 @@ var questions = [{
   showIf: [{
     questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].storageType,
     value: 'files'
-  }]
-}, {
-  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].configureDns,
-  title: 'Should AWS set up DNS pointers?',
-  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
-  description: 'Should we setup DNS pointers for your domain? (Recommended). Route 53 costs 1.5$ / month',
-  options: [{
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE,
-    label: 'Yes, please do'
-  }, {
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE,
-    label: "No, I'll set up DNS afterwards"
-  }],
-  showIf: [{
-    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].bucketName,
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["VALUES"].NOT_EMPTY
-  }]
-}, {
-  id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].createCertificates,
-  title: 'Should AWS create certificates to support the domain?',
-  type: _types__WEBPACK_IMPORTED_MODULE_2__["QuestionType"].RADIO,
-  description: 'AWS can create HTTPS certificates for us. This is recommended and free of charge.',
-  options: [{
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].TRUE,
-    label: 'Please do'
-  }, {
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE,
-    label: 'No, I`ll configure certificates myself'
-  }],
-  showIf: [{
-    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].bucketName,
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["VALUES"].NOT_EMPTY
-  }, {
-    questionId: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].configureDns,
-    value: _enums__WEBPACK_IMPORTED_MODULE_1__["BOOL_VALUE"].FALSE
   }]
 }, {
   id: _enums__WEBPACK_IMPORTED_MODULE_1__["QUESTION_ID"].region,
@@ -8324,18 +8359,22 @@ var useQuestions = function useQuestions() {
   var hasAnsweredAll = !renderQuestions.find(function (q) {
     return !answeredQuestions.includes(q.id);
   });
-  var answerQuestion = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
+  var updateAnswer = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
     updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_5__["normalizeAnswer"])(answer)));
     setAnswers(function (prevAnswers) {
       return _objectSpread({}, prevAnswers, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, questionId, answer));
     });
+  }, [setAnswers, updateUrlData]);
+  var answerQuestion = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
+    updateAnswer(questionId, answer);
     setAnsweredQuestions(function (qs) {
       return [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(qs), [questionId]);
     });
-  }, [updateUrlData]);
+  }, [updateAnswer]);
   return {
     answers: answers,
     renderQuestions: renderQuestions,
+    updateAnswer: updateAnswer,
     answerQuestion: answerQuestion,
     hasAnsweredAll: hasAnsweredAll
   };
@@ -8349,7 +8388,7 @@ var useQuestions = function useQuestions() {
 /*!****************************!*\
   !*** ./questions/utils.ts ***!
   \****************************/
-/*! exports provided: getDefaultAnswer, normalizeAnswer, getNormalizedAnswer, hasAnswered, getQuestionsToRender */
+/*! exports provided: getDefaultAnswer, normalizeAnswer, getNormalizedAnswer, hasAnswered, getQuestionsToRender, getForwardingBucketValue */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8359,23 +8398,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNormalizedAnswer", function() { return getNormalizedAnswer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasAnswered", function() { return hasAnswered; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getQuestionsToRender", function() { return getQuestionsToRender; });
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../types */ "./types.ts");
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getForwardingBucketValue", function() { return getForwardingBucketValue; });
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums */ "./enums.ts");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./types.ts");
+/* harmony import */ var _utils_domain__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/domain */ "./utils/domain.ts");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
+/* harmony import */ var _conditions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./conditions */ "./questions/conditions.ts");
+
+
+
 
 
 var getDefaultAnswer = function getDefaultAnswer(question, answer) {
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].TEXT) {
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].TEXT) {
     return answer || question.defaultValue || null;
   }
 
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].RADIO || question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].DROPDOWN) {
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].RADIO || question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].DROPDOWN) {
     var defaultValue = answer || question.defaultValue;
     return question.options.find(function (o) {
       return (o === null || o === void 0 ? void 0 : o.value) === defaultValue;
     }) || null;
   }
 
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].CHECKBOX) {
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].CHECKBOX) {
     var _defaultValue = answer || question.defaultValue;
 
     if (!_defaultValue) {
@@ -8422,9 +8468,13 @@ var getNormalizedAnswer = function getNormalizedAnswer(answers, questionId) {
   return normalizeAnswer(answers[questionId]);
 };
 var hasAnswered = function hasAnswered(answers, questionId, value) {
-  var question = _data__WEBPACK_IMPORTED_MODULE_1__["questionMap"][questionId];
+  var question = _data__WEBPACK_IMPORTED_MODULE_3__["questionMap"][questionId];
 
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].RADIO) {
+  if (!question) {
+    throw new Error("Unknown questionId ".concat(questionId));
+  }
+
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].RADIO) {
     var answer = answers[questionId];
 
     if (answer === null) {
@@ -8434,7 +8484,7 @@ var hasAnswered = function hasAnswered(answers, questionId, value) {
     return answer.value === value;
   }
 
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].CHECKBOX) {
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].CHECKBOX) {
     var _answer = answers[questionId];
 
     if (_answer === null) {
@@ -8446,7 +8496,7 @@ var hasAnswered = function hasAnswered(answers, questionId, value) {
     });
   }
 
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].DROPDOWN) {
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].DROPDOWN) {
     var _answer2 = answers[questionId];
 
     if (_answer2 === null) {
@@ -8456,7 +8506,7 @@ var hasAnswered = function hasAnswered(answers, questionId, value) {
     return _answer2.value === value;
   }
 
-  if (question.type === _types__WEBPACK_IMPORTED_MODULE_0__["QuestionType"].TEXT) {
+  if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].TEXT) {
     var _answer3 = answers[questionId];
 
     if (_answer3 === null) {
@@ -8468,18 +8518,26 @@ var hasAnswered = function hasAnswered(answers, questionId, value) {
 };
 
 var isFulfilled = function isFulfilled(condition, answers) {
+  if (typeof condition.value === 'function') {
+    return condition.value(answers[condition.questionId]);
+  }
+
   return hasAnswered(answers, condition.questionId, condition.value);
 };
 
 var shouldSkip = function shouldSkip(question, answers) {
-  return question.showIf && !!question.showIf.find(function (c) {
+  if (!question.showIf) {
+    return false;
+  }
+
+  return !!question.showIf.find(function (c) {
     return !isFulfilled(c, answers);
   });
 };
 
 var getLastRenderIndex = function getLastRenderIndex(answers, answeredQuestions) {
   var startAtIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var question = _data__WEBPACK_IMPORTED_MODULE_1__["questions"][startAtIndex];
+  var question = _data__WEBPACK_IMPORTED_MODULE_3__["questions"][startAtIndex];
 
   if (!question) {
     return startAtIndex;
@@ -8497,12 +8555,27 @@ var getLastRenderIndex = function getLastRenderIndex(answers, answeredQuestions)
 var getQuestionsToRender = function getQuestionsToRender(answers, answeredQuestions) {
   var questionsToRender = [];
   var lastRenderIndex = getLastRenderIndex(answers, answeredQuestions);
-  _data__WEBPACK_IMPORTED_MODULE_1__["questions"].slice(0, lastRenderIndex + 1).forEach(function (question) {
+  _data__WEBPACK_IMPORTED_MODULE_3__["questions"].slice(0, lastRenderIndex + 1).forEach(function (question) {
     if (!shouldSkip(question, answers)) {
       questionsToRender.push(question);
     }
   });
   return questionsToRender;
+};
+var getForwardingBucketValue = function getForwardingBucketValue(answers) {
+  var bucketName = answers[_enums__WEBPACK_IMPORTED_MODULE_0__["QUESTION_ID"].bucketName];
+  var forwardToApex = answers[_enums__WEBPACK_IMPORTED_MODULE_0__["QUESTION_ID"].apexForwarding];
+  var forwardToWWW = answers[_enums__WEBPACK_IMPORTED_MODULE_0__["QUESTION_ID"].wwwForwarding];
+
+  if (Object(_conditions__WEBPACK_IMPORTED_MODULE_4__["answerIsApexDomain"])(bucketName) && forwardToWWW) {
+    return "www.".concat(bucketName);
+  }
+
+  if (Object(_conditions__WEBPACK_IMPORTED_MODULE_4__["answerIsWWWDomain"])(bucketName) && forwardToApex) {
+    return Object(_utils_domain__WEBPACK_IMPORTED_MODULE_2__["getApexDomain"])(bucketName);
+  }
+
+  return null;
 };
 
 /***/ }),
@@ -8923,7 +8996,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/forms/Description.style */ "./components/forms/Description.style.tsx");
 /* harmony import */ var _components_Header_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header.style */ "./components/Header.style.tsx");
-/* harmony import */ var _utils_terraform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/terraform */ "./utils/terraform.ts");
+/* harmony import */ var _utils_terraform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/terraform */ "./utils/terraform/index.ts");
 /* harmony import */ var _components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/code/Pre.style */ "./components/code/Pre.style.tsx");
 /* harmony import */ var _components_Mute_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Mute.style */ "./components/Mute.style.tsx");
 /* harmony import */ var _components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/icons/LoadingIcon */ "./components/icons/LoadingIcon.tsx");
@@ -8966,7 +9039,7 @@ var Infrastructure = function Infrastructure(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29,
+        lineNumber: 21,
         columnNumber: 12
       }
     });
@@ -8977,7 +9050,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 26,
       columnNumber: 7
     }
   }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
@@ -8985,7 +9058,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 28,
       columnNumber: 7
     }
   }, "configuration url"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -8994,42 +9067,48 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 30,
       columnNumber: 7
     }
   }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    style: {
+      fontWeight: 'bold'
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 31,
       columnNumber: 7
     }
-  }, "The script above will plan the infrastructure and prompt you for confirmation."), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "The script above will plan the infrastructure and prompt you for confirmation."), description.map(function (text, i) {
+    return __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: i,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 36,
+        columnNumber: 9
+      }
+    }, text);
+  }), __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 7
-    }
-  }, description), __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
+      lineNumber: 38,
       columnNumber: 7
     }
   }, "Prerequisites"), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45,
+      lineNumber: 39,
       columnNumber: 7
     }
   }, "AWS Account"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 40,
       columnNumber: 7
     }
   }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
@@ -9037,56 +9116,56 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 42,
       columnNumber: 9
     }
   }, "aws.amazon.com")), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 46,
       columnNumber: 7
     }
   }, "If you don't have your ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 47,
       columnNumber: 37
     }
   }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 48,
       columnNumber: 9
     }
   }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 52,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59,
+      lineNumber: 53,
       columnNumber: 9
     }
   }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA..."), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 57,
       columnNumber: 7
     }
   }, "Terraform installed"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 58,
       columnNumber: 7
     }
   }, "If you haven't already,", ' ', __jsx("a", {
@@ -9094,28 +9173,28 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66,
+      lineNumber: 60,
       columnNumber: 9
     }
   }, "install Terraform")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 64,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 65,
       columnNumber: 9
     }
   }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74,
+      lineNumber: 68,
       columnNumber: 7
     }
   }, "See", ' ', __jsx("a", {
@@ -9123,7 +9202,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 70,
       columnNumber: 9
     }
   }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."));
@@ -9375,6 +9454,7 @@ var Questionare = function Questionare() {
   var _useQuestions = Object(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_1__["default"])(),
       answers = _useQuestions.answers,
       renderQuestions = _useQuestions.renderQuestions,
+      updateAnswer = _useQuestions.updateAnswer,
       answerQuestion = _useQuestions.answerQuestion,
       hasAnsweredAll = _useQuestions.hasAnsweredAll;
 
@@ -9382,7 +9462,7 @@ var Questionare = function Questionare() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 30,
       columnNumber: 5
     }
   }, renderQuestions.map(function (question) {
@@ -9401,7 +9481,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30,
+          lineNumber: 35,
           columnNumber: 13
         }
       });
@@ -9422,7 +9502,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 49,
           columnNumber: 13
         }
       });
@@ -9443,7 +9523,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58,
+          lineNumber: 63,
           columnNumber: 13
         }
       });
@@ -9457,6 +9537,9 @@ var Questionare = function Questionare() {
         value: _answer3,
         placeholder: question.placeholder,
         placeholders: question.placeholders,
+        onChange: function onChange(value) {
+          return updateAnswer(question.id, value);
+        },
         onSubmit: function onSubmit(value) {
           return answerQuestion(question.id, value);
         },
@@ -9465,7 +9548,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72,
+          lineNumber: 77,
           columnNumber: 13
         }
       });
@@ -9477,12 +9560,16 @@ var Questionare = function Questionare() {
     shared: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].aclPublic, _enums__WEBPACK_IMPORTED_MODULE_5__["BOOL_VALUE"].TRUE),
     staging: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].stagingEnv, _enums__WEBPACK_IMPORTED_MODULE_5__["BOOL_VALUE"].TRUE),
     staticPage: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].webappIsStatic, _enums__WEBPACK_IMPORTED_MODULE_5__["BOOL_VALUE"].TRUE),
+    createCertificates: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].configureDns, _enums__WEBPACK_IMPORTED_MODULE_5__["BOOL_VALUE"].TRUE) || Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].createCertificates, _enums__WEBPACK_IMPORTED_MODULE_5__["BOOL_VALUE"].TRUE),
+    configureDns: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].configureDns, _enums__WEBPACK_IMPORTED_MODULE_5__["BOOL_VALUE"].TRUE),
+    errorPath: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].errorPath),
+    forwardingBucket: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["getForwardingBucketValue"])(answers),
     bucketName: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].bucketName),
     region: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_8__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_5__["QUESTION_ID"].region),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87,
+      lineNumber: 93,
       columnNumber: 9
     }
   }));
@@ -9584,61 +9671,488 @@ var copyToClipBoard = function copyToClipBoard(texts) {
 
 /***/ }),
 
-/***/ "./utils/terraform.ts":
-/*!****************************!*\
-  !*** ./utils/terraform.ts ***!
-  \****************************/
+/***/ "./utils/domain.ts":
+/*!*************************!*\
+  !*** ./utils/domain.ts ***!
+  \*************************/
+/*! exports provided: isTopLevelDomain, getApexDomain, domainIsApex, domainIsWWW, isDomain */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isTopLevelDomain", function() { return isTopLevelDomain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApexDomain", function() { return getApexDomain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "domainIsApex", function() { return domainIsApex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "domainIsWWW", function() { return domainIsWWW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDomain", function() { return isDomain; });
+function isTopLevelDomain(domain) {
+  // TODO: This function, heh.
+  return !domain.includes('.');
+}
+function getApexDomain(domain) {
+  var domainParts = domain.split('.');
+
+  if (domainParts.length === 1) {
+    throw new Error("".concat(domain, " is not a valid domain"));
+  }
+
+  var lastPart = domainParts[domainParts.length - 1];
+  var secondLastPart = domainParts[domainParts.length - 2];
+
+  if (!isTopLevelDomain(lastPart)) {
+    throw new Error("".concat(lastPart, " is not a known top level domain"));
+  }
+
+  return "".concat(secondLastPart, ".").concat(lastPart);
+}
+var domainIsApex = function domainIsApex(domain) {
+  return domain.split('.').length === 2;
+};
+var domainIsWWW = function domainIsWWW(domain) {
+  return domain.split('.').length === 3 && domain.startsWith('www.');
+};
+var isDomain = function isDomain(domain) {
+  return domain.split('.').length >= 2;
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/certificate.ts":
+/*!****************************************!*\
+  !*** ./utils/terraform/certificate.ts ***!
+  \****************************************/
+/*! exports provided: getCertificateTfContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCertificateTfContent", function() { return getCertificateTfContent; });
+/* harmony import */ var _domain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../domain */ "./utils/domain.ts");
+/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
+
+
+var getCertificateTfContent = function getCertificateTfContent(_ref) {
+  var createCertificates = _ref.createCertificates,
+      bucketName = _ref.bucketName;
+
+  if (!createCertificates) {
+    return [];
+  }
+
+  var apexDomain = Object(_domain__WEBPACK_IMPORTED_MODULE_0__["getApexDomain"])(bucketName);
+  var alternativeMames = ["*.".concat(apexDomain)];
+
+  if (bucketName !== apexDomain) {
+    alternativeMames.push(bucketName);
+  }
+
+  alternativeMames.push(Object(_names__WEBPACK_IMPORTED_MODULE_1__["getStagingDomain"])(bucketName));
+  var alternativeNameString = alternativeMames.length > 0 ? "[\"".concat(alternativeMames.join('","'), "\"]") : '[]';
+  return [{
+    name: 'certificate',
+    source: 'git::https://github.com/tomfa/terraform.git//certificate',
+    parameters: {
+      domain: "\"".concat(apexDomain, "\""),
+      alternative_names: "".concat(alternativeNameString)
+    }
+  }];
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/descriptionText.ts":
+/*!********************************************!*\
+  !*** ./utils/terraform/descriptionText.ts ***!
+  \********************************************/
+/*! exports provided: getTerraPackageDescription */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTerraPackageDescription", function() { return getTerraPackageDescription; });
+var getTerraPackageDescription = function getTerraPackageDescription(props) {
+  var certificateWarningText = getCertificateWarning(props);
+  var authText = getAuthDescription(props);
+  var outcomeText = getOutcomeDescription(props);
+  return [certificateWarningText, outcomeText, authText].filter(function (t) {
+    return !!t;
+  });
+};
+
+var getCertificateWarning = function getCertificateWarning(props) {
+  if (!props.createCertificates) {
+    return '';
+  }
+
+  if (props.configureDns) {
+    return 'During the setup, we will request HTTPS certificates for your domain, and verify that they are set up correctly. ' + 'This means you will have to go to your registrar and change the DNS pointers to the AWS DNS servers. You can find their names in Route 53 in the AWS console. ' + 'Until that is done, -and- the DNS changes have propageted, the script WILL NOT COMPLETE. ' + 'Instead, it will likely time out. No worries though, just re-run the script after a while, when the DNS records are correct. ' + 'It will continue where it left off.';
+  }
+
+  return 'During the setup, we will request HTTPS certificates for your domain, and verify that they are set up correctly. ' + 'This means you will have to go to change your DNS pointers as specified in the Certificate Manager in the AWS console. ' + 'These instructions will be shown under the certificate in status "Pending Verification", which will show up after you have start this script. ' + 'Until that is done, -and- the DNS changes have propageted, the script WILL NOT COMPLETE. ' + 'Instead, it will likely time out. No worries though, just re-run the script after a while, when the DNS records are correct. ' + 'It will continue where it left off.';
+};
+
+var getOutcomeDescription = function getOutcomeDescription(props) {
+  var useCaseText = getUseCaseDescription(props);
+  var count = props.staging ? 'two sets of' : 'a';
+  var infraStructure = "S3 bucket".concat(props.webApp ? ' + Cloudfront' : '', ";");
+  return "Once run successfully, the script will create ".concat(count, " ").concat(infraStructure, " in ").concat(props.region, ", configured ").concat(useCaseText, ".");
+};
+
+var getAuthDescription = function getAuthDescription(_ref) {
+  var staging = _ref.staging;
+  var keysInfo = staging ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment.' : 'A set of AWS keys will be created that is able to upload to the bucket.';
+  var keysUsage = 'Generated keys will be shown as output in the terminal. These can be used to upload new versions of the app to the bucket.';
+  return "".concat(keysInfo, " ").concat(keysUsage);
+};
+
+var getUseCaseDescription = function getUseCaseDescription(_ref2) {
+  var webApp = _ref2.webApp,
+      staticPage = _ref2.staticPage,
+      shared = _ref2.shared;
+
+  if (webApp) {
+    if (staticPage) {
+      return 'to serve a solid statically generated web app';
+    }
+
+    return 'to serve a blazingly fast single-page web app';
+  }
+
+  if (shared) {
+    return 'for hosting publicly available files';
+  }
+
+  return 'for storing and serving files for authorized requests';
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/dns.ts":
+/*!********************************!*\
+  !*** ./utils/terraform/dns.ts ***!
+  \********************************/
+/*! exports provided: getDomainTfContent, getDomainRecordTfContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDomainTfContent", function() { return getDomainTfContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDomainRecordTfContent", function() { return getDomainRecordTfContent; });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _domain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../domain */ "./utils/domain.ts");
+/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+var getBucketTargetRefs = function getBucketTargetRefs(props) {
+  var moduleNames = Object(_names__WEBPACK_IMPORTED_MODULE_2__["getBucketModuleNames"])(props);
+  var s3TargetNameAttr = 'BUCKET_WEBSITE_DOMAIN';
+  var s3TargetZoneIdAttr = 'BUCKET_ZONE_ID';
+  var cloudFrontTargetNameAttr = 'CLOUDFRONT_URL';
+  var cloudFrontTargetZoneIdAttr = 'CLOUDFRONT_ZONE_ID';
+
+  var getTarget = function getTarget(moduleName, usesS3) {
+    if (!moduleName) {
+      return null;
+    }
+
+    return {
+      target_name: "module.".concat(moduleName, ".") + (usesS3 ? s3TargetNameAttr : cloudFrontTargetNameAttr),
+      target_zone_id: "module.".concat(moduleName, ".") + (usesS3 ? s3TargetZoneIdAttr : cloudFrontTargetZoneIdAttr)
+    };
+  };
+
+  return {
+    staging: getTarget(moduleNames.staging, !props.webApp),
+    main: getTarget(moduleNames.main, !props.webApp),
+    redirect: getTarget(moduleNames.redirect, true)
+  };
+};
+
+var getDomainTfContent = function getDomainTfContent(_ref) {
+  var configureDns = _ref.configureDns,
+      bucketName = _ref.bucketName;
+
+  if (!configureDns) {
+    return [];
+  }
+
+  var apexDomain = Object(_domain__WEBPACK_IMPORTED_MODULE_1__["getApexDomain"])(bucketName);
+  return [{
+    name: 'domain',
+    source: 'git::https://github.com/tomfa/terraform.git//domain',
+    parameters: {
+      domain: "\"".concat(apexDomain, "\"")
+    }
+  }];
+};
+var getDomainRecordTfContent = function getDomainRecordTfContent(props) {
+  var configureDns = props.configureDns,
+      forwardingBucket = props.forwardingBucket,
+      staging = props.staging;
+
+  if (!configureDns) {
+    return [];
+  }
+
+  var domains = Object(_names__WEBPACK_IMPORTED_MODULE_2__["getBucketDomains"])(props);
+  var targets = getBucketTargetRefs(props);
+  var tfContent = [{
+    name: 'bucket_record',
+    source: 'git::https://github.com/tomfa/terraform.git//alias_record',
+    parameters: _objectSpread({
+      dns_zone_id: "module.domain.DOMAIN_ZONE_ID",
+      domain: "\"".concat(domains.main, "\"")
+    }, targets.main)
+  }];
+
+  if (staging) {
+    tfContent.push({
+      name: 'staging_record',
+      source: 'git::https://github.com/tomfa/terraform.git//alias_record',
+      parameters: _objectSpread({
+        dns_zone_id: "module.domain.DOMAIN_ZONE_ID",
+        domain: "\"".concat(domains.staging, "\"")
+      }, targets.staging)
+    });
+  }
+
+  if (forwardingBucket) {
+    tfContent.push({
+      name: 'redirect_record',
+      source: 'git::https://github.com/tomfa/terraform.git//alias_record',
+      parameters: _objectSpread({
+        dns_zone_id: "module.domain.DOMAIN_ZONE_ID",
+        domain: "\"".concat(domains.redirect, "\"")
+      }, targets.redirect)
+    });
+  }
+
+  return tfContent;
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/fileStorage.ts":
+/*!****************************************!*\
+  !*** ./utils/terraform/fileStorage.ts ***!
+  \****************************************/
+/*! exports provided: getFileStorageBucketTfContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFileStorageBucketTfContent", function() { return getFileStorageBucketTfContent; });
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
+/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
+
+
+var getFileStorageBucketTfContent = function getFileStorageBucketTfContent(props) {
+  if (props.webApp) {
+    return [];
+  }
+
+  var tfContent = [];
+  var names = Object(_names__WEBPACK_IMPORTED_MODULE_1__["getBucketModuleNames"])(props);
+  var bucketName = props.bucketName,
+      region = props.region,
+      shared = props.shared;
+  tfContent.push({
+    name: names.main,
+    source: 'git::https://github.com/tomfa/terraform.git//files',
+    parameters: {
+      bucket_name: bucketName ? "\"".concat(bucketName, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_0__["INPUT"].BUCKET_NAME),
+      aws_region: region ? "\"".concat(region, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_0__["INPUT"].AWS_REGION),
+      acl: shared ? '"public-read"' : '"private"'
+    }
+  });
+
+  if (props.staging) {
+    tfContent.push({
+      name: names.staging,
+      source: 'git::https://github.com/tomfa/terraform.git//files',
+      parameters: {
+        bucket_name: "\"".concat(Object(_names__WEBPACK_IMPORTED_MODULE_1__["getStagingBucketName"])(bucketName), "\""),
+        aws_region: region ? "\"".concat(region, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_0__["INPUT"].AWS_REGION),
+        acl: shared ? '"public-read"' : '"private"'
+      }
+    });
+  }
+
+  return tfContent;
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/index.ts":
+/*!**********************************!*\
+  !*** ./utils/terraform/index.ts ***!
+  \**********************************/
 /*! exports provided: getTerraFormPackage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTerraFormPackage", function() { return getTerraFormPackage; });
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../enums */ "./enums.ts");
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _certificate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./certificate */ "./utils/terraform/certificate.ts");
+/* harmony import */ var _descriptionText__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./descriptionText */ "./utils/terraform/descriptionText.ts");
+/* harmony import */ var _dns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dns */ "./utils/terraform/dns.ts");
+/* harmony import */ var _fileStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./fileStorage */ "./utils/terraform/fileStorage.ts");
+/* harmony import */ var _redirect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./redirect */ "./utils/terraform/redirect.ts");
+/* harmony import */ var _webApp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./webApp */ "./utils/terraform/webApp.ts");
+/* harmony import */ var _terraformText__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./terraformText */ "./utils/terraform/terraformText.ts");
+
+
+/* eslint-disable camelcase */
 
 
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
-var getMainTfContent = function getMainTfContent(_ref) {
+
+
+var getMainTfContent = function getMainTfContent(props) {
+  var modules = [];
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_webApp__WEBPACK_IMPORTED_MODULE_6__["getWebAppBucketTfContent"])(props)));
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_fileStorage__WEBPACK_IMPORTED_MODULE_4__["getFileStorageBucketTfContent"])(props)));
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_dns__WEBPACK_IMPORTED_MODULE_3__["getDomainTfContent"])(props)));
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_dns__WEBPACK_IMPORTED_MODULE_3__["getDomainRecordTfContent"])(props)));
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_certificate__WEBPACK_IMPORTED_MODULE_1__["getCertificateTfContent"])(props)));
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_redirect__WEBPACK_IMPORTED_MODULE_5__["getRedirectBucketTfContent"])(props)));
+  var lines = [];
+  lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_terraformText__WEBPACK_IMPORTED_MODULE_7__["toVariablesText"])(modules)));
+  lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_terraformText__WEBPACK_IMPORTED_MODULE_7__["toModulesText"])(modules)));
+  lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_terraformText__WEBPACK_IMPORTED_MODULE_7__["getOutputLines"])(props)));
+  return lines;
+};
+
+var getTerraFormPackage = function getTerraFormPackage(props) {
+  return {
+    mainTfContent: getMainTfContent(props),
+    description: Object(_descriptionText__WEBPACK_IMPORTED_MODULE_2__["getTerraPackageDescription"])(props)
+  };
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/names.ts":
+/*!**********************************!*\
+  !*** ./utils/terraform/names.ts ***!
+  \**********************************/
+/*! exports provided: getBucketModuleNames, getStagingBucketName, getStagingDomain, getBucketDomains */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBucketModuleNames", function() { return getBucketModuleNames; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStagingBucketName", function() { return getStagingBucketName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStagingDomain", function() { return getStagingDomain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBucketDomains", function() { return getBucketDomains; });
+/* harmony import */ var _domain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../domain */ "./utils/domain.ts");
+
+var getBucketModuleNames = function getBucketModuleNames(_ref) {
   var webApp = _ref.webApp,
       staging = _ref.staging,
-      shared = _ref.shared,
-      staticPage = _ref.staticPage,
-      region = _ref.region,
-      bucketName = _ref.bucketName;
-  var source = webApp ? 'git::https://github.com/tomfa/terraform.git//webapp' : 'git::https://github.com/tomfa/terraform.git//files';
-  var parameters = {
-    bucket_name: bucketName ? "\"".concat(bucketName, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].BUCKET_NAME),
-    aws_region: region ? "\"".concat(region, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"].AWS_REGION)
+      forwardingBucket = _ref.forwardingBucket;
+  var genericBucketName = webApp ? 'web-app' : 'file-storage';
+  var mainBucket = staging ? "".concat(genericBucketName, "-production") : genericBucketName;
+  var stagingBucket = staging ? "".concat(genericBucketName, "-staging") : null;
+  return {
+    staging: stagingBucket,
+    main: mainBucket,
+    redirect: forwardingBucket ? 'redirect' : null
   };
-
-  if (webApp) {
-    parameters.error_path = '"/index.html"';
-    parameters.error_code = staticPage ? '404' : '200';
-  } else {
-    parameters.acl = shared ? '"public-read"' : '"private"';
+};
+var getStagingBucketName = function getStagingBucketName(bucketName) {
+  if (!bucketName) {
+    return "staging.\\${var.bucket_name}";
   }
 
-  var genericBucketName = webApp ? 'web-app' : 'file-storage';
-  var modules = staging ? [{
-    name: "".concat(genericBucketName, "-production"),
-    parameters: parameters
-  }, {
-    name: "".concat(genericBucketName, "-staging"),
-    parameters: _objectSpread({}, parameters, {
-      bucket_name: bucketName ? "\"".concat(bucketName, ".staging\"") : "\"\\${var.bucket_name}.staging\""
-    })
-  }] : [{
-    name: genericBucketName,
-    parameters: parameters
+  return getStagingDomain(bucketName);
+};
+var getStagingDomain = function getStagingDomain(domain) {
+  if (Object(_domain__WEBPACK_IMPORTED_MODULE_0__["domainIsApex"])(domain) || Object(_domain__WEBPACK_IMPORTED_MODULE_0__["domainIsWWW"])(domain)) {
+    var apex = Object(_domain__WEBPACK_IMPORTED_MODULE_0__["getApexDomain"])(domain);
+    return "staging.".concat(apex);
+  }
+
+  return "staging-".concat(domain);
+};
+var getBucketDomains = function getBucketDomains(_ref2) {
+  var bucketName = _ref2.bucketName,
+      staging = _ref2.staging,
+      forwardingBucket = _ref2.forwardingBucket;
+  var stagingBucket = staging ? getStagingDomain(bucketName) : null;
+  return {
+    staging: stagingBucket,
+    main: bucketName,
+    redirect: forwardingBucket || null
+  };
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/redirect.ts":
+/*!*************************************!*\
+  !*** ./utils/terraform/redirect.ts ***!
+  \*************************************/
+/*! exports provided: getRedirectBucketTfContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRedirectBucketTfContent", function() { return getRedirectBucketTfContent; });
+var getRedirectBucketTfContent = function getRedirectBucketTfContent(_ref) {
+  var forwardingBucket = _ref.forwardingBucket,
+      bucketName = _ref.bucketName,
+      region = _ref.region;
+
+  if (!forwardingBucket) {
+    return [];
+  }
+
+  return [{
+    name: 'redirect',
+    source: "\"git::https://github.com/tomfa/terraform.git//redirect\"",
+    parameters: {
+      bucket_name: "\"".concat(forwardingBucket, "\""),
+      redirect_url: "\"".concat(bucketName, "\""),
+      aws_region: "\"".concat(region, "\"")
+    }
   }];
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/terraformText.ts":
+/*!******************************************!*\
+  !*** ./utils/terraform/terraformText.ts ***!
+  \******************************************/
+/*! exports provided: toVariablesText, toModulesText, getOutputLines */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toVariablesText", function() { return toVariablesText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toModulesText", function() { return toModulesText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOutputLines", function() { return getOutputLines; });
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
+/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
+
+
+
+
+var toVariablesText = function toVariablesText(modules) {
   var lines = [];
 
   var isUsed = function isUsed(inputVariable) {
@@ -9660,72 +10174,160 @@ var getMainTfContent = function getMainTfContent(_ref) {
       lines.push("}");
     }
   });
+  lines.push('');
+  return lines;
+};
+var toModulesText = function toModulesText(modules) {
+  var lines = [];
   modules.forEach(function (module) {
-    lines.push('');
     lines.push("module \"".concat(module.name, "\" {"));
-    lines.push("  source = \"".concat(source, "\""));
-    Object.entries(module.parameters).forEach(function (_ref2) {
-      var _ref3 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref2, 2),
-          key = _ref3[0],
-          value = _ref3[1];
+    lines.push("  source = \"".concat(module.source, "\""));
+    Object.entries(module.parameters).forEach(function (_ref) {
+      var _ref2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, 2),
+          key = _ref2[0],
+          value = _ref2[1];
 
       lines.push("  ".concat(key, " = ").concat(value));
     });
     lines.push("}");
+    lines.push('');
   });
-  lines.push('');
-  Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getOutput"])({
-    bucketType: webApp ? _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP : _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].FILE_STORAGE,
-    hasStaging: staging
-  }).forEach(function (output) {
-    lines.push("output \"".concat(output.label, "\" {"));
-    lines.push("  value = ".concat(output.value));
-    lines.push('}');
+  return lines;
+};
+var getOutputLines = function getOutputLines(props) {
+  var lines = [];
+  var bucketModuleNames = Object(_names__WEBPACK_IMPORTED_MODULE_3__["getBucketModuleNames"])(props);
+  var bucketType = props.webApp ? _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP : _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].FILE_STORAGE;
+  var outputs = getOutput({
+    moduleName: bucketModuleNames.main,
+    bucketType: bucketType,
+    prefix: props.staging ? 'production-' : ''
+  });
+
+  if (props.staging) {
+    outputs.push.apply(outputs, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(getOutput({
+      moduleName: bucketModuleNames.staging,
+      bucketType: bucketType,
+      prefix: 'staging-'
+    })));
+  }
+
+  outputs.forEach(function (output) {
+    return lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(outputAsText(output)));
   });
   return lines;
 };
 
-var getTerraPackageDescription = function getTerraPackageDescription(_ref4) {
-  var webApp = _ref4.webApp,
-      staging = _ref4.staging,
-      shared = _ref4.shared,
-      staticPage = _ref4.staticPage,
-      region = _ref4.region;
-  var count = staging ? 'two sets of' : 'a';
-  var usecase = getUseCaseDescription({
-    webApp: webApp,
-    staticPage: staticPage,
-    shared: shared
+var getOutput = function getOutput(_ref3) {
+  var bucketType = _ref3.bucketType,
+      moduleName = _ref3.moduleName,
+      _ref3$prefix = _ref3.prefix,
+      prefix = _ref3$prefix === void 0 ? '' : _ref3$prefix;
+  var outputs = [];
+  outputs.push({
+    value: "module.".concat(moduleName, ".AWS_SECRET_ACCESS_KEY"),
+    label: "".concat(prefix, "AWS_SECRET_ACCESS_KEY")
   });
-  var iamUserInfo = staging ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment' : 'A set of AWS keys will be created that is able to upload to the bucket';
-  return "Once run, it will create ".concat(count, " S3 bucket").concat(webApp ? ' + Cloudfront' : '', " in ").concat(region, ", configured ").concat(usecase, ". ").concat(iamUserInfo, ". Generated keys will be shown as output in the terminal.");
+  outputs.push({
+    value: "module.".concat(moduleName, ".AWS_ACCESS_KEY_ID"),
+    label: "".concat(prefix, "AWS_ACCESS_KEY_ID")
+  });
+  outputs.push({
+    value: "module.".concat(moduleName, ".BUCKET_NAME"),
+    label: "".concat(prefix, "BUCKET_NAME")
+  });
+
+  if (bucketType === _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP) {
+    outputs.push({
+      value: "module.".concat(moduleName, ".CLOUDFRONT_URL"),
+      label: "".concat(prefix, "CLOUDFRONT_URL")
+    });
+  }
+
+  return outputs;
 };
 
-var getUseCaseDescription = function getUseCaseDescription(_ref5) {
-  var webApp = _ref5.webApp,
-      staticPage = _ref5.staticPage,
-      shared = _ref5.shared;
+var outputAsText = function outputAsText(output) {
+  var lines = [];
+  lines.push("output \"".concat(output.label, "\" {"));
+  lines.push("  value = ".concat(output.value));
 
-  if (webApp) {
-    if (staticPage) {
-      return 'to serve a solid statically generated web app';
+  if (output.description) {
+    lines.push("  description = ".concat(output.description));
+  }
+
+  lines.push('}');
+  return lines;
+};
+
+/***/ }),
+
+/***/ "./utils/terraform/webApp.ts":
+/*!***********************************!*\
+  !*** ./utils/terraform/webApp.ts ***!
+  \***********************************/
+/*! exports provided: getWebAppBucketTfContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getWebAppBucketTfContent", function() { return getWebAppBucketTfContent; });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
+/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+var getWebAppBucketTfContent = function getWebAppBucketTfContent(props) {
+  if (!props.webApp) {
+    return [];
+  }
+
+  var names = Object(_names__WEBPACK_IMPORTED_MODULE_2__["getBucketModuleNames"])(props);
+  var bucketName = props.bucketName,
+      region = props.region,
+      staticPage = props.staticPage,
+      errorPath = props.errorPath;
+  var bucketSpec = {
+    name: names.main,
+    source: 'git::https://github.com/tomfa/terraform.git//webapp',
+    parameters: {
+      bucket_name: bucketName ? "\"".concat(bucketName, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_1__["INPUT"].BUCKET_NAME),
+      aws_region: region ? "\"".concat(region, "\"") : "var.".concat(_enums__WEBPACK_IMPORTED_MODULE_1__["INPUT"].AWS_REGION),
+      error_path: staticPage && errorPath ? "\"/".concat(errorPath, "\"") : '"/index.html"',
+      error_code: staticPage ? '404' : '200'
     }
-
-    return 'to serve a blazingly fast single-page web app';
-  }
-
-  if (shared) {
-    return 'for hosting publicly available files';
-  }
-
-  return 'for storing and serving files for authorized requests';
-};
-
-var getTerraFormPackage = function getTerraFormPackage(props) {
-  return {
-    mainTfContent: getMainTfContent(props),
-    description: getTerraPackageDescription(props)
   };
+
+  if (props.createCertificates) {
+    bucketSpec.parameters.certificate_arn = 'module.certificate.CERTIFICATE_ARN';
+  }
+
+  if (props.configureDns && bucketName) {
+    bucketSpec.parameters.domain_aliases = "[\"".concat(bucketName, "\"]");
+  }
+
+  if (!props.staging) {
+    return [bucketSpec];
+  }
+
+  var stagingSpec = _objectSpread({}, bucketSpec, {
+    name: names.staging,
+    parameters: _objectSpread({}, bucketSpec.parameters, {
+      bucket_name: "\"".concat(Object(_names__WEBPACK_IMPORTED_MODULE_2__["getStagingBucketName"])(bucketName), "\"")
+    })
+  });
+
+  if (props.configureDns && bucketName) {
+    stagingSpec.parameters.domain_aliases = "[\"".concat(Object(_names__WEBPACK_IMPORTED_MODULE_2__["getStagingDomain"])(bucketName), "\"]");
+  }
+
+  return [bucketSpec, stagingSpec];
 };
 
 /***/ }),
