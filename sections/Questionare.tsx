@@ -22,6 +22,7 @@ const Questionare = () => {
   const {
     answers,
     renderQuestions,
+    updateAnswer,
     answerQuestion,
     hasAnsweredAll,
   } = useQuestions();
@@ -79,6 +80,7 @@ const Questionare = () => {
               value={answer}
               placeholder={question.placeholder}
               placeholders={question.placeholders}
+              onChange={(value) => updateAnswer(question.id, value)}
               onSubmit={(value) => answerQuestion(question.id, value)}
               title={question.title}
               description={question.description}

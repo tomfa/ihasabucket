@@ -55,18 +55,30 @@ const useQuestions = () => {
   const hasAnsweredAll = !renderQuestions.find(
     (q) => !answeredQuestions.includes(q.id)
   );
-  const answerQuestion = useCallback(
+  const updateAnswer = useCallback(
     (questionId: QUESTION_ID, answer: Answer) => {
       updateUrlData({ [String(questionId)]: normalizeAnswer(answer) });
       setAnswers((prevAnswers) => ({
         ...prevAnswers,
         [questionId]: answer,
       }));
+    },
+    [setAnswers, updateUrlData]
+  );
+  const answerQuestion = useCallback(
+    (questionId: QUESTION_ID, answer: Answer) => {
+      updateAnswer(questionId, answer);
       setAnsweredQuestions((qs) => [...qs, questionId]);
     },
-    [updateUrlData]
+    [updateAnswer]
   );
-  return { answers, renderQuestions, answerQuestion, hasAnsweredAll };
+  return {
+    answers,
+    renderQuestions,
+    updateAnswer,
+    answerQuestion,
+    hasAnsweredAll,
+  };
 };
 
 export default useQuestions;

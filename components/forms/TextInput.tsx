@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import Header from '../Header.style';
 import { sleep } from '../utils';
@@ -11,6 +11,7 @@ import SubmitButton from './SubmitButton.styles';
 interface Props {
   id: string;
   value?: string;
+  onChange: (selected: string) => void;
   onSubmit: (selected: string) => void;
   title: string;
   placeholder?: string;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const TextInput = ({
+  onChange,
   onSubmit,
   value = '',
   title,
@@ -27,8 +29,6 @@ const TextInput = ({
   placeholders,
   description,
 }: Props) => {
-  const [inputValue, setInputValue] = useState<string>(value || '');
-  const [hasSubmitted, setSubmitted] = useState<boolean>(!!value);
   const [placeholderIndex, setPlaceholderIndex] = useState<number>(
     placeholders?.length ? 0 : -1
   );
@@ -36,18 +36,9 @@ const TextInput = ({
     placeholderIndex === -1 ? placeholder : placeholders[placeholderIndex]
   );
   useEffect(() => {
-    if (value) {
-      setSubmitted(true);
-    }
-    if (typeof value === 'string') {
-      setInputValue(value);
-    }
-  }, [value]);
-  useEffect(() => {
     if (!placeholders || placeholders.length < 2) {
       return;
     }
-
     updatePlaceHolderDelayed(
       placeholders,
       placeholderIndex,
@@ -56,35 +47,35 @@ const TextInput = ({
     );
   }, [placeholderIndex]);
 
-  const cleanInput = (val: string) => val.toLowerCase().replace(' ', '-');
-  const submit = (submitValue) => {
-    if (!hasSubmitted) {
-      setSubmitted(true);
+  const cleanInput = useCallback((val: string) => {
+    if (!val) {
+      return '';
     }
-    onSubmit(cleanInput(submitValue));
-  };
+    return val.toLowerCase().replace(' ', '-');
+  }, []);
+  const submit = useCallback(
+    (submitValue) => {
+      onSubmit(cleanInput(submitValue));
+    },
+    [onSubmit, cleanInput]
+  );
+
   return (
     <Question>
       {title && <Header>{title}</Header>}
       <InputContainer>
         <Input
           type="text"
-          value={inputValue}
+          value={value || ''}
           placeholder={currentPlaceHolder}
-          onChange={(e) => {
-            if (hasSubmitted) {
-              onSubmit(e.target.value);
-            } else {
-              setInputValue(cleanInput(e.target.value));
-            }
-          }}
-          onKeyPress={(e) => e.key === 'Enter' && submit(inputValue)}
-          onBlur={() => submit(inputValue)}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && submit(value)}
+          onBlur={() => submit(value)}
         />
         <SubmitButton
           type="submit"
-          complete={inputValue.trim().length > 0}
-          onClick={() => submit(inputValue)}
+          complete={value && value.trim().length > 0}
+          onClick={() => submit(value)}
         />
       </InputContainer>
       {description && <Description>{description}</Description>}

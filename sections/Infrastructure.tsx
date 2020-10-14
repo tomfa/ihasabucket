@@ -32,8 +32,8 @@ const Infrastructure = (props: TerraformProps) => {
         The script above will plan the infrastructure and prompt you for
         confirmation.
       </Description>
-      {description.map((text) => (
-        <Description>{text}</Description>
+      {description.map((text, i) => (
+        <Description key={i}>{text}</Description>
       ))}
       <Header>Prerequisites</Header>
       <h4>AWS Account</h4>
