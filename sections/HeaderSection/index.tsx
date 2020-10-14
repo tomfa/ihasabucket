@@ -1,8 +1,8 @@
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Meta from '../MetaTags/Meta';
 import { Section, SectionBackground } from '../../components/utils';
 import { useTheme } from '../../styles/theme';
-import Link from '../../components/Link';
 import Title from '../../components/Title.style';
 
 const Lolrus = styled.img`
@@ -24,14 +24,24 @@ const Lolrus = styled.img`
 
 const HeaderSection = ({ title = 'I has a bucket.' }: { title?: string }) => {
   const theme = useTheme();
+  const router = useRouter();
+  const refreshEverything = async () => {
+    await router.push('/');
+
+    // TODO: Clear state instead of reloading the entire app
+    router.reload();
+  };
   return (
     <SectionBackground
       backgroundColor={theme.colors.primary}
       color={theme.colors.textSecondary}>
       <Section>
         <Meta />
-        <Title>
-          <Link href={'/'}>{title}</Link>
+        <Title
+          onClick={refreshEverything}
+          role={'button'}
+          style={{ cursor: 'pointer' }}>
+          {title}
         </Title>
         <Lolrus src={'/bucket.png'} alt={'Lolrus, the bucket walrus'} />
       </Section>
