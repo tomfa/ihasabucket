@@ -7026,14 +7026,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../enums */ "./enums.ts");
 /* harmony import */ var _utils_useUrlState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/useUrlState */ "./utils/useUrlState.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils */ "./questions/utils.ts");
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
+/* harmony import */ var _utils_splitbee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/splitbee */ "./utils/splitbee.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils */ "./questions/utils.ts");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
 
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -7059,8 +7061,8 @@ var useQuestions = function useQuestions() {
       return;
     }
 
-    var defaultAnswers = _data__WEBPACK_IMPORTED_MODULE_6__["questions"].reduce(function (map, question) {
-      return _objectSpread({}, map, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, question.id, Object(_utils__WEBPACK_IMPORTED_MODULE_5__["getDefaultAnswer"])(question, urlData[question.id] !== undefined ? String(urlData[question.id]) : undefined)));
+    var defaultAnswers = _data__WEBPACK_IMPORTED_MODULE_7__["questions"].reduce(function (map, question) {
+      return _objectSpread({}, map, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, question.id, Object(_utils__WEBPACK_IMPORTED_MODULE_6__["getDefaultAnswer"])(question, urlData[question.id] !== undefined ? String(urlData[question.id]) : undefined)));
     }, {});
     var isFirstRender = !Object.keys(answers).length;
     var isInitialLoadFromUrl = Object.keys(urlData).length;
@@ -7079,13 +7081,13 @@ var useQuestions = function useQuestions() {
     }
   }, [urlData, answeredQuestions]);
   var renderQuestions = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(function () {
-    return Object(_utils__WEBPACK_IMPORTED_MODULE_5__["getQuestionsToRender"])(answers, answeredQuestions);
+    return Object(_utils__WEBPACK_IMPORTED_MODULE_6__["getQuestionsToRender"])(answers, answeredQuestions);
   }, [answeredQuestions, answers]);
   var hasAnsweredAll = !renderQuestions.find(function (q) {
     return !answeredQuestions.includes(q.id);
   });
   var updateAnswer = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
-    updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_5__["normalizeAnswer"])(answer)));
+    updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_6__["normalizeAnswer"])(answer)));
     setAnswers(function (prevAnswers) {
       return _objectSpread({}, prevAnswers, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, questionId, answer));
     });
@@ -7093,6 +7095,13 @@ var useQuestions = function useQuestions() {
   var answerQuestion = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
     updateAnswer(questionId, answer);
     setAnsweredQuestions(function (qs) {
+      if (qs.includes(questionId)) {
+        return qs;
+      }
+
+      Object(_utils_splitbee__WEBPACK_IMPORTED_MODULE_5__["trail"])(questionId, {
+        answer: answer
+      });
       return [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(qs), [questionId]);
     });
   }, [updateAnswer]);
@@ -7637,6 +7646,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/utils */ "./components/utils.tsx");
 /* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
 /* harmony import */ var _components_Title_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Title.style */ "./components/Title.style.tsx");
+/* harmony import */ var _utils_splitbee__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/splitbee */ "./utils/splitbee.ts");
 
 
 var _this = undefined,
@@ -7644,6 +7654,8 @@ var _this = undefined,
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
 
 
 
@@ -7660,6 +7672,13 @@ var HeaderSection = function HeaderSection(_ref) {
       title = _ref$title === void 0 ? 'I has a bucket.' : _ref$title;
   var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_6__["useTheme"])();
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var _document;
+
+    return Object(_utils_splitbee__WEBPACK_IMPORTED_MODULE_8__["trail"])('hi-there', {
+      referrer: (_document = document) === null || _document === void 0 ? void 0 : _document.referrer
+    });
+  }, []);
 
   var refreshEverything = function refreshEverything() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function refreshEverything$(_context) {
@@ -7687,21 +7706,21 @@ var HeaderSection = function HeaderSection(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 38,
       columnNumber: 5
     }
   }, __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_5__["Section"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 41,
       columnNumber: 7
     }
   }, __jsx(_MetaTags_Meta__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 42,
       columnNumber: 9
     }
   }), __jsx(_components_Title_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -7713,7 +7732,7 @@ var HeaderSection = function HeaderSection(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 43,
       columnNumber: 9
     }
   }, title), __jsx(Lolrus, {
@@ -7722,7 +7741,7 @@ var HeaderSection = function HeaderSection(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 49,
       columnNumber: 9
     }
   })));
@@ -7751,6 +7770,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/icons/LoadingIcon */ "./components/icons/LoadingIcon.tsx");
 /* harmony import */ var _components_code_Code__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/code/Code */ "./components/code/Code.tsx");
 /* harmony import */ var _components_ShareLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ShareLink */ "./components/ShareLink.tsx");
+/* harmony import */ var _utils_splitbee__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/splitbee */ "./utils/splitbee.ts");
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Infrastructure.tsx";
 
@@ -7758,6 +7778,7 @@ var _this = undefined,
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /* eslint-disable react/no-array-index-key */
+
 
 
 
@@ -7778,6 +7799,9 @@ var Infrastructure = function Infrastructure(props) {
       setLoading = _useState[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    return Object(_utils_splitbee__WEBPACK_IMPORTED_MODULE_9__["trail"])('completed', props);
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     setTimeout(function () {
       return setLoading(false);
     }, 800);
@@ -7788,7 +7812,7 @@ var Infrastructure = function Infrastructure(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21,
+        lineNumber: 23,
         columnNumber: 12
       }
     });
@@ -7799,7 +7823,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 28,
       columnNumber: 7
     }
   }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
@@ -7807,7 +7831,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 30,
       columnNumber: 7
     }
   }, "configuration url"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -7816,7 +7840,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 32,
       columnNumber: 7
     }
   }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -7826,7 +7850,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 33,
       columnNumber: 7
     }
   }, "The script above will plan the infrastructure and prompt you for confirmation."), description.map(function (text, i) {
@@ -7835,7 +7859,7 @@ var Infrastructure = function Infrastructure(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36,
+        lineNumber: 38,
         columnNumber: 9
       }
     }, text);
@@ -7843,21 +7867,21 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 40,
       columnNumber: 7
     }
   }, "Prerequisites"), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 41,
       columnNumber: 7
     }
   }, "AWS Account"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 42,
       columnNumber: 7
     }
   }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
@@ -7865,56 +7889,56 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42,
+      lineNumber: 44,
       columnNumber: 9
     }
   }, "aws.amazon.com")), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46,
+      lineNumber: 48,
       columnNumber: 7
     }
   }, "If you don't have your ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47,
+      lineNumber: 49,
       columnNumber: 37
     }
   }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48,
+      lineNumber: 50,
       columnNumber: 9
     }
   }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 54,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 55,
       columnNumber: 9
     }
   }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA..."), __jsx("h4", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57,
+      lineNumber: 59,
       columnNumber: 7
     }
   }, "Terraform installed"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
+      lineNumber: 60,
       columnNumber: 7
     }
   }, "If you haven't already,", ' ', __jsx("a", {
@@ -7922,28 +7946,28 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
+      lineNumber: 62,
       columnNumber: 9
     }
   }, "install Terraform")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64,
+      lineNumber: 66,
       columnNumber: 7
     }
   }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65,
+      lineNumber: 67,
       columnNumber: 9
     }
   }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 70,
       columnNumber: 7
     }
   }, "See", ' ', __jsx("a", {
@@ -7951,7 +7975,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 72,
       columnNumber: 9
     }
   }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."));
@@ -8472,6 +8496,66 @@ var domainIsWWW = function domainIsWWW(domain) {
 var isDomain = function isDomain(domain) {
   return domain.split('.').length >= 2;
 };
+
+/***/ }),
+
+/***/ "./utils/splitbee.ts":
+/*!***************************!*\
+  !*** ./utils/splitbee.ts ***!
+  \***************************/
+/*! exports provided: trail */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trail", function() { return trail; });
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+
+var trail = function trail(name, data) {
+  try {
+    if (sensitiveKeys.includes(name)) {
+      return;
+    }
+
+    var payload = data && Object.fromEntries(Object.entries(data).map(clean)); // @ts-ignore
+
+    if (!window || !window.splitbee) {
+      return;
+    } // @ts-ignore
+
+
+    window.splitbee.track(name, payload);
+  } catch (error) {// That's fine <3
+  }
+};
+
+var clean = function clean(_ref) {
+  var _ref2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref, 2),
+      key = _ref2[0],
+      value = _ref2[1];
+
+  if (sensitiveKeys.includes(key)) {
+    return [key, '---'];
+  }
+
+  if (typeof value === 'string') {
+    return [key, value];
+  }
+
+  if (!value) {
+    return [key, null];
+  }
+
+  if (value instanceof Array) {
+    return [key, value.map(function (v) {
+      return v.value;
+    }).join(',')];
+  }
+
+  return [key, value.value];
+};
+
+var sensitiveKeys = ['bucketName', 'forwardingBucket'];
 
 /***/ }),
 
