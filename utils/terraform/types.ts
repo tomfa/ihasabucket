@@ -13,7 +13,7 @@ export type TerraformProps = {
 
 export type TerraformPackage = {
   mainTfContent: string[];
-  description?: string;
+  description?: string[];
 };
 
 export type ModuleSpec = {

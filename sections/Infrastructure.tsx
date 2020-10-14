@@ -28,11 +28,13 @@ const Infrastructure = (props: TerraformProps) => {
       <ShareLink text={getShareTitle(props)}>configuration url</ShareLink> for
       later.
       <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
-      <Description>
+      <Description style={{ fontWeight: 'bold' }}>
         The script above will plan the infrastructure and prompt you for
         confirmation.
       </Description>
-      <Description>{description}</Description>
+      {description.map((text) => (
+        <Description>{text}</Description>
+      ))}
       <Header>Prerequisites</Header>
       <h4>AWS Account</h4>
       <p>
