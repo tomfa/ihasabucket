@@ -66,7 +66,7 @@ const getOutput = ({
     : [bucketType];
   bucketNames.forEach((name) => {
     const stageName = hasStaging && name.split('-')[name.split('-').length - 1];
-    const prefix = stageName ? `${stageName}.` : '';
+    const prefix = stageName ? `${stageName}-` : '';
     outputs.push({
       value: `module.${name}.AWS_SECRET_ACCESS_KEY`,
       label: `${prefix}AWS_SECRET_ACCESS_KEY`,
