@@ -19,6 +19,7 @@ const Meta = () => (
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap"
       rel="stylesheet"
     />
+    <script async src="https://cdn.splitbee.io/sb.js" />
   </Head>
 );
 
