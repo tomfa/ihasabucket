@@ -5,6 +5,7 @@ import { getStagingDomain } from './names';
 export const getCertificateTfContent = ({
   createCertificates,
   bucketName,
+  configureDns,
 }: TerraformProps): ModuleSpec[] => {
   if (!createCertificates) {
     return [];
@@ -17,14 +18,17 @@ export const getCertificateTfContent = ({
   alternativeMames.push(getStagingDomain(bucketName));
   const alternativeNameString =
     alternativeMames.length > 0 ? `["${alternativeMames.join('","')}"]` : '[]';
-  return [
-    {
-      name: 'certificate',
-      source: 'git::https://github.com/tomfa/terraform.git//certificate',
-      parameters: {
-        domain: `"${apexDomain}"`,
-        alternative_names: `${alternativeNameString}`,
-      },
+  const certificateModule: ModuleSpec = {
+    name: 'certificate',
+    source: 'git::https://github.com/tomfa/terraform.git//certificate',
+    parameters: {
+      domain: `"${apexDomain}"`,
+      alternative_names: `${alternativeNameString}`,
     },
-  ];
+  };
+  if (configureDns) {
+    certificateModule.parameters.route53_zone_id =
+      'module.domain.DOMAIN_ZONE_ID';
+  }
+  return [certificateModule];
 };
