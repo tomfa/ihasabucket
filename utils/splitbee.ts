@@ -5,6 +5,9 @@ export const trail = (
   data?: { [key: string]: string | boolean | number | null | Answer }
 ) => {
   try {
+    if (process.env.NODE_ENV === 'development') {
+      return;
+    }
     if (sensitiveKeys.includes(name)) {
       return;
     }
