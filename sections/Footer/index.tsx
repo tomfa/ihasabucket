@@ -28,26 +28,32 @@ const Footer = () => {
           <p>Let me help you with that.</p>
         </FooterAside>
         <FooterAside right>
-          <FooterHeader>Articles</FooterHeader>
+          <FooterHeader>Links</FooterHeader>
           <FooterLinks>
+            <Link href={'https://tomasafagerbekk.typeform.com/to/K9yBG3Af'}>
+              Give feedback
+            </Link>
+            <Link href={'https://tomasafagerbekk.typeform.com/to/K9yBG3Af'}>
+              Ask a question
+            </Link>
             <Link
               href={
                 'https://medium.com/trackstack/deploying-a-react-app-to-aws-s3-with-github-actions-b1cb9ba75c95'
               }>
-              Deploying Web apps to S3
+              Deploying app to S3
             </Link>
             <Link href={'https://github.com/tomfa/s3-uploader'}>
-              Allowing user upload to S3
+              User upload to S3
             </Link>
             <Link
               href={
                 'https://learn.hashicorp.com/tutorials/terraform/github-actions'
               }>
-              Terraform CI deploy
+              Infrastructure with CI
             </Link>
           </FooterLinks>
 
-          <FooterHeader>Links</FooterHeader>
+          <FooterHeader>Me</FooterHeader>
           <FooterLinks>
             <Link href={'https://github.com/tomfa/ihasabucket'}>Github</Link>
             <Link href={'https://linkedin.com/in/fagerbekk'}>LinkedIn</Link>
