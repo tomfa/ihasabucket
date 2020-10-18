@@ -1,5 +1,5 @@
 import { BUCKET_TYPE, getInputDescription, INPUT } from '../../enums';
-import { ModuleSpec, TerraformOutput, TerraformProps } from './types';
+import { ModuleSpec, TerraformOutput, QuestionSummary } from './types';
 import { getBucketModuleNames } from './names';
 
 export const toVariablesText = (modules: ModuleSpec[]) => {
@@ -41,7 +41,7 @@ export const toModulesText = (modules: ModuleSpec[]) => {
   return lines;
 };
 
-export const getOutputLines = (props: TerraformProps) => {
+export const getOutputLines = (props: QuestionSummary) => {
   const lines = [];
   const bucketModuleNames = getBucketModuleNames(props);
   const bucketType = props.webApp

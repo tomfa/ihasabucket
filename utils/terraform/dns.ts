@@ -1,8 +1,8 @@
 import { getApexDomain } from '../domain';
-import { TerraformProps, ModuleSpec, BucketTargets, Target } from './types';
+import { QuestionSummary, ModuleSpec, BucketTargets, Target } from './types';
 import { getBucketDomains, getBucketModuleNames } from './names';
 
-const getBucketTargetRefs = (props: TerraformProps): BucketTargets => {
+const getBucketTargetRefs = (props: QuestionSummary): BucketTargets => {
   const moduleNames = getBucketModuleNames(props);
   const s3TargetNameAttr = 'BUCKET_WEBSITE_DOMAIN';
   const s3TargetZoneIdAttr = 'BUCKET_ZONE_ID';
@@ -31,7 +31,7 @@ const getBucketTargetRefs = (props: TerraformProps): BucketTargets => {
 export const getDomainTfContent = ({
   configureDns,
   bucketName,
-}: TerraformProps): ModuleSpec[] => {
+}: QuestionSummary): ModuleSpec[] => {
   if (!configureDns) {
     return [];
   }
@@ -46,7 +46,7 @@ export const getDomainTfContent = ({
 };
 
 export const getDomainRecordTfContent = (
-  props: TerraformProps
+  props: QuestionSummary
 ): ModuleSpec[] => {
   const { configureDns, forwardingBucket, staging } = props;
   if (!configureDns) {

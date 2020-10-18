@@ -1,4 +1,4 @@
-export type TerraformProps = {
+export type QuestionSummary = {
   webApp: boolean;
   staging: boolean;
   shared: boolean;

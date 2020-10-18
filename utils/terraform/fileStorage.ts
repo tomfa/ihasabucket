@@ -1,9 +1,9 @@
 import { INPUT } from '../../enums';
-import { ModuleSpec, TerraformProps } from './types';
+import { ModuleSpec, QuestionSummary } from './types';
 import { getBucketModuleNames, getStagingBucketName } from './names';
 
 export const getFileStorageBucketTfContent = (
-  props: TerraformProps
+  props: QuestionSummary
 ): ModuleSpec[] => {
   if (props.webApp) {
     return [];

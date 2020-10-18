@@ -14,9 +14,12 @@ export const SectionBackground = styled.div`
 export const Section = styled.section`
   max-width: ${(p) => p.theme.layout.maxWidth}px;
   width: 100%;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding: 0 1rem;
   position: relative;
+
+  margin-top: ${(p) => (p.tight ? '0' : '2rem')};
+  margin-bottom: ${(p) => (p.tight ? '0' : '2rem')};
 
   @media (min-width: 375px) {
     padding-left: 2rem;

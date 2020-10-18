@@ -47,7 +47,7 @@ export const getDefaultAnswer = (
 };
 
 export const normalizeAnswer = (answer: Answer): string => {
-  if (answer === null) {
+  if (answer === null || answer === undefined) {
     return '';
   }
   if (
@@ -83,6 +83,9 @@ export const hasAnswered = (
   const question = questionMap[questionId];
   if (!question) {
     throw new Error(`Unknown questionId ${questionId}`);
+  }
+  if (answers[questionId] === undefined) {
+    return false;
   }
   if (question.type === QuestionType.RADIO) {
     const answer = answers[questionId] as RadioAnswer;

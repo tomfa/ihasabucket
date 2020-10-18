@@ -1,12 +1,17 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { QUESTION_ID } from '../enums';
+import { BOOL_VALUE, QUESTION_ID } from '../enums';
 import { Answer, AnswerMap } from '../types';
 import { Data, useUrlState } from '../utils/useUrlState';
 import { trail } from '../utils/splitbee';
+import { QuestionSummary } from '../utils/terraform/types';
+import { isDomain } from '../utils/domain';
 import {
   getDefaultAnswer,
+  getForwardingBucketValue,
+  getNormalizedAnswer,
   getQuestionsToRender,
+  hasAnswered,
   normalizeAnswer,
 } from './utils';
 import { questions } from './data';
@@ -102,9 +107,28 @@ const getQuestionsInUrlData = (urlData: Data) => {
   return urlQuestions;
 };
 
-const QuestionContext = React.createContext<
-  ReturnType<typeof useQuestionsData>
->(undefined);
+const getQuestionSummary = (answers: AnswerMap): QuestionSummary => ({
+  webApp: hasAnswered(answers, QUESTION_ID.storageType, 'webapp'),
+  shared: hasAnswered(answers, QUESTION_ID.aclPublic, BOOL_VALUE.TRUE),
+  staging: hasAnswered(answers, QUESTION_ID.stagingEnv, BOOL_VALUE.TRUE),
+  staticPage: hasAnswered(answers, QUESTION_ID.webappIsStatic, BOOL_VALUE.TRUE),
+  createCertificates:
+    isDomain(getNormalizedAnswer(answers, QUESTION_ID.bucketName)) &&
+    (hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE) ||
+      hasAnswered(answers, QUESTION_ID.createCertificates, BOOL_VALUE.TRUE)),
+  configureDns:
+    isDomain(getNormalizedAnswer(answers, QUESTION_ID.bucketName)) &&
+    hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE),
+  errorPath: getNormalizedAnswer(answers, QUESTION_ID.errorPath),
+  forwardingBucket: getForwardingBucketValue(answers),
+  bucketName: getNormalizedAnswer(answers, QUESTION_ID.bucketName),
+  region: getNormalizedAnswer(answers, QUESTION_ID.region),
+});
+
+const QuestionContext = React.createContext<{
+  questions: ReturnType<typeof useQuestionsData>;
+  summary: ReturnType<typeof getQuestionSummary>;
+}>(undefined);
 
 export const QuestionProvider = ({
   children,
@@ -112,14 +136,22 @@ export const QuestionProvider = ({
   children: React.ReactNode;
 }) => {
   const questionData = useQuestionsData();
+  const questionResults = useMemo(
+    () => getQuestionSummary(questionData.answers),
+    [questionData.answers]
+  );
   return (
-    <QuestionContext.Provider value={questionData}>
+    <QuestionContext.Provider
+      value={{ questions: questionData, summary: questionResults }}>
       {children}
     </QuestionContext.Provider>
   );
 };
 
-const useQuestions = (): ReturnType<typeof useQuestionsData> =>
-  React.useContext(QuestionContext);
+export const useQuestions = (): ReturnType<typeof useQuestionsData> =>
+  React.useContext(QuestionContext).questions;
+
+export const useSummary = (): ReturnType<typeof getQuestionSummary> =>
+  React.useContext(QuestionContext).summary;
 
 export default useQuestions;

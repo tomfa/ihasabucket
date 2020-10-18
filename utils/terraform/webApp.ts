@@ -1,5 +1,5 @@
 import { INPUT } from '../../enums';
-import { ModuleSpec, TerraformProps } from './types';
+import { ModuleSpec, QuestionSummary } from './types';
 import {
   getBucketModuleNames,
   getStagingBucketName,
@@ -7,7 +7,7 @@ import {
 } from './names';
 
 export const getWebAppBucketTfContent = (
-  props: TerraformProps
+  props: QuestionSummary
 ): ModuleSpec[] => {
   if (!props.webApp) {
     return [];

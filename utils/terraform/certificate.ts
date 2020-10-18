@@ -1,12 +1,12 @@
 import { getApexDomain } from '../domain';
-import { TerraformProps, ModuleSpec } from './types';
+import { QuestionSummary, ModuleSpec } from './types';
 import { getStagingDomain } from './names';
 
 export const getCertificateTfContent = ({
   createCertificates,
   bucketName,
   configureDns,
-}: TerraformProps): ModuleSpec[] => {
+}: QuestionSummary): ModuleSpec[] => {
   if (!createCertificates) {
     return [];
   }

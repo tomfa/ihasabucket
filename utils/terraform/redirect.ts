@@ -1,10 +1,10 @@
-import { TerraformProps, ModuleSpec } from './types';
+import { QuestionSummary, ModuleSpec } from './types';
 
 export const getRedirectBucketTfContent = ({
   forwardingBucket,
   bucketName,
   region,
-}: TerraformProps): ModuleSpec[] => {
+}: QuestionSummary): ModuleSpec[] => {
   if (!forwardingBucket) {
     return [];
   }

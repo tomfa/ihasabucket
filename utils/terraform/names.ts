@@ -1,11 +1,11 @@
 import { domainIsApex, domainIsWWW, getApexDomain } from '../domain';
-import { TerraformProps, BucketProp } from './types';
+import { QuestionSummary, BucketProp } from './types';
 
 export const getBucketModuleNames = ({
   webApp,
   staging,
   forwardingBucket,
-}: TerraformProps): BucketProp => {
+}: QuestionSummary): BucketProp => {
   const genericBucketName = webApp ? 'web-app' : 'file-storage';
   const mainBucket = staging
     ? `${genericBucketName}-production`
@@ -37,7 +37,7 @@ export const getBucketDomains = ({
   bucketName,
   staging,
   forwardingBucket,
-}: TerraformProps): BucketProp => {
+}: QuestionSummary): BucketProp => {
   const stagingBucket = staging ? getStagingDomain(bucketName) : null;
   return {
     staging: stagingBucket,

@@ -1,13 +1,15 @@
-import { TerraformProps } from './types';
+import { QuestionSummary } from './types';
 
-export const getTerraPackageDescription = (props: TerraformProps): string[] => {
+export const getTerraPackageDescription = (
+  props: QuestionSummary
+): string[] => {
   const certificateWarningText = getCertificateWarning(props);
   const authText = getAuthDescription(props);
   const outcomeText = getOutcomeDescription(props);
   return [certificateWarningText, outcomeText, authText].filter((t) => !!t);
 };
 
-const getCertificateWarning = (props: TerraformProps): string => {
+const getCertificateWarning = (props: QuestionSummary): string => {
   if (!props.createCertificates) {
     return '';
   }
@@ -30,14 +32,14 @@ const getCertificateWarning = (props: TerraformProps): string => {
   );
 };
 
-const getOutcomeDescription = (props: TerraformProps): string => {
+const getOutcomeDescription = (props: QuestionSummary): string => {
   const useCaseText = getUseCaseDescription(props);
   const count = props.staging ? 'two sets of' : 'a';
   const infraStructure = `S3 bucket${props.webApp ? ' + Cloudfront' : ''};`;
   return `Once run successfully, the script will create ${count} ${infraStructure} in ${props.region}, configured ${useCaseText}.`;
 };
 
-const getAuthDescription = ({ staging }: TerraformProps): string => {
+const getAuthDescription = ({ staging }: QuestionSummary): string => {
   const keysInfo = staging
     ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment.'
     : 'A set of AWS keys will be created that is able to upload to the bucket.';
@@ -51,7 +53,7 @@ const getUseCaseDescription = ({
   webApp,
   staticPage,
   shared,
-}: TerraformProps): string => {
+}: QuestionSummary): string => {
   if (webApp) {
     if (staticPage) {
       return 'to serve a solid statically generated web app';

@@ -5,7 +5,7 @@ import { getTerraPackageDescription } from './descriptionText';
 import { getDomainRecordTfContent, getDomainTfContent } from './dns';
 import { getFileStorageBucketTfContent } from './fileStorage';
 import { getRedirectBucketTfContent } from './redirect';
-import { TerraformProps, ModuleSpec, TerraformPackage } from './types';
+import { QuestionSummary, ModuleSpec, TerraformPackage } from './types';
 import { getWebAppBucketTfContent } from './webApp';
 import {
   getOutputLines,
@@ -13,7 +13,7 @@ import {
   toVariablesText,
 } from './terraformText';
 
-const getMainTfContent = (props: TerraformProps): string[] => {
+const getMainTfContent = (props: QuestionSummary): string[] => {
   const modules: ModuleSpec[] = [];
   modules.push(...getWebAppBucketTfContent(props));
   modules.push(...getFileStorageBucketTfContent(props));
@@ -30,7 +30,7 @@ const getMainTfContent = (props: TerraformProps): string[] => {
 };
 
 export const getTerraFormPackage = (
-  props: TerraformProps
+  props: QuestionSummary
 ): TerraformPackage => {
   return {
     mainTfContent: getMainTfContent(props),
