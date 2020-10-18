@@ -5,6 +5,7 @@ import Intro from '../sections/Intro';
 import Questionare from '../sections/Questionare';
 import { QuestionProvider } from '../questions/useQuestions';
 import Infrastructure from '../sections/Infrastructure';
+import Prerequisites from '../sections/Prerequisites';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Intro />
         <Questionare />
         <Infrastructure />
+        <Prerequisites />
         <Footer />
       </QuestionProvider>
     </PageWrapper>
