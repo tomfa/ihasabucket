@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 var Source = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h4.withConfig({
   displayName: "Sourcestyle__Source",
   componentId: "ec6o23-0"
-})(["margin-left:10rem;&:first-letter{margin-left:-18px;}"]);
+})(["margin-left:10rem;margin-bottom:0;&:first-letter{margin-left:-18px;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (Source);
 
 /***/ }),
@@ -110,7 +110,7 @@ var BlockQuote = function BlockQuote(_ref) {
 var Block = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].blockquote.withConfig({
   displayName: "BlockQuote__Block",
   componentId: "sc-1bt5mli-0"
-})(["font-family:", " max-width:620px;margin-left:0;margin-right:0;margin-bottom:1rem;align-self:center;"], function (p) {
+})(["font-family:", " max-width:620px;margin-left:0;margin-right:0;margin-bottom:0;margin-top:0;align-self:center;@media (min-width:700px){margin-top:1rem;margin-bottom:1rem;}"], function (p) {
   return p.theme.fonts.secondary;
 });
 /* harmony default export */ __webpack_exports__["default"] = (BlockQuote);
@@ -160,7 +160,7 @@ __webpack_require__.r(__webpack_exports__);
 var Header = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h4.withConfig({
   displayName: "Headerstyle__Header",
   componentId: "rxfv2u-0"
-})(["color:", ";font-size:2rem;margin-top:1em;margin-bottom:0.6em;@media (max-width:450px){font-size:1.4rem;}"], function (p) {
+})(["color:", ";font-size:2rem;margin-top:1rem;margin-bottom:0.6em;@media (max-width:450px){font-size:1.4rem;}"], function (p) {
   return p.color || p.theme.colors.textPrimary;
 });
 /* harmony default export */ __webpack_exports__["default"] = (Header);
