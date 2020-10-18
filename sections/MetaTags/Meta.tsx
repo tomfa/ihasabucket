@@ -10,6 +10,10 @@ const Meta = () => (
       content="Instant file or web app hosting on AWS"
     />
     <meta
+      name="description"
+      content="Guide for hosting React, Vue, Gatsby or user uploads on AWS S3 buckets"
+    />
+    <meta
       property="og:description"
       content="Guide for hosting React, Vue, Gatsby or user uploads on AWS S3 buckets"
     />
