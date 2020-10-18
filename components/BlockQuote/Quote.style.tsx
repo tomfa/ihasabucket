@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const QuoteStyle = styled.h2`
   font-family: ${(p) => p.theme.fonts.secondary};
   position: relative; /* for pseudos */
-  font-size: 2rem;
+  font-size: 1.4rem;
   font-weight: normal;
   line-height: 1.1;
   margin: 0;
@@ -38,6 +38,10 @@ const QuoteStyle = styled.h2`
     bottom: -3px;
     left: 50px;
     z-index: 2;
+  }
+
+  @media (min-width: 600px) {
+    font-size: 2rem;
   }
 `;
 
