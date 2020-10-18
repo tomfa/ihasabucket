@@ -33,8 +33,14 @@ const Block = styled.blockquote`
   max-width: 620px;
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  margin-top: 0;
   align-self: center;
+  
+  @media (min-width: 700px) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 export default BlockQuote;
