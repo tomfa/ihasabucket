@@ -3,14 +3,19 @@ import Header from '../sections/HeaderSection';
 import Footer from '../sections/Footer';
 import Intro from '../sections/Intro';
 import Questionare from '../sections/Questionare';
+import { QuestionProvider } from '../questions/useQuestions';
+import Infrastructure from '../sections/Infrastructure';
 
 export default function Home() {
   return (
     <PageWrapper>
-      <Header />
-      <Intro />
-      <Questionare />
-      <Footer />
+      <QuestionProvider>
+        <Header />
+        <Intro />
+        <Questionare />
+        <Infrastructure />
+        <Footer />
+      </QuestionProvider>
     </PageWrapper>
   );
 }

@@ -11,20 +11,40 @@ import Code from '../components/code/Code';
 import { ShareLink } from '../components/ShareLink';
 import { TerraformProps } from '../utils/terraform/types';
 import { trail } from '../utils/splitbee';
+import useQuestions from '../questions/useQuestions';
+import {
+  getForwardingBucketValue,
+  getNormalizedAnswer,
+  hasAnswered,
+} from '../questions/utils';
+import { BOOL_VALUE, QUESTION_ID } from '../enums';
+import { isDomain } from '../utils/domain';
+import { Section } from '../components/utils';
 
-const Infrastructure = (props: TerraformProps) => {
-  const { description, mainTfContent } = getTerraFormPackage(props);
+const Infrastructure = () => {
+  const questionData = useQuestions();
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => trail('completed', props), []);
   useEffect(() => {
-    setTimeout(() => setLoading(false), 800);
-  }, [mainTfContent]);
-  if (loading) {
-    return <LoadingIcon />;
+    if (questionData.hasAnsweredAll) {
+      setTimeout(() => setLoading(false), 800);
+    }
+  }, [questionData.hasAnsweredAll]);
+  if (!questionData.hasAnsweredAll) {
+    return <Section id="infrastructure" />;
   }
+  if (loading) {
+    return (
+      <Section id="infrastructure">
+        <LoadingIcon />
+      </Section>
+    );
+  }
+  const props = getTerraformProps(questionData);
+  const { description, mainTfContent } = getTerraFormPackage(props);
 
   return (
-    <>
+    <Section id="infrastructure">
       <Header as={'h1'}>Bucket is served!</Header>
       Just run the script below, or share this{' '}
       <ShareLink text={getShareTitle(props)}>configuration url</ShareLink> for
@@ -74,7 +94,7 @@ const Infrastructure = (props: TerraformProps) => {
         </a>{' '}
         for other platforms.
       </Description>
-    </>
+    </Section>
   );
 };
 
@@ -97,5 +117,25 @@ const getShareTitle = ({
   }
   return undefined;
 };
+
+const getTerraformProps = ({
+  answers,
+}: ReturnType<typeof useQuestions>): TerraformProps => ({
+  webApp: hasAnswered(answers, QUESTION_ID.storageType, 'webapp'),
+  shared: hasAnswered(answers, QUESTION_ID.aclPublic, BOOL_VALUE.TRUE),
+  staging: hasAnswered(answers, QUESTION_ID.stagingEnv, BOOL_VALUE.TRUE),
+  staticPage: hasAnswered(answers, QUESTION_ID.webappIsStatic, BOOL_VALUE.TRUE),
+  createCertificates:
+    isDomain(getNormalizedAnswer(answers, QUESTION_ID.bucketName)) &&
+    (hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE) ||
+      hasAnswered(answers, QUESTION_ID.createCertificates, BOOL_VALUE.TRUE)),
+  configureDns:
+    isDomain(getNormalizedAnswer(answers, QUESTION_ID.bucketName)) &&
+    hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE),
+  errorPath: getNormalizedAnswer(answers, QUESTION_ID.errorPath),
+  forwardingBucket: getForwardingBucketValue(answers),
+  bucketName: getNormalizedAnswer(answers, QUESTION_ID.bucketName),
+  region: getNormalizedAnswer(answers, QUESTION_ID.region),
+});
 
 export default Infrastructure;

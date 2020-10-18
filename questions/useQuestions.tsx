@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { QUESTION_ID } from '../enums';
 import { Answer, AnswerMap } from '../types';
@@ -11,7 +11,7 @@ import {
 } from './utils';
 import { questions } from './data';
 
-const useQuestions = () => {
+export const useQuestionsData = () => {
   const [hasReceivedInput, setHasReceivedInput] = useState<boolean>(false);
   const [answeredQuestions, setAnsweredQuestions] = useState<QUESTION_ID[]>([]);
   const { urlData, updateUrlData } = useUrlState();
@@ -101,5 +101,25 @@ const getQuestionsInUrlData = (urlData: Data) => {
   }
   return urlQuestions;
 };
+
+const QuestionContext = React.createContext<
+  ReturnType<typeof useQuestionsData>
+>(undefined);
+
+export const QuestionProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const questionData = useQuestionsData();
+  return (
+    <QuestionContext.Provider value={questionData}>
+      {children}
+    </QuestionContext.Provider>
+  );
+};
+
+const useQuestions = (): ReturnType<typeof useQuestionsData> =>
+  React.useContext(QuestionContext);
 
 export default useQuestions;

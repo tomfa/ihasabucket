@@ -14,8 +14,8 @@ export const SectionBackground = styled.div`
 export const Section = styled.section`
   max-width: ${(p) => p.theme.layout.maxWidth}px;
   width: 100%;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
   position: relative;
 
   @media (min-width: 375px) {

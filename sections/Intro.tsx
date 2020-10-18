@@ -9,11 +9,8 @@ const Intro = () => (
         or need to store uploads? Put them in S3 buckets. It&apos;s
         <Colored secondary> cheap </Colored>
         and
-        <Colored secondary> reliable</Colored>. With CloudFront cache,
-        it&apos;ll be blazingly <Colored secondary>fast</Colored>. Let&apos;s
-        see how
-        <Colored secondary> easy </Colored>
-        it can be.
+        <Colored secondary> reliable</Colored>. With CloudFront, it&apos;ll be
+        blazingly <Colored secondary>fast</Colored>.
       </>
     </BlockQuote>
   </Section>
