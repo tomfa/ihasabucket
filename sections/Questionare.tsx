@@ -19,6 +19,7 @@ import {
   getNormalizedAnswer,
   hasAnswered,
 } from '../questions/utils';
+import { isDomain } from '../utils/domain';
 import Infrastructure from './Infrastructure';
 
 const Questionare = () => {
@@ -123,18 +124,18 @@ const Questionare = () => {
             BOOL_VALUE.TRUE
           )}
           createCertificates={
-            hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE) ||
-            hasAnswered(
-              answers,
-              QUESTION_ID.createCertificates,
-              BOOL_VALUE.TRUE
-            )
+            isDomain(getNormalizedAnswer(answers, QUESTION_ID.bucketName)) &&
+            (hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE) ||
+              hasAnswered(
+                answers,
+                QUESTION_ID.createCertificates,
+                BOOL_VALUE.TRUE
+              ))
           }
-          configureDns={hasAnswered(
-            answers,
-            QUESTION_ID.configureDns,
-            BOOL_VALUE.TRUE
-          )}
+          configureDns={
+            isDomain(getNormalizedAnswer(answers, QUESTION_ID.bucketName)) &&
+            hasAnswered(answers, QUESTION_ID.configureDns, BOOL_VALUE.TRUE)
+          }
           errorPath={getNormalizedAnswer(answers, QUESTION_ID.errorPath)}
           forwardingBucket={getForwardingBucketValue(answers)}
           bucketName={getNormalizedAnswer(answers, QUESTION_ID.bucketName)}
