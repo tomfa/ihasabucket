@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import { Option } from '../../types';
 import Header from '../Header.style';
@@ -43,7 +43,7 @@ const CheckboxGroup = ({
     [disabled, options, onChange, selectedOptions]
   );
   return (
-    <Question>
+    <Question id={id}>
       {title && <Header>{title}</Header>}
       <Choices>
         {options.map((o) => (

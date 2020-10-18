@@ -39,7 +39,7 @@ const RadioGroup = ({
     [disabled, options, onChange]
   );
   return (
-    <Question>
+    <Question id={id}>
       {title && <Header>{title}</Header>}
       <Choices>
         {options.map((o) => (

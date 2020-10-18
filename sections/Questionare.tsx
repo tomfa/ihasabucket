@@ -1,3 +1,6 @@
+import scrollIntoView from 'scroll-into-view';
+
+import { useEffect } from 'react';
 import useQuestions from '../questions/useQuestions';
 import { Section } from '../components/utils';
 import RadioGroup from '../components/forms/RadioGroup';
@@ -26,6 +29,21 @@ const Questionare = () => {
     answerQuestion,
     hasAnsweredAll,
   } = useQuestions();
+
+  useEffect(() => {
+    if (hasAnsweredAll) {
+      const element = document.getElementById('infrastructure');
+      if (element) {
+        scrollIntoView(element, { align: { top: 0, topOffset: 50 } });
+      }
+    } else if (renderQuestions.length > 1) {
+      const lastQuestion = renderQuestions[renderQuestions.length - 1];
+      const element = document.getElementById(lastQuestion.id);
+      if (element) {
+        scrollIntoView(element, { align: { top: 0, topOffset: 50 } });
+      }
+    }
+  }, [hasAnsweredAll, renderQuestions.length]);
   return (
     <Section>
       {renderQuestions.map((question) => {
@@ -89,6 +107,7 @@ const Questionare = () => {
         }
         throw new Error(`Unexpected question type in ${question}`);
       })}
+      <ScrollToAnchor id="infrastructure" />
       {hasAnsweredAll && (
         <Infrastructure
           webApp={hasAnswered(answers, QUESTION_ID.storageType, 'webapp')}
@@ -125,5 +144,7 @@ const Questionare = () => {
     </Section>
   );
 };
+
+const ScrollToAnchor = ({ id }: { id: string }) => <div id={id} />;
 
 export default Questionare;

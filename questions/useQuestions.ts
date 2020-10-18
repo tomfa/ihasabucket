@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { QUESTION_ID } from '../enums';
 import { Answer, AnswerMap } from '../types';
-import { useUrlState } from '../utils/useUrlState';
+import { Data, useUrlState } from '../utils/useUrlState';
 import { trail } from '../utils/splitbee';
 import {
   getDefaultAnswer,
@@ -12,43 +12,31 @@ import {
 import { questions } from './data';
 
 const useQuestions = () => {
+  const [hasReceivedInput, setHasReceivedInput] = useState<boolean>(false);
   const [answeredQuestions, setAnsweredQuestions] = useState<QUESTION_ID[]>([]);
   const { urlData, updateUrlData } = useUrlState();
   const [answers, setAnswers] = useState<AnswerMap>({} as AnswerMap);
+
   useEffect(() => {
-    if (answeredQuestions.length > 0) {
+    const initialDefaultAnswersLoaded = Object.keys(answers).length > 0;
+    const hasUrlData = Object.keys(urlData).length > 0;
+    const hasAnsweredQuestions = answeredQuestions.length > 0;
+    if (hasReceivedInput || hasAnsweredQuestions) {
       return;
     }
-    const defaultAnswers = questions.reduce(
-      (map, question) => ({
-        ...map,
-        [question.id]: getDefaultAnswer(
-          question,
-          urlData[question.id] !== undefined
-            ? String(urlData[question.id])
-            : undefined
-        ),
-      }),
-      {} as AnswerMap
-    );
-    const isFirstRender = !Object.keys(answers).length;
-    const isInitialLoadFromUrl = Object.keys(urlData).length;
-    if (isInitialLoadFromUrl) {
-      const urlQuestions = Object.keys(urlData) as QUESTION_ID[];
-
-      // TODO: dirty hack to assume that first answer is answered if there are others
-      if (
-        urlQuestions.length &&
-        !urlQuestions.includes(QUESTION_ID.bucketName)
-      ) {
-        urlQuestions.push(QUESTION_ID.bucketName);
-      }
-      setAnsweredQuestions(urlQuestions);
-      setAnswers(defaultAnswers);
-    } else if (isFirstRender) {
+    if (!initialDefaultAnswersLoaded) {
+      const defaultAnswers = getInitialAnswers();
       setAnswers(defaultAnswers);
     }
-  }, [urlData, answeredQuestions]);
+    if (!hasUrlData) {
+      return;
+    }
+    const urlAnsweredQuestions = getQuestionsInUrlData(urlData);
+    const urlAnswers = getInitialAnswers(urlData);
+    setAnswers(urlAnswers);
+    setAnsweredQuestions(urlAnsweredQuestions);
+  }, [urlData, answers, answeredQuestions, hasReceivedInput]);
+
   const renderQuestions = useMemo(
     () => getQuestionsToRender(answers, answeredQuestions),
     [answeredQuestions, answers]
@@ -58,6 +46,7 @@ const useQuestions = () => {
   );
   const updateAnswer = useCallback(
     (questionId: QUESTION_ID, answer: Answer) => {
+      setHasReceivedInput(true);
       updateUrlData({ [String(questionId)]: normalizeAnswer(answer) });
       setAnswers((prevAnswers) => ({
         ...prevAnswers,
@@ -86,6 +75,31 @@ const useQuestions = () => {
     answerQuestion,
     hasAnsweredAll,
   };
+};
+
+const getInitialAnswers = (urlData?: Data) =>
+  questions.reduce(
+    (map, question) => ({
+      ...map,
+      [question.id]: getDefaultAnswer(
+        question,
+        urlData && urlData[question.id] !== undefined
+          ? String(urlData[question.id])
+          : undefined
+      ),
+    }),
+    {} as AnswerMap
+  );
+
+const getQuestionsInUrlData = (urlData: Data) => {
+  const urlQuestions = Object.keys(urlData) as QUESTION_ID[];
+
+  const hasAnsweredEmptyBucketName =
+    urlQuestions.length && !urlQuestions.includes(QUESTION_ID.bucketName);
+  if (hasAnsweredEmptyBucketName) {
+    urlQuestions.push(QUESTION_ID.bucketName);
+  }
+  return urlQuestions;
 };
 
 export default useQuestions;

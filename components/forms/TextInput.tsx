@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Header from '../Header.style';
 import { sleep } from '../utils';
@@ -21,6 +21,7 @@ interface Props {
 }
 
 const TextInput = ({
+  id,
   onChange,
   onSubmit,
   value = '',
@@ -61,7 +62,7 @@ const TextInput = ({
   );
 
   return (
-    <Question>
+    <Question id={id}>
       {title && <Header>{title}</Header>}
       <InputContainer>
         <Input
