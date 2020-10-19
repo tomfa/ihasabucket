@@ -879,7 +879,7 @@ __webpack_require__.r(__webpack_exports__);
 var Question = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "Questionstyle__Question",
   componentId: "sc-1ce9jof-0"
-})(["margin-bottom:2.5rem;"]);
+})(["margin-bottom:2.5rem;&:last-of-type{margin-bottom:0rem;}"]);
 /* harmony default export */ __webpack_exports__["default"] = (Question);
 
 /***/ }),
@@ -1443,8 +1443,12 @@ var SectionBackground = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"
 var Section = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section.withConfig({
   displayName: "utils__Section",
   componentId: "sc-1vrdcy-1"
-})(["max-width:", "px;width:100%;margin:0 auto;padding:2rem 1rem;position:relative;@media (min-width:375px){padding-left:2rem;padding-right:2rem;}"], function (p) {
+})(["max-width:", "px;width:100%;margin:0 auto;padding:0 1rem;position:relative;margin-top:", ";margin-bottom:", ";@media (min-width:375px){padding-left:2rem;padding-right:2rem;}"], function (p) {
   return p.theme.layout.maxWidth;
+}, function (p) {
+  return p.tight ? '0' : '2rem';
+}, function (p) {
+  return p.tight ? '0' : '2rem';
 });
 var PageWrapper = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
   displayName: "utils__PageWrapper",
@@ -7028,9 +7032,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sections_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../sections/Footer */ "./sections/Footer/index.tsx");
 /* harmony import */ var _sections_Intro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../sections/Intro */ "./sections/Intro.tsx");
 /* harmony import */ var _sections_Questionare__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../sections/Questionare */ "./sections/Questionare.tsx");
+/* harmony import */ var _questions_useQuestions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../questions/useQuestions */ "./questions/useQuestions.tsx");
+/* harmony import */ var _sections_Infrastructure__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../sections/Infrastructure */ "./sections/Infrastructure.tsx");
+/* harmony import */ var _sections_Prerequisites__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../sections/Prerequisites */ "./sections/Prerequisites.tsx");
+/* harmony import */ var _sections_FAQ__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../sections/FAQ */ "./sections/FAQ/index.tsx");
 var _jsxFileName = "/Users/tomfa/repos/s3launchpad/pages/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
 
 
 
@@ -7041,38 +7053,66 @@ function Home() {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9,
+      lineNumber: 13,
       columnNumber: 5
+    }
+  }, __jsx(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_6__["QuestionProvider"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 7
     }
   }, __jsx(_sections_HeaderSection__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10,
-      columnNumber: 7
+      lineNumber: 15,
+      columnNumber: 9
     }
   }), __jsx(_sections_Intro__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 7
+      lineNumber: 16,
+      columnNumber: 9
     }
   }), __jsx(_sections_Questionare__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 7
+      lineNumber: 17,
+      columnNumber: 9
+    }
+  }), __jsx(_sections_Infrastructure__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 9
+    }
+  }), __jsx(_sections_Prerequisites__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 9
+    }
+  }), __jsx(_sections_FAQ__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 9
     }
   }), __jsx(_sections_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 7
+      lineNumber: 21,
+      columnNumber: 9
     }
-  }));
+  })));
 }
 
 /***/ }),
@@ -7289,15 +7329,19 @@ var questionMap = questions.reduce(function (map, question) {
 
 /***/ }),
 
-/***/ "./questions/useQuestions.ts":
-/*!***********************************!*\
-  !*** ./questions/useQuestions.ts ***!
-  \***********************************/
-/*! exports provided: default */
+/***/ "./questions/useQuestions.tsx":
+/*!************************************!*\
+  !*** ./questions/useQuestions.tsx ***!
+  \************************************/
+/*! exports provided: useQuestionsData, QuestionProvider, useQuestions, useSummary, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useQuestionsData", function() { return useQuestionsData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuestionProvider", function() { return QuestionProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useQuestions", function() { return useQuestions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useSummary", function() { return useSummary; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -7305,10 +7349,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../enums */ "./enums.ts");
 /* harmony import */ var _utils_useUrlState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/useUrlState */ "./utils/useUrlState.ts");
 /* harmony import */ var _utils_splitbee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/splitbee */ "./utils/splitbee.ts");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils */ "./questions/utils.ts");
-/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
+/* harmony import */ var _utils_domain__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/domain */ "./utils/domain.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils */ "./questions/utils.ts");
+/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./data */ "./questions/data.ts");
 
 
+
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/questions/useQuestions.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -7321,7 +7371,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var useQuestions = function useQuestions() {
+var useQuestionsData = function useQuestionsData() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
       hasReceivedInput = _useState[0],
       setHasReceivedInput = _useState[1];
@@ -7362,14 +7412,14 @@ var useQuestions = function useQuestions() {
     setAnsweredQuestions(urlAnsweredQuestions);
   }, [urlData, answers, answeredQuestions, hasReceivedInput]);
   var renderQuestions = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(function () {
-    return Object(_utils__WEBPACK_IMPORTED_MODULE_6__["getQuestionsToRender"])(answers, answeredQuestions);
+    return Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getQuestionsToRender"])(answers, answeredQuestions);
   }, [answeredQuestions, answers]);
   var hasAnsweredAll = !renderQuestions.find(function (q) {
     return !answeredQuestions.includes(q.id);
   });
   var updateAnswer = Object(react__WEBPACK_IMPORTED_MODULE_2__["useCallback"])(function (questionId, answer) {
     setHasReceivedInput(true);
-    updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_6__["normalizeAnswer"])(answer)));
+    updateUrlData(Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, String(questionId), Object(_utils__WEBPACK_IMPORTED_MODULE_7__["normalizeAnswer"])(answer)));
     setAnswers(function (prevAnswers) {
       return _objectSpread({}, prevAnswers, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, questionId, answer));
     });
@@ -7397,8 +7447,8 @@ var useQuestions = function useQuestions() {
 };
 
 var getInitialAnswers = function getInitialAnswers(urlData) {
-  return _data__WEBPACK_IMPORTED_MODULE_7__["questions"].reduce(function (map, question) {
-    return _objectSpread({}, map, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, question.id, Object(_utils__WEBPACK_IMPORTED_MODULE_6__["getDefaultAnswer"])(question, urlData && urlData[question.id] !== undefined ? String(urlData[question.id]) : undefined)));
+  return _data__WEBPACK_IMPORTED_MODULE_8__["questions"].reduce(function (map, question) {
+    return _objectSpread({}, map, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, question.id, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getDefaultAnswer"])(question, urlData && urlData[question.id] !== undefined ? String(urlData[question.id]) : undefined)));
   }, {});
 };
 
@@ -7413,6 +7463,47 @@ var getQuestionsInUrlData = function getQuestionsInUrlData(urlData) {
   return urlQuestions;
 };
 
+var getQuestionSummary = function getQuestionSummary(answers) {
+  return {
+    webApp: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].storageType, 'webapp'),
+    shared: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].aclPublic, _enums__WEBPACK_IMPORTED_MODULE_3__["BOOL_VALUE"].TRUE),
+    staging: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].stagingEnv, _enums__WEBPACK_IMPORTED_MODULE_3__["BOOL_VALUE"].TRUE),
+    staticPage: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].webappIsStatic, _enums__WEBPACK_IMPORTED_MODULE_3__["BOOL_VALUE"].TRUE),
+    createCertificates: Object(_utils_domain__WEBPACK_IMPORTED_MODULE_6__["isDomain"])(Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].bucketName)) && (Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].configureDns, _enums__WEBPACK_IMPORTED_MODULE_3__["BOOL_VALUE"].TRUE) || Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].createCertificates, _enums__WEBPACK_IMPORTED_MODULE_3__["BOOL_VALUE"].TRUE)),
+    configureDns: Object(_utils_domain__WEBPACK_IMPORTED_MODULE_6__["isDomain"])(Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].bucketName)) && Object(_utils__WEBPACK_IMPORTED_MODULE_7__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].configureDns, _enums__WEBPACK_IMPORTED_MODULE_3__["BOOL_VALUE"].TRUE),
+    errorPath: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].errorPath),
+    forwardingBucket: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getForwardingBucketValue"])(answers),
+    bucketName: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].bucketName),
+    region: Object(_utils__WEBPACK_IMPORTED_MODULE_7__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_3__["QUESTION_ID"].region)
+  };
+};
+
+var QuestionContext = react__WEBPACK_IMPORTED_MODULE_2___default.a.createContext(undefined);
+var QuestionProvider = function QuestionProvider(_ref) {
+  var children = _ref.children;
+  var questionData = useQuestionsData();
+  var questionResults = Object(react__WEBPACK_IMPORTED_MODULE_2__["useMemo"])(function () {
+    return getQuestionSummary(questionData.answers);
+  }, [questionData.answers]);
+  return __jsx(QuestionContext.Provider, {
+    value: {
+      questions: questionData,
+      summary: questionResults
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144,
+      columnNumber: 5
+    }
+  }, children);
+};
+var useQuestions = function useQuestions() {
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.useContext(QuestionContext).questions;
+};
+var useSummary = function useSummary() {
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.useContext(QuestionContext).summary;
+};
 /* harmony default export */ __webpack_exports__["default"] = (useQuestions);
 
 /***/ }),
@@ -7477,7 +7568,7 @@ var getDefaultAnswer = function getDefaultAnswer(question, answer) {
   }
 };
 var normalizeAnswer = function normalizeAnswer(answer) {
-  if (answer === null) {
+  if (answer === null || answer === undefined) {
     return '';
   }
 
@@ -7505,6 +7596,10 @@ var hasAnswered = function hasAnswered(answers, questionId, value) {
 
   if (!question) {
     throw new Error("Unknown questionId ".concat(questionId));
+  }
+
+  if (answers[questionId] === undefined) {
+    return false;
   }
 
   if (question.type === _types__WEBPACK_IMPORTED_MODULE_1__["QuestionType"].RADIO) {
@@ -7610,6 +7705,1416 @@ var getForwardingBucketValue = function getForwardingBucketValue(answers) {
 
   return null;
 };
+
+/***/ }),
+
+/***/ "./sections/FAQ/Deployment.tsx":
+/*!*************************************!*\
+  !*** ./sections/FAQ/Deployment.tsx ***!
+  \*************************************/
+/*! exports provided: GitlabDeployment, CircleCIDeployment, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GitlabDeployment", function() { return GitlabDeployment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CircleCIDeployment", function() { return CircleCIDeployment; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/forms/Dropdown */ "./components/forms/Dropdown.tsx");
+/* harmony import */ var _components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/code/Pre.style */ "./components/code/Pre.style.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/FAQ/Deployment.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0__["createElement"];
+
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+
+
+
+var local = {
+  value: 'local',
+  label: 'Command line'
+};
+var github = {
+  value: 'github',
+  label: 'Github Actions'
+};
+var circleCI = {
+  value: 'circleCI',
+  label: 'Circle CI'
+};
+var wercker = {
+  value: 'wercker',
+  label: 'Oracle Wercker'
+};
+var gitlab = {
+  value: 'gitlab',
+  label: 'Gitlab CI'
+};
+var deploymentOptions = [local, github, gitlab, circleCI, wercker];
+
+var Deployment = function Deployment(_ref) {
+  var summary = _ref.summary;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(github),
+      ci = _useState[0],
+      setCi = _useState[1];
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 7
+    }
+  }, "Depends where you want to deploy it from."), __jsx(_components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    id: 'deployment',
+    options: deploymentOptions,
+    selectedOption: ci,
+    onChange: setCi,
+    title: '',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 7
+    }
+  }), ci === local && __jsx(LocalDeployment, {
+    summary: summary,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 24
+    }
+  }), ci === wercker && __jsx(WerckerDeployment, {
+    summary: summary,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 26
+    }
+  }), ci === github && __jsx(GithubDeployment, {
+    summary: summary,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38,
+      columnNumber: 25
+    }
+  }), ci === gitlab && __jsx(GitlabDeployment, {
+    summary: summary,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39,
+      columnNumber: 25
+    }
+  }), ci === circleCI && __jsx(CircleCIDeployment, {
+    summary: summary,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40,
+      columnNumber: 27
+    }
+  }));
+};
+
+var LocalDeployment = function LocalDeployment(_ref2) {
+  var summary = _ref2.summary;
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 5
+    }
+  }, "1. Download and install the", ' ', __jsx("a", {
+    href: "https://aws.amazon.com/cli/",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 7
+    }
+  }, "AWS CLI"), "."), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51,
+      columnNumber: 5
+    }
+  }, "2. Add the following to your package.json"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 5
+    }
+  }, "\"scripts\": {", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 7
+    }
+  }), '  ', "...", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 7
+    }
+  }), '  ', "\"deploy\": \"aws s3 sync build/ s3://", summary.bucketName || 'my-beautiful-bucket', "\"", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59,
+      columnNumber: 7
+    }
+  }), "}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61,
+      columnNumber: 7
+    }
+  })), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63,
+      columnNumber: 5
+    }
+  }, "This will sync the local folder build to s3. You might have to adjust that for your own setup."), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67,
+      columnNumber: 5
+    }
+  }, "With the script above, you will be able to deploy to S3 using", ' ', __jsx("code", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 7
+    }
+  }, "yarn deploy"), " locally, given that you have your AWS credentials in the environment."));
+};
+
+var WerckerDeployment = function WerckerDeployment(_ref3) {
+  var summary = _ref3.summary;
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 5
+    }
+  }, "1. Add the following code to your ", __jsx("code", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 78,
+      columnNumber: 41
+    }
+  }, "wercker.yml")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80,
+      columnNumber: 5
+    }
+  }, "deploy_frontend:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82,
+      columnNumber: 7
+    }
+  }), '  ', "steps:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 7
+    }
+  }), '    ', "- script:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 7
+    }
+  }), '      ', "name: install dependencies", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 7
+    }
+  }), '      ', "code: yarn", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90,
+      columnNumber: 7
+    }
+  }), '    ', "- script:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 7
+    }
+  }), '      ', "name: build frontend", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94,
+      columnNumber: 7
+    }
+  }), '      ', "code: npm run build", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96,
+      columnNumber: 7
+    }
+  }), '    ', "- s3sync:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98,
+      columnNumber: 7
+    }
+  }), '      ', "source_dir: build", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100,
+      columnNumber: 7
+    }
+  }), '      ', "delete-removed: true", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 102,
+      columnNumber: 7
+    }
+  }), '      ', "key-id: $AWS_ACCESS_KEY_ID", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 104,
+      columnNumber: 7
+    }
+  }), '      ', "key-secret: $AWS_SECRET_ACCESS_KEY", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 106,
+      columnNumber: 7
+    }
+  }), '      ', "bucket-url: s3://$AWS_S3_BUCKET_NAME", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108,
+      columnNumber: 7
+    }
+  }), '    ', "- script:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110,
+      columnNumber: 7
+    }
+  }), '      ', "name: invalidate cloudfront cache", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112,
+      columnNumber: 7
+    }
+  }), '      ', "code: |", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 114,
+      columnNumber: 7
+    }
+  }), '        ', "if [[ -n \"$AWS_CDN_DISTRIBUTION_ID\" ]]; then", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116,
+      columnNumber: 7
+    }
+  }), '          ', "sudo apt-get update", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118,
+      columnNumber: 7
+    }
+  }), '          ', "sudo apt-get install unzip -y", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 120,
+      columnNumber: 7
+    }
+  }), '          ', "sudo apt-get install libpython-dev -y", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 122,
+      columnNumber: 7
+    }
+  }), '          ', "wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 124,
+      columnNumber: 7
+    }
+  }), '          ', "unzip awscli-bundle.zip", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 7
+    }
+  }), '          ', "sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 129,
+      columnNumber: 7
+    }
+  }), '          ', "rm -rf awscli-bundle*", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 131,
+      columnNumber: 7
+    }
+  }), '          ', "aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 133,
+      columnNumber: 7
+    }
+  }), '          ', "aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 136,
+      columnNumber: 7
+    }
+  }), '          ', "aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths \"/*\"", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 139,
+      columnNumber: 7
+    }
+  }), '        ', "fi"), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 142,
+      columnNumber: 5
+    }
+  }, "Set this pipeline up in", ' ', __jsx("a", {
+    href: "https://app.wercker.com",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 144,
+      columnNumber: 7
+    }
+  }, "app.wercker.com"), " with the required keys, and add a workflow to run it on master."));
+};
+
+var GithubDeployment = function GithubDeployment(_ref4) {
+  var summary = _ref4.summary;
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 152,
+      columnNumber: 5
+    }
+  }, "1. Add the following file to your repo:", ' ', __jsx("code", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 154,
+      columnNumber: 7
+    }
+  }, ".github/workflows/main.yml")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156,
+      columnNumber: 5
+    }
+  }, "name: Production Build", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 158,
+      columnNumber: 7
+    }
+  }), "on:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 160,
+      columnNumber: 7
+    }
+  }), '  ', "pull_request:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162,
+      columnNumber: 7
+    }
+  }), '  ', "push:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 164,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "branches:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 167,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "- master", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 171,
+      columnNumber: 7
+    }
+  }), "jobs:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 173,
+      columnNumber: 7
+    }
+  }), '  ', "build:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "runs-on: ubuntu-latest", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 178,
+      columnNumber: 7
+    }
+  }), __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 179,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "strategy:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 182,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "matrix:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 186,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "node-version: [13.x]", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 191,
+      columnNumber: 7
+    }
+  }), __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 192,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "steps:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 195,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "- uses: actions/checkout@v1", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 198,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "- name: Use Node.js ${{ matrix.node-version }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 201,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "uses: actions/setup-node@v1", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 204,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "with:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 207,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "node-version: ${{ matrix.node-version }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 211,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "- name: Yarn Install", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 214,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "run: |", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 218,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "yarn install", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 223,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "- name: Production Build", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 226,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "run: |", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 230,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "yarn build", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 235,
+      columnNumber: 7
+    }
+  }), '  ', '  ', "- name: Deploy to S3", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 238,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "uses: jakejarvis/s3-sync-action@master", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 242,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "with:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 246,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "args: --acl public-read --delete", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 251,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', "env:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 255,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 261,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 267,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 273,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "AWS_REGION: \"", summary.region, "\"", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 278,
+      columnNumber: 7
+    }
+  }), '  ', '  ', '  ', '  ', "SOURCE_DIR: \"public\""), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 284,
+      columnNumber: 5
+    }
+  }, "Set this up in the Actions tab in your Github repo."));
+};
+
+var GitlabDeployment = function GitlabDeployment(_ref5) {
+  var summary = _ref5.summary;
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 290,
+      columnNumber: 5
+    }
+  }, "See", ' ', __jsx("a", {
+    href: "https://hackernoon.com/using-gitlab-ci-cd-to-auto-deploy-your-vue-js-application-to-aws-s3-9affe1eb3457",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 292,
+      columnNumber: 7
+    }
+  }, "this article"), ' ', "for some hints."), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 297,
+      columnNumber: 5
+    }
+  }, "deploy prod:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 299,
+      columnNumber: 7
+    }
+  }), " image: python:latest", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 300,
+      columnNumber: 7
+    }
+  }), " stage: deploy", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 301,
+      columnNumber: 7
+    }
+  }), " only:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 302,
+      columnNumber: 7
+    }
+  }), '   ', "- tags", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 304,
+      columnNumber: 7
+    }
+  }), " script:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 305,
+      columnNumber: 7
+    }
+  }), '   ', "- pip install awscli", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 307,
+      columnNumber: 7
+    }
+  }), '   ', "- aws s3 sync ./dist s3://YOUR_BUCKET_NAME"));
+};
+var CircleCIDeployment = function CircleCIDeployment(_ref6) {
+  var summary = _ref6.summary;
+  return __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 318,
+      columnNumber: 3
+    }
+  }, "See", ' ', __jsx("a", {
+    href: "https://circleci.com/developer/orbs/orb/circleci/aws-s3#commands-sync",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 320,
+      columnNumber: 5
+    }
+  }, "CircleCI S3 Orbs"));
+};
+/* harmony default export */ __webpack_exports__["default"] = (Deployment);
+
+/***/ }),
+
+/***/ "./sections/FAQ/FAQAccordian.tsx":
+/*!***************************************!*\
+  !*** ./sections/FAQ/FAQAccordian.tsx ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _QuestionTitle_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuestionTitle.styles */ "./sections/FAQ/QuestionTitle.styles.tsx");
+/* harmony import */ var _FAQAnswer_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FAQAnswer.styles */ "./sections/FAQ/FAQAnswer.styles.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/FAQ/FAQAccordian.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+var FAQAccordian = function FAQAccordian(_ref) {
+  var question = _ref.question;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      isOpen = _useState[0],
+      setOpen = _useState[1];
+
+  var children = typeof question.answer === 'string' ? divideText(question.answer) : question.answer;
+  return __jsx("div", {
+    id: question.id,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 5
+    }
+  }, __jsx(_QuestionTitle_styles__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    onClick: function onClick() {
+      return setOpen(function (open) {
+        return !open;
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 7
+    }
+  }, question.title), __jsx(_FAQAnswer_styles__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    open: isOpen,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 7
+    }
+  }, children));
+};
+
+var divideText = function divideText(text) {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, text.split('\n').map(function (t, i) {
+    return (// eslint-disable-next-line react/no-array-index-key
+      __jsx("p", {
+        key: i,
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28,
+          columnNumber: 9
+        }
+      }, t)
+    );
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FAQAccordian);
+
+/***/ }),
+
+/***/ "./sections/FAQ/FAQAnswer.styles.tsx":
+/*!*******************************************!*\
+  !*** ./sections/FAQ/FAQAnswer.styles.tsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+var FAQAnswer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div.withConfig({
+  displayName: "FAQAnswerstyles__FAQAnswer",
+  componentId: "ni0grw-0"
+})(["padding-left:1rem;border-left:2px solid grey;display:", ";"], function (p) {
+  return p.open ? 'block' : 'none';
+});
+/* harmony default export */ __webpack_exports__["default"] = (FAQAnswer);
+
+/***/ }),
+
+/***/ "./sections/FAQ/QuestionTitle.styles.tsx":
+/*!***********************************************!*\
+  !*** ./sections/FAQ/QuestionTitle.styles.tsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _FAQAnswer_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FAQAnswer.styles */ "./sections/FAQ/FAQAnswer.styles.tsx");
+
+
+var QuestionTitle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button.withConfig({
+  displayName: "QuestionTitlestyles__QuestionTitle",
+  componentId: "w5tvgt-0"
+})(["width:100%;background:none;border:2px dashed transparent;outline:none;text-align:left;font-size:1.3rem;padding:0;margin-top:0.3rem;&:focus,&:active{color:", ";& + ", "{border-left-color:", ";}}"], function (p) {
+  return p.color || p.theme.colors.secondary;
+}, _FAQAnswer_styles__WEBPACK_IMPORTED_MODULE_1__["default"], function (p) {
+  return p.color || p.theme.colors.secondary;
+});
+/* harmony default export */ __webpack_exports__["default"] = (QuestionTitle);
+
+/***/ }),
+
+/***/ "./sections/FAQ/index.tsx":
+/*!********************************!*\
+  !*** ./sections/FAQ/index.tsx ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Header_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Header.style */ "./components/Header.style.tsx");
+/* harmony import */ var _components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/code/Pre.style */ "./components/code/Pre.style.tsx");
+/* harmony import */ var _questions_useQuestions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../questions/useQuestions */ "./questions/useQuestions.tsx");
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/utils */ "./components/utils.tsx");
+/* harmony import */ var _Deployment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Deployment */ "./sections/FAQ/Deployment.tsx");
+/* harmony import */ var _FAQAccordian__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FAQAccordian */ "./sections/FAQ/FAQAccordian.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/FAQ/index.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+var FAQ = function FAQ() {
+  var _useQuestions = Object(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_3__["default"])(),
+      hasAnsweredAll = _useQuestions.hasAnsweredAll;
+
+  var summary = Object(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_3__["useSummary"])();
+
+  if (!hasAnsweredAll) {
+    return null;
+  }
+
+  var faqData = getFAQuestions(summary);
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_4__["Section"], {
+    id: "faq",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 5
+    }
+  }, __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 7
+    }
+  }, "Frequently asked questions"), faqData.map(function (q) {
+    return __jsx(_FAQAccordian__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      key: q.id,
+      question: q,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21,
+        columnNumber: 9
+      }
+    });
+  }));
+};
+
+var getFAQuestions = function getFAQuestions(summary) {
+  return [{
+    id: 'faq:deploy',
+    title: 'How do I deploy to this S3 bucket?',
+    answer: __jsx(_Deployment__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      summary: summary,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32,
+        columnNumber: 15
+      }
+    })
+  }, {
+    id: 'faq:charged',
+    title: 'How much will I be charged?',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 11
+      }
+    }, "Very little."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 11
+      }
+    }, "S3 and Cloudfront are basic, cheap infrastructure. Since AWS charges per use, it's impossible to say exactly, but 1$ per month would likely covers 1000 monthly users for a lightweight web app."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 45,
+        columnNumber: 11
+      }
+    }, "If you have recently signed up for AWS, the expenses will commonly be included in the free tier and you won't pay anything at all."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49,
+        columnNumber: 11
+      }
+    }, "For more details on file hosting and data transfer fees, see", ' ', __jsx("a", {
+      href: "https://aws.amazon.com/s3/pricing/",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 51,
+        columnNumber: 13
+      }
+    }, "aws.amazon.com/s3/pricing"), "."))
+  }, {
+    id: 'faq:pre-deploy-change',
+    title: 'Can I change the input before I deploy it?',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 64,
+        columnNumber: 11
+      }
+    }, "Yes, go right ahead!"), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65,
+        columnNumber: 11
+      }
+    }, "Hopefully, the arguments and code is self-explainatory. If not, check out", ' ', __jsx("a", {
+      href: "http://github.com/tomfa/terraform",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 68,
+        columnNumber: 13
+      }
+    }, "github.com/tomfa/terraform"), ' ', "or the", ' ', __jsx("a", {
+      href: "https://registry.terraform.io/providers/hashicorp/aws/latest",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 72,
+        columnNumber: 13
+      }
+    }, "Terraform registry"), ", which contains the modules which the repo uses."))
+  }, {
+    id: 'faq:stuck-on-validation',
+    title: 'My deployment is stuck on verification of certificate.',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 85,
+        columnNumber: 11
+      }
+    }, "The script will stop and wait for the certificate settings to be verified to be correct before continuing."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89,
+        columnNumber: 11
+      }
+    }, "If you use AWS DNS,", ' ', summary.configureDns && __jsx("strong", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 92,
+        columnNumber: 15
+      }
+    }, "which it looks like you do \u2013"), "go to your domain registrar, then configure the DNS servers to point to the newly created Route 53 zone that this script has created. You can find the DNS servers that you must point to in the", ' ', __jsx("a", {
+      href: "https://console.aws.amazon.com/route53/v2/hostedzones#",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 97,
+        columnNumber: 13
+      }
+    }, "AWS console > Route 53"), "."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102,
+        columnNumber: 11
+      }
+    }, "If you use a different DNS,", ' ', !summary.configureDns && summary.createCertificates && __jsx("strong", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105,
+        columnNumber: 15
+      }
+    }, "which it looks like you do \u2013 "), "you must add DNS records there to match the records wanted from AWS Certificate manager. These records can be found at", ' ', __jsx("a", {
+      href: "https://console.aws.amazon.com/route53/v2/hostedzones#",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109,
+        columnNumber: 13
+      }
+    }, "AWS console > Certificate Manager")), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113,
+        columnNumber: 11
+      }
+    }, "Both of these methods require DNS propagation before they take effect, so you might have to wait an hour or even a day. The script times out after 45 min, but you can re-run it tomorrow, and it will continue where it left off."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 119,
+        columnNumber: 11
+      }
+    }, "A last resort, can be to add the following line inside terraform code:", __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 122,
+        columnNumber: 13
+      }
+    }, "module \"certificate\" { ", __jsx("br", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 123,
+        columnNumber: 53
+      }
+    }), '  ', "... ", __jsx("br", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 124,
+        columnNumber: 25
+      }
+    }), '  ', "validation_method = EMAIL ", __jsx("br", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 125,
+        columnNumber: 47
+      }
+    }), "}"), "Note that you will have to respond to an email sent to postmaster@your-bucket-domain for the validation to go through, and that this process will have to be re-run every 3 years or so."))
+  }, {
+    id: 'faq:name-taken',
+    title: 'My bucket name was taken',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 140,
+        columnNumber: 11
+      }
+    }, "You can rename your bucket and try again. If you want to keep your the domain name, simply replace the bucket_name variables in the script, but keep the domain variables, and run the script again."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 145,
+        columnNumber: 11
+      }
+    }, "Tip: you can go to replace-me.s3.amazonaws.com to check if a given bucket is available. If it's not take, it will reply with error message ", __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 148,
+        columnNumber: 21
+      }
+    }, "The specified bucket does not exist")))
+  }, {
+    id: 'faq:deploy-twice',
+    title: 'What happens if I deploy it twice?',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 158,
+        columnNumber: 11
+      }
+    }, "If you still have your ", __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 159,
+        columnNumber: 36
+      }
+    }, "terraform.tfstate"), " file, it will check the AWS resources, and check that they still match the code. If necessary, it will ask for confirmation before changing the infrastructure to match the code."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 164,
+        columnNumber: 11
+      }
+    }, "If you don't have your state file, it will attempt to recreate everything. It will likely fail due to a duplicate bucket name, unless you've changed that."))
+  }, {
+    id: 'faq:post-deploy-change',
+    title: 'Can I change the input and redeploy?',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 177,
+        columnNumber: 11
+      }
+    }, "Yes. You can change the region, bucket name and most other things.", summary.createCertificates && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Note that if you make changes that affect the certificate it might be re-created.", ' ', !summary.configureDns && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Since you seem to not be using AWS for DNS, you will then have to reconfigure the DNS pointers to the certificate afterwards."))), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 193,
+        columnNumber: 11
+      }
+    }, "When you want to apply the changes, just re-run", ' ', __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 195,
+        columnNumber: 13
+      }
+    }, "terraform apply"), "."))
+  }, {
+    id: 'faq:terraform-destroy',
+    title: 'How can I remove everything I just created?',
+    answer: __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 204,
+        columnNumber: 9
+      }
+    }, __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 205,
+        columnNumber: 11
+      }
+    }, "terraform destroy"), " will take down all created infrastructure, as long as you have kept the", ' ', __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 207,
+        columnNumber: 11
+      }
+    }, "terraform.tfstate"), " file. If not, you will have to delete it from the ", __jsx("a", {
+      href: "https://console.aws.amazon.com/",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 208,
+        columnNumber: 23
+      }
+    }, "AWS console"), ".")
+  }, {
+    id: 'faq:generated-files',
+    title: 'What do I do with the generated files?',
+    answer: __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("h4", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 217,
+        columnNumber: 11
+      }
+    }, "Short answer:"), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 218,
+        columnNumber: 11
+      }
+    }, "Save ", __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 219,
+        columnNumber: 18
+      }
+    }, "terraform.tfstate"), " for use later. The", ' ', __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 220,
+        columnNumber: 13
+      }
+    }, ".terraform"), " folder is basically a cache, and can be deleted."), __jsx("h4", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 223,
+        columnNumber: 11
+      }
+    }, "Longer answer:"), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 224,
+        columnNumber: 11
+      }
+    }, "After you have run ", __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 225,
+        columnNumber: 32
+      }
+    }, "terraform apply"), ", a folder will be created named ", __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 226,
+        columnNumber: 27
+      }
+    }, ".terraform"), " along with a file named", ' ', __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 227,
+        columnNumber: 13
+      }
+    }, "terraform.tfstate")), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 229,
+        columnNumber: 11
+      }
+    }, "If you save ", __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 230,
+        columnNumber: 25
+      }
+    }, "terraform.tfstate"), " you can make changes in the code, and re-apply to make those changes take effect in the infrastructure. This file is also needed to perform", ' ', __jsx("code", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 233,
+        columnNumber: 13
+      }
+    }, "terraform destroy"), " in case you wish to take down the infrastructure."), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 236,
+        columnNumber: 11
+      }
+    }, "It's OK to delete everything as well, but then you'll have to make further changes using the", ' ', __jsx("a", {
+      href: "https://console.aws.amazon.com",
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 239,
+        columnNumber: 13
+      }
+    }, "AWS console"), "."))
+  }];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (FAQ);
 
 /***/ }),
 
@@ -8081,12 +9586,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/forms/Description.style */ "./components/forms/Description.style.tsx");
 /* harmony import */ var _components_Header_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header.style */ "./components/Header.style.tsx");
 /* harmony import */ var _utils_terraform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/terraform */ "./utils/terraform/index.ts");
-/* harmony import */ var _components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/code/Pre.style */ "./components/code/Pre.style.tsx");
-/* harmony import */ var _components_Mute_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Mute.style */ "./components/Mute.style.tsx");
-/* harmony import */ var _components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/icons/LoadingIcon */ "./components/icons/LoadingIcon.tsx");
-/* harmony import */ var _components_code_Code__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/code/Code */ "./components/code/Code.tsx");
-/* harmony import */ var _components_ShareLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ShareLink */ "./components/ShareLink.tsx");
-/* harmony import */ var _utils_splitbee__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/splitbee */ "./utils/splitbee.ts");
+/* harmony import */ var _components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/icons/LoadingIcon */ "./components/icons/LoadingIcon.tsx");
+/* harmony import */ var _components_code_Code__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/code/Code */ "./components/code/Code.tsx");
+/* harmony import */ var _components_ShareLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ShareLink */ "./components/ShareLink.tsx");
+/* harmony import */ var _utils_splitbee__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/splitbee */ "./utils/splitbee.ts");
+/* harmony import */ var _questions_useQuestions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../questions/useQuestions */ "./questions/useQuestions.tsx");
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/utils */ "./components/utils.tsx");
+/* harmony import */ var _utils_sharing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/sharing */ "./utils/sharing.ts");
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Infrastructure.tsx";
 
@@ -8105,58 +9611,70 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-var Infrastructure = function Infrastructure(props) {
-  var _getTerraFormPackage = Object(_utils_terraform__WEBPACK_IMPORTED_MODULE_3__["getTerraFormPackage"])(props),
-      description = _getTerraFormPackage.description,
-      mainTfContent = _getTerraFormPackage.mainTfContent;
+
+var Infrastructure = function Infrastructure() {
+  var _useQuestions = Object(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_8__["default"])(),
+      hasAnsweredAll = _useQuestions.hasAnsweredAll;
+
+  var props = Object(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_8__["useSummary"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       loading = _useState[0],
       setLoading = _useState[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    return Object(_utils_splitbee__WEBPACK_IMPORTED_MODULE_9__["trail"])('completed', props);
+    return Object(_utils_splitbee__WEBPACK_IMPORTED_MODULE_7__["trail"])('completed', props);
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    setTimeout(function () {
-      return setLoading(false);
-    }, 800);
-  }, [mainTfContent]);
+    if (hasAnsweredAll) {
+      setTimeout(function () {
+        return setLoading(false);
+      }, 800);
+    }
+  }, [hasAnsweredAll]);
+
+  if (!hasAnsweredAll) {
+    return null;
+  }
 
   if (loading) {
-    return __jsx(_components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    return __jsx(_components_icons_LoadingIcon__WEBPACK_IMPORTED_MODULE_4__["default"], {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23,
+        lineNumber: 29,
         columnNumber: 12
       }
     });
   }
+
+  var _getTerraFormPackage = Object(_utils_terraform__WEBPACK_IMPORTED_MODULE_3__["getTerraFormPackage"])(props),
+      description = _getTerraFormPackage.description,
+      mainTfContent = _getTerraFormPackage.mainTfContent;
 
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     as: 'h1',
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 35,
       columnNumber: 7
     }
-  }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_8__["ShareLink"], {
-    text: getShareTitle(props),
+  }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_6__["ShareLink"], {
+    text: Object(_utils_sharing__WEBPACK_IMPORTED_MODULE_10__["getShareTitle"])(props),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30,
+      lineNumber: 37,
       columnNumber: 7
     }
-  }, "configuration url"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "configuration url"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_5__["default"], {
     bucketName: props.bucketName,
     mainTfContent: mainTfContent,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 39,
       columnNumber: 7
     }
   }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -8166,7 +9684,7 @@ var Infrastructure = function Infrastructure(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 40,
       columnNumber: 7
     }
   }, "The script above will plan the infrastructure and prompt you for confirmation."), description.map(function (text, i) {
@@ -8175,152 +9693,32 @@ var Infrastructure = function Infrastructure(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38,
+        lineNumber: 45,
         columnNumber: 9
       }
     }, text);
-  }), __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40,
-      columnNumber: 7
-    }
-  }, "Prerequisites"), __jsx("h4", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 7
-    }
-  }, "AWS Account"), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 7
-    }
-  }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
-    href: "https://portal.aws.amazon.com/billing/signup#/start",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 44,
-      columnNumber: 9
-    }
-  }, "aws.amazon.com")), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 7
-    }
-  }, "If you don't have your ", __jsx("strong", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49,
-      columnNumber: 37
-    }
-  }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50,
-      columnNumber: 9
-    }
-  }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54,
-      columnNumber: 7
-    }
-  }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55,
-      columnNumber: 9
-    }
-  }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA..."), __jsx("h4", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59,
-      columnNumber: 7
-    }
-  }, "Terraform installed"), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 7
-    }
-  }, "If you haven't already,", ' ', __jsx("a", {
-    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62,
-      columnNumber: 9
-    }
-  }, "install Terraform")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66,
-      columnNumber: 7
-    }
-  }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67,
-      columnNumber: 9
-    }
-  }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70,
-      columnNumber: 7
-    }
-  }, "See", ' ', __jsx("a", {
-    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72,
-      columnNumber: 9
-    }
-  }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."));
+  }));
 };
 
-var getShareTitle = function getShareTitle(_ref) {
-  var bucketName = _ref.bucketName,
-      webApp = _ref.webApp,
-      region = _ref.region,
-      shared = _ref.shared;
-  var regionPostfix = region ? " in ".concat(region) : '';
-
-  if (bucketName && region) {
-    return "Launch ".concat(bucketName).concat(regionPostfix);
-  }
-
-  if (webApp && region) {
-    return "Launch a web app ".concat(regionPostfix);
-  }
-
-  if (!webApp && region) {
-    var aclText = shared ? 'public' : 'private';
-    return "Host ".concat(aclText, " files in ").concat(regionPostfix);
-  }
-
-  return undefined;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Infrastructure);
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_9__["Section"], {
+    id: "infrastructure",
+    tight: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52,
+      columnNumber: 3
+    }
+  }, __jsx(Infrastructure, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 5
+    }
+  }));
+});
 
 /***/ }),
 
@@ -8385,23 +9783,15 @@ var Intro = function Intro() {
       lineNumber: 12,
       columnNumber: 9
     }
-  }, " reliable"), ". With CloudFront cache, it'll be blazingly ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
+  }, " reliable"), ". With CloudFront, it'll be blazingly ", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
     secondary: true,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13,
-      columnNumber: 33
+      columnNumber: 19
     }
-  }, "fast"), ". Let's see how", __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_1__["Colored"], {
-    secondary: true,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15,
-      columnNumber: 9
-    }
-  }, " easy "), "it can be.")));
+  }, "fast"), ".")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Intro);
@@ -8522,6 +9912,173 @@ var Meta = function Meta() {
 
 /***/ }),
 
+/***/ "./sections/Prerequisites.tsx":
+/*!************************************!*\
+  !*** ./sections/Prerequisites.tsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/forms/Description.style */ "./components/forms/Description.style.tsx");
+/* harmony import */ var _components_Header_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header.style */ "./components/Header.style.tsx");
+/* harmony import */ var _components_code_Pre_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/code/Pre.style */ "./components/code/Pre.style.tsx");
+/* harmony import */ var _components_Mute_style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Mute.style */ "./components/Mute.style.tsx");
+/* harmony import */ var _questions_useQuestions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../questions/useQuestions */ "./questions/useQuestions.tsx");
+/* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/utils */ "./components/utils.tsx");
+var _this = undefined,
+    _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Prerequisites.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+var Prerequisites = function Prerequisites() {
+  var _useQuestions = Object(_questions_useQuestions__WEBPACK_IMPORTED_MODULE_5__["default"])(),
+      hasAnsweredAll = _useQuestions.hasAnsweredAll;
+
+  if (!hasAnsweredAll) {
+    return null;
+  }
+
+  return __jsx(_components_utils__WEBPACK_IMPORTED_MODULE_6__["Section"], {
+    tight: true,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14,
+      columnNumber: 5
+    }
+  }, __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
+      columnNumber: 7
+    }
+  }, "Prerequisites"), __jsx("h4", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 7
+    }
+  }, "AWS Account"), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 7
+    }
+  }, "If you don't have an AWS account already, sign up at", ' ', __jsx("a", {
+    href: "https://portal.aws.amazon.com/billing/signup#/start",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 9
+    }
+  }, "aws.amazon.com")), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 7
+    }
+  }, "If you don't have your ", __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24,
+      columnNumber: 37
+    }
+  }, "AWS_SECRET_ACCESS_KEY"), " and", ' ', __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 9
+    }
+  }, "AWS_ACCESS_KEY_ID"), " handy, find those in the top right corner under your name > Security credentials. They should be exported to your environment:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 7
+    }
+  }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30,
+      columnNumber: 9
+    }
+  }, "# Export AWS keys", '\n'), "export AWS_SECRET_ACCESS_KEY=yaAS$1...", '\n', "export AWS_ACCESS_KEY_ID=AKIA..."), __jsx("h4", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 7
+    }
+  }, "Terraform installed"), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 7
+    }
+  }, "If you haven't already,", ' ', __jsx("a", {
+    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37,
+      columnNumber: 9
+    }
+  }, "install Terraform")), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 7
+    }
+  }, __jsx(_components_Mute_style__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 9
+    }
+  }, "# For Macs with homebrew", '\n'), "brew install hashicorp/tap/terraform"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45,
+      columnNumber: 7
+    }
+  }, "See", ' ', __jsx("a", {
+    href: "https://learn.hashicorp.com/tutorials/terraform/install-cli",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 9
+    }
+  }, "learn.hashicorp.com/tutorials/terraform/install-cli"), ' ', "for other platforms."));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Prerequisites);
+
+/***/ }),
+
 /***/ "./sections/Questionare.tsx":
 /*!**********************************!*\
   !*** ./sections/Questionare.tsx ***!
@@ -8535,25 +10092,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var scroll_into_view__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! scroll-into-view */ "./node_modules/scroll-into-view/scrollIntoView.js");
 /* harmony import */ var scroll_into_view__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(scroll_into_view__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _questions_useQuestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../questions/useQuestions */ "./questions/useQuestions.ts");
+/* harmony import */ var _questions_useQuestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../questions/useQuestions */ "./questions/useQuestions.tsx");
 /* harmony import */ var _components_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/utils */ "./components/utils.tsx");
 /* harmony import */ var _components_forms_RadioGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/forms/RadioGroup */ "./components/forms/RadioGroup.tsx");
 /* harmony import */ var _components_forms_CheckboxGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/forms/CheckboxGroup */ "./components/forms/CheckboxGroup.tsx");
-/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../enums */ "./enums.ts");
-/* harmony import */ var _components_forms_TextInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/forms/TextInput */ "./components/forms/TextInput.tsx");
-/* harmony import */ var _components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/forms/Dropdown */ "./components/forms/Dropdown.tsx");
-/* harmony import */ var _questions_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../questions/utils */ "./questions/utils.ts");
-/* harmony import */ var _utils_domain__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/domain */ "./utils/domain.ts");
-/* harmony import */ var _Infrastructure__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Infrastructure */ "./sections/Infrastructure.tsx");
+/* harmony import */ var _components_forms_TextInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/forms/TextInput */ "./components/forms/TextInput.tsx");
+/* harmony import */ var _components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/forms/Dropdown */ "./components/forms/Dropdown.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/sections/Questionare.tsx";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
 
 
 
@@ -8602,7 +10151,7 @@ var Questionare = function Questionare() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49,
+      lineNumber: 42,
       columnNumber: 5
     }
   }, renderQuestions.map(function (question) {
@@ -8621,7 +10170,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54,
+          lineNumber: 47,
           columnNumber: 13
         }
       });
@@ -8629,7 +10178,7 @@ var Questionare = function Questionare() {
 
     if (question.type === 'dropdown') {
       var _answer = answers[question.id];
-      return __jsx(_components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      return __jsx(_components_forms_Dropdown__WEBPACK_IMPORTED_MODULE_7__["default"], {
         id: question.id,
         key: question.id,
         options: question.options,
@@ -8642,7 +10191,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68,
+          lineNumber: 61,
           columnNumber: 13
         }
       });
@@ -8663,7 +10212,7 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82,
+          lineNumber: 75,
           columnNumber: 13
         }
       });
@@ -8671,7 +10220,7 @@ var Questionare = function Questionare() {
 
     if (question.type === 'text') {
       var _answer3 = answers[question.id];
-      return __jsx(_components_forms_TextInput__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      return __jsx(_components_forms_TextInput__WEBPACK_IMPORTED_MODULE_6__["default"], {
         id: question.id,
         key: question.id,
         value: _answer3,
@@ -8688,52 +10237,14 @@ var Questionare = function Questionare() {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96,
+          lineNumber: 89,
           columnNumber: 13
         }
       });
     }
 
     throw new Error("Unexpected question type in ".concat(question));
-  }), __jsx(ScrollToAnchor, {
-    id: "infrastructure",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 111,
-      columnNumber: 7
-    }
-  }), hasAnsweredAll && __jsx(_Infrastructure__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    webApp: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].storageType, 'webapp'),
-    shared: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].aclPublic, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
-    staging: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].stagingEnv, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
-    staticPage: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].webappIsStatic, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
-    createCertificates: Object(_utils_domain__WEBPACK_IMPORTED_MODULE_10__["isDomain"])(Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].bucketName)) && (Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].configureDns, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE) || Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].createCertificates, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE)),
-    configureDns: Object(_utils_domain__WEBPACK_IMPORTED_MODULE_10__["isDomain"])(Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].bucketName)) && Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["hasAnswered"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].configureDns, _enums__WEBPACK_IMPORTED_MODULE_6__["BOOL_VALUE"].TRUE),
-    errorPath: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].errorPath),
-    forwardingBucket: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["getForwardingBucketValue"])(answers),
-    bucketName: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].bucketName),
-    region: Object(_questions_utils__WEBPACK_IMPORTED_MODULE_9__["getNormalizedAnswer"])(answers, _enums__WEBPACK_IMPORTED_MODULE_6__["QUESTION_ID"].region),
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 113,
-      columnNumber: 9
-    }
   }));
-};
-
-var ScrollToAnchor = function ScrollToAnchor(_ref) {
-  var id = _ref.id;
-  return __jsx("div", {
-    id: id,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 149,
-      columnNumber: 52
-    }
-  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Questionare);
@@ -8874,6 +10385,41 @@ var domainIsWWW = function domainIsWWW(domain) {
 };
 var isDomain = function isDomain(domain) {
   return domain.split('.').length >= 2;
+};
+
+/***/ }),
+
+/***/ "./utils/sharing.ts":
+/*!**************************!*\
+  !*** ./utils/sharing.ts ***!
+  \**************************/
+/*! exports provided: getShareTitle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getShareTitle", function() { return getShareTitle; });
+var getShareTitle = function getShareTitle(_ref) {
+  var bucketName = _ref.bucketName,
+      webApp = _ref.webApp,
+      region = _ref.region,
+      shared = _ref.shared;
+  var regionPostfix = region ? " in ".concat(region) : '';
+
+  if (bucketName && region) {
+    return "Launch ".concat(bucketName).concat(regionPostfix);
+  }
+
+  if (webApp && region) {
+    return "Launch a web app ".concat(regionPostfix);
+  }
+
+  if (!webApp && region) {
+    var aclText = shared ? 'public' : 'private';
+    return "Host ".concat(aclText, " files in ").concat(regionPostfix);
+  }
+
+  return undefined;
 };
 
 /***/ }),
