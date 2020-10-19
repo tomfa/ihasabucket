@@ -119,12 +119,14 @@ const getFAQuestions = (summary: QuestionSummary): FAQuestion[] => {
           <p>
             A last resort, can be to add the following line inside terraform
             code:
-            <Pre>
-              module &quot;certificate&quot; &#123; <br />
-              {'  '}... <br />
-              {'  '}validation_method = EMAIL <br />
-              &#125;
-            </Pre>
+          </p>
+          <Pre>
+            module &quot;certificate&quot; &#123; <br />
+            {'  '}... <br />
+            {'  '}validation_method = EMAIL <br />
+            &#125;
+          </Pre>
+          <p>
             Note that you will have to respond to an email sent to
             postmaster@your-bucket-domain for the validation to go through, and
             that this process will have to be re-run every 3 years or so.
