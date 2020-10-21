@@ -7,12 +7,27 @@ import ArrowLeftIcon from '../components/icons/ArrowLeft';
 
 export default function NotFound() {
   return (
-    <PageWrapper><Header /><Intro /><Footer /></PageWrapper>
+    <PageWrapper>
+      <Header />
+      <Intro />
+      <Footer />
+    </PageWrapper>
   );
 }
 
-const Intro = () => (
-  <Section><BlockQuote author={'Lolrus, the bucket walrus'}>404: Can I has bucket!?</BlockQuote>
-    <Button url={'/'}><ArrowLeftIcon color="white" /> Go home</Button>
-  </Section>
-);
+const Intro = ({ status = '400' }) => {
+  const title =
+    status === '400'
+      ? '404: Can I has bucket '
+      : status === '500'
+      ? '500: Oh no, my bucket'
+      : 'Hi there';
+  return (
+    <Section>
+      <BlockQuote author={'Lolrus, the bucket walrus'}>{title}</BlockQuote>
+      <Button url={'/'}>
+        <ArrowLeftIcon color="white" /> Go home
+      </Button>
+    </Section>
+  );
+};

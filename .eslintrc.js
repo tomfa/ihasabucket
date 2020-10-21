@@ -23,6 +23,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'no-nested-ternary': 2,
     // React's PropTypes are discouraged
     'react/require-default-props': 0,
     'react/no-unused-prop-types': 0,
