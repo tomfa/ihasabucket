@@ -8195,228 +8195,228 @@ var GithubDeployment = function GithubDeployment(_ref4) {
       lineNumber: 164,
       columnNumber: 7
     }
-  }), '  ', '  ', "branches:", __jsx("br", {
+  }), '    ', "branches:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 167,
+      lineNumber: 166,
       columnNumber: 7
     }
-  }), '  ', '  ', '  ', "- master", __jsx("br", {
+  }), '      ', "- master", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171,
+      lineNumber: 168,
       columnNumber: 7
     }
   }), "jobs:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 173,
+      lineNumber: 170,
       columnNumber: 7
     }
   }), '  ', "build:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 175,
+      lineNumber: 172,
       columnNumber: 7
     }
-  }), '  ', '  ', "runs-on: ubuntu-latest", __jsx("br", {
+  }), '    ', "runs-on: ubuntu-latest", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178,
+      lineNumber: 174,
       columnNumber: 7
     }
   }), __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 175,
+      columnNumber: 7
+    }
+  }), '    ', "strategy:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 177,
+      columnNumber: 7
+    }
+  }), '      ', "matrix:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 179,
       columnNumber: 7
     }
-  }), '  ', '  ', "strategy:", __jsx("br", {
+  }), '        ', "node-version: [13.x]", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 182,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', "matrix:", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 186,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "node-version: [13.x]", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 191,
+      lineNumber: 181,
       columnNumber: 7
     }
   }), __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 192,
+      lineNumber: 182,
       columnNumber: 7
     }
-  }), '  ', '  ', "steps:", __jsx("br", {
+  }), '    ', "steps:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 195,
+      lineNumber: 184,
       columnNumber: 7
     }
-  }), '  ', '  ', "- uses: actions/checkout@v1", __jsx("br", {
+  }), '    ', "- uses: actions/checkout@v1", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 186,
+      columnNumber: 7
+    }
+  }), '    ', "- name: Use Node.js ${{ matrix.node-version }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 188,
+      columnNumber: 7
+    }
+  }), '      ', "uses: actions/setup-node@v1", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 190,
+      columnNumber: 7
+    }
+  }), '      ', "with:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 192,
+      columnNumber: 7
+    }
+  }), '        ', "node-version: ${{ matrix.node-version }}", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 194,
+      columnNumber: 7
+    }
+  }), '    ', "- name: Yarn Install", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 196,
+      columnNumber: 7
+    }
+  }), '      ', "run: |", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 198,
       columnNumber: 7
     }
-  }), '  ', '  ', "- name: Use Node.js ${{ matrix.node-version }}", __jsx("br", {
+  }), '        ', "yarn install", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 201,
+      lineNumber: 200,
       columnNumber: 7
     }
-  }), '  ', '  ', "uses: actions/setup-node@v1", __jsx("br", {
+  }), '    ', "- name: Production Build", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 202,
+      columnNumber: 7
+    }
+  }), '      ', "run: |", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 204,
       columnNumber: 7
     }
-  }), '  ', '  ', "with:", __jsx("br", {
+  }), '        ', "yarn build", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 207,
+      lineNumber: 206,
       columnNumber: 7
     }
-  }), '  ', '  ', '  ', "node-version: ${{ matrix.node-version }}", __jsx("br", {
+  }), '    ', "- name: Deploy to S3", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211,
+      lineNumber: 208,
       columnNumber: 7
     }
-  }), '  ', '  ', "- name: Yarn Install", __jsx("br", {
+  }), '      ', "uses: jakejarvis/s3-sync-action@master", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 210,
+      columnNumber: 7
+    }
+  }), '      ', "with:", __jsx("br", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 212,
+      columnNumber: 7
+    }
+  }), '        ', "args: --acl public-read --delete", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 214,
       columnNumber: 7
     }
-  }), '  ', '  ', '  ', "run: |", __jsx("br", {
+  }), '      ', "env:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 218,
+      lineNumber: 216,
       columnNumber: 7
     }
-  }), '  ', '  ', '  ', '  ', "yarn install", __jsx("br", {
+  }), '        ', "AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 223,
+      lineNumber: 219,
       columnNumber: 7
     }
-  }), '  ', '  ', "- name: Production Build", __jsx("br", {
+  }), '        ', "AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 226,
+      lineNumber: 222,
       columnNumber: 7
     }
-  }), '  ', '  ', '  ', "run: |", __jsx("br", {
+  }), '        ', "AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 230,
+      lineNumber: 225,
       columnNumber: 7
     }
-  }), '  ', '  ', '  ', '  ', "yarn build", __jsx("br", {
+  }), '        ', "AWS_REGION: \"", summary.region, "\"", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 235,
+      lineNumber: 227,
       columnNumber: 7
     }
-  }), '  ', '  ', "- name: Deploy to S3", __jsx("br", {
+  }), '        ', "SOURCE_DIR: \"public\"", '    ', "- name: Invalidate Cloudfront cache", '      ', "uses: awact/cloudfront-action@master", '      ', "env:", '        ', "SOURCE_PATH: '/*'", '        ', "AWS_REGION: \"eu-north-1\"", '        ', "AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}", '        ', "AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}", '        ', "DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 238,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', "uses: jakejarvis/s3-sync-action@master", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 242,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', "with:", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 246,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "args: --acl public-read --delete", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 251,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', "env:", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 255,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 261,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 267,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 273,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "AWS_REGION: \"", summary.region, "\"", __jsx("br", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 278,
-      columnNumber: 7
-    }
-  }), '  ', '  ', '  ', '  ', "SOURCE_DIR: \"public\""), __jsx("p", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 284,
+      lineNumber: 241,
       columnNumber: 5
     }
   }, "Set this up in the Actions tab in your Github repo."));
@@ -8428,7 +8428,7 @@ var GitlabDeployment = function GitlabDeployment(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 290,
+      lineNumber: 247,
       columnNumber: 5
     }
   }, "See", ' ', __jsx("a", {
@@ -8436,63 +8436,63 @@ var GitlabDeployment = function GitlabDeployment(_ref5) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 292,
+      lineNumber: 249,
       columnNumber: 7
     }
   }, "this article"), ' ', "for some hints."), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 297,
+      lineNumber: 254,
       columnNumber: 5
     }
   }, "deploy prod:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 299,
+      lineNumber: 256,
       columnNumber: 7
     }
   }), " image: python:latest", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 300,
+      lineNumber: 257,
       columnNumber: 7
     }
   }), " stage: deploy", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 301,
+      lineNumber: 258,
       columnNumber: 7
     }
   }), " only:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 302,
+      lineNumber: 259,
       columnNumber: 7
     }
   }), '   ', "- tags", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 304,
+      lineNumber: 261,
       columnNumber: 7
     }
   }), " script:", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 305,
+      lineNumber: 262,
       columnNumber: 7
     }
   }), '   ', "- pip install awscli", __jsx("br", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 307,
+      lineNumber: 264,
       columnNumber: 7
     }
   }), '   ', "- aws s3 sync ./dist s3://YOUR_BUCKET_NAME"));
@@ -8503,7 +8503,7 @@ var CircleCIDeployment = function CircleCIDeployment(_ref6) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 318,
+      lineNumber: 275,
       columnNumber: 3
     }
   }, "See", ' ', __jsx("a", {
@@ -8511,7 +8511,7 @@ var CircleCIDeployment = function CircleCIDeployment(_ref6) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 320,
+      lineNumber: 277,
       columnNumber: 5
     }
   }, "CircleCI S3 Orbs"));
@@ -8871,35 +8871,42 @@ var getFAQuestions = function getFAQuestions(summary) {
         lineNumber: 119,
         columnNumber: 11
       }
-    }, "A last resort, can be to add the following line inside terraform code:", __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, "A last resort, can be to add the following line inside terraform code:"), __jsx(_components_code_Pre_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122,
-        columnNumber: 13
+        lineNumber: 123,
+        columnNumber: 11
       }
     }, "module \"certificate\" { ", __jsx("br", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123,
-        columnNumber: 53
+        lineNumber: 124,
+        columnNumber: 51
       }
     }), '  ', "... ", __jsx("br", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124,
-        columnNumber: 25
+        lineNumber: 125,
+        columnNumber: 23
       }
     }), '  ', "validation_method = EMAIL ", __jsx("br", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 125,
-        columnNumber: 47
+        lineNumber: 126,
+        columnNumber: 45
       }
-    }), "}"), "Note that you will have to respond to an email sent to postmaster@your-bucket-domain for the validation to go through, and that this process will have to be re-run every 3 years or so."))
+    }), "}"), __jsx("p", {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 129,
+        columnNumber: 11
+      }
+    }, "Note that you will have to respond to an email sent to postmaster@your-bucket-domain for the validation to go through, and that this process will have to be re-run every 3 years or so."))
   }, {
     id: 'faq:name-taken',
     title: 'My bucket name was taken',
@@ -8907,21 +8914,21 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 140,
+        lineNumber: 142,
         columnNumber: 11
       }
     }, "You can rename your bucket and try again. If you want to keep your the domain name, simply replace the bucket_name variables in the script, but keep the domain variables, and run the script again."), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 145,
+        lineNumber: 147,
         columnNumber: 11
       }
     }, "Tip: you can go to replace-me.s3.amazonaws.com to check if a given bucket is available. If it's not take, it will reply with error message ", __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 148,
+        lineNumber: 150,
         columnNumber: 21
       }
     }, "The specified bucket does not exist")))
@@ -8932,21 +8939,21 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 158,
+        lineNumber: 160,
         columnNumber: 11
       }
     }, "If you still have your ", __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 159,
+        lineNumber: 161,
         columnNumber: 36
       }
     }, "terraform.tfstate"), " file, it will check the AWS resources, and check that they still match the code. If necessary, it will ask for confirmation before changing the infrastructure to match the code."), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 164,
+        lineNumber: 166,
         columnNumber: 11
       }
     }, "If you don't have your state file, it will attempt to recreate everything. It will likely fail due to a duplicate bucket name, unless you've changed that."))
@@ -8957,21 +8964,21 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 177,
+        lineNumber: 179,
         columnNumber: 11
       }
     }, "Yes. You can change the region, bucket name and most other things.", summary.createCertificates && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Note that if you make changes that affect the certificate it might be re-created.", ' ', !summary.configureDns && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Since you seem to not be using AWS for DNS, you will then have to reconfigure the DNS pointers to the certificate afterwards."))), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 193,
+        lineNumber: 195,
         columnNumber: 11
       }
     }, "When you want to apply the changes, just re-run", ' ', __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 195,
+        lineNumber: 197,
         columnNumber: 13
       }
     }, "terraform apply"), "."))
@@ -8982,21 +8989,21 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 204,
+        lineNumber: 206,
         columnNumber: 9
       }
     }, __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 205,
+        lineNumber: 207,
         columnNumber: 11
       }
     }, "terraform destroy"), " will take down all created infrastructure, as long as you have kept the", ' ', __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 207,
+        lineNumber: 209,
         columnNumber: 11
       }
     }, "terraform.tfstate"), " file. If not, you will have to delete it from the ", __jsx("a", {
@@ -9004,7 +9011,7 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 208,
+        lineNumber: 210,
         columnNumber: 23
       }
     }, "AWS console"), ".")
@@ -9015,91 +9022,91 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 217,
+        lineNumber: 219,
         columnNumber: 11
       }
     }, "Short answer:"), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 218,
+        lineNumber: 220,
         columnNumber: 11
       }
     }, "Save ", __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 219,
+        lineNumber: 221,
         columnNumber: 18
       }
     }, "terraform.tfstate"), " for use later. The", ' ', __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 220,
+        lineNumber: 222,
         columnNumber: 13
       }
     }, ".terraform"), " folder is basically a cache, and can be deleted."), __jsx("h4", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 223,
+        lineNumber: 225,
         columnNumber: 11
       }
     }, "Longer answer:"), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 224,
+        lineNumber: 226,
         columnNumber: 11
       }
     }, "After you have run ", __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 225,
+        lineNumber: 227,
         columnNumber: 32
       }
     }, "terraform apply"), ", a folder will be created named ", __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 226,
+        lineNumber: 228,
         columnNumber: 27
       }
     }, ".terraform"), " along with a file named", ' ', __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 227,
+        lineNumber: 229,
         columnNumber: 13
       }
     }, "terraform.tfstate")), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 229,
+        lineNumber: 231,
         columnNumber: 11
       }
     }, "If you save ", __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 230,
+        lineNumber: 232,
         columnNumber: 25
       }
     }, "terraform.tfstate"), " you can make changes in the code, and re-apply to make those changes take effect in the infrastructure. This file is also needed to perform", ' ', __jsx("code", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 233,
+        lineNumber: 235,
         columnNumber: 13
       }
     }, "terraform destroy"), " in case you wish to take down the infrastructure."), __jsx("p", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 236,
+        lineNumber: 238,
         columnNumber: 11
       }
     }, "It's OK to delete everything as well, but then you'll have to make further changes using the", ' ', __jsx("a", {
@@ -9107,7 +9114,7 @@ var getFAQuestions = function getFAQuestions(summary) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 239,
+        lineNumber: 241,
         columnNumber: 13
       }
     }, "AWS console"), "."))
@@ -10768,6 +10775,42 @@ var getFileStorageBucketTfContent = function getFileStorageBucketTfContent(props
 
 /***/ }),
 
+/***/ "./utils/terraform/iamUser.ts":
+/*!************************************!*\
+  !*** ./utils/terraform/iamUser.ts ***!
+  \************************************/
+/*! exports provided: getIAMUserTfContent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getIAMUserTfContent", function() { return getIAMUserTfContent; });
+var getIAMUserTfContent = function getIAMUserTfContent(_ref) {
+  var webApp = _ref.webApp,
+      bucketName = _ref.bucketName;
+
+  if (!bucketName) {
+    return [];
+  }
+
+  var parameters = {
+    bucket_names: "[\"".concat(bucketName, "\"]"),
+    iam_user_name: "\"".concat(bucketName, "-user\"")
+  };
+
+  if (webApp) {
+    parameters.cloudfront_distribution_ids = "[module.web-app.CLOUDFRONT_DISTRIBUTION_ID]";
+  }
+
+  return [{
+    name: 'user',
+    source: "\"git::https://github.com/tomfa/terraform.git//user\"",
+    parameters: parameters
+  }];
+};
+
+/***/ }),
+
 /***/ "./utils/terraform/index.ts":
 /*!**********************************!*\
   !*** ./utils/terraform/index.ts ***!
@@ -10786,9 +10829,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redirect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./redirect */ "./utils/terraform/redirect.ts");
 /* harmony import */ var _webApp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./webApp */ "./utils/terraform/webApp.ts");
 /* harmony import */ var _terraformText__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./terraformText */ "./utils/terraform/terraformText.ts");
+/* harmony import */ var _iamUser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./iamUser */ "./utils/terraform/iamUser.ts");
 
 
 /* eslint-disable camelcase */
+
 
 
 
@@ -10805,6 +10850,7 @@ var getMainTfContent = function getMainTfContent(props) {
   modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_dns__WEBPACK_IMPORTED_MODULE_3__["getDomainRecordTfContent"])(props)));
   modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_certificate__WEBPACK_IMPORTED_MODULE_1__["getCertificateTfContent"])(props)));
   modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_redirect__WEBPACK_IMPORTED_MODULE_5__["getRedirectBucketTfContent"])(props)));
+  modules.push.apply(modules, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_iamUser__WEBPACK_IMPORTED_MODULE_8__["getIAMUserTfContent"])(props)));
   var lines = [];
   lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_terraformText__WEBPACK_IMPORTED_MODULE_7__["toVariablesText"])(modules)));
   lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_terraformText__WEBPACK_IMPORTED_MODULE_7__["toModulesText"])(modules)));
@@ -10990,6 +11036,13 @@ var getOutputLines = function getOutputLines(props) {
     })));
   }
 
+  outputs.push({
+    value: "module.user.AWS_ACCESS_KEY_ID",
+    label: "AWS_ACCESS_KEY_ID"
+  }, {
+    value: "module.user.AWS_SECRET_ACCESS_KEY",
+    label: "AWS_SECRET_ACCESS_KEY"
+  });
   outputs.forEach(function (output) {
     return lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(outputAsText(output)));
   });
@@ -11002,14 +11055,6 @@ var getOutput = function getOutput(_ref3) {
       _ref3$prefix = _ref3.prefix,
       prefix = _ref3$prefix === void 0 ? '' : _ref3$prefix;
   var outputs = [];
-  outputs.push({
-    value: "module.".concat(moduleName, ".AWS_SECRET_ACCESS_KEY"),
-    label: "".concat(prefix, "AWS_SECRET_ACCESS_KEY")
-  });
-  outputs.push({
-    value: "module.".concat(moduleName, ".AWS_ACCESS_KEY_ID"),
-    label: "".concat(prefix, "AWS_ACCESS_KEY_ID")
-  });
   outputs.push({
     value: "module.".concat(moduleName, ".BUCKET_NAME"),
     label: "".concat(prefix, "BUCKET_NAME")
