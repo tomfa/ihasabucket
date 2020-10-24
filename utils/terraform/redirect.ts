@@ -11,7 +11,7 @@ export const getRedirectBucketTfContent = ({
   return [
     {
       name: 'redirect',
-      source: `"git::https://github.com/tomfa/terraform.git//redirect"`,
+      source: `git::https://github.com/tomfa/terraform.git//redirect`,
       parameters: {
         bucket_name: `"${forwardingBucket}"`,
         redirect_url: `"${bucketName}"`,
