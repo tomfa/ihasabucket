@@ -28,20 +28,30 @@ const Infrastructure = () => {
   if (loading) {
     return <LoadingIcon />;
   }
-  const { description, mainTfContent } = getTerraFormPackage(props);
+  const { footerText, sections } = getTerraFormPackage(props);
 
   return (
     <>
       <Header as={'h1'}>Bucket is served!</Header>
-      Just run the script below, or share this{' '}
-      <ShareLink text={getShareTitle(props)}>configuration url</ShareLink> for
-      later.
-      <Code bucketName={props.bucketName} mainTfContent={mainTfContent} />
+      <Description>
+        Copy-paste the commands below, or share this{' '}
+        <ShareLink text={getShareTitle(props)}>configuration url</ShareLink> for
+        later.
+      </Description>
+      {sections.map((section, i) => (
+        <Code
+          key={i}
+          bucketName={props.bucketName}
+          intro={section.title}
+          footer={section.description}
+          mainTfContent={section.tfContent}
+        />
+      ))}
       <Description style={{ fontWeight: 'bold' }}>
         The script above will plan the infrastructure and prompt you for
         confirmation.
       </Description>
-      {description.map((text, i) => (
+      {footerText.map((text, i) => (
         <Description key={i}>{text}</Description>
       ))}
     </>

@@ -11,9 +11,15 @@ export type QuestionSummary = {
   errorPath: string | null;
 };
 
+type TerraformSection = {
+  title?: string;
+  description?: string;
+  tfContent: string[];
+};
+
 export type TerraformPackage = {
-  mainTfContent: string[];
-  description?: string[];
+  sections: TerraformSection[];
+  footerText?: string[];
 };
 
 export type ModuleSpec = {

@@ -1,69 +1,62 @@
 /* eslint-disable react/no-array-index-key */
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { copyToClipBoard } from '../../utils/clipboard';
 import Mute from '../Mute.style';
 import { Colored } from '../utils';
 import { useTheme } from '../../styles/theme';
+import Description from '../forms/Description.style';
 import Pre from './Pre.style';
 import PreButton from './PreButton.style';
 
-type Props = { mainTfContent: string[]; bucketName: string };
+type Props = {
+  mainTfContent: string[];
+  bucketName: string;
+  intro?: string;
+  footer?: string;
+};
 
-const Code = ({ mainTfContent, bucketName }: Props) => {
+const Code = ({ mainTfContent: lines, bucketName, intro, footer }: Props) => {
   const theme = useTheme();
   const [hasCopied, setHasCopied] = useState<boolean>(false);
-  const lines = useMemo(
-    () => [
-      '# Create a folder to store infrastructure code',
-      'mkdir infrastructure',
-      'cd infrastructure',
-      '',
-      '# Create config file',
-      `cat <<EOT >> ${bucketName || 'main'}.tf`,
-      ...mainTfContent,
-      'EOT',
-      '',
-      '# Deploy',
-      'terraform init',
-      'terraform apply',
-    ],
-    [mainTfContent, bucketName]
-  );
   const copy = useCallback(() => {
     copyToClipBoard(lines);
     setHasCopied(true);
   }, [lines]);
 
-  useEffect(() => setHasCopied(false), [mainTfContent, bucketName]);
+  useEffect(() => setHasCopied(false), [lines, bucketName]);
 
   return (
-    <Pre>
-      {lines.map((line, i) => {
-        if (line.trim().startsWith('#')) {
+    <>
+      {!!intro && <p>{intro}</p>}
+      <Pre style={!!intro && { marginTop: 0 }}>
+        {lines.map((line, i) => {
+          if (line.trim().startsWith('#')) {
+            return (
+              <Mute key={i}>
+                {line}
+                {'\n'}
+              </Mute>
+            );
+          }
           return (
-            <Mute key={i}>
+            <span key={i}>
               {line}
               {'\n'}
-            </Mute>
+            </span>
           );
-        }
-        return (
-          <span key={i}>
-            {line}
-            {'\n'}
-          </span>
-        );
-      })}
-      <PreButton onClick={copy}>
-        {(hasCopied && (
-          <span>
-            Copied! <Colored color={theme.colors.success}>✓</Colored>
-          </span>
-        )) ||
-          'Copy to clipboard'}
-      </PreButton>
-    </Pre>
+        })}
+        <PreButton onClick={copy}>
+          {(hasCopied && (
+            <span>
+              Copied! <Colored color={theme.colors.success}>✓</Colored>
+            </span>
+          )) ||
+            'Copy to clipboard'}
+        </PreButton>
+      </Pre>
+      {!!footer && <Description>{footer}</Description>}
+    </>
   );
 };
 

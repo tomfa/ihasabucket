@@ -8,6 +8,7 @@ const Pre = styled.pre`
   margin-top: 1.7rem;
   margin-bottom: 1.7rem;
   overflow: auto;
+  min-height: 4rem;
 `;
 
 export default Pre;
