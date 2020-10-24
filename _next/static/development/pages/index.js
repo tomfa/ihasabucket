@@ -293,22 +293,20 @@ var Title = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h1.withCon
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_clipboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/clipboard */ "./utils/clipboard.ts");
-/* harmony import */ var _Mute_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Mute.style */ "./components/Mute.style.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
-/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_clipboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/clipboard */ "./utils/clipboard.ts");
+/* harmony import */ var _Mute_style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Mute.style */ "./components/Mute.style.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./components/utils.tsx");
+/* harmony import */ var _styles_theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/theme */ "./styles/theme.ts");
+/* harmony import */ var _forms_Description_style__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../forms/Description.style */ "./components/forms/Description.style.tsx");
 /* harmony import */ var _Pre_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pre.style */ "./components/code/Pre.style.tsx");
 /* harmony import */ var _PreButton_style__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PreButton.style */ "./components/code/PreButton.style.tsx");
-
-
 var _this = undefined,
     _jsxFileName = "/Users/tomfa/repos/s3launchpad/components/code/Code.tsx";
 
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /* eslint-disable react/no-array-index-key */
 
@@ -319,41 +317,51 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-var Code = function Code(_ref) {
-  var mainTfContent = _ref.mainTfContent,
-      bucketName = _ref.bucketName;
-  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_5__["useTheme"])();
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+var Code = function Code(_ref) {
+  var lines = _ref.mainTfContent,
+      bucketName = _ref.bucketName,
+      intro = _ref.intro,
+      footer = _ref.footer;
+  var theme = Object(_styles_theme__WEBPACK_IMPORTED_MODULE_4__["useTheme"])();
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       hasCopied = _useState[0],
       setHasCopied = _useState[1];
 
-  var lines = Object(react__WEBPACK_IMPORTED_MODULE_1__["useMemo"])(function () {
-    return ['# Create a folder to store infrastructure code', 'mkdir infrastructure', 'cd infrastructure', '', '# Create config file', "cat <<EOT >> ".concat(bucketName || 'main', ".tf")].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(mainTfContent), ['EOT', '', '# Deploy', 'terraform init', 'terraform apply']);
-  }, [mainTfContent, bucketName]);
-  var copy = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function () {
-    Object(_utils_clipboard__WEBPACK_IMPORTED_MODULE_2__["copyToClipBoard"])(lines);
+  var copy = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function () {
+    Object(_utils_clipboard__WEBPACK_IMPORTED_MODULE_1__["copyToClipBoard"])(lines);
     setHasCopied(true);
   }, [lines]);
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     return setHasCopied(false);
-  }, [mainTfContent, bucketName]);
-  return __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, [lines, bucketName]);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, !!intro && __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41,
-      columnNumber: 5
+      lineNumber: 31,
+      columnNumber: 19
+    }
+  }, intro), __jsx(_Pre_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    style: !!intro && {
+      marginTop: 0
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 7
     }
   }, lines.map(function (line, i) {
     if (line.trim().startsWith('#')) {
-      return __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return __jsx(_Mute_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
         key: i,
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
-          columnNumber: 13
+          lineNumber: 36,
+          columnNumber: 15
         }
       }, line, '\n');
     }
@@ -363,8 +371,8 @@ var Code = function Code(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52,
-        columnNumber: 11
+        lineNumber: 43,
+        columnNumber: 13
       }
     }, line, '\n');
   }), __jsx(_PreButton_style__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -372,25 +380,32 @@ var Code = function Code(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58,
-      columnNumber: 7
+      lineNumber: 49,
+      columnNumber: 9
     }
   }, hasCopied && __jsx("span", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60,
-      columnNumber: 11
+      lineNumber: 51,
+      columnNumber: 13
     }
-  }, "Copied! ", __jsx(_utils__WEBPACK_IMPORTED_MODULE_4__["Colored"], {
+  }, "Copied! ", __jsx(_utils__WEBPACK_IMPORTED_MODULE_3__["Colored"], {
     color: theme.colors.success,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61,
-      columnNumber: 21
+      lineNumber: 52,
+      columnNumber: 23
     }
-  }, "\u2713")) || 'Copy to clipboard'));
+  }, "\u2713")) || 'Copy to clipboard')), !!footer && __jsx(_forms_Description_style__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58,
+      columnNumber: 20
+    }
+  }, footer));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Code);
@@ -411,7 +426,7 @@ __webpack_require__.r(__webpack_exports__);
 var Pre = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].pre.withConfig({
   displayName: "Prestyle__Pre",
   componentId: "sc-1cjlqsr-0"
-})(["position:relative;background-color:#3a3a3a;color:white;padding:1rem;margin-top:1.7rem;margin-bottom:1.7rem;overflow:auto;"]);
+})(["position:relative;background-color:#3a3a3a;color:white;padding:1rem;margin-top:1.7rem;margin-bottom:1.7rem;overflow:auto;min-height:4rem;"]);
 /* harmony default export */ __webpack_exports__["default"] = (Pre);
 
 /***/ }),
@@ -9656,8 +9671,8 @@ var Infrastructure = function Infrastructure() {
   }
 
   var _getTerraFormPackage = Object(_utils_terraform__WEBPACK_IMPORTED_MODULE_3__["getTerraFormPackage"])(props),
-      description = _getTerraFormPackage.description,
-      mainTfContent = _getTerraFormPackage.mainTfContent;
+      footerText = _getTerraFormPackage.footerText,
+      sections = _getTerraFormPackage.sections;
 
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_Header_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
     as: 'h1',
@@ -9667,23 +9682,35 @@ var Infrastructure = function Infrastructure() {
       lineNumber: 35,
       columnNumber: 7
     }
-  }, "Bucket is served!"), "Just run the script below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_6__["ShareLink"], {
+  }, "Bucket is served!"), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36,
+      columnNumber: 7
+    }
+  }, "Copy-paste the commands below, or share this", ' ', __jsx(_components_ShareLink__WEBPACK_IMPORTED_MODULE_6__["ShareLink"], {
     text: Object(_utils_sharing__WEBPACK_IMPORTED_MODULE_10__["getShareTitle"])(props),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
-      columnNumber: 7
+      lineNumber: 38,
+      columnNumber: 9
     }
-  }, "configuration url"), " for later.", __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    bucketName: props.bucketName,
-    mainTfContent: mainTfContent,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39,
-      columnNumber: 7
-    }
+  }, "configuration url"), " for later."), sections.map(function (section, i) {
+    return __jsx(_components_code_Code__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      key: i,
+      bucketName: props.bucketName,
+      intro: section.title,
+      footer: section.description,
+      mainTfContent: section.tfContent,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 42,
+        columnNumber: 9
+      }
+    });
   }), __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
     style: {
       fontWeight: 'bold'
@@ -9691,16 +9718,16 @@ var Infrastructure = function Infrastructure() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40,
+      lineNumber: 50,
       columnNumber: 7
     }
-  }, "The script above will plan the infrastructure and prompt you for confirmation."), description.map(function (text, i) {
+  }, "The script above will plan the infrastructure and prompt you for confirmation."), footerText.map(function (text, i) {
     return __jsx(_components_forms_Description_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: i,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45,
+        lineNumber: 55,
         columnNumber: 9
       }
     }, text);
@@ -9714,14 +9741,14 @@ var Infrastructure = function Infrastructure() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52,
+      lineNumber: 62,
       columnNumber: 3
     }
   }, __jsx(Infrastructure, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 63,
       columnNumber: 5
     }
   }));
@@ -10557,9 +10584,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTerraPackageDescription", function() { return getTerraPackageDescription; });
 var getTerraPackageDescription = function getTerraPackageDescription(props) {
   var certificateWarningText = getCertificateWarning(props);
-  var authText = getAuthDescription(props);
   var outcomeText = getOutcomeDescription(props);
-  return [certificateWarningText, outcomeText, authText].filter(function (t) {
+  return [certificateWarningText, outcomeText].filter(function (t) {
     return !!t;
   });
 };
@@ -10570,7 +10596,7 @@ var getCertificateWarning = function getCertificateWarning(props) {
   }
 
   if (props.configureDns) {
-    return 'During the setup, we will request HTTPS certificates for your domain, and verify that they are set up correctly. ' + 'This means you will have to go to your registrar and change the DNS pointers to the AWS DNS servers. You can find their names in Route 53 in the AWS console. ' + 'Until that is done, -and- the DNS changes have propageted, the script WILL NOT COMPLETE. ' + 'Instead, it will likely time out. No worries though, just re-run the script after a while, when the DNS records are correct. ' + 'It will continue where it left off.';
+    return 'During the setup, we will request HTTPS certificates for your domain, and verify that they are set up correctly. ' + 'This means that the DNS changes you made has propagate before it continues. Until then, the script will not complete. ' + 'Instead, it may time out. No worries though, just re-run the script after a while, when the DNS records are correct. ' + 'It will continue where it left off.';
   }
 
   return 'During the setup, we will request HTTPS certificates for your domain, and verify that they are set up correctly. ' + 'This means you will have to go to change your DNS pointers as specified in the Certificate Manager in the AWS console. ' + 'These instructions will be shown under the certificate in status "Pending Verification", which will show up after you have start this script. ' + 'Until that is done, -and- the DNS changes have propageted, the script WILL NOT COMPLETE. ' + 'Instead, it will likely time out. No worries though, just re-run the script after a while, when the DNS records are correct. ' + 'It will continue where it left off.';
@@ -10583,17 +10609,10 @@ var getOutcomeDescription = function getOutcomeDescription(props) {
   return "Once run successfully, the script will create ".concat(count, " ").concat(infraStructure, " in ").concat(props.region, ", configured ").concat(useCaseText, ".");
 };
 
-var getAuthDescription = function getAuthDescription(_ref) {
-  var staging = _ref.staging;
-  var keysInfo = staging ? 'Two sets of AWS keys will be created that are able to upload to the buckets. One for test and one for production environment.' : 'A set of AWS keys will be created that is able to upload to the bucket.';
-  var keysUsage = 'Generated keys will be shown as output in the terminal. These can be used to upload new versions of the app to the bucket.';
-  return "".concat(keysInfo, " ").concat(keysUsage);
-};
-
-var getUseCaseDescription = function getUseCaseDescription(_ref2) {
-  var webApp = _ref2.webApp,
-      staticPage = _ref2.staticPage,
-      shared = _ref2.shared;
+var getUseCaseDescription = function getUseCaseDescription(_ref) {
+  var webApp = _ref.webApp,
+      staticPage = _ref.staticPage,
+      shared = _ref.shared;
 
   if (webApp) {
     if (staticPage) {
@@ -10804,7 +10823,7 @@ var getIAMUserTfContent = function getIAMUserTfContent(_ref) {
 
   return [{
     name: 'user',
-    source: "\"git::https://github.com/tomfa/terraform.git//user\"",
+    source: "git::https://github.com/tomfa/terraform.git//user",
     parameters: parameters
   }];
 };
@@ -10859,9 +10878,38 @@ var getMainTfContent = function getMainTfContent(props) {
 };
 
 var getTerraFormPackage = function getTerraFormPackage(props) {
+  var createFolders = {
+    title: 'First, create a folder for your infrastructure code.',
+    tfContent: ['mkdir infrastructure', 'cd infrastructure']
+  };
+  var mainContent = {
+    title: 'Then, create a terraform config file',
+    tfContent: ["cat <<EOT >> ".concat(props.bucketName || 'main', ".tf")].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(getMainTfContent(props)), ['EOT'])
+  };
+
+  if (!props.configureDns) {
+    return {
+      sections: [createFolders, mainContent, {
+        title: 'Initialize the modules and deploy to AWS',
+        tfContent: ['terraform init', 'terraform deploy']
+      }].filter(function (m) {
+        return m;
+      }),
+      footerText: Object(_descriptionText__WEBPACK_IMPORTED_MODULE_2__["getTerraPackageDescription"])(props)
+    };
+  }
+
+  var initialDnsDeploy = {
+    title: 'Download the required modules, then create the DNS servers',
+    tfContent: ['terraform init', 'terraform deploy -target=module.domain']
+  };
+  var deploy = {
+    title: 'Deploy the remaining infrastructure to AWS',
+    tfContent: ['terraform deploy']
+  };
   return {
-    mainTfContent: getMainTfContent(props),
-    description: Object(_descriptionText__WEBPACK_IMPORTED_MODULE_2__["getTerraPackageDescription"])(props)
+    sections: [createFolders, mainContent, initialDnsDeploy, deploy],
+    footerText: Object(_descriptionText__WEBPACK_IMPORTED_MODULE_2__["getTerraPackageDescription"])(props)
   };
 };
 
@@ -10945,7 +10993,7 @@ var getRedirectBucketTfContent = function getRedirectBucketTfContent(_ref) {
 
   return [{
     name: 'redirect',
-    source: "\"git::https://github.com/tomfa/terraform.git//redirect\"",
+    source: "git::https://github.com/tomfa/terraform.git//redirect",
     parameters: {
       bucket_name: "\"".concat(forwardingBucket, "\""),
       redirect_url: "\"".concat(bucketName, "\""),
@@ -10969,10 +11017,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toModulesText", function() { return toModulesText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOutputLines", function() { return getOutputLines; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
-/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _enums__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums */ "./enums.ts");
+/* harmony import */ var _names__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./names */ "./utils/terraform/names.ts");
 
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
@@ -10987,8 +11042,8 @@ var toVariablesText = function toVariablesText(modules) {
     });
   };
 
-  Object.values(_enums__WEBPACK_IMPORTED_MODULE_2__["INPUT"]).filter(isUsed).forEach(function (input) {
-    var description = Object(_enums__WEBPACK_IMPORTED_MODULE_2__["getInputDescription"])(input);
+  Object.values(_enums__WEBPACK_IMPORTED_MODULE_3__["INPUT"]).filter(isUsed).forEach(function (input) {
+    var description = Object(_enums__WEBPACK_IMPORTED_MODULE_3__["getInputDescription"])(input);
 
     if (!description) {
       lines.push("variable \"".concat(input, "\" {}"));
@@ -11007,7 +11062,7 @@ var toModulesText = function toModulesText(modules) {
     lines.push("module \"".concat(module.name, "\" {"));
     lines.push("  source = \"".concat(module.source, "\""));
     Object.entries(module.parameters).forEach(function (_ref) {
-      var _ref2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, 2),
+      var _ref2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, 2),
           key = _ref2[0],
           value = _ref2[1];
 
@@ -11020,28 +11075,41 @@ var toModulesText = function toModulesText(modules) {
 };
 var getOutputLines = function getOutputLines(props) {
   var lines = [];
-  var bucketModuleNames = Object(_names__WEBPACK_IMPORTED_MODULE_3__["getBucketModuleNames"])(props);
-  var bucketType = props.webApp ? _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP : _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].FILE_STORAGE;
-  var outputs = getOutput({
+  var bucketModuleNames = Object(_names__WEBPACK_IMPORTED_MODULE_4__["getBucketModuleNames"])(props);
+  var outputs = getOutput(_objectSpread({}, props, {
     moduleName: bucketModuleNames.main,
-    bucketType: bucketType,
     prefix: props.staging ? 'production-' : ''
-  });
+  }));
 
   if (props.staging) {
-    outputs.push.apply(outputs, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(getOutput({
+    outputs.push.apply(outputs, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(getOutput(_objectSpread({}, props, {
       moduleName: bucketModuleNames.staging,
-      bucketType: bucketType,
       prefix: 'staging-'
-    })));
+    }))));
+  }
+
+  if (props.configureDns) {
+    outputs.push({
+      value: "module.domain.DNS_SERVERS",
+      label: "DNS_SERVERS",
+      description: '"Set your DNS pointers to these values with your existing registrar."'
+    });
+  } else if (props.createCertificates) {
+    outputs.push({
+      value: "module.certificates.CERTIFICATE_DNS_VALIDATION_POINTERS",
+      label: "CERTIFICATE_DNS_VALIDATION_POINTERS",
+      description: '"Add CNAME pointers to these values from your existing DNS to validate the certificate."'
+    });
   }
 
   outputs.push({
     value: "module.user.AWS_ACCESS_KEY_ID",
-    label: "AWS_ACCESS_KEY_ID"
+    label: "AWS_ACCESS_KEY_ID",
+    description: '"Use this key for CI to configure automatic deploys. It will only have access to these new resources."'
   }, {
     value: "module.user.AWS_SECRET_ACCESS_KEY",
-    label: "AWS_SECRET_ACCESS_KEY"
+    label: "AWS_SECRET_ACCESS_KEY",
+    description: '"Use secret key for CI to configure automatic deploys."'
   });
   outputs.forEach(function (output) {
     return lines.push.apply(lines, Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(outputAsText(output)));
@@ -11050,20 +11118,31 @@ var getOutputLines = function getOutputLines(props) {
 };
 
 var getOutput = function getOutput(_ref3) {
-  var bucketType = _ref3.bucketType,
+  var webApp = _ref3.webApp,
+      configureDns = _ref3.configureDns,
       moduleName = _ref3.moduleName,
       _ref3$prefix = _ref3.prefix,
       prefix = _ref3$prefix === void 0 ? '' : _ref3$prefix;
   var outputs = [];
   outputs.push({
     value: "module.".concat(moduleName, ".BUCKET_NAME"),
-    label: "".concat(prefix, "BUCKET_NAME")
+    label: "".concat(prefix, "BUCKET_NAME"),
+    description: '"Use this to configure CI for automatic deployment"'
   });
 
-  if (bucketType === _enums__WEBPACK_IMPORTED_MODULE_2__["BUCKET_TYPE"].WEBAPP) {
+  if (webApp) {
+    if (!configureDns) {
+      outputs.push({
+        value: "module.".concat(moduleName, ".CLOUDFRONT_URL"),
+        label: "".concat(prefix, "CLOUDFRONT_URL"),
+        description: '"Your webapp will be available at this URL."'
+      });
+    }
+
     outputs.push({
-      value: "module.".concat(moduleName, ".CLOUDFRONT_URL"),
-      label: "".concat(prefix, "CLOUDFRONT_URL")
+      value: "module.".concat(moduleName, ".CLOUDFRONT_DISTRIBUTION_ID"),
+      label: "".concat(prefix, "CLOUDFRONT_DISTRIBUTION_ID"),
+      description: '"Use this to configure CI for automatic deployment"'
     });
   }
 
