@@ -12,6 +12,7 @@ import {
   toModulesText,
   toVariablesText,
 } from './terraformText';
+import { getIAMUserTfContent } from './iamUser';
 
 const getMainTfContent = (props: QuestionSummary): string[] => {
   const modules: ModuleSpec[] = [];
@@ -21,6 +22,7 @@ const getMainTfContent = (props: QuestionSummary): string[] => {
   modules.push(...getDomainRecordTfContent(props));
   modules.push(...getCertificateTfContent(props));
   modules.push(...getRedirectBucketTfContent(props));
+  modules.push(...getIAMUserTfContent(props));
 
   const lines: string[] = [];
   lines.push(...toVariablesText(modules));

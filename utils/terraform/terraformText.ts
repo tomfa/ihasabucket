@@ -62,6 +62,16 @@ export const getOutputLines = (props: QuestionSummary) => {
       })
     );
   }
+  outputs.push(
+    {
+      value: `module.user.AWS_ACCESS_KEY_ID`,
+      label: `AWS_ACCESS_KEY_ID`,
+    },
+    {
+      value: `module.user.AWS_SECRET_ACCESS_KEY`,
+      label: `AWS_SECRET_ACCESS_KEY`,
+    }
+  );
   outputs.forEach((output) => lines.push(...outputAsText(output)));
 
   return lines;
@@ -77,14 +87,6 @@ const getOutput = ({
   prefix?: string;
 }): TerraformOutput[] => {
   const outputs = [];
-  outputs.push({
-    value: `module.${moduleName}.AWS_SECRET_ACCESS_KEY`,
-    label: `${prefix}AWS_SECRET_ACCESS_KEY`,
-  });
-  outputs.push({
-    value: `module.${moduleName}.AWS_ACCESS_KEY_ID`,
-    label: `${prefix}AWS_ACCESS_KEY_ID`,
-  });
   outputs.push({
     value: `module.${moduleName}.BUCKET_NAME`,
     label: `${prefix}BUCKET_NAME`,
