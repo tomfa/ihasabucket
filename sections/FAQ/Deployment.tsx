@@ -162,124 +162,81 @@ const GithubDeployment = ({ summary }: { summary: QuestionSummary }) => (
       <br />
       {'  '}push:
       <br />
-      {'  '}
-      {'  '}branches:
+      {'    '}branches:
       <br />
-      {'  '}
-      {'  '}
-      {'  '}- master
+      {'      '}- master
       <br />
       jobs:
       <br />
       {'  '}build:
       <br />
-      {'  '}
-      {'  '}runs-on: ubuntu-latest
+      {'    '}runs-on: ubuntu-latest
       <br />
       <br />
-      {'  '}
-      {'  '}strategy:
+      {'    '}strategy:
       <br />
-      {'  '}
-      {'  '}
-      {'  '}matrix:
+      {'      '}matrix:
       <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}node-version: [13.x]
+      {'        '}node-version: [13.x]
       <br />
       <br />
-      {'  '}
-      {'  '}steps:
+      {'    '}steps:
       <br />
-      {'  '}
-      {'  '}- uses: actions/checkout@v1
+      {'    '}- uses: actions/checkout@v1
       <br />
-      {'  '}
-      {'  '}- name: Use Node.js $&#123;&#123; matrix.node-version &#125;&#125;
+      {'    '}- name: Use Node.js $&#123;&#123; matrix.node-version &#125;&#125;
       <br />
-      {'  '}
-      {'  '}uses: actions/setup-node@v1
+      {'      '}uses: actions/setup-node@v1
       <br />
-      {'  '}
-      {'  '}with:
+      {'      '}with:
       <br />
-      {'  '}
-      {'  '}
-      {'  '}node-version: $&#123;&#123; matrix.node-version &#125;&#125;
+      {'        '}node-version: $&#123;&#123; matrix.node-version &#125;&#125;
       <br />
-      {'  '}
-      {'  '}- name: Yarn Install
+      {'    '}- name: Yarn Install
       <br />
-      {'  '}
-      {'  '}
-      {'  '}run: |
+      {'      '}run: |
       <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}yarn install
+      {'        '}yarn install
       <br />
-      {'  '}
-      {'  '}- name: Production Build
+      {'    '}- name: Production Build
       <br />
-      {'  '}
-      {'  '}
-      {'  '}run: |
+      {'      '}run: |
       <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}yarn build
+      {'        '}yarn build
       <br />
-      {'  '}
-      {'  '}- name: Deploy to S3
+      {'    '}- name: Deploy to S3
       <br />
-      {'  '}
-      {'  '}
-      {'  '}uses: jakejarvis/s3-sync-action@master
+      {'      '}uses: jakejarvis/s3-sync-action@master
       <br />
-      {'  '}
-      {'  '}
-      {'  '}with:
+      {'      '}with:
       <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}args: --acl public-read --delete
+      {'        '}args: --acl public-read --delete
       <br />
-      {'  '}
-      {'  '}
-      {'  '}env:
+      {'      '}env:
       <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}AWS_S3_BUCKET: $&#123;&#123; secrets.AWS_PRODUCTION_BUCKET_NAME
+      {'        '}AWS_S3_BUCKET: $&#123;&#123;
+      secrets.AWS_PRODUCTION_BUCKET_NAME &#125;&#125;
+      <br />
+      {'        '}AWS_ACCESS_KEY_ID: $&#123;&#123; secrets.AWS_ACCESS_KEY_ID
       &#125;&#125;
       <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}AWS_ACCESS_KEY_ID: $&#123;&#123; secrets.AWS_ACCESS_KEY_ID
+      {'        '}AWS_SECRET_ACCESS_KEY: $&#123;&#123;
+      secrets.AWS_SECRET_ACCESS_KEY &#125;&#125;
+      <br />
+      {'        '}AWS_REGION: &quot;{summary.region}&quot;
+      <br />
+      {'        '}SOURCE_DIR: &quot;public&quot;
+      {'    '}- name: Invalidate Cloudfront cache
+      {'      '}uses: awact/cloudfront-action@master
+      {'      '}env:
+      {'        '}SOURCE_PATH: &apos;/*&apos;
+      {'        '}AWS_REGION: &quot;eu-north-1&quot;
+      {'        '}AWS_ACCESS_KEY_ID: $&#123;&#123; secrets.AWS_ACCESS_KEY_ID
       &#125;&#125;
-      <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}AWS_SECRET_ACCESS_KEY: $&#123;&#123; secrets.AWS_SECRET_ACCESS_KEY
-      &#125;&#125;
-      <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}AWS_REGION: &quot;{summary.region}&quot;
-      <br />
-      {'  '}
-      {'  '}
-      {'  '}
-      {'  '}SOURCE_DIR: &quot;public&quot;
+      {'        '}AWS_SECRET_ACCESS_KEY: $&#123;&#123;
+      secrets.AWS_SECRET_ACCESS_KEY &#125;&#125;
+      {'        '}DISTRIBUTION_ID: $&#123;&#123;
+      secrets.CLOUDFRONT_DISTRIBUTION_ID &#125;&#125;
     </Pre>
     <p>Set this up in the Actions tab in your Github repo.</p>
   </>
