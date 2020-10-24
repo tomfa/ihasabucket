@@ -57,31 +57,18 @@ export const getTerraFormPackage = (
         },
       ].filter((m) => m),
       footerText: getTerraPackageDescription(props),
-    }
+    };
   }
-  const loadTerraformModules = {
-    title: 'Download the required modules',
-    tfContent: ['terraform init'],
-  };
   const initialDnsDeploy = {
-    title: 'Create the DNS servers',
-    tfContent: ['terraform deploy --target=module.domain'],
-    description:
-      'After this command completes, it will output DNS servers. ' +
-      'Before continuing, point your registrar to use these endpoints as DNS servers.',
+    title: 'Download the required modules, then create the DNS servers',
+    tfContent: ['terraform init', 'terraform deploy -target=module.domain'],
   };
   const deploy = {
     title: 'Deploy the remaining infrastructure to AWS',
     tfContent: ['terraform deploy'],
   };
   return {
-    sections: [
-      createFolders,
-      mainContent,
-      loadTerraformModules,
-      initialDnsDeploy,
-      deploy,
-    ],
+    sections: [createFolders, mainContent, initialDnsDeploy, deploy],
     footerText: getTerraPackageDescription(props),
   };
 };
