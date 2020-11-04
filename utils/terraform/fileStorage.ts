@@ -1,6 +1,10 @@
-import { INPUT } from '../../enums';
 import { ModuleSpec, QuestionSummary } from './types';
-import { getBucketModuleNames, getStagingBucketName } from './names';
+import {
+  getBucketModuleNames,
+  getBucketNameTfValue,
+  getStagingBucketName,
+  getRegionTfValue,
+} from './names';
 
 export const getFileStorageBucketTfContent = (
   props: QuestionSummary
@@ -15,8 +19,8 @@ export const getFileStorageBucketTfContent = (
     name: names.main,
     source: 'git::https://github.com/tomfa/terraform.git//files',
     parameters: {
-      bucket_name: bucketName ? `"${bucketName}"` : `var.${INPUT.BUCKET_NAME}`,
-      aws_region: region ? `"${region}"` : `var.${INPUT.AWS_REGION}`,
+      bucket_name: getBucketNameTfValue(bucketName),
+      aws_region: getRegionTfValue(region),
       acl: shared ? '"public-read"' : '"private"',
     },
   });
@@ -26,7 +30,7 @@ export const getFileStorageBucketTfContent = (
       source: 'git::https://github.com/tomfa/terraform.git//files',
       parameters: {
         bucket_name: `"${getStagingBucketName(bucketName)}"`,
-        aws_region: region ? `"${region}"` : `var.${INPUT.AWS_REGION}`,
+        aws_region: getRegionTfValue(region),
         acl: shared ? '"public-read"' : '"private"',
       },
     });

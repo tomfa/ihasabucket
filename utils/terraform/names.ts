@@ -1,5 +1,9 @@
 import { domainIsApex, domainIsWWW, getApexDomain } from '../domain';
+import { INPUT } from '../../enums';
 import { QuestionSummary, BucketProp } from './types';
+
+export const getRegionTfValue = (region: string): string =>
+  region ? `"${region}"` : `var.${INPUT.AWS_REGION}`;
 
 export const getBucketModuleNames = ({
   webApp,
@@ -18,11 +22,30 @@ export const getBucketModuleNames = ({
   };
 };
 
+export const getBucketTfValues = ({
+  forwardingBucket,
+  staging,
+  bucketName,
+}: QuestionSummary): BucketProp => {
+  return {
+    staging: staging ? `"${getStagingBucketName(bucketName)}"` : null,
+    main: getBucketNameTfValue(bucketName),
+    redirect: forwardingBucket ? `"${forwardingBucket}"` : null,
+  };
+};
+export const getBucketNameTfValue = (bucketName: string): string =>
+  bucketName ? `"${bucketName}"` : `var.${INPUT.BUCKET_NAME}`;
 export const getStagingBucketName = (bucketName: string): string => {
   if (!bucketName) {
     return `staging.\\$\{var.bucket_name}`;
   }
   return getStagingDomain(bucketName);
+};
+export const getIAMBucketUserNameTfValue = (bucketName: string): string => {
+  if (!bucketName) {
+    return `"\\$\{var.bucket_name}-user"`;
+  }
+  return `"${bucketName}-user"`;
 };
 
 export const getStagingDomain = (domain: string): string => {

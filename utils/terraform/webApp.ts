@@ -1,7 +1,8 @@
-import { INPUT } from '../../enums';
 import { ModuleSpec, QuestionSummary } from './types';
 import {
   getBucketModuleNames,
+  getBucketNameTfValue,
+  getRegionTfValue,
   getStagingBucketName,
   getStagingDomain,
 } from './names';
@@ -18,8 +19,8 @@ export const getWebAppBucketTfContent = (
     name: names.main,
     source: 'git::https://github.com/tomfa/terraform.git//webapp',
     parameters: {
-      bucket_name: bucketName ? `"${bucketName}"` : `var.${INPUT.BUCKET_NAME}`,
-      aws_region: region ? `"${region}"` : `var.${INPUT.AWS_REGION}`,
+      bucket_name: getBucketNameTfValue(bucketName),
+      aws_region: getRegionTfValue(region),
       error_path: staticPage && errorPath ? `"/${errorPath}"` : '"/index.html"',
       error_code: staticPage ? '404' : '200',
     },
