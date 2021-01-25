@@ -23,7 +23,11 @@ const getParams = (props: QuestionSummary) => {
     iam_user_name: userNameTf,
   };
   if (props.webApp) {
-    params.cloudfront_distribution_ids = `[module.web-app.CLOUDFRONT_DISTRIBUTION_ID]`;
+    if (props.staging) {
+      params.cloudfront_distribution_ids = `[module.web-app-staging.CLOUDFRONT_DISTRIBUTION_ID, module.web-app-production.CLOUDFRONT_DISTRIBUTION_ID]`;
+    } else {
+      params.cloudfront_distribution_ids = `[module.web-app.CLOUDFRONT_DISTRIBUTION_ID]`;
+    }
   }
   return params;
 };
