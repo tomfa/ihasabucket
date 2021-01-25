@@ -53,7 +53,7 @@ export const getTerraFormPackage = (
         mainContent,
         {
           title: 'Initialize the modules and deploy to AWS',
-          tfContent: ['terraform init', 'terraform deploy'],
+          tfContent: ['terraform init', 'terraform apply'],
         },
       ].filter((m) => m),
       footerText: getTerraPackageDescription(props),
@@ -61,11 +61,11 @@ export const getTerraFormPackage = (
   }
   const initialDnsDeploy = {
     title: 'Download the required modules, then create the DNS servers',
-    tfContent: ['terraform init', 'terraform deploy -target=module.domain'],
+    tfContent: ['terraform init', 'terraform apply -target=module.domain'],
   };
   const deploy = {
     title: 'Deploy the remaining infrastructure to AWS',
-    tfContent: ['terraform deploy'],
+    tfContent: ['terraform apply'],
   };
   return {
     sections: [createFolders, mainContent, initialDnsDeploy, deploy],

@@ -68,7 +68,7 @@ export const getOutputLines = (props: QuestionSummary) => {
     });
   } else if (props.createCertificates) {
     outputs.push({
-      value: `module.certificates.CERTIFICATE_DNS_VALIDATION_POINTERS`,
+      value: `module.certificate.CERTIFICATE_DNS_VALIDATION_POINTERS`,
       label: `CERTIFICATE_DNS_VALIDATION_POINTERS`,
       description:
         '"Add CNAME pointers to these values from your existing DNS to validate the certificate."',
