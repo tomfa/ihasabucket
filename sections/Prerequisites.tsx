@@ -4,6 +4,7 @@ import Pre from '../components/code/Pre.style';
 import Mute from '../components/Mute.style';
 import useQuestions from '../questions/useQuestions';
 import { Section } from '../components/utils';
+import Code from '../components/code/Code';
 
 const Prerequisites = () => {
   const { hasAnsweredAll } = useQuestions();
@@ -38,10 +39,12 @@ const Prerequisites = () => {
           install Terraform
         </a>
       </p>
-      <Pre>
-        <Mute># For Macs with homebrew{'\n'}</Mute>
-        brew install hashicorp/tap/terraform
-      </Pre>
+      <Code
+        lines={[
+          `# For Macs with homebrew`,
+          `brew install hashicorp/tap/terraform`,
+        ]}
+      />
       <Description>
         See{' '}
         <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">
