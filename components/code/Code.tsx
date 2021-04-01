@@ -10,13 +10,13 @@ import Pre from './Pre.style';
 import PreButton from './PreButton.style';
 
 type Props = {
-  mainTfContent: string[];
-  bucketName: string;
+  lines: string[];
+  bucketName?: string;
   intro?: string;
   footer?: string;
 };
 
-const Code = ({ mainTfContent: lines, bucketName, intro, footer }: Props) => {
+const Code = ({ lines, bucketName, intro, footer }: Props) => {
   const theme = useTheme();
   const [hasCopied, setHasCopied] = useState<boolean>(false);
   const copy = useCallback(() => {
@@ -29,23 +29,7 @@ const Code = ({ mainTfContent: lines, bucketName, intro, footer }: Props) => {
   return (
     <>
       {!!intro && <p>{intro}</p>}
-      <Pre style={!!intro && { marginTop: 0 }}>
-        {lines.map((line, i) => {
-          if (line.trim().startsWith('#')) {
-            return (
-              <Mute key={i}>
-                {line}
-                {'\n'}
-              </Mute>
-            );
-          }
-          return (
-            <span key={i}>
-              {line}
-              {'\n'}
-            </span>
-          );
-        })}
+      <div style={{ position: 'relative' }}>
         <PreButton onClick={copy}>
           {(hasCopied && (
             <span>
@@ -54,7 +38,25 @@ const Code = ({ mainTfContent: lines, bucketName, intro, footer }: Props) => {
           )) ||
             'Copy to clipboard'}
         </PreButton>
-      </Pre>
+        <Pre $noMarginTop={!!intro}>
+          {lines.map((line, i) => {
+            if (line.trim().startsWith('#')) {
+              return (
+                <Mute key={i}>
+                  {line}
+                  {'\n'}
+                </Mute>
+              );
+            }
+            return (
+              <span key={i}>
+                {line}
+                {'\n'}
+              </span>
+            );
+          })}
+        </Pre>
+      </div>
       {!!footer && <Description>{footer}</Description>}
     </>
   );

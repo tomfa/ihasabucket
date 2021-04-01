@@ -44,7 +44,7 @@ const Infrastructure = () => {
           bucketName={props.bucketName}
           intro={section.title}
           footer={section.description}
-          mainTfContent={section.tfContent}
+          lines={section.tfContent}
         />
       ))}
       <Description style={{ fontWeight: 'bold' }}>
