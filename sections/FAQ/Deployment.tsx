@@ -164,7 +164,7 @@ const GithubDeployment = ({ summary }: { summary: QuestionSummary }) => {
     `        AWS_REGION: "${summary.region}"`,
     `        AWS_ACCESS_KEY_ID: \${{ secrets.AWS_ACCESS_KEY_ID}}`,
     `        AWS_SECRET_ACCESS_KEY: \${{ secrets.AWS_SECRET_ACCESS_KEY }}`,
-    `        DISTRIBUTION_ID: \${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}`,
+    `        DISTRIBUTION_ID: \${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}`,
   ];
   return (
     <>
@@ -173,7 +173,17 @@ const GithubDeployment = ({ summary }: { summary: QuestionSummary }) => {
         <code>.github/workflows/main.yml</code>
       </p>
       <Code lines={lines} />
-      <p>Set this up in the Actions tab in your Github repo.</p>
+      <p>
+        Then add the following secrets to your repo under Settings &rarr;
+        Secrets.
+      </p>
+      <ul>
+        <li>AWS_ACCESS_KEY_ID</li>
+        <li>AWS_SECRET_ACCESS_KEY</li>
+        <li>AWS_PRODUCTION_BUCKET_NAME</li>
+        <li>AWS_CLOUDFRONT_DISTRIBUTION_ID</li>
+      </ul>
+      <p>Their values are found in the output after your run terraform</p>
     </>
   );
 };
