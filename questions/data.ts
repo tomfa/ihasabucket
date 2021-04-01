@@ -136,6 +136,7 @@ export const questions: Question[] = [
     description:
       '"404" would work with a /404.html or /404/index.html file. This path will be rendered in cases when the file is not found.',
     showIf: [
+      { questionId: QUESTION_ID.storageType, value: 'webapp' },
       { questionId: QUESTION_ID.webappIsStatic, value: BOOL_VALUE.TRUE },
     ],
   } as InputQuestion,
