@@ -141,14 +141,27 @@ const getFAQuestions = (summary: QuestionSummary): FAQuestion[] => {
         <>
           <p>
             You can rename your bucket and try again. If you want to keep your
-            the domain name, simply replace the bucket_name variables in the
-            script, but keep the domain variables, and run the script again.
+            the domain name, simply replace the <strong>bucket_name</strong>{' '}
+            variables in the script, but keep the domain variables, and run the
+            script again.
           </p>
           <p>
-            Tip: you can go to replace-me.s3.amazonaws.com to check if a given
-            bucket is available. If it&apos;s not take, it will reply with error
-            message <code>The specified bucket does not exist</code>
+            Tip: you can go to{' '}
+            <a href="https://REPLACE-ME.s3.amazonaws.com">
+              REPLACE-ME.s3.amazonaws.com
+            </a>{' '}
+            to check if <code>REPLACE-ME</code> bucket is available.
           </p>
+          <ul>
+            <li>
+              If it&apos;s <strong>not</strong> taken, it will reply with{' '}
+              <code>NoSuchBucket</code>.
+            </li>
+            <li>
+              If it <strong>is taken</strong>, it will likely reply with{' '}
+              <code>AccessDeniedAccess</code>
+            </li>
+          </ul>
         </>
       ),
     },
