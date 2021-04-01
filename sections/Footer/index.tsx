@@ -17,13 +17,14 @@ const Footer = () => {
         <FooterAside>
           <FooterHeader>Wat</FooterHeader>
           <p>
-            I love Heroku, Vercel seems awesome, Squarespace is a great product.
-            All respect to those who maintain their own servers at DigitalOcean.
+            I love Heroku, Vercel seems awesome, Webflow is a great product.
+            Digital ocean got a real nice setup, and all respect to those who
+            maintain their own servers.
           </p>
           <p>
             But when it comes to simply hosting a web app or static files, AWS
-            S3 is usually faster, cheaper, more reliable and easier – as long as
-            you stay clear of the AWS console.
+            S3 is usually faster, cheaper, more reliable and simpler – as long
+            as you stay clear of the AWS console.
           </p>
           <p>Let me help you with that.</p>
         </FooterAside>
