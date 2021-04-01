@@ -6,6 +6,7 @@ import { QuestionSummary } from '../../utils/terraform/types';
 import DropDown from '../../components/forms/Dropdown';
 import { Option } from '../../types';
 import Pre from '../../components/code/Pre.style';
+import Code from '../../components/code/Code';
 
 const local: Option = { value: 'local', label: 'Command line' };
 const github: Option = { value: 'github', label: 'Github Actions' };
@@ -77,68 +78,40 @@ const WerckerDeployment = ({ summary }: { summary: QuestionSummary }) => (
     <p>
       1. Add the following code to your <code>wercker.yml</code>
     </p>
-    <Pre>
-      deploy_frontend:
-      <br />
-      {'  '}steps:
-      <br />
-      {'    '}- script:
-      <br />
-      {'      '}name: install dependencies
-      <br />
-      {'      '}code: yarn
-      <br />
-      {'    '}- script:
-      <br />
-      {'      '}name: build frontend
-      <br />
-      {'      '}code: npm run build
-      <br />
-      {'    '}- s3sync:
-      <br />
-      {'      '}source_dir: build
-      <br />
-      {'      '}delete-removed: true
-      <br />
-      {'      '}key-id: $AWS_ACCESS_KEY_ID
-      <br />
-      {'      '}key-secret: $AWS_SECRET_ACCESS_KEY
-      <br />
-      {'      '}bucket-url: s3://$AWS_S3_BUCKET_NAME
-      <br />
-      {'    '}- script:
-      <br />
-      {'      '}name: invalidate cloudfront cache
-      <br />
-      {'      '}code: |
-      <br />
-      {'        '}if [[ -n &quot;$AWS_CDN_DISTRIBUTION_ID&quot; ]]; then
-      <br />
-      {'          '}sudo apt-get update
-      <br />
-      {'          '}sudo apt-get install unzip -y
-      <br />
-      {'          '}sudo apt-get install libpython-dev -y
-      <br />
-      {'          '}wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
-      <br />
-      {'          '}unzip awscli-bundle.zip
-      <br />
-      {'          '}sudo ./awscli-bundle/install -i /usr/local/aws -b
-      /usr/local/bin/aws
-      <br />
-      {'          '}rm -rf awscli-bundle*
-      <br />
-      {'          '}aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-      <br />
-      {'          '}aws configure set aws_secret_access_key
-      $AWS_SECRET_ACCESS_KEY
-      <br />
-      {'          '}aws cloudfront create-invalidation --distribution-id
-      $AWS_CDN_DISTRIBUTION_ID --paths &quot;/&#42;&quot;
-      <br />
-      {'        '}fi
-    </Pre>
+    <Code
+      lines={[
+        `deploy_frontend:`,
+        ``,
+        `  steps:`,
+        `    - script:`,
+        `      name: install dependencies`,
+        `      code: yarn`,
+        `    - script:`,
+        `      name: build frontend`,
+        `      code: yarn build`,
+        `    - s3sync:`,
+        `      source_dir: build`,
+        `      delete-removed: true`,
+        `      key-id: $AWS_ACCESS_KEY_ID`,
+        `      key-secret: $AWS_SECRET_ACCESS_KEY`,
+        `      bucket-url: s3://$AWS_S3_BUCKET_NAME`,
+        `    - script:`,
+        `      name: invalidate cloudfront cache`,
+        `      code: |`,
+        `        if [[ -n "$AWS_CDN_DISTRIBUTION_ID" ]]; then`,
+        `          sudo apt-get update`,
+        `          sudo apt-get install unzip -y`,
+        `          sudo apt-get install libpython-dev -y`,
+        `          wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip`,
+        `          unzip awscli-bundle.zip`,
+        `          sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws`,
+        `          rm -rf awscli-bundle*`,
+        `          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID`,
+        `          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY`,
+        `          aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths "/*"`,
+        `        fi`,
+      ]}
+    />
     <p>
       Set this pipeline up in{' '}
       <a href="https://app.wercker.com">app.wercker.com</a> with the required
@@ -147,100 +120,63 @@ const WerckerDeployment = ({ summary }: { summary: QuestionSummary }) => (
   </>
 );
 
-const GithubDeployment = ({ summary }: { summary: QuestionSummary }) => (
-  <>
-    <p>
-      1. Add the following file to your repo:{' '}
-      <code>.github/workflows/main.yml</code>
-    </p>
-    <Pre>
-      name: Production Build
-      <br />
-      on:
-      <br />
-      {'  '}pull_request:
-      <br />
-      {'  '}push:
-      <br />
-      {'    '}branches:
-      <br />
-      {'      '}- master
-      <br />
-      jobs:
-      <br />
-      {'  '}build:
-      <br />
-      {'    '}runs-on: ubuntu-latest
-      <br />
-      <br />
-      {'    '}strategy:
-      <br />
-      {'      '}matrix:
-      <br />
-      {'        '}node-version: [13.x]
-      <br />
-      <br />
-      {'    '}steps:
-      <br />
-      {'    '}- uses: actions/checkout@v1
-      <br />
-      {'    '}- name: Use Node.js $&#123;&#123; matrix.node-version &#125;&#125;
-      <br />
-      {'      '}uses: actions/setup-node@v1
-      <br />
-      {'      '}with:
-      <br />
-      {'        '}node-version: $&#123;&#123; matrix.node-version &#125;&#125;
-      <br />
-      {'    '}- name: Yarn Install
-      <br />
-      {'      '}run: |
-      <br />
-      {'        '}yarn install
-      <br />
-      {'    '}- name: Production Build
-      <br />
-      {'      '}run: |
-      <br />
-      {'        '}yarn build
-      <br />
-      {'    '}- name: Deploy to S3
-      <br />
-      {'      '}uses: jakejarvis/s3-sync-action@master
-      <br />
-      {'      '}with:
-      <br />
-      {'        '}args: --acl public-read --delete
-      <br />
-      {'      '}env:
-      <br />
-      {'        '}AWS_S3_BUCKET: $&#123;&#123;
-      secrets.AWS_PRODUCTION_BUCKET_NAME &#125;&#125;
-      <br />
-      {'        '}AWS_ACCESS_KEY_ID: $&#123;&#123; secrets.AWS_ACCESS_KEY_ID
-      &#125;&#125;
-      <br />
-      {'        '}AWS_SECRET_ACCESS_KEY: $&#123;&#123;
-      secrets.AWS_SECRET_ACCESS_KEY &#125;&#125;
-      <br />
-      {'        '}AWS_REGION: &quot;{summary.region}&quot;
-      <br />
-      {'        '}SOURCE_DIR: &quot;public&quot;
-      {'    '}- name: Invalidate Cloudfront cache
-      {'      '}uses: awact/cloudfront-action@master
-      {'      '}env:
-      {'        '}SOURCE_PATH: &apos;/*&apos;
-      {'        '}AWS_REGION: &quot;eu-north-1&quot;
-      {'        '}AWS_ACCESS_KEY_ID: $&#123;&#123; secrets.AWS_ACCESS_KEY_ID
-      &#125;&#125;
-      {'        '}AWS_SECRET_ACCESS_KEY: $&#123;&#123;
-      secrets.AWS_SECRET_ACCESS_KEY &#125;&#125;
-      {'        '}DISTRIBUTION_ID: $&#123;&#123;
-      secrets.CLOUDFRONT_DISTRIBUTION_ID &#125;&#125;
-    </Pre>
-    <p>Set this up in the Actions tab in your Github repo.</p>
-  </>
-);
+const GithubDeployment = ({ summary }: { summary: QuestionSummary }) => {
+  const lines = [
+    `name: Production Build`,
+    `on:`,
+    `  pull_request:`,
+    `  push:`,
+    `    branches:`,
+    `      - master`,
+    ``,
+    `jobs:`,
+    `  build:`,
+    `    runs-on: ubuntu-latest`,
+    `    strategy:`,
+    `      matrix:`,
+    `        node-version: [13.x]`,
+    `    steps:`,
+    `    - uses: actions/checkout@v1`,
+    `    - name: Use Node.js \${{ matrix.node-version }}`,
+    `      uses: actions/setup-node@v1`,
+    `      with:`,
+    `        node-version: \${{ matrix.node-version }}`,
+    `    - name: Yarn Install`,
+    `      run: |`,
+    `        yarn install`,
+    `    - name: Production Build`,
+    `      run: |`,
+    `        yarn build`,
+    `    - name: Deploy to S3`,
+    `      uses: jakejarvis/s3-sync-action@master`,
+    `      with:`,
+    `        args: --acl public-read --delete`,
+    `      env:`,
+    `        AWS_S3_BUCKET: \${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}`,
+    `        AWS_ACCESS_KEY_ID: \${{ secrets.AWS_ACCESS_KEY_ID }}`,
+    `        AWS_SECRET_ACCESS_KEY: \${{ secrets.AWS_SECRET_ACCESS_KEY }}`,
+    `        AWS_REGION: "${summary.region}"`,
+    `        SOURCE_DIR: "public"`,
+    `    - name: Invalidate Cloudfront cache`,
+    `      uses: awact/cloudfront-action@master`,
+    `      env:`,
+    `        SOURCE_PATH: '/*'`,
+    `        AWS_REGION: "${summary.region}"`,
+    `        AWS_ACCESS_KEY_ID: \${{ secrets.AWS_ACCESS_KEY_ID}}`,
+    `        AWS_SECRET_ACCESS_KEY: \${{ secrets.AWS_SECRET_ACCESS_KEY }}`,
+    `        DISTRIBUTION_ID: \${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}`,
+  ];
+  return (
+    <>
+      <p>
+        1. Add the following file to your repo:{' '}
+        <code>.github/workflows/main.yml</code>
+      </p>
+      <Code lines={lines} />
+      <p>Set this up in the Actions tab in your Github repo.</p>
+    </>
+  );
+};
 
 export const GitlabDeployment = ({ summary }: { summary: QuestionSummary }) => (
   <>
