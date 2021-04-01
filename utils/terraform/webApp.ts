@@ -30,7 +30,7 @@ export const getWebAppBucketTfContent = (
     bucketSpec.parameters.certificate_arn =
       'module.certificate.CERTIFICATE_ARN';
   }
-  if (props.configureDns && bucketName) {
+  if (bucketName) {
     bucketSpec.parameters.domain_aliases = `["${bucketName}"]`;
   }
 
@@ -47,7 +47,7 @@ export const getWebAppBucketTfContent = (
     },
   };
 
-  if (props.configureDns && bucketName) {
+  if (bucketName) {
     stagingSpec.parameters.domain_aliases = `["${getStagingDomain(
       bucketName
     )}"]`;

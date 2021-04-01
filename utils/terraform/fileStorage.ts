@@ -4,6 +4,7 @@ import {
   getBucketNameTfValue,
   getStagingBucketName,
   getRegionTfValue,
+  getStagingDomain,
 } from './names';
 
 export const getFileStorageBucketTfContent = (
@@ -15,7 +16,7 @@ export const getFileStorageBucketTfContent = (
   const tfContent: ModuleSpec[] = [];
   const names = getBucketModuleNames(props);
   const { bucketName, region, shared } = props;
-  tfContent.push({
+  const prodModule: ModuleSpec = {
     name: names.main,
     source: 'git::https://github.com/tomfa/terraform.git//files',
     parameters: {
@@ -23,9 +24,18 @@ export const getFileStorageBucketTfContent = (
       aws_region: getRegionTfValue(region),
       acl: shared ? '"public-read"' : '"private"',
     },
-  });
+  };
+  if (props.createCertificates) {
+    prodModule.parameters.certificate_arn =
+      'module.certificate.CERTIFICATE_ARN';
+  }
+  if (bucketName) {
+    prodModule.parameters.domain_aliases = `["${bucketName}"]`;
+  }
+  tfContent.push(prodModule);
+
   if (props.staging) {
-    tfContent.push({
+    const stagingModule: ModuleSpec = {
       name: names.staging,
       source: 'git::https://github.com/tomfa/terraform.git//files',
       parameters: {
@@ -33,7 +43,17 @@ export const getFileStorageBucketTfContent = (
         aws_region: getRegionTfValue(region),
         acl: shared ? '"public-read"' : '"private"',
       },
-    });
+    };
+    if (props.createCertificates) {
+      stagingModule.parameters.certificate_arn =
+        'module.certificate.CERTIFICATE_ARN';
+    }
+    if (bucketName) {
+      stagingModule.parameters.domain_aliases = `["${getStagingDomain(
+        bucketName
+      )}"]`;
+    }
+    tfContent.push(stagingModule);
   }
   return tfContent;
 };
