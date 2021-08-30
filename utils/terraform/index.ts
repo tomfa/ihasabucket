@@ -42,6 +42,10 @@ export const getTerraFormPackage = (
     title: 'Then, create a terraform config file',
     tfContent: [
       `cat <<EOT >> ${props.bucketName || 'main'}.tf`,
+      '',
+      'provider "aws" {',
+      `  region = "${props.region}"`,
+      '}',
       ...getMainTfContent(props),
       'EOT',
     ],
