@@ -49,4 +49,5 @@ export type TerraformOutput = {
   value: string;
   label: string;
   description?: string;
+  sensitive?: boolean;
 };
