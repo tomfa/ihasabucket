@@ -85,6 +85,7 @@ export const getOutputLines = (props: QuestionSummary) => {
       value: `module.user.AWS_SECRET_ACCESS_KEY`,
       label: `AWS_SECRET_ACCESS_KEY`,
       description: '"Use secret key for CI to configure automatic deploys."',
+      sensitive: true,
     }
   );
   outputs.forEach((output) => lines.push(...outputAsText(output)));
@@ -133,6 +134,9 @@ const outputAsText = (output: TerraformOutput): string[] => {
   lines.push(`  value = ${output.value}`);
   if (output.description) {
     lines.push(`  description = ${output.description}`);
+  }
+  if (output.sensitive) {
+    lines.push(`  sensitive = true`);
   }
   lines.push('}');
   return lines;
